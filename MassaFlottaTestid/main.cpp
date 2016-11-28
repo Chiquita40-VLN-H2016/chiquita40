@@ -4,7 +4,8 @@ using namespace std;
 
 int main()
 {
-    cout << "Hallo Heimur!!" << endl;
-
+    int number;
+    cout << "Insert number" << endl;
+    cin >> number;
     return 0;
 }
