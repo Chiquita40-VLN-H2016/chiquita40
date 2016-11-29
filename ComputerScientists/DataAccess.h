@@ -13,11 +13,11 @@ class DataAccess
 public:
     DataAccess();
     void addScientist();
-    void getData();
+    vector<string> getData();
     void deleteScientist();
 
 private:
-    vector<Scientist> _scientists;
+    vector<string> _data;
 };
 
 #endif // DATAACCESS_H
