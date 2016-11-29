@@ -32,7 +32,7 @@ public:
     vector<Scientist> getScientistsOrderByDoB();
     vector<Scientist> getScientistsOrderByDoD();
     vector<Scientist> getScientistsOrderByGender();
-    Scientist findScientistByName(string name);
+    Scientist *findScientistByName(string name);
     void addScientist(string n, int bd, int dd, char g);
     void deleteScientist(string name);
 private:
