@@ -1,11 +1,12 @@
-ComputerScientist - Skil 1
-
+﻿ComputerScientist - Skil 1
+--------------------------
 
 Main
 	Köllum í klasana
 
 Layer 1	
-consoleui (klasi) - Hjördís og Andrea
+ConsoleUI (klasi) - Hjördís
+***************************
 	Hérna skrifum við út og tökum inn. Allar upplýsingar frá notanda og birta út á skjáinn. 
 	Sendum hér upplýsingar frá notanda inní csservice.
 	
@@ -20,6 +21,7 @@ consoleui (klasi) - Hjördís og Andrea
 			
 Layer 2
 ScientistService (klasi) - Kata (og Kristín)
+*********************************************
 	Notum þetta fyrir consoleui til að kalla upp lista til að birta. Sort ofl.
 	Sendum hér í data og tökum uppúr data. Leitar í string vector sem Data býr til.
 	
@@ -35,7 +37,8 @@ ScientistService (klasi) - Kata (og Kristín)
 				private breyta sem er Scientist breyta.
 			
 	
-	Scientist (klasi) - Kristín 
+	Scientist (klasi) - Kristín
+	***************************
 		Þarna geymum við hvað scientist er. Nafn - kyn - fæðingarár - dánarár (ef það á við)
 		Talar við service
 			
@@ -45,7 +48,8 @@ ScientistService (klasi) - Kata (og Kristín)
 				int breytur sem taka við f.ár og d.ár.
 
 Layer 3
-Data (klasi) - Diemut
+DataAccess (klasi) - Diemut
+****************************
 	Data talar bara við ScientistService og tilbaka.
 	Sótt úr skrá og sett í skrá.
 	Vistum í skrá, geymum í github í project möppum.
