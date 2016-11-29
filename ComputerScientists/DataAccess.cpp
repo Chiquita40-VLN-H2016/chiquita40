@@ -1,6 +1,4 @@
 #include "DataAccess.h"
-#include "Scientist.h"
-#include "ScientistService.h"
 
 #include <iostream>
 #include <vector>
@@ -14,31 +12,19 @@ DataAccess::DataAccess()
 
 }
 
-DataAccess::DataAccess(vector<Scientist> scientists)
+vector<string> DataAccess::getData()
 {
-    _scientists = scientists;
-}
-
-size_t DataAccess::size() const
-{
-    return _scientists.size();
-}
-
-void DataAccess::readScientist(Scientist& setScientist)
-{
+    vector<string> data;
     ifstream document;
     string word;
 
     document.open("scientists.txt");
     while(document >> word)
     {
-        setScientist.getName();
-        setScientist.getGender();
-        setScientist.getBirthDate();
-        setScientist.getDeathDate();
-
-        _scientists.push_back(word);
+        data.push_back(word);
     }
 
     document.close();
+
+    return data;
 }

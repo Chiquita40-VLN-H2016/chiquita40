@@ -5,7 +5,6 @@
 #include <vector>
 #include <string>
 #include <fstream>
-#include "Scientist.h"
 
 using namespace std;
 
@@ -13,9 +12,9 @@ class DataAccess
 {
 public:
     DataAccess();
-    DataAccess(vector<Scientist> scientists);
-    size_t size() const;
-    void readScientist(Scientist& setScientist);
+    void addScientist();
+    void getData();
+    void deleteScientist();
 
 private:
     vector<Scientist> _scientists;
