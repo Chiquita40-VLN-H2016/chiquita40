@@ -1,11 +1,11 @@
-#ifndef CSDATA_H
-#define CSDATA_H
+#ifndef DATAACCESS_H
+#define DATAACCESS_H
 
 
-class CSData
+class DataAccess
 {
 public:
-    CSData();
+    DataAccess();
 };
 
-#endif // CSDATA_H
+#endif // DATAACCESS_H

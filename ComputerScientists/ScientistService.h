@@ -1,11 +1,11 @@
-#ifndef CSSERVICES_H
-#define CSSERVICES_H
+#ifndef SCIENTISTSERVICE_H
+#define SCIENTISTSERVICE_H
 
 
-class CSServices
+class ScientistService
 {
 public:
-    CSServices();
+    ScientistService();
 };
 
-#endif // CSSERVICES_H
+#endif // SCIENTISTSERVICE_H

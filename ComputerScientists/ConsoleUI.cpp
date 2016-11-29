@@ -1,4 +1,4 @@
-#include "consoleui.h"
+#include "ConsoleUI.h"
 
 ConsoleUI::ConsoleUI()
 {
