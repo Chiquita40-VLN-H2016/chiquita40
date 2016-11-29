@@ -36,22 +36,22 @@ vector<Scientist> ScientistService::getScientistsOrderByGender()
     return scientists;
 }
 
-Scientist ScientistService::findScientistByName(string name)
+Scientist *ScientistService::findScientistByName(string name)
 {
     vector<Scientist> scientists = getScientistsOrderByName();
     int n = findScientistName(name);
     if(n != -1){
-        return scientists.at(i);
+        return &scientists.at(n);
     }
-    return null;
+    return nullptr;
 }
 
 void ScientistService::addScientist(string n, int bd, int dd, char g)
 {
-    Scientist s1 = findScientistByName(n);
-    if(s1 == null){
-        Scientist s2 = new Scientist(n, bd, dd, g);
-        _data.addScientist(s2);
+    Scientist *s1 = findScientistByName(n);
+    if(s1 == nullptr){
+        Scientist s2(n, bd, dd, g);
+       // _data.addScientist(s2);
     }
 }
 
@@ -61,7 +61,7 @@ void ScientistService::deleteScientist(string name)
     int n = findScientistName(name);
     if(n != -1){
         scientists.erase(scientists.begin()+n);
-        _data.deleteScientists(scientists);
+        //_data.deleteScientist(scientists);
     }
 }
 //Private
@@ -69,7 +69,7 @@ int ScientistService::findScientistName(string name)
 {
     Scientist s;
     vector<Scientist> scientists = getScientistsOrderByName();
-    int size = scientists.size();
+    size_t size = scientists.size();
     for(int i = 0; i < size; i++){
         s = scientists.at(i);
         if(s.getName() == name){
@@ -81,7 +81,7 @@ int ScientistService::findScientistName(string name)
 
 vector<Scientist> ScientistService::getScientists()
 {
-    String list = _data.getData();
+    //string list = _data.getData();
     vector<Scientist> scientists;
     //TODO: split list by some feature.
     //Fill scientists vector in a forloop.
