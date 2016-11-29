@@ -6,9 +6,7 @@ ScientistService::ScientistService()
 
 vector<Scientist> ScientistService::getScientistsOrderByName()
 {
-    //TODO: ná í upplýsingar úr dataAccess og búa til scientists vector;
-    String list = _data.getData();
-    vector<Scientist> scientists;
+    vector<Scientist> scientists = getScientists();
     NameComparison cmp;
     std::sort(scientists.begin(), scientists.end(), cmp);
     return scientists;
@@ -16,9 +14,7 @@ vector<Scientist> ScientistService::getScientistsOrderByName()
 
 vector<Scientist> ScientistService::getScientistsOrderByDoB()
 {
-    //TODO: ná í upplýsingar úr dataAccess og búa til scientists vector;
-    String list = _data.getData();
-    vector<Scientist> scientists;
+    vector<Scientist> scientists = getScientists();
     DoBComparison cmp;
     std::sort(scientists.begin(), scientists.end(), cmp);
     return scientists;
@@ -26,9 +22,7 @@ vector<Scientist> ScientistService::getScientistsOrderByDoB()
 
 vector<Scientist> ScientistService::getScientistsOrderByDoD()
 {
-    //TODO: ná í upplýsingar úr dataAccess og búa til scientists vector;
-    String list = _data.getData();
-    vector<Scientist> scientists;
+    vector<Scientist> scientists = getScientists();
     DoDComparison cmp;
     std::sort(scientists.begin(), scientists.end(), cmp);
     return scientists;
@@ -36,9 +30,7 @@ vector<Scientist> ScientistService::getScientistsOrderByDoD()
 
 vector<Scientist> ScientistService::getScientistsOrderByGender()
 {
-    //TODO: ná í upplýsingar úr dataAccess og búa til scientists vector;
-    String list = _data.getData();
-    vector<Scientist> scientists;
+    vector<Scientist> scientists = getScientists();
     GenderComparison cmp;
     std::sort(scientists.begin(), scientists.end(), cmp);
     return scientists;
@@ -85,4 +77,13 @@ int ScientistService::findScientistName(string name)
         }
     }
     return -1;
+}
+
+vector<Scientist> ScientistService::getScientists()
+{
+    String list = _data.getData();
+    vector<Scientist> scientists;
+    //TODO: split list by some feature.
+    //Fill scientists vector in a forloop.
+    return scientists;
 }

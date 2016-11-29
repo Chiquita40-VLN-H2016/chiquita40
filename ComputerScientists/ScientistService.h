@@ -37,6 +37,7 @@ public:
     void deleteScientist(string name);
 private:
     int findScientistName(string name);
+    vector<Scientist> getScientists();
 };
 
 #endif // SCIENTISTSERVICE_H
