@@ -11,8 +11,10 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     csservices.cpp \
-    csdata.cpp
+    csdata.cpp \
+    scientist.cpp
 
 HEADERS += \
     csservices.h \
-    csdata.h
+    csdata.h \
+    scientist.h
