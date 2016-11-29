@@ -1,6 +1,6 @@
-#include "csservice.h"
+#include "ScientistService.h"
 
-CSServices::CSServices()
+ScientistService::ScientistService()
 {
 
 }

@@ -1,6 +1,6 @@
-#include "csdata.h"
+#include "DataAccess.h"
 
-CSData::CSData()
+DataAccess::DataAccess()
 {
 
 }

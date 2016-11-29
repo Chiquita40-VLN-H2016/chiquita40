@@ -1,4 +1,4 @@
-#include "scientist.h"
+#include "Scientist.h"
 
 Scientist::Scientist()
 {
