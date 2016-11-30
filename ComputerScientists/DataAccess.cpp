@@ -12,6 +12,22 @@ DataAccess::DataAccess()
 
 }
 
+void DataAccess::addScientist(string sc)
+{
+    ofstream input;
+    input.open("scientists.txt", ios::app);
+    input << endl << sc;
+    input.close();
+}
+
+void DataAccess::deleteScientist(string sNew)
+{
+    ofstream del;
+    del.open("scientists.txt");
+    del << endl << sNew;
+    del.close();
+}
+
 vector<string> DataAccess::getData()
 {
     vector<string> data;
