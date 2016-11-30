@@ -38,6 +38,7 @@ public:
 private:
     int findScientistName(string name);
     vector<Scientist> getScientists();
+    void constructString(string& s, string name, int dob, int dod, char g);
 };
 
 #endif // SCIENTISTSERVICE_H
