@@ -85,6 +85,7 @@ int ScientistService::findScientistName(string name)
     Scientist s;
     vector<Scientist> scientists = getScientistsOrderByName();
     size_t size = scientists.size();
+
     for(unsigned int i = 0; i < size; i++){
         s = scientists.at(i);
         if(s.getName() == name){
