@@ -2,6 +2,7 @@
 #define SCIENTIST_H
 #include <iostream>
 #include <string>
+#include <iostream>
 
 using namespace std;
 
