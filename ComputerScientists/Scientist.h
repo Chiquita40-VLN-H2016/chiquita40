@@ -1,6 +1,7 @@
 #ifndef SCIENTIST_H
 #define SCIENTIST_H
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -19,6 +20,7 @@ public:
     int getBirthDate() const;
     int getDeathDate() const;
     char getGender() const;
+    friend ostream& operator << (ostream& out, const Scientist s);
 
 };
 

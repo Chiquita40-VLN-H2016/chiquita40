@@ -50,8 +50,9 @@ void ScientistService::addScientist(string n, int bd, int dd, char g)
 {
     Scientist *s1 = findScientistByName(n);
     if(s1 == nullptr){
-        Scientist s2(n, bd, dd, g);
-       // _data.addScientist(s2);
+        string s2;
+        constructString(s2, n, bd, dd, g);
+       _data.addScientist(s2);
     }
 }
 
@@ -61,7 +62,18 @@ void ScientistService::deleteScientist(string name)
     int n = findScientistName(name);
     if(n != -1){
         scientists.erase(scientists.begin()+n);
-        //_data.deleteScientist(scientists);
+        string s;
+        for(size_t i = 0; i < scientists.size(); i++)
+        {
+            Scientist sc = scientists.at(i);
+            string n = sc.getName();
+            int bd = sc.getBirthDate();
+            int dd = sc.getDeathDate();
+            char g = sc.getGender();
+            constructString(s, n, bd, dd, g);
+            s.push_back('\n');
+        }
+        _data.deleteScientist(s);
     }
 }
 //Private
@@ -70,7 +82,8 @@ int ScientistService::findScientistName(string name)
     Scientist s;
     vector<Scientist> scientists = getScientistsOrderByName();
     size_t size = scientists.size();
-    for(size_t i = 0; i < size; i++){
+
+    for(unsigned int i = 0; i < size; i++){
         s = scientists.at(i);
         if(s.getName() == name){
             return i;
@@ -81,9 +94,42 @@ int ScientistService::findScientistName(string name)
 
 vector<Scientist> ScientistService::getScientists()
 {
-    //string list = _data.getData();
+    vector<string> list = _data.getData();
     vector<Scientist> scientists;
-    //TODO: split list by some feature.
-    //Fill scientists vector in a forloop.
+    int count = 1, dob, dod;
+    string name;
+    char g;
+    for(size_t i = 0; i < list.size(); i++){
+        if(count == 1){
+            name = list.at(i);
+        }
+        if(count == 2){
+            name+= list.at(i);
+        }
+        if(count == 3){
+            dob = stoi(list.at(i));
+        }
+        if(count == 4){
+            dod = stoi(list.at(i));
+        }
+        if(count == 5){
+            g = list.at(i).front();
+            Scientist sc(name, dob, dod, g);
+            scientists.push_back(sc);
+            count = 0;
+        }
+        count++;
+    }
     return scientists;
+}
+
+void ScientistService::constructString(string& s, string name, int dob, int dod, char g)
+{
+    s+=name;
+    s.push_back('\t');
+    s+=to_string(dob);
+    s.push_back('\t');
+    s+=to_string(dod);
+    s.push_back('\t');
+    s.push_back(g);
 }
