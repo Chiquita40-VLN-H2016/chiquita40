@@ -63,7 +63,7 @@ void ScientistService::deleteScientist(string name)
     if(n != -1){
         scientists.erase(scientists.begin()+n);
         string s;
-        for(int i = 0; i < scientists.size(); i++)
+        for(size_t i = 0; i < scientists.size(); i++)
         {
             Scientist sc = scientists.at(i);
             string n = sc.getName();
@@ -71,7 +71,10 @@ void ScientistService::deleteScientist(string name)
             int dd = sc.getDeathDate();
             char g = sc.getGender();
             constructString(s, n, bd, dd, g);
-            s.push_back('\n');
+            if(i != scientists.size()-1)
+            {
+               s.push_back('\n');
+            }
         }
         _data.deleteScientist(s);
     }
@@ -98,7 +101,7 @@ vector<Scientist> ScientistService::getScientists()
     int count = 1, dob, dod;
     string name;
     char g;
-    for(int i = 0; i < list.size(); i++){
+    for(size_t i = 0; i < list.size(); i++){
         if(count == 1){
             name = list.at(i);
         }
