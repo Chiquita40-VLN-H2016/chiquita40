@@ -1,5 +1,6 @@
 #include "ConsoleUI.h"
 
+
 ConsoleUI::ConsoleUI()
 {
 
@@ -18,26 +19,34 @@ void ConsoleUI::run()
             << "list g \t - list of all scientist in order of gender in ASC order" << endl
             << "delete x - delete scientist, write exact name of scientist to delete where x is." << endl;
 
-    cout    << "Enter command: ";
-    cin     >> _command;
+    string command;
+    string name;
+    int bDate;
+    int dDate;
+    char gender;
 
-    if(_command == "add")
+    cout    << "Enter command: ";
+    cin     >> command;
+
+    if(command == "add")
     {
         cout    << "Name of scientist to add: ";
-        cin     >> _name;
+        getline(cin,name);
+        cout    << "Your name is " << name;
 
-        cout    << endl << "Year of Birth: ";
-        cin     >> _bDate;
+/*        cout    << endl << "Year of Birth: ";
+        cin     >> bDate;
 
         cout    << endl << "Year of Death (if still alive enter 9999): ";
-        cin     >> _dDate;
+        cin     >> dDate;
 
         cout    << endl << "Gender: ";
-        cin     >> _gender;
+        cin     >> gender;
 
         ScientistService add;
-        add.addScientist(_name, _bDate, _dDate, _gender);
+        add.addScientist(name, bDate, dDate, gender);*/
 
     }
 
 }
+
