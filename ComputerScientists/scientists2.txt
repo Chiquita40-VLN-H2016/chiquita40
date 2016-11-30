@@ -1,3 +1,3 @@
-Charles Babbage	m	1791	1871
-Ada Lovelace	f	1815	1852
-Blaise Pascal	m	1623	1662
+Charles Babbage	1791	1871	m
+Ada Lovelace	1815	1852	f
+Blaise Pascal	1623	1662	m

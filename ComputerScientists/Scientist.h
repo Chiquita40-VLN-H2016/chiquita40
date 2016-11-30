@@ -1,5 +1,6 @@
 #ifndef SCIENTIST_H
 #define SCIENTIST_H
+#include <iostream>
 #include <string>
 #include <iostream>
 
