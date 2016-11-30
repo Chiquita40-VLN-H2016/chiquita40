@@ -3,12 +3,15 @@
 #include <iostream>
 #include <string>
 #include "ScientistService.h"
+#include "Scientist.h"
 
 using namespace std;
 
 class ConsoleUI
 {
 private:
+
+    ScientistService _scs;
 
     void printList(vector<Scientist> v);
     void commands();

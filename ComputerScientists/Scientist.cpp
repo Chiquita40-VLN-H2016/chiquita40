@@ -4,7 +4,7 @@ Scientist::Scientist()
 {
 
 }
-Scientist::Scientist(string n, int bd, int dd, char g)
+Scientist::Scientist(string n, string bd, string dd, string g)
 {
     _name = n;
     _birthDate = bd;
@@ -15,15 +15,15 @@ string Scientist::getName() const
 {
     return _name;
 }
-int Scientist::getBirthDate() const
+string Scientist::getBirthDate() const
 {
     return _birthDate;
 }
-int Scientist::getDeathDate() const
+string Scientist::getDeathDate() const
 {
     return _deathDate;
 }
-char Scientist::getGender() const
+string Scientist::getGender() const
 {
     return _gender;
 }

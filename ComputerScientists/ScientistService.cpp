@@ -2,76 +2,74 @@
 
 ScientistService::ScientistService()
 {
+    createScientists();
 }
 
-vector<Scientist> ScientistService::getScientistsOrderByName()
+vector<Scientist> ScientistService::getScientists()
 {
-    vector<Scientist> scientists = getScientists();
+    return _scientists;
+}
+
+void ScientistService::ScientistsOrderByName()
+{
     NameComparison cmp;
-    std::sort(scientists.begin(), scientists.end(), cmp);
-    return scientists;
+    std::sort(_scientists.begin(), _scientists.end(), cmp);
 }
 
-vector<Scientist> ScientistService::getScientistsOrderByDoB()
+void ScientistService::ScientistsOrderByDoB()
 {
-    vector<Scientist> scientists = getScientists();
     DoBComparison cmp;
-    std::sort(scientists.begin(), scientists.end(), cmp);
-    return scientists;
+    std::sort(_scientists.begin(), _scientists.end(), cmp);
 }
 
-vector<Scientist> ScientistService::getScientistsOrderByDoD()
+void ScientistService::ScientistsOrderByDoD()
 {
-    vector<Scientist> scientists = getScientists();
     DoDComparison cmp;
-    std::sort(scientists.begin(), scientists.end(), cmp);
-    return scientists;
+    std::sort(_scientists.begin(), _scientists.end(), cmp);
 }
 
-vector<Scientist> ScientistService::getScientistsOrderByGender()
+void ScientistService::ScientistsOrderByGender()
 {
-    vector<Scientist> scientists = getScientists();
     GenderComparison cmp;
-    std::sort(scientists.begin(), scientists.end(), cmp);
-    return scientists;
+    std::sort(_scientists.begin(), _scientists.end(), cmp);
 }
 
 Scientist *ScientistService::findScientistByName(string name)
 {
-    vector<Scientist> scientists = getScientistsOrderByName();
     int n = findScientistName(name);
     if(n != -1){
-        return &scientists.at(n);
+        return &_scientists.at(n);
     }
     return nullptr;
 }
 
-void ScientistService::addScientist(string n, int bd, int dd, char g)
+void ScientistService::addScientist(string n, string bd, string dd, string g)
 {
     Scientist *s1 = findScientistByName(n);
     if(s1 == nullptr){
         string s2;
         constructString(s2, n, bd, dd, g);
        _data.addScientist(s2);
+       Scientist sc(n, bd, dd, g);
+       _scientists.push_back(sc);
     }
 }
 
 void ScientistService::deleteScientist(string name)
 {
-    vector<Scientist> scientists = getScientistsOrderByName();
     int n = findScientistName(name);
     if(n != -1){
-        scientists.erase(scientists.begin()+n);
+        _scientists.erase(_scientists.begin()+n);
         string s;
-        for(size_t i = 0; i < scientists.size(); i++)
+        for(size_t i = 0; i < size(); i++)
         {
-            Scientist sc = scientists.at(i);
+            Scientist sc = _scientists.at(i);
             string n = sc.getName();
-            int bd = sc.getBirthDate();
-            int dd = sc.getDeathDate();
-            char g = sc.getGender();
+            string bd = sc.getBirthDate();
+            string dd = sc.getDeathDate();
+            string g = sc.getGender();
             constructString(s, n, bd, dd, g);
-            if(i != scientists.size()-1)
+            if(i != size()-1)
             {
                s.push_back('\n');
             }
@@ -83,11 +81,9 @@ void ScientistService::deleteScientist(string name)
 int ScientistService::findScientistName(string name)
 {
     Scientist s;
-    vector<Scientist> scientists = getScientistsOrderByName();
-    size_t size = scientists.size();
 
-    for(unsigned int i = 0; i < size; i++){
-        s = scientists.at(i);
+    for(unsigned int i = 0; i < size(); i++){
+        s = _scientists.at(i);
         if(s.getName() == name){
             return i;
         }
@@ -95,13 +91,11 @@ int ScientistService::findScientistName(string name)
     return -1;
 }
 
-vector<Scientist> ScientistService::getScientists()
+void ScientistService::createScientists()
 {
     vector<string> list = _data.getData();
-    vector<Scientist> scientists;
-    int count = 1, dob, dod;
-    string name;
-    char g;
+    int count = 1;
+    string name, dob, dod, g;
     for(size_t i = 0; i < list.size(); i++){
         if(count == 1){
             name = list.at(i);
@@ -110,29 +104,33 @@ vector<Scientist> ScientistService::getScientists()
             name+= list.at(i);
         }
         if(count == 3){
-            dob = stoi(list.at(i));
+            dob = list.at(i);
         }
         if(count == 4){
-            dod = stoi(list.at(i));
+            dod = list.at(i);
         }
         if(count == 5){
-            g = list.at(i).front();
+            g = list.at(i);
             Scientist sc(name, dob, dod, g);
-            scientists.push_back(sc);
+            _scientists.push_back(sc);
             count = 0;
         }
         count++;
     }
-    return scientists;
 }
 
-void ScientistService::constructString(string& s, string name, int dob, int dod, char g)
+void ScientistService::constructString(string& s, string name, string dob, string dod, string g)
 {
     s+=name;
     s.push_back('\t');
-    s+=to_string(dob);
+    s+=dob;
     s.push_back('\t');
-    s+=to_string(dod);
+    s+=dod;
     s.push_back('\t');
-    s.push_back(g);
+    s+=g;
+}
+
+size_t ScientistService::size()
+{
+    return _scientists.size();
 }

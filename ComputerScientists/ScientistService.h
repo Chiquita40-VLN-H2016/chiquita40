@@ -26,19 +26,22 @@ class ScientistService
 {
 private:
     DataAccess _data;
+    vector<Scientist> _scientists;
+    size_t size();
 public:
     ScientistService();
-    vector<Scientist> getScientistsOrderByName();
-    vector<Scientist> getScientistsOrderByDoB();
-    vector<Scientist> getScientistsOrderByDoD();
-    vector<Scientist> getScientistsOrderByGender();
+    vector<Scientist> getScientists();
+    void ScientistsOrderByName();
+    void ScientistsOrderByDoB();
+    void ScientistsOrderByDoD();
+    void ScientistsOrderByGender();
     Scientist *findScientistByName(string name);
-    void addScientist(string n, int bd, int dd, char g);
+    void addScientist(string n, string bd, string dd, string g);
     void deleteScientist(string name);
 private:
     int findScientistName(string name);
-    vector<Scientist> getScientists();
-    void constructString(string& s, string name, int dob, int dod, char g);
+    void createScientists();
+    void constructString(string& s, string name, string dob, string dod, string g);
 };
 
 #endif // SCIENTISTSERVICE_H

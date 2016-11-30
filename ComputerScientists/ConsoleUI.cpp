@@ -33,12 +33,16 @@ void ConsoleUI::run()
         {
             deleteScientist();
         }*/
+        else if(command == "quit")
+        {
+            return;
+        }
         else
         {
             cout << "Invalid command" << endl;
         }
 
-    }while(command != "quit");
+    }while(true);
 
 }
 
@@ -51,16 +55,16 @@ void ConsoleUI::commands()
             << "list \t - Show a list of all scientist" << endl
             << "find \t - Find scientist in list" << endl
  //           << "delete x - delete scientist, write exact name of scientist to delete where x is." << endl;
-            << "Enter quit to quit the program." << endl;
+            << "quit \t to quit the program." << endl;
 
 }
 
 void ConsoleUI::add()
 {
     string name;
-    int bDate;
-    int dDate;
-    char gender;
+    string bDate;
+    string dDate;
+    string gender;
 
     cin.ignore();
     cout    << "Name of scientist to add: ";
@@ -75,8 +79,7 @@ void ConsoleUI::add()
     cout    << "Gender: ";
     cin     >> gender;
 
-    //ScientistService add;
-    //add.addScientist(name, bDate, dDate, gender);
+    _scs.addScientist(name, bDate, dDate, gender);
 }
 
 void ConsoleUI::list()
@@ -113,30 +116,30 @@ void ConsoleUI::list()
 }
 void ConsoleUI::listName()
 {
-    ScientistService name;
-    name.getScientistsOrderByName();
-    //hvernig á að prenta.
+    _scs.ScientistsOrderByName();
+    vector<Scientist> sc = _scs.getScientists();
+    printList(sc);
 }
 
 void ConsoleUI::listDoB()
 {
-    ScientistService dob;
-    dob.getScientistsOrderByDoB();
-    //hvernig á að prenta.
+    _scs.ScientistsOrderByDoB();
+    vector<Scientist> sc = _scs.getScientists();
+    printList(sc);
 }
 
 void ConsoleUI::listDoD()
 {
-    ScientistService dod;
-    dod.getScientistsOrderByDoD();
-    //hvernig á að prenta.
+    _scs.ScientistsOrderByDoD();
+    vector<Scientist> sc = _scs.getScientists();
+    printList(sc);
 }
 
 void ConsoleUI::listGender()
 {
-    ScientistService gender;
-    gender.getScientistsOrderByGender();
-    //hvernig á að prenta.
+    _scs.ScientistsOrderByGender();
+    vector<Scientist> sc = _scs.getScientists();
+    printList(sc);
 }
 
 void ConsoleUI::findScientist()
@@ -147,8 +150,7 @@ void ConsoleUI::findScientist()
     cout << "Enter the name of scientist: ";
     getline(cin,findSc);
 
-    ScientistService scs;
-    Scientist *sc = scs.findScientistByName(findSc);
+    Scientist *sc = _scs.findScientistByName(findSc);
     if(sc == nullptr)
     {
         cout << "Scientist was not found." << endl;

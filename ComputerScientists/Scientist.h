@@ -10,16 +10,16 @@ class Scientist
 {
 private:
     string _name;
-    int _birthDate;
-    int _deathDate;
-    char _gender;
+    string _birthDate;
+    string _deathDate;
+    string _gender;
 public:
     Scientist();
-    Scientist(string n, int bd, int dd, char g);
+    Scientist(string n, string bd, string dd, string g);
     string getName() const;
-    int getBirthDate() const;
-    int getDeathDate() const;
-    char getGender() const;
+    string getBirthDate() const;
+    string getDeathDate() const;
+    string getGender() const;
     friend ostream& operator << (ostream& out, const Scientist s);
 
 };
