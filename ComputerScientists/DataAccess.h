@@ -12,9 +12,11 @@ class DataAccess
 {
 public:
     DataAccess();
-    void addScientist();
+    void addScientist(string sc); //function to write in file
     vector<string> getData();
-    void deleteScientist();
+    void deleteScientist(string sNew);
+    //void addScientist(string n, string bd, string dd, string g);
+    //void deleteScientist(string name);
 
 private:
     vector<string> _data;
