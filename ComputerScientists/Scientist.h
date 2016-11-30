@@ -19,6 +19,7 @@ public:
     int getBirthDate() const;
     int getDeathDate() const;
     char getGender() const;
+    friend ostream& operator << (ostream& out, const Scientist s);
 
 };
 

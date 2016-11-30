@@ -27,3 +27,11 @@ char Scientist::getGender() const
 {
     return _gender;
 }
+ostream& operator << (ostream& out, const Scientist s){
+    out << s.getName() << '\t';
+    out << s.getBirthDate() << '\t';
+    out << s.getDeathDate() << '\t';
+    out << s.getGender() << endl;
+    return out;
+}
+
