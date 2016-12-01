@@ -32,6 +32,10 @@ void ConsoleUI::run()
         {
             findScientist();
         }
+        else if(command == "edit")
+        {
+            editScientist();
+        }
         else if(command == "delete")
         {
             deleteScientist();
@@ -54,9 +58,9 @@ void ConsoleUI::commands()
             << "add \t - Add new scientist to the list" << endl
             << "list \t - Show a list of all scientist" << endl
             << "find \t - Find scientist in list" << endl
-            << "delete \t - delete scientist, write exact name of scientist to delete where x is." << endl
+            << "edit \t - Edit scientist in list" << endl
+            << "delete \t - Delete scientist, write exact name of scientist to delete." << endl
             << "quit \t - Quit the program." << endl;
-
 }
 
 void ConsoleUI::add()
@@ -207,6 +211,7 @@ void ConsoleUI::printList(vector<Scientist> v)
        }
    cout << endl;
 }
+
 void ConsoleUI::deleteScientist()
 {
     string deleteName;
@@ -215,4 +220,71 @@ void ConsoleUI::deleteScientist()
     getline(cin,deleteName);
     _scs.deleteScientist(deleteName);
     listName();
+}
+
+void ConsoleUI::editScientist()
+{
+    string editSC, name, dob, dod, gender;
+    cout << "Enter first and last name of the scientist you want to edit: " << endl;
+    cin.ignore();
+    getline(cin,editSC);
+    Scientist sc = _scs.findScientistByName(editSC);
+    _scs.deleteScientist(editSC);
+    cout << "You want to edit: " << endl;
+    cout << sc << endl;
+    cout << "Would you like to edit the name?: yes or no" << endl;
+    cin >> editSC;
+
+    if(editSC == "yes")
+    {
+        cout << "Enter new name: ";
+        getline(cin,name);
+    }
+    else
+    {
+        name = sc.getName();
+    }
+
+    cout << "Would you like to edit date of birth?: yes or no" << endl;
+    cin >> editSC;
+
+    if(editSC == "yes")
+    {
+        cout << "Enter new date of birth: ";
+        cin >> dob;
+    }
+    else
+    {
+        dob = sc.getBirthDate();
+    }
+
+    cout << "Would you like to edit date of death?: yes or no" << endl;
+    cin >> editSC;
+
+    if(editSC == "yes")
+    {
+        cout << "Enter new date of death: ";
+        cin >> dod;
+    }
+    else
+    {
+        dod = sc.getDeathDate();
+    }
+    cout << "Would you like to edit gender?: yes or no" << endl;
+    cin >> editSC;
+
+    if(editSC == "yes")
+    {
+        cout << "Enter new gender: ";
+        cin >> gender;
+    }
+    else
+    {
+        gender = sc.getGender();
+    }
+    _scs.addScientist(name, dob, dod, gender);
+    sc = _scs.findScientistByName(name);
+
+    cout << "Scientist has now been edited: " << endl;
+    cout << sc << endl;
 }

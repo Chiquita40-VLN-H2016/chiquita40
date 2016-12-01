@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 Blaise Pascal	1623	1662	m
 Charles Babbage 1791	1871	m
+=======
+Charles Babbage	1791	1871	m
+Blaise Pascal	1625	1662	m
+>>>>>>> 2aa568d8f764806ebd454ec8c4fe1a7669a5f574

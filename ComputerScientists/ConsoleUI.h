@@ -23,6 +23,7 @@ private:
     void listGender();
     void findScientist();
     void deleteScientist();
+    void editScientist();
 
 public:
     ConsoleUI();
