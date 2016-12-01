@@ -179,8 +179,8 @@ void ConsoleUI::findScientist()
     cout << "Enter the name of scientist: ";
     getline(cin,findSc);
     cout << endl;
-    Scientist *sc = _scs.findScientistByName(findSc);
-    if(sc == nullptr)
+    Scientist sc = _scs.findScientistByName(findSc);
+    if(sc.getName() == "")
     {
         cout << "Scientist was not found." << endl;
     }
@@ -188,9 +188,10 @@ void ConsoleUI::findScientist()
     {
         cout << "Scientist \t DoB \t DoD \t Gender" << endl;
         cout << "==================================================" << endl;
-        cout << *sc;
+        cout << sc;
         //Þetta á að vera hægt út af overloading.
     }
+
     cout << endl;
 }
 
