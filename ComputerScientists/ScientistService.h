@@ -40,7 +40,7 @@ public:
     void ScientistsOrderByDoB();
     void ScientistsOrderByDoD();
     void ScientistsOrderByGender();
-    Scientist *findScientistByName(string name);
+    Scientist findScientistByName(string name);
     void addScientist(string n, string bd, string dd, string g);
     void deleteScientist(string name);
 private:

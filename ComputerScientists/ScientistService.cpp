@@ -34,13 +34,14 @@ void ScientistService::ScientistsOrderByGender()
     std::sort(_scientists.begin(), _scientists.end(), cmp);
 }
 //First checks whether scientist exists in list and returns a pointer to it, otherwise returns nullptr.
-Scientist *ScientistService::findScientistByName(string name)
+Scientist ScientistService::findScientistByName(string name)
 {
     int n = findScientistName(name);
     if(n != -1){
-        return &_scientists.at(n);
+        return _scientists.at(n);
     }
-    return nullptr;
+    Scientist s("", "", "", "");
+    return s;
 }
 //First checks whether scientist exists in list and only adds the new one if it doesn't.
 void ScientistService::addScientist(string n, string bd, string dd, string g)
