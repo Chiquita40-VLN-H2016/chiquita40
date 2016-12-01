@@ -3,6 +3,7 @@
 
 ConsoleUI::ConsoleUI()
 {
+
 }
 
 void ConsoleUI::run()
@@ -37,7 +38,7 @@ void ConsoleUI::run()
         }*/
         else if(command == "quit")
         {
-            return;
+            break;
         }
         else
         {
@@ -45,7 +46,6 @@ void ConsoleUI::run()
         }
 
     }while(true);
-
 }
 
 void ConsoleUI::commands()
