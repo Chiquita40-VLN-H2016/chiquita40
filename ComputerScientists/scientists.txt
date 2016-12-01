@@ -1,3 +1,9 @@
 Charles Babbage	1791	1871	m
 Ada Lovelace	1815	1852	f
 Blaise Pascal	1623	1662	m
+John Smith	1952	alive	m
+Jonine Jackson	1963	alive	f
+Alan Smith	1923	1998	m
+Kristin Jokuls	1985	alive	f
+Jon Jonsson	1965	alive	f
+Jon Smith	1947	alive	m
