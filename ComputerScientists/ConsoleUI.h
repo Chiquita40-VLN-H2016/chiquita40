@@ -22,7 +22,7 @@ private:
     void listDoD();
     void listGender();
     void findScientist();
-//    void deleteScientist(); *Hugsum í endann!
+    void deleteScientist();
 
 public:
     ConsoleUI();

@@ -29,10 +29,10 @@ void ConsoleUI::run()
         {
             findScientist();
         }
-        /*else if(command == "delete")
+        else if(command == "delete")
         {
             deleteScientist();
-        }*/
+        }
         else if(command == "quit")
         {
             return;
