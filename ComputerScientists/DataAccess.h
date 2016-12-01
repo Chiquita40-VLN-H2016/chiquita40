@@ -19,7 +19,7 @@ public:
     //void deleteScientist(string name);
 
 private:
-    vector<string> _data;
+
 };
 
 #endif // DATAACCESS_H

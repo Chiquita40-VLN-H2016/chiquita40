@@ -3,7 +3,6 @@
 
 ConsoleUI::ConsoleUI()
 {
-
 }
 
 void ConsoleUI::run()
