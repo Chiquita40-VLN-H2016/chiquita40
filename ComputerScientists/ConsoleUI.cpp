@@ -32,10 +32,10 @@ void ConsoleUI::run()
         {
             findScientist();
         }
-        /*else if(command == "delete")
+        else if(command == "delete")
         {
             deleteScientist();
-        }*/
+        }
         else if(command == "quit")
         {
             break;
@@ -54,7 +54,7 @@ void ConsoleUI::commands()
             << "add \t - Add new scientist to the list" << endl
             << "list \t - Show a list of all scientist" << endl
             << "find \t - Find scientist in list" << endl
- //           << "delete x - delete scientist, write exact name of scientist to delete where x is." << endl;
+            << "delete \t - delete scientist, write exact name of scientist to delete where x is." << endl
             << "quit \t - Quit the program." << endl;
 
 }
@@ -205,4 +205,13 @@ void ConsoleUI::printList(vector<Scientist> v)
            cout << v.at(i);
        }
    cout << endl;
+}
+void ConsoleUI::deleteScientist()
+{
+    string deleteName;
+    cout << "Enter first and last name of the scientist you want to delete: " << endl;
+    cin.ignore();
+    getline(cin,deleteName);
+    _scs.deleteScientist(deleteName);
+    listName();
 }

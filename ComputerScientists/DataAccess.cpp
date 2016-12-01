@@ -24,7 +24,7 @@ void DataAccess::deleteScientist(string sNew)
 {
     ofstream del;
     del.open("scientists.txt");
-    del << endl << sNew;
+    del << sNew;
     del.close();
 }
 
