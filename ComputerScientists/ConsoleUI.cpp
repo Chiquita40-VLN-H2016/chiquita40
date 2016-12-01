@@ -67,24 +67,42 @@ void ConsoleUI::add()
     string gender;
 
     cin.ignore();
-    do{
+    do
+    {
         cout    << "First and last name of scientist to add: ";
         getline(cin,name);
-        if(name.size() == 0){
+        if(name.size() == 0)
+        {
             cout << "No name was entered." << endl;
         }
     }while(name.size() == 0);
 
-    cout    << "Year of Birth (YYYY): ";
-    cin     >> bDate;
+    do
+    {
+        cout    << "Year of Birth (YYYY): ";
+        cin     >> bDate;
+        if(bDate.size() != 4)
+        {
+            cout << "Invalid date format!" << endl;
+        }
+    }while(bDate.size() != 4);
 
-    cout    << "Year of Death (YYYY, or if still alive, write 'alive'): ";
-    cin     >> dDate;
+    do
+    {
+        cout    << "Year of Death (YYYY, or if still alive, write 'alive'): ";
+        cin     >> dDate;
+        if(dDate.size() != 4 && dDate != "alive")
+        {
+            cout << "Invalid date format!" << endl;
+        }
+    }while(dDate.size() != 4 && dDate != "alive");
 
-    do{
+    do
+    {
         cout    << "Gender (f/m): ";
         cin     >> gender;
-        if(gender != "f" && gender != "m"){
+        if(gender != "f" && gender != "m")
+        {
             cout << "This selection was invalid" << endl;
         }
     }while(gender != "f" && gender != "m");

@@ -16,7 +16,7 @@ private:
     string _deathDate;
     string _gender;
 public:
-    Scientist(); //þarf þennan líka?
+    Scientist();
     Scientist(string n, string bd, string dd, string g);
     string getName() const;
     string getBirthDate() const;

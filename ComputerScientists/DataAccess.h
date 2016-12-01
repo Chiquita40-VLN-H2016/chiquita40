@@ -15,11 +15,6 @@ public:
     void addScientist(string sc); //function to write in file
     vector<string> getData();
     void deleteScientist(string sNew);
-    //void addScientist(string n, string bd, string dd, string g);
-    //void deleteScientist(string name);
-
-private:
-
 };
 
 #endif // DATAACCESS_H
