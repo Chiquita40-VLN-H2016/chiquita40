@@ -33,7 +33,7 @@ void ScientistService::ScientistsOrderByGender()
     GenderComparison cmp;
     std::sort(_scientists.begin(), _scientists.end(), cmp);
 }
-
+//First checks whether scientist exists in list and returns a pointer to it, otherwise returns nullptr.
 Scientist *ScientistService::findScientistByName(string name)
 {
     int n = findScientistName(name);
@@ -42,11 +42,11 @@ Scientist *ScientistService::findScientistByName(string name)
     }
     return nullptr;
 }
-
+//First checks whether scientist exists in list and only adds the new one if it doesn't.
 void ScientistService::addScientist(string n, string bd, string dd, string g)
 {
-    Scientist *s1 = findScientistByName(n);
-    if(s1 == nullptr){
+    int n1 = findScientistName(n);
+    if(n1 == -1){
         string s2;
         constructString(s2, n, bd, dd, g);
        _data.addScientist(s2);
@@ -77,7 +77,7 @@ void ScientistService::deleteScientist(string name)
         _data.deleteScientist(s);
     }
 }
-//Private
+//Private functions
 int ScientistService::findScientistName(string name)
 {
     Scientist s;
@@ -99,6 +99,7 @@ void ScientistService::createScientists()
     for(size_t i = 0; i < list.size(); i++){
         if(count == 1){
             name = list.at(i);
+            name.push_back(' ');
         }
         if(count == 2){
             name+= list.at(i);
