@@ -24,6 +24,10 @@ private:
     void findScientist();
     void deleteScientist();
     void editScientist();
+    string editName(Scientist sc);
+    string editBirthDate(Scientist sc);
+    string editDeathDate(Scientist sc);
+    string editGender(Scientist sc);
 
 public:
     ConsoleUI();
