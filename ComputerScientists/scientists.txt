@@ -8,3 +8,6 @@ Grace Hopper	1906	1992	f
 Maurice Wilkes	1913	2010	m
 Shafi Goldwasser	1958	alive	f
 Winifred Asprey	1917	2007	f
+Joe Joe	1234	alive	m
+Joe Hoe	1243	3245	f
+jou boe	3245	2324	f

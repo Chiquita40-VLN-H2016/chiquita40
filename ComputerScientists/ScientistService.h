@@ -29,7 +29,6 @@ struct GenderComparison
   bool operator() (Scientist i,Scientist j) { return (i.getGender()<j.getGender());}
 };
 
-
 class ScientistService
 {
 public:
