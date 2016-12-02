@@ -45,7 +45,9 @@ void ConsoleUI::run()
         }
         else
         {
+            cout << endl;
             cout << "! - Invalid command - !" << endl;
+            cout << endl;
         }
 
     }while(true);
@@ -80,11 +82,15 @@ void ConsoleUI::add()
 
         if(name.size() == 0)
         {
+            cout << endl;
             cout << "! - No name was entered. - !" << endl;
+            cout << endl;
         }
         else if(name.size() > 23)
         {
+            cout << endl;
             cout << "! - Name you entered is too long. - !" << endl << "! - Name can only be under 23 characters with space. - !" << endl;
+            cout << endl;
         }
     }while(name.size() == 0 || name.size() > 23);
 
@@ -94,7 +100,9 @@ void ConsoleUI::add()
         cin >> bDate;
         if((isdigit(bDate[0]) && bDate.size() != 4) || isalpha(bDate[0]))
         {
+            cout << endl;
             cout << "! - Invalid year format - !" << endl;
+            cout << endl;
         }
     }while((isdigit(bDate[0]) && bDate.size() != 4) || isalpha(bDate[0]));
 
@@ -105,7 +113,9 @@ void ConsoleUI::add()
 
         if((isdigit(dDate[0]) && dDate.size() != 4) || (isalpha(dDate[0]) && dDate != "alive"))
         {
+            cout << endl;
             cout << "! - Invalid year format - !" << endl;
+            cout << endl;
         }
     }while((isdigit(dDate[0]) && dDate.size() != 4) || (isalpha(dDate[0]) && dDate != "alive"));
 
@@ -115,7 +125,9 @@ void ConsoleUI::add()
         cin >> gender;
         if(gender != "f" && gender != "m")
         {
+            cout << endl;
             cout << "! - This selection was invalid - !" << endl;
+            cout << endl;
         }
     }while(gender != "f" && gender != "m");
 
@@ -152,7 +164,9 @@ void ConsoleUI::list()
                 listGender();
                 break;
         default:
+                cout << endl;
                 cout << "! - Invalid command - !" << endl;
+                cout << endl;
     }
 
 }
@@ -194,7 +208,9 @@ void ConsoleUI::findScientist()
     Scientist sc = _scs.findScientistByName(findSc);
     if(sc.getName() == "")
     {
+        cout << endl;
         cout << "! - Scientist was not found. - !" << endl;
+        cout << endl;
     }
     else
     {
@@ -223,7 +239,9 @@ void ConsoleUI::deleteScientist()
     int n = _scs.deleteScientist(deleteName);
     if(n == -1)
     {
+        cout << endl;
         cout << "! - " << deleteName << " was not found in the list. - !" << endl;
+        cout << endl;
     }
     else
     {
@@ -240,7 +258,9 @@ void ConsoleUI::editScientist()
     Scientist sc = _scs.findScientistByName(editSC);
     if(sc.getName() == "")
     {
+        cout << endl;
         cout << "! - Scientist was not found. - !" << endl;
+        cout << endl;
     }
     else
     {
@@ -278,11 +298,15 @@ string ConsoleUI::editName(Scientist sc)
             getline(cin,name);
             if(name.size() == 0)
             {
+                cout << endl;
                 cout << "! - No name was entered. - !" << endl;
+                cout << endl;
             }
             else if(name.size() > 23)
             {
+                cout << endl;
                 cout << "! - Name you entered is too long. - !" << endl << "! - Name can only be under 23 characters with space. - !" << endl;
+                cout << endl;
             }
 
         }while(name.size() == 0 || name.size() > 23);
@@ -293,8 +317,10 @@ string ConsoleUI::editName(Scientist sc)
     }
     else
     {
+        cout << endl;
         cout << "! - Invalid command, name will not be changed - !" << endl;
         name = sc.getName();
+        cout << endl;
     }
     return name;
 }
@@ -313,7 +339,9 @@ string ConsoleUI::editBirthDate(Scientist sc)
             cin >> dob;
             if((isdigit(dob[0]) && dob.size() != 4) || isalpha(dob[0]))
             {
+                cout << endl;
                 cout << "! - Invalid year format - !" << endl;
+                cout << endl;
             }
         }while((isdigit(dob[0]) && dob.size() != 4) || isalpha(dob[0]));
     }
@@ -323,8 +351,10 @@ string ConsoleUI::editBirthDate(Scientist sc)
     }
     else
     {
+        cout << endl;
         cout << "! - Invalid command, year of birth will not be changed - !" << endl;
         dob = sc.getBirthDate();
+        cout << endl;
     }
     return dob;
 }
@@ -343,7 +373,9 @@ string ConsoleUI::editDeathDate(Scientist sc)
             cin  >> dod;
             if((isdigit(dod[0]) && dod.size() != 4) || (isalpha(dod[0]) && dod != "alive"))
             {
+                cout << endl;
                 cout << "! - Invalid year format - !" << endl;
+                cout << endl;
             }
         }while((isdigit(dod[0]) && dod.size() != 4) || (isalpha(dod[0]) && dod != "alive"));
     }
@@ -353,8 +385,10 @@ string ConsoleUI::editDeathDate(Scientist sc)
     }
     else
     {
+        cout << endl;
         cout << "! - Invalid command, year of death will not be changed - !" << endl;
         dod = sc.getDeathDate();
+        cout << endl;
     }
 
     return dod;
@@ -374,7 +408,9 @@ string ConsoleUI::editGender(Scientist sc)
             cin >> gender;
             if(gender != "f" && gender != "m")
             {
+                cout << endl;
                 cout << "! - This selection was invalid - !" << endl;
+                cout << endl;
             }
         }while(gender != "f" && gender != "m");
     }
@@ -384,8 +420,10 @@ string ConsoleUI::editGender(Scientist sc)
     }
     else
     {
+        cout << endl;
         cout << "! - Invalid command, gender will not be changed - !" << endl;
         gender = sc.getGender();
+        cout << endl;
     }
 
     return gender;
