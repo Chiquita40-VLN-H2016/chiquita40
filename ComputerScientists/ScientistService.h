@@ -51,7 +51,7 @@ private:
     vector<Scientist> _scientists;
     size_t size();
     string constructStringForFile();
-    int findScientistName(string name); //Helper function to find, add and delete scientist.
+    int findScientistName(string name); //Helper function to find, add, edit and delete scientist.
     void createScientists(); //Helper function that fills vector. Called by constructor.
     //Helper function that constructs the string that is written to file in DataAccess.
     void constructString(string& s, string name, string dob, string dod, string g);

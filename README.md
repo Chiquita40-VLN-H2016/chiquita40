@@ -30,10 +30,11 @@ You can do these commands as often as you whish. To stop type in 'quit'.
 1. Clone the Repository
 2. Open ComputerScientists.pro in Qt
 3. Change working directory to where the chiquita40\ComputerScientists folder is saved on your computer
-4. Build the program
+4. Build and run the program
 
 ## IV. Instructions 
 When you run the program a list of commands appear on the screen.
+
 Please do not enter any special characters, only characters from the ASCII table.
 
 **Add/Edit**

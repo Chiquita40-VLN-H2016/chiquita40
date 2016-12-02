@@ -85,7 +85,7 @@ void ConsoleUI::add() //Adds scientist to the list.
 string ConsoleUI::addName() //Gets a name of scientist from the user.
 {
     string name;
-    cin.ignore();
+    cin.ignore(); //To empty cin in order to use getline();
     do
     {
         cout << "First and last name of scientist to add: ";
@@ -101,7 +101,8 @@ string ConsoleUI::addName() //Gets a name of scientist from the user.
         else if(name.size() > 23)
         {
             cout << endl;
-            cout << "! - Name you entered is too long. - !" << endl << "! - Name can only be under 23 characters with space. - !" << endl;
+            cout << "! - Name you entered is too long. - !" << endl
+                 << "! - Name can be max 23 characters with space. - !" << endl;
             cout << endl;
         }
     }while(name.size() == 0 || name.size() > 23);
@@ -134,6 +135,7 @@ string ConsoleUI::addDeathDate() //Gets a year of death of scientist from user.
     {
         cout << "Year of Death (YYYY, or if still alive, write 'alive'): ";
         cin >> dDate;
+        //This boolean ensures that the user either enters 4 digits or the word 'alive'.
         if((isalpha(dDate[0]) && dDate != "alive") || (isalpha(dDate[1]) && dDate != "alive") || (isalpha(dDate[2])
             && dDate != "alive") || (isalpha(dDate[3]) && dDate != "alive") || (isdigit(dDate[0]) && dDate.size() != 4))
         {

@@ -42,7 +42,7 @@ Scientist ScientistService::findScientistByName(string name)
     {
         return _scientists.at(n);
     }
-    Scientist s("", "", "", "");
+    Scientist s("", "", "", ""); //If Scientist is not found in list an empty scientist is returned.
 
     return s;
 }
@@ -80,13 +80,13 @@ void ScientistService::editScientist(string originName, string name, string dob,
 {
     int n = findScientistName(originName);
     if(n != -1)
-    {
+    { //Information on scientist updated using set functions.
         _scientists.at(n).setName(name);
         _scientists.at(n).setBirthDate(dob);
         _scientists.at(n).setDeathDate(dod);
         _scientists.at(n).setGender(g);
         string s = constructStringForFile();
-        _data.deleteScientist(s);
+        _data.deleteScientist(s); //delete function in data used to overwrite file with updated version.
     }
 }
 
@@ -117,7 +117,7 @@ string ScientistService::constructStringForFile() //Creates vector to print in f
         string bd = sc.getBirthDate();
         string dd = sc.getDeathDate();
         string g = sc.getGender();
-        constructString(s, n, bd, dd, g); //Adds tabs to file where appropriate.
+        constructString(s, n, bd, dd, g); //Adds tabs to file where appropriate for correct setup in file.
         if(i != size()-1)
         {
            s.push_back('\n');
@@ -152,8 +152,8 @@ void ScientistService::createScientists() //Helper function that fills vector.
         {
             dod = list.at(i);
         }
-        if(count == 5)
-        {
+        if(count == 5) //All information on scientists have been gathered so this round is finished by
+        {              //adding the scientist to the vector and a new circle begins.
             g = list.at(i);
             Scientist sc(name, dob, dod, g);
             _scientists.push_back(sc);
