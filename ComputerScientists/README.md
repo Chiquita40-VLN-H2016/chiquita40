@@ -16,17 +16,17 @@ You can do these commands as often as you whish or until you type in 'quit'.
 
 II. File list
 ------------------------------------------------------------------------------------
-ConsoleUI.cpp
-ConsoleUI.h
-Scientist.cpp
-Scientist.h
-ScientistService.cpp
-ScientistService.h
-DataAccess.cpp
-DataAccess.h
++ ConsoleUI.cpp
++ ConsoleUI.h
++ Scientist.cpp
++ Scientist.h
++ ScientistService.cpp
++ ScientistService.h
++ DataAccess.cpp
++ DataAccess.h
 
-main.cpp
-scientists.txt          This is a data file which holds a list of Computer Scientists.
-README.md               This file
++ main.cpp
++ scientists.txt          This is a data file which holds a list of Computer Scientists.
++ README.md               This file
 
 ## Using Qt
