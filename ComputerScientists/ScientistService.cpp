@@ -61,25 +61,45 @@ int ScientistService::deleteScientist(string name)
     int n = findScientistName(name);
     if(n != -1){
         _scientists.erase(_scientists.begin()+n);
-        string s;
-        for(size_t i = 0; i < size(); i++)
-        {
-            Scientist sc = _scientists.at(i);
-            string n = sc.getName();
-            string bd = sc.getBirthDate();
-            string dd = sc.getDeathDate();
-            string g = sc.getGender();
-            constructString(s, n, bd, dd, g);
-            if(i != size()-1)
-            {
-               s.push_back('\n');
-            }
-        }
+        string s = constructStringForFile();
         _data.deleteScientist(s);
     }
     return n;
 }
+void ScientistService::editScientist(string name, string dob, string dod, string g)
+{
+    int n = findScientistName(name);
+    if(n != -1)
+    {
+        _scientists.at(n).setName(name);
+        _scientists.at(n).setBirthDate(dob);
+        _scientists.at(n).setDeathDate(dod);
+        _scientists.at(n).setGender(g);
+        string s = constructStringForFile();
+        _data.deleteScientist(s);
+    }
+}
+
 //Private functions
+string ScientistService::constructStringForFile()
+{
+    string s;
+    for(size_t i = 0; i < size(); i++)
+    {
+        Scientist sc = _scientists.at(i);
+        string n = sc.getName();
+        string bd = sc.getBirthDate();
+        string dd = sc.getDeathDate();
+        string g = sc.getGender();
+        constructString(s, n, bd, dd, g);
+        if(i != size()-1)
+        {
+           s.push_back('\n');
+        }
+    }
+    return s;
+}
+
 int ScientistService::findScientistName(string name)
 {
     Scientist s;

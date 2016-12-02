@@ -242,7 +242,7 @@ void ConsoleUI::editScientist()
     }
     else
     {
-        _scs.deleteScientist(editSC);
+       // _scs.deleteScientist(editSC);
         cout << "You want to edit: " << endl;
         cout << sc << endl;
         cout << "Would you like to edit the name? yes or no: ";
@@ -295,7 +295,8 @@ void ConsoleUI::editScientist()
         {
             gender = sc.getGender();
         }
-        _scs.addScientist(name, dob, dod, gender);
+        //_scs.addScientist(name, dob, dod, gender);
+        _scs.editScientist(name, dob, dod, gender);
         sc = _scs.findScientistByName(name);
 
         cout << "Scientist has now been edited: " << endl;

@@ -22,6 +22,10 @@ public:
     string getBirthDate() const;
     string getDeathDate() const;
     string getGender() const;
+    void setName(string name);
+    void setBirthDate(string bd);
+    void setDeathDate(string dd);
+    void setGender(string g);
     //Overload of outstream operator to print out scientist.
     friend ostream& operator << (ostream& out, const Scientist s);
 
