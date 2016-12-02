@@ -94,7 +94,7 @@ void ConsoleUI::add()
         cin >> bDate;
         if((isdigit(bDate[0]) && bDate.size() != 4) || isalpha(bDate[0]))
         {
-            cout << "! - Invalid date format - !" << endl;
+            cout << "! - Invalid year format - !" << endl;
         }
     }while((isdigit(bDate[0]) && bDate.size() != 4) || isalpha(bDate[0]));
 
@@ -105,7 +105,7 @@ void ConsoleUI::add()
 
         if((isdigit(dDate[0]) && dDate.size() != 4) || (isalpha(dDate[0]) && dDate != "alive"))
         {
-            cout << "! - Invalid date format - !" << endl;
+            cout << "! - Invalid year format - !" << endl;
         }
     }while((isdigit(dDate[0]) && dDate.size() != 4) || (isalpha(dDate[0]) && dDate != "alive"));
 
