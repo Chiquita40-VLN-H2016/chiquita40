@@ -56,7 +56,7 @@ void ScientistService::addScientist(string n, string bd, string dd, string g)
     }
 }
 
-void ScientistService::deleteScientist(string name)
+int ScientistService::deleteScientist(string name)
 {
     int n = findScientistName(name);
     if(n != -1){
@@ -77,6 +77,7 @@ void ScientistService::deleteScientist(string name)
         }
         _data.deleteScientist(s);
     }
+    return n;
 }
 //Private functions
 int ScientistService::findScientistName(string name)
