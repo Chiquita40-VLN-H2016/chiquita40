@@ -18,12 +18,10 @@ public:
     void setBirthDate(string bd);
     void setDeathDate(string dd);
     void setGender(string g);
-    //Overload of outstream operator to print out scientist.
-    friend ostream& operator << (ostream& out, Scientist s);
-    string addTab(ostream& out, string name);
+    friend ostream& operator << (ostream& out, Scientist s); //Overload of outstream operator to print out scientist.
+    string addTab(ostream& out, string name); //Add tabs to even out table spaces.
 
 private:
-    //Member variables.
     string _name;
     string _birthDate;
     string _deathDate;

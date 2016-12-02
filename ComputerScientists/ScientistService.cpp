@@ -2,7 +2,7 @@
 
 ScientistService::ScientistService()
 {
-    createScientists();
+    createScientists(); //Helper function that fills vector.
 }
 
 vector<Scientist> ScientistService::getScientists()
@@ -10,31 +10,30 @@ vector<Scientist> ScientistService::getScientists()
     return _scientists;
 }
 
-void ScientistService::ScientistsOrderByName()
+void ScientistService::ScientistsOrderByName() //Order scientists by name.
 {
     NameComparison cmp;
     std::sort(_scientists.begin(), _scientists.end(), cmp);
 }
 
-void ScientistService::ScientistsOrderByDoB()
+void ScientistService::ScientistsOrderByDoB() //Order scientists by birth year.
 {
     DoBComparison cmp;
     std::sort(_scientists.begin(), _scientists.end(), cmp);
 }
 
-void ScientistService::ScientistsOrderByDoD()
+void ScientistService::ScientistsOrderByDoD() //Order scientists by death year.
 {
     DoDComparison cmp;
     std::sort(_scientists.begin(), _scientists.end(), cmp);
 }
 
-void ScientistService::ScientistsOrderByGender()
+void ScientistService::ScientistsOrderByGender() //Order scientists by gender.
 {
     GenderComparison cmp;
     std::sort(_scientists.begin(), _scientists.end(), cmp);
 }
 
-//First checks whether scientist exists in list and returns a pointer to it, otherwise returns nullptr.
 Scientist ScientistService::findScientistByName(string name)
 {
     int n = findScientistName(name);
@@ -48,7 +47,7 @@ Scientist ScientistService::findScientistByName(string name)
     return s;
 }
 
-//First checks whether scientist exists in list and only adds the new one if it doesn't.
+//Checks whether scientist exists in list and only adds the new one if it doesn't.
 void ScientistService::addScientist(string n, string bd, string dd, string g)
 {
     int n1 = findScientistName(n);
@@ -91,28 +90,6 @@ void ScientistService::editScientist(string originName, string name, string dob,
     }
 }
 
-//Private functions
-string ScientistService::constructStringForFile()
-{
-    string s;
-
-    for(size_t i = 0; i < size(); i++)
-    {
-        Scientist sc = _scientists.at(i);
-        string n = sc.getName();
-        string bd = sc.getBirthDate();
-        string dd = sc.getDeathDate();
-        string g = sc.getGender();
-        constructString(s, n, bd, dd, g);
-        if(i != size()-1)
-        {
-           s.push_back('\n');
-        }
-    }
-
-    return s;
-}
-
 int ScientistService::findScientistName(string name)
 {
     Scientist s;
@@ -129,7 +106,28 @@ int ScientistService::findScientistName(string name)
     return -1;
 }
 
-void ScientistService::createScientists()
+string ScientistService::constructStringForFile() //Creates vector to print in file.
+{
+    string s;
+
+    for(size_t i = 0; i < size(); i++)
+    {
+        Scientist sc = _scientists.at(i);
+        string n = sc.getName();
+        string bd = sc.getBirthDate();
+        string dd = sc.getDeathDate();
+        string g = sc.getGender();
+        constructString(s, n, bd, dd, g); //Adds tabs to file where appropriate.
+        if(i != size()-1)
+        {
+           s.push_back('\n');
+        }
+    }
+
+    return s;
+}
+
+void ScientistService::createScientists() //Helper function that fills vector.
 {
     vector<string> list = _data.getData();
     int count = 1;
@@ -165,6 +163,7 @@ void ScientistService::createScientists()
     }
 }
 
+//Adds tabs to file where appropriate.
 void ScientistService::constructString(string& s, string name, string dob, string dod, string g)
 {
     s+=name;

@@ -8,11 +8,12 @@
 
 using namespace std;
 
+//Class to get data from file and to add data to the same file.
 class DataAccess
 {
 public:
     DataAccess();
-    void addScientist(string sc); //function to write in file
+    void addScientist(string sc);
     vector<string> getData();
     void deleteScientist(string sNew);
 };

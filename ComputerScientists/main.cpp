@@ -5,7 +5,7 @@ int main()
 {
     ConsoleUI ui;
 
-    ui.run();
+    ui.run(); //Runs the program.
 
     return 0;
 }

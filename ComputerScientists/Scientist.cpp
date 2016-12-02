@@ -52,6 +52,7 @@ void Scientist::setGender(string g)
     _gender = g;
 }
 
+//Overload of outstream operator to print out scientist.
 ostream& operator << (ostream& out, Scientist s)
 {
     out << s.addTab(out, s.getName());
@@ -62,7 +63,7 @@ ostream& operator << (ostream& out, Scientist s)
     return out;
 }
 
-// If name is shorter than 16 characters, print 2 tabs
+//If name is shorter than 16 characters, even out table spaces.
 string Scientist::addTab(ostream& out, string name)
 {
     string tab = "\t";
