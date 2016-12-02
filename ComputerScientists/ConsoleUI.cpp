@@ -1,6 +1,5 @@
 #include "ConsoleUI.h"
 
-
 ConsoleUI::ConsoleUI()
 {
 
@@ -143,7 +142,6 @@ void ConsoleUI::list()
                 break;
         default:
                 cout << "Invalid command" << endl;
-
     }
 
 }

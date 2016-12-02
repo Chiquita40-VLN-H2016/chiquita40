@@ -2,10 +2,8 @@
 #define SCIENTIST_H
 #include <iostream>
 #include <string>
-#include <iostream>
 
 using namespace std;
-
 
 class Scientist
 {
@@ -27,8 +25,8 @@ public:
     void setDeathDate(string dd);
     void setGender(string g);
     //Overload of outstream operator to print out scientist.
-    friend ostream& operator << (ostream& out, const Scientist s);
-
+    friend ostream& operator << (ostream& out, Scientist s);
+    string addTab(string name);
 };
 
 #endif // SCIENTIST_H

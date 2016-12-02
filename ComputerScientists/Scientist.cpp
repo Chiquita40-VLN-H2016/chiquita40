@@ -11,22 +11,27 @@ Scientist::Scientist(string n, string bd, string dd, string g)
     _deathDate = dd;
     _gender = g;
 }
+
 string Scientist::getName() const
 {
     return _name;
 }
+
 string Scientist::getBirthDate() const
 {
     return _birthDate;
 }
+
 string Scientist::getDeathDate() const
 {
     return _deathDate;
 }
+
 string Scientist::getGender() const
 {
     return _gender;
 }
+
 void Scientist::setName(string name)
 {
     _name = name;
@@ -47,11 +52,26 @@ void Scientist::setGender(string g)
     _gender = g;
 }
 
-ostream& operator << (ostream& out, const Scientist s){
-    out << s.getName() << '\t';
+ostream& operator << (ostream& out, Scientist s)
+{
+    out << s.addTab(s.getName());
     out << s.getBirthDate() << '\t';
     out << s.getDeathDate() << '\t';
     out << s.getGender() << endl;
     return out;
 }
 
+// If name is longer than 15 characters, print 2 tabs
+string Scientist::addTab(string name)
+{
+    string tab = "\t";
+    if(name.size() < 16)
+    {
+        cout << name << tab << tab;
+    }
+    else
+    {
+        cout << name << tab;
+    }
+    return tab;
+}
