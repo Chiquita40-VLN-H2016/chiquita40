@@ -35,7 +35,7 @@ You can do these commands as often as you whish or until you type in 'quit'.
 ## IV. Instructions 
 When you run the program a list of commands appear on the screen.
 
-**Add**
+**Add/Edit**
 
 Name of new Scientist cannot be longer than 23 characters (with spaces). He/She has to have a first and a last name; middle name is not possible. It is not possible to add the same Scientist more than once.
 
@@ -47,13 +47,9 @@ Lists that you can choose from are all in ascending order.
 
 Find works only with the exact first and last name, it does not give you results if you only put in first or last name.
 
-**Edit**
-
-
-
 **Delete**
 
-
+Delete works only with the exact first and last name.
 
 **Quit**
 
