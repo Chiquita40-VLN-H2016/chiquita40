@@ -2,7 +2,7 @@
 
 Program which lists known characters from Computer Science
 
-## I. Description how the program works
+## I. Description
 ------------------------------------------------------------------------------------
 We have developed a program that holds a list over Computer Scientists.
 
@@ -29,8 +29,19 @@ You can do these commands as often as you whish or until you type in 'quit'.
 + README.md             -   This file
 
 ## III. Using Qt
-
+------------------------------------------------------------------------------------
 1. Clone the Repository
 2. Open ComputerScientists.pro in Qt
 3. Change working directory to where the folder is saved on your computer
 4. Build the program
+
+## IV. Instructions 
+------------------------------------------------------------------------------------
+When you run the program a list of commands appear on the screen.
+
+Name can of new Scientist can not be longer than 31 characters (with spaces) and you can only have a first name and a last name, no middle name
+
+Lists that you can choose from are all in ascending order.
+
+Find works only with the exact first and last name, it does not give you results if you only put in first or last name.
+
