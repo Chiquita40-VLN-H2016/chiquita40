@@ -73,6 +73,18 @@ void ConsoleUI::add()
     string dDate;
     string gender;
 
+    name = addName();
+    bDate = addBirthDate();
+    dDate = addDeathDate();
+    gender = addGender();
+
+    _scs.addScientist(name, bDate, dDate, gender);
+    listName();
+}
+
+string ConsoleUI::addName()
+{
+    string name;
     cin.ignore();
     do
     {
@@ -94,6 +106,12 @@ void ConsoleUI::add()
         }
     }while(name.size() == 0 || name.size() > 23);
 
+    return name;
+}
+
+string ConsoleUI::addBirthDate()
+{
+    string bDate;
     do
     {
         cout << "Year of Birth (YYYY): ";
@@ -106,19 +124,32 @@ void ConsoleUI::add()
         }
     }while(bDate.size() != 4 || isalpha(bDate[0]) || isalpha(bDate[1]) || isalpha(bDate[2]) || isalpha(bDate[3]));
 
+    return bDate;
+}
+
+string ConsoleUI::addDeathDate()
+{
+    string dDate;
     do
     {
         cout << "Year of Death (YYYY, or if still alive, write 'alive'): ";
         cin >> dDate;
-
-        if((isdigit(dDate[0]) && dDate.size() != 4) || (isalpha(dDate[0]) && dDate != "alive"))
+        if((isalpha(dDate[0]) && dDate != "alive") || (isalpha(dDate[1]) && dDate != "alive") || (isalpha(dDate[2])
+            && dDate != "alive") || (isalpha(dDate[3]) && dDate != "alive") || (isdigit(dDate[0]) && dDate.size() != 4))
         {
             cout << endl;
             cout << "! - Invalid year format - !" << endl;
             cout << endl;
         }
-    }while((isdigit(dDate[0]) && dDate.size() != 4) || (isalpha(dDate[0]) && dDate != "alive"));
+     }while((isalpha(dDate[0]) && dDate != "alive") || (isalpha(dDate[1]) && dDate != "alive") || (isalpha(dDate[2])
+        && dDate != "alive") || (isalpha(dDate[3]) && dDate != "alive") || (isdigit(dDate[0]) && dDate.size() != 4));
 
+    return dDate;
+}
+
+string ConsoleUI::addGender()
+{
+    string gender;
     do
     {
         cout << "Gender (f/m): ";
@@ -131,8 +162,7 @@ void ConsoleUI::add()
         }
     }while(gender != "f" && gender != "m");
 
-    _scs.addScientist(name, bDate, dDate, gender);
-    listName();
+    return gender;
 }
 
 void ConsoleUI::list()
@@ -361,7 +391,7 @@ string ConsoleUI::editBirthDate(Scientist sc)
 
 string ConsoleUI::editDeathDate(Scientist sc)
 {
-    string editSC, dod;
+    string editSC, dDate;
     cout << "Would you like to edit year of death? yes or no: ";
     cin >> editSC;
 
@@ -369,29 +399,31 @@ string ConsoleUI::editDeathDate(Scientist sc)
     {
         do
         {
-            cout << "Enter new year of Death (YYYY, or if still alive, write 'alive'): ";
-            cin  >> dod;
-            if((isdigit(dod[0]) && isdigit(dod[1]) && isdigit(dod[2]) && isdigit(dod[3]) && dod.size() != 4) || (isalpha(dod[0]) && dod != "alive"))
+            cout << "Year of Death (YYYY, or if still alive, write 'alive'): ";
+            cin >> dDate;
+            if((isalpha(dDate[0]) && dDate != "alive") || (isalpha(dDate[1]) && dDate != "alive") || (isalpha(dDate[2])
+                && dDate != "alive") || (isalpha(dDate[3]) && dDate != "alive") || (isdigit(dDate[0]) && dDate.size() != 4))
             {
                 cout << endl;
                 cout << "! - Invalid year format - !" << endl;
                 cout << endl;
             }
-        }while((isdigit(dod[0]) && isdigit(dod[1]) && isdigit(dod[2]) && isdigit(dod[3]) && dod.size() != 4) || (isalpha(dod[0]) && dod != "alive"));
+         }while((isalpha(dDate[0]) && dDate != "alive") || (isalpha(dDate[1]) && dDate != "alive") || (isalpha(dDate[2])
+            && dDate != "alive") || (isalpha(dDate[3]) && dDate != "alive") || (isdigit(dDate[0]) && dDate.size() != 4));
     }
     else if(editSC == "no")
     {
-        dod = sc.getDeathDate();
+        dDate = sc.getDeathDate();
     }
     else
     {
         cout << endl;
         cout << "! - Invalid command, year of death will not be changed - !" << endl;
-        dod = sc.getDeathDate();
+        dDate = sc.getDeathDate();
         cout << endl;
     }
 
-    return dod;
+    return dDate;
 }
 
 string ConsoleUI::editGender(Scientist sc)

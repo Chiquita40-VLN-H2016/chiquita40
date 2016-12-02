@@ -17,6 +17,10 @@ private:
     void printHeader();
     void commands();
     void add();
+    string addName();
+    string addBirthDate();
+    string addDeathDate();
+    string addGender();
     void list();
     void listName();
     void listDoB();
