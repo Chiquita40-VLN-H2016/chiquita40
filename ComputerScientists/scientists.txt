@@ -3,7 +3,7 @@ Adele Goldberg	1945	alive	f
 Annie Easley	1933	2011	f
 Blaise Pascal	1623	1662	m
 Charles Babbage	1791	1871	m
-Frances Allen	1932	alive	f
+Frances Allen	1932	alive	m
 Grace Hopper	1906	1992	f
 Maurice Wilkes	1913	2010	m
 Shafi Goldwasser	1958	alive	f

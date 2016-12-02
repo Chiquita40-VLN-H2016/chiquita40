@@ -267,9 +267,16 @@ string ConsoleUI::editName(Scientist sc)
 
     if(editSC == "yes")
     {
-        cout << "Enter new name: ";
-        cin.ignore();
-        getline(cin,name);
+        do
+        {
+            cout    << "Enter new first and last name: ";
+            cin.ignore();
+            getline(cin,name);
+            if(name.size() == 0)
+            {
+                cout << "No name was entered." << endl;
+            }
+        }while(name.size() == 0);
     }
     else if(editSC == "no")
     {
@@ -291,8 +298,15 @@ string ConsoleUI::editBirthDate(Scientist sc)
 
     if(editSC == "yes")
     {
-        cout << "Enter new year of birth: ";
-        cin >> dob;
+        do
+        {
+            cout    << "Enter new year of Birth (YYYY): ";
+            cin     >> dob;
+            if(dob.size() != 4)
+            {
+                cout << "Invalid year format!" << endl;
+            }
+        }while(dob.size() != 4);
     }
     else if(editSC == "no")
     {
@@ -314,8 +328,15 @@ string ConsoleUI::editDeathDate(Scientist sc)
 
     if(editSC == "yes")
     {
-        cout << "Enter new year of death: ";
-        cin >> dod;
+        do
+        {
+            cout    << "Enter new year of Death (YYYY, or if still alive, write 'alive'): ";
+            cin     >> dod;
+            if(dod.size() != 4 && dod != "alive")
+            {
+                cout << "Invalid year format!" << endl;
+            }
+        }while(dod.size() != 4 && dod != "alive");
     }
     else if(editSC == "no")
     {
@@ -338,8 +359,15 @@ string ConsoleUI::editGender(Scientist sc)
 
     if(editSC == "yes")
     {
-        cout << "Enter new gender: ";
-        cin >> gender;
+        do
+        {
+            cout    << "Enter new gender (f/m): ";
+            cin     >> gender;
+            if(gender != "f" && gender != "m")
+            {
+                cout << "This selection was invalid" << endl;
+            }
+        }while(gender != "f" && gender != "m");
     }
     else if(editSC == "no")
     {
