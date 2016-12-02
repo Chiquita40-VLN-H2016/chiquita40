@@ -73,7 +73,9 @@ void ConsoleUI::add()
     do
     {
         cout    << "First and last name of scientist to add: ";
+
         getline(cin,name);
+
         if(name.size() == 0)
         {
             cout << "No name was entered." << endl;
@@ -82,6 +84,7 @@ void ConsoleUI::add()
         {
             cout << "Name you entered is too long." << endl << "Name can only be under 23 characters with space." << endl;
         }
+
     }while(name.size() == 0 || name.size() > 23);
 
     do
@@ -270,9 +273,14 @@ string ConsoleUI::editName(Scientist sc)
             getline(cin,name);
             if(name.size() == 0)
             {
-                cout << "No name was entered." << endl;
+                cout << "! - No name was entered. - !" << endl;
             }
-        }while(name.size() == 0);
+            else if(name.size() > 23)
+            {
+                cout << "! - Name you entered is too long. - !" << endl << "! - Name can only be under 23 characters with space. - !" << endl;
+            }
+
+        }while(name.size() == 0 || name.size() > 23);
     }
     else if(editSC == "no")
     {
