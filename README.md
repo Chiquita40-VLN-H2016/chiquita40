@@ -25,7 +25,6 @@ You can do these commands as often as you whish or until you type in 'quit'.
 + main.cpp
 + scientists.txt        -   This is a data file which holds a list of Computer Scientists.
 + scientists_backup.txt        -   This is a backup of the data file above.
-+ README.md             -   This file
 
 ## III. Using Qt
 1. Clone the Repository
