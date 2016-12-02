@@ -3,7 +3,6 @@
 Program which lists known characters from Computer Science
 
 ## I. Description
-------------------------------------------------------------------------------------
 We have developed a program that holds a list over Computer Scientists.
 
 * You can add a new Computer Scientist to the list. 
@@ -15,7 +14,6 @@ We have developed a program that holds a list over Computer Scientists.
 You can do these commands as often as you whish or until you type in 'quit'.
 
 ## II. File list
-------------------------------------------------------------------------------------
 + ConsoleUI.cpp
 + ConsoleUI.h
 + Scientist.cpp
@@ -29,14 +27,12 @@ You can do these commands as often as you whish or until you type in 'quit'.
 + README.md             -   This file
 
 ## III. Using Qt
-------------------------------------------------------------------------------------
 1. Clone the Repository
 2. Open ComputerScientists.pro in Qt
 3. Change working directory to where the folder is saved on your computer
 4. Build the program
 
 ## IV. Instructions 
-------------------------------------------------------------------------------------
 When you run the program a list of commands appear on the screen.
 
 **Add**
