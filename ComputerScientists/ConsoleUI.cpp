@@ -183,7 +183,6 @@ void ConsoleUI::findScientist()
     cin.ignore();
     cout << "Enter the name of scientist: ";
     getline(cin,findSc);
-    cout << endl;
     Scientist sc = _scs.findScientistByName(findSc);
     if(sc.getName() == "")
     {
@@ -248,9 +247,11 @@ void ConsoleUI::editScientist()
         _scs.editScientist(editSC, name, dob, dod, gender);
         sc = _scs.findScientistByName(name);
 
+        cout << endl;
         cout << "Scientist has now been edited: " << endl;
         printHeader();
         cout << sc << endl;
+        cout << endl;
     }
 }
 
