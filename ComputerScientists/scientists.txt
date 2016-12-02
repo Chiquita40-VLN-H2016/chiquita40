@@ -1,7 +1,10 @@
-<<<<<<< HEAD
-Blaise Pascal	1623	1662	m
-Charles Babbage 1791	1871	m
-=======
 Charles Babbage	1791	1871	m
-Blaise Pascal	1625	1662	m
->>>>>>> 2aa568d8f764806ebd454ec8c4fe1a7669a5f574
+Ada Lovelace	1815	1852	f
+Blaise Pascal	1623	1662	m
+Maurice Wilkes	1913	2010	m
+Adele Goldberg	1945	alive	f
+Grace Hopper	1906	1992	f
+Winifred Asprey	1917	2007	f
+Frances Allen	1932	alive	f
+Shafi Goldwasser	1958	alive	f
+Annie Easley	1933	2011	f
