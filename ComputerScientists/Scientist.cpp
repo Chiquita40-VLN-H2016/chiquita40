@@ -67,9 +67,13 @@ string Scientist::addTab(ostream& out, string name)
 {
     string tab = "\t";
 
-    if(name.size() < 16)
+    if(name.size() < 16 && name.size() > 7)
     {
         out << name << tab << tab;
+    }
+    else if(name.size() < 8)
+    {
+        out << name << tab << tab << tab;
     }
     else
     {

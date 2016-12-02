@@ -47,6 +47,7 @@ Scientist ScientistService::findScientistByName(string name)
 
     return s;
 }
+
 //First checks whether scientist exists in list and only adds the new one if it doesn't.
 void ScientistService::addScientist(string n, string bd, string dd, string g)
 {
@@ -75,6 +76,7 @@ int ScientistService::deleteScientist(string name)
 
     return n;
 }
+
 void ScientistService::editScientist(string originName, string name, string dob, string dod, string g)
 {
     int n = findScientistName(originName);
