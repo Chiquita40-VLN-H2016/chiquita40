@@ -53,13 +53,15 @@ void ConsoleUI::run()
 
 void ConsoleUI::commands()
 {
-     cout   << "Please enter one of the following commands:" << endl
-            << "add \t - Add new scientist to the list" << endl
-            << "list \t - Show a list of all scientist" << endl
-            << "find \t - Find scientist in list" << endl
-            << "edit \t - Edit scientist in list" << endl
-            << "delete \t - Delete scientist, write exact name of scientist to delete." << endl
-            << "quit \t - Quit the program." << endl;
+    cout << "**********************************************************************" << endl;
+    cout << "Please enter one of the following commands:" << endl
+         << "add \t - Add new scientist to the list" << endl
+         << "list \t - Show a list of all scientist" << endl
+         << "find \t - Find scientist in list" << endl
+         << "edit \t - Edit scientist in list" << endl
+         << "delete \t - Delete scientist, write exact name of scientist to delete." << endl
+         << "quit \t - Quit the program." << endl;
+    cout << "**********************************************************************" << endl;
 }
 
 void ConsoleUI::add()
@@ -117,11 +119,12 @@ void ConsoleUI::add()
 void ConsoleUI::list()
 {
     char in;
-
-    cout << "Enter n - For a list of scientists ordered by name" << endl;
-    cout << "Enter b - For a list of scientists ordered by birth year" << endl;
-    cout << "Enter d - For a list of scientists ordered by death year" << endl;
-    cout << "Enter g - For a list of scientists ordered by gender" << endl;
+    cout    << "********************************************************" << endl;
+    cout    << "Enter n - For a list of scientists ordered by name" << endl;
+    cout    << "Enter b - For a list of scientists ordered by birth year" << endl;
+    cout    << "Enter d - For a list of scientists ordered by death year" << endl;
+    cout    << "Enter g - For a list of scientists ordered by gender" << endl;
+    cout    << "********************************************************" << endl;
 
     cout << "Please enter now: " << endl;
     cin >> in;
