@@ -78,7 +78,11 @@ void ConsoleUI::add()
         {
             cout << "No name was entered." << endl;
         }
-    }while(name.size() == 0);
+        else if(name.size() > 23)
+        {
+            cout << "Name you entered is too long." << endl << "Name can only be under 23 characters with space." << endl;
+        }
+    }while(name.size() == 0 || name.size() > 23);
 
     do
     {
