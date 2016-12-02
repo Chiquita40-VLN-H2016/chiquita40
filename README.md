@@ -11,7 +11,7 @@ We have developed a program that holds a list over Computer Scientists.
 * You can edit an entry of a Computer Scientist.
 * You can delete an entry of a Computer Scientist.
 
-You can do these commands as often as you whish or until you type in 'quit'.
+You can do these commands as often as you whish. To stop type in 'quit'.
 
 ## II. File list
 + ConsoleUI.cpp
@@ -39,13 +39,15 @@ When you run the program a list of commands appear on the screen.
 
 Name of new Scientist cannot be longer than 23 characters (with spaces). He/She has to have a first and a last name; middle name is not possible. It is not possible to add the same Scientist more than once.
 
+Edit works only with the exact first and last name entered.
+
 **List**
 
-Lists that you can choose from are all in ascending order.
+The different lists represent the same list ordered by different information about the scientists. The lists you can choose from are all in ascending order.
 
 **Find**
 
-Find works only with the exact first and last name, it does not give you results if you only put in first or last name.
+Find works only with the exact first and last name, it does not give you results if you only enter first or last name or if you enter the name incorrectly.
 
 **Delete**
 
@@ -62,6 +64,7 @@ If you get a compile time error when you have entered "quit", please rebuild (ch
 * Curly brackets are always used even when code in statements is one line.
 * Curly brackets are always placed beneath the statement they refer to.
 * Code is indented with a single tab.
+
 Example:
 ```c++
 if(n == 0)
