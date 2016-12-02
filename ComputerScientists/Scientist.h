@@ -7,12 +7,6 @@ using namespace std;
 
 class Scientist
 {
-private:
-    //Member variables.
-    string _name;
-    string _birthDate;
-    string _deathDate;
-    string _gender;
 public:
     Scientist();
     Scientist(string n, string bd, string dd, string g);
@@ -27,6 +21,13 @@ public:
     //Overload of outstream operator to print out scientist.
     friend ostream& operator << (ostream& out, Scientist s);
     string addTab(ostream& out, string name);
+
+private:
+    //Member variables.
+    string _name;
+    string _birthDate;
+    string _deathDate;
+    string _gender;
 };
 
 #endif // SCIENTIST_H

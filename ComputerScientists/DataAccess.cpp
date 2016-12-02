@@ -23,6 +23,7 @@ void DataAccess::addScientist(string sc)
 void DataAccess::deleteScientist(string sNew)
 {
     ofstream del;
+
     del.open("scientists.txt");
     del << sNew;
     del.close();
@@ -39,7 +40,6 @@ vector<string> DataAccess::getData()
     {
         data.push_back(word);
     }
-
     document.close();
 
     return data;

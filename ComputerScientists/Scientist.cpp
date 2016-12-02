@@ -58,6 +58,7 @@ ostream& operator << (ostream& out, Scientist s)
     out << s.getBirthDate() << '\t';
     out << s.getDeathDate() << '\t';
     out << s.getGender() << endl;
+
     return out;
 }
 
@@ -65,6 +66,7 @@ ostream& operator << (ostream& out, Scientist s)
 string Scientist::addTab(ostream& out, string name)
 {
     string tab = "\t";
+
     if(name.size() < 16)
     {
         out << name << tab << tab;
@@ -73,5 +75,6 @@ string Scientist::addTab(ostream& out, string name)
     {
         out << name << tab;
     }
+
     return tab;
 }

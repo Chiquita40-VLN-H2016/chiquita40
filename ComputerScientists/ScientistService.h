@@ -9,28 +9,29 @@
 using namespace std;
 
 //Struct to order by name.
-struct NameComparison {
+struct NameComparison
+{
   bool operator() (Scientist i,Scientist j) { return (i.getName()<j.getName());}
 };
 //Struct to order by date of birth.
-struct DoBComparison {
+struct DoBComparison
+{
   bool operator() (Scientist i,Scientist j) { return (i.getBirthDate()<j.getBirthDate());}
 };
 //Struct to order by date of death.
-struct DoDComparison {
+struct DoDComparison
+{
   bool operator() (Scientist i,Scientist j) { return (i.getDeathDate()<j.getDeathDate());}
 };
 //Struct to order by gender.
-struct GenderComparison {
+struct GenderComparison
+{
   bool operator() (Scientist i,Scientist j) { return (i.getGender()<j.getGender());}
 };
 
 
 class ScientistService
 {
-private:
-    DataAccess _data;
-    vector<Scientist> _scientists;
 public:
     ScientistService();
     //Returns member variable _scientists.
@@ -44,7 +45,10 @@ public:
     void addScientist(string n, string bd, string dd, string g);
     int deleteScientist(string name);
     void editScientist(string originName, string name, string dob, string dod, string g);
+
 private:
+    DataAccess _data;
+    vector<Scientist> _scientists;
     //Helper function for find, add and delete.
     int findScientistName(string name);
     //Helper function that fills vector. Called by constructor
