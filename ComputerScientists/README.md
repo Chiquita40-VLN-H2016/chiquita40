@@ -24,7 +24,6 @@ II. File list
 + ScientistService.h
 + DataAccess.cpp
 + DataAccess.h
-
 + main.cpp
 + scientists.txt          This is a data file which holds a list of Computer Scientists.
 + README.md               This file
