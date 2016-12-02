@@ -42,7 +42,7 @@ public:
     void ScientistsOrderByGender();
     Scientist findScientistByName(string name);
     void addScientist(string n, string bd, string dd, string g);
-    void deleteScientist(string name);
+    int deleteScientist(string name);
 private:
     //Helper function for find, add and delete.
     int findScientistName(string name);
