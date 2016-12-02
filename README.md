@@ -55,7 +55,6 @@ Find works only with the exact first and last name, it does not give you results
 
 
 
-
 **Quit**
 
 If you get a compile time error when you have entered "quit", please rebuild (choose "Rebuild All") the program.
