@@ -34,6 +34,7 @@ You can do these commands as often as you whish. To stop type in 'quit'.
 
 ## IV. Instructions 
 When you run the program a list of commands appear on the screen.
+
 Please do not enter any special characters, only characters from the ASCII table.
 
 **Add/Edit**
