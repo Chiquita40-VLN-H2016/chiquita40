@@ -1,8 +1,8 @@
 # Computer Scientists Readme
 
-## Program which lists known characters from Computer Science
+Program which lists known characters from Computer Science
 
-I. Description how the program works
+## I. Description how the program works
 ------------------------------------------------------------------------------------
 We have developed a program that holds a list over Computer Scientists.
 
@@ -14,7 +14,7 @@ We have developed a program that holds a list over Computer Scientists.
 
 You can do these commands as often as you whish or until you type in 'quit'.
 
-II. File list
+## II. File list
 ------------------------------------------------------------------------------------
 + ConsoleUI.cpp
 + ConsoleUI.h
@@ -25,7 +25,12 @@ II. File list
 + DataAccess.cpp
 + DataAccess.h
 + main.cpp
-+ scientists.txt          This is a data file which holds a list of Computer Scientists.
-+ README.md               This file
++ scientists.txt        -   This is a data file which holds a list of Computer Scientists.
++ README.md             -   This file
 
-## Using Qt
+## III. Using Qt
+
+1. Clone the Repository
+2. Open ComputerScientists.pro in Qt
+3. Change working directory to where the folder is saved on your computer
+4. Build the program
