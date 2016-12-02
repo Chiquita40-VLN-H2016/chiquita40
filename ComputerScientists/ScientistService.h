@@ -43,6 +43,7 @@ public:
     Scientist findScientistByName(string name);
     void addScientist(string n, string bd, string dd, string g);
     int deleteScientist(string name);
+    void editScientist(string name, string dob, string dod, string g);
 private:
     //Helper function for find, add and delete.
     int findScientistName(string name);
@@ -50,6 +51,7 @@ private:
     void createScientists();
     //Helper function that constructs the string that is written to file in DataAccess.
     void constructString(string& s, string name, string dob, string dod, string g);
+    string constructStringForFile();
     size_t size();
 };
 

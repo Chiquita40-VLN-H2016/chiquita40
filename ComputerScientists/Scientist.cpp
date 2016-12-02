@@ -27,6 +27,26 @@ string Scientist::getGender() const
 {
     return _gender;
 }
+void Scientist::setName(string name)
+{
+    _name = name;
+}
+
+void Scientist::setBirthDate(string bd)
+{
+    _birthDate = bd;
+}
+
+void Scientist::setDeathDate(string dd)
+{
+    _deathDate = dd;
+}
+
+void Scientist::setGender(string g)
+{
+    _gender = g;
+}
+
 ostream& operator << (ostream& out, const Scientist s){
     out << s.getName() << '\t';
     out << s.getBirthDate() << '\t';
