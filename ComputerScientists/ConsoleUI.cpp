@@ -92,11 +92,11 @@ void ConsoleUI::add()
     {
         cout << "Year of Birth (YYYY): ";
         cin >> bDate;
-        if((isdigit(bDate[0]) && bDate.size() != 4) || isalpha(bDate[0]))
+        if(bDate.size() != 4 || isalpha(bDate[0]) || isalpha(bDate[1]) || isalpha(bDate[2]) || isalpha(bDate[3]))
         {
             cout << "! - Invalid year format - !" << endl;
         }
-    }while((isdigit(bDate[0]) && bDate.size() != 4) || isalpha(bDate[0]));
+    }while(bDate.size() != 4 || isalpha(bDate[0]) || isalpha(bDate[1]) || isalpha(bDate[2]) || isalpha(bDate[3]));
 
     do
     {
@@ -311,11 +311,11 @@ string ConsoleUI::editBirthDate(Scientist sc)
         {
             cout << "Enter new year of Birth (YYYY): ";
             cin >> dob;
-            if((isdigit(dob[0]) && dob.size() != 4) || isalpha(dob[0]))
+            if(dob.size() != 4 || isalpha(dob[0]) || isalpha(dob[1]) || isalpha(dob[2]) || isalpha(dob[3]))
             {
                 cout << "! - Invalid year format - !" << endl;
             }
-        }while((isdigit(dob[0]) && dob.size() != 4) || isalpha(dob[0]));
+        }while(dob.size() != 4 || isalpha(dob[0]) || isalpha(dob[1]) || isalpha(dob[2]) || isalpha(dob[3]));
     }
     else if(editSC == "no")
     {
@@ -341,11 +341,11 @@ string ConsoleUI::editDeathDate(Scientist sc)
         {
             cout << "Enter new year of Death (YYYY, or if still alive, write 'alive'): ";
             cin  >> dod;
-            if((isdigit(dod[0]) && dod.size() != 4) || (isalpha(dod[0]) && dod != "alive"))
+            if((isdigit(dod[0]) && isdigit(dod[1]) && isdigit(dod[2]) && isdigit(dod[3]) && dod.size() != 4) || (isalpha(dod[0]) && dod != "alive"))
             {
                 cout << "! - Invalid year format - !" << endl;
             }
-        }while((isdigit(dod[0]) && dod.size() != 4) || (isalpha(dod[0]) && dod != "alive"));
+        }while((isdigit(dod[0]) && isdigit(dod[1]) && isdigit(dod[2]) && isdigit(dod[3]) && dod.size() != 4) || (isalpha(dod[0]) && dod != "alive"));
     }
     else if(editSC == "no")
     {
