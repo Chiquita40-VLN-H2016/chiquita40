@@ -16,8 +16,8 @@ void ConsoleUI::run()
     {
         commands();
 
-        cout    << "Enter command: ";
-        cin     >> command;
+        cout << "Enter command: ";
+        cin >> command;
 
         if(command == "add")
         {
@@ -74,7 +74,7 @@ void ConsoleUI::add()
     cin.ignore();
     do
     {
-        cout    << "First and last name of scientist to add: ";
+        cout << "First and last name of scientist to add: ";
 
         getline(cin,name);
 
@@ -86,13 +86,12 @@ void ConsoleUI::add()
         {
             cout << "! - Name you entered is too long. - !" << endl << "! - Name can only be under 23 characters with space. - !" << endl;
         }
-
     }while(name.size() == 0 || name.size() > 23);
 
     do
     {
-        cout    << "Year of Birth (YYYY): ";
-        cin     >> bDate;
+        cout << "Year of Birth (YYYY): ";
+        cin >> bDate;
         if((isdigit(bDate[0]) && bDate.size() != 4) || isalpha(bDate[0]))
         {
             cout << "! - Invalid date format - !" << endl;
@@ -101,19 +100,19 @@ void ConsoleUI::add()
 
     do
     {
-        cout    << "Year of Death (YYYY, or if still alive, write 'alive'): ";
-        cin     >> dDate;
+        cout << "Year of Death (YYYY, or if still alive, write 'alive'): ";
+        cin >> dDate;
 
         if((isdigit(dDate[0]) && dDate.size() != 4) || (isalpha(dDate[0]) && dDate != "alive"))
         {
             cout << "! - Invalid date format - !" << endl;
         }
-       }while((isdigit(dDate[0]) && dDate.size() != 4) || (isalpha(dDate[0]) && dDate != "alive"));
+    }while((isdigit(dDate[0]) && dDate.size() != 4) || (isalpha(dDate[0]) && dDate != "alive"));
 
     do
     {
-        cout    << "Gender (f/m): ";
-        cin     >> gender;
+        cout << "Gender (f/m): ";
+        cin >> gender;
         if(gender != "f" && gender != "m")
         {
             cout << "! - This selection was invalid - !" << endl;
@@ -127,6 +126,7 @@ void ConsoleUI::add()
 void ConsoleUI::list()
 {
     char in;
+
     cout    << "********************************************************" << endl;
     cout    << "Enter n - For a list of scientists ordered by name" << endl;
     cout    << "Enter b - For a list of scientists ordered by birth year" << endl;
@@ -309,8 +309,8 @@ string ConsoleUI::editBirthDate(Scientist sc)
     {
         do
         {
-            cout    << "Enter new year of Birth (YYYY): ";
-            cin     >> dob;
+            cout << "Enter new year of Birth (YYYY): ";
+            cin >> dob;
             if((isdigit(dob[0]) && dob.size() != 4) || isalpha(dob[0]))
             {
                 cout << "! - Invalid year format - !" << endl;
@@ -339,8 +339,8 @@ string ConsoleUI::editDeathDate(Scientist sc)
     {
         do
         {
-            cout    << "Enter new year of Death (YYYY, or if still alive, write 'alive'): ";
-            cin     >> dod;
+            cout << "Enter new year of Death (YYYY, or if still alive, write 'alive'): ";
+            cin  >> dod;
             if((isdigit(dod[0]) && dod.size() != 4) || (isalpha(dod[0]) && dod != "alive"))
             {
                 cout << "! - Invalid year format - !" << endl;
@@ -370,8 +370,8 @@ string ConsoleUI::editGender(Scientist sc)
     {
         do
         {
-            cout    << "Enter new gender (f/m): ";
-            cin     >> gender;
+            cout << "Enter new gender (f/m): ";
+            cin >> gender;
             if(gender != "f" && gender != "m")
             {
                 cout << "! - This selection was invalid - !" << endl;
