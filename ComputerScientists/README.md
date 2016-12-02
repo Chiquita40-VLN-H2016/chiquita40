@@ -38,7 +38,7 @@ When you run the program a list of commands appear on the screen.
 
 **Add**
 
-Name of new Scientist cannot be longer than 23 characters (with spaces) and you can only have a first name and a last name, no middle name
+Name of new Scientist cannot be longer than 23 characters (with spaces) and you can only have a first name and a last name, no middle name. It is not possible to add the same Scientist more than once.
 
 **List**
 
