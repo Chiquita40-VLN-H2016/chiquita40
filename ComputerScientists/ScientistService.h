@@ -43,7 +43,7 @@ public:
     Scientist findScientistByName(string name);
     void addScientist(string n, string bd, string dd, string g);
     int deleteScientist(string name);
-    void editScientist(string name, string dob, string dod, string g);
+    void editScientist(string originName, string name, string dob, string dod, string g);
 private:
     //Helper function for find, add and delete.
     int findScientistName(string name);

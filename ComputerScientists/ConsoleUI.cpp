@@ -247,7 +247,7 @@ void ConsoleUI::editScientist()
         dod = editDeathDate(sc);
         gender = editGender(sc);
 
-        _scs.editScientist(name, dob, dod, gender);
+        _scs.editScientist(editSC, name, dob, dod, gender);
         sc = _scs.findScientistByName(name);
 
         cout << "Scientist has now been edited: " << endl;
@@ -265,12 +265,24 @@ string ConsoleUI::editName(Scientist sc)
 
     if(editSC == "yes")
     {
-        cout << "Enter new name: ";
         cin.ignore();
-        getline(cin,name);
+        do
+        {
+            cout    << "Enter new first and last name: ";
+            getline(cin,name);
+            if(name.size() == 0)
+            {
+                cout << "No name was entered." << endl;
+            }
+        }while(name.size() == 0);
+    }
+    else if(editSC == "no")
+    {
+        name = sc.getName();
     }
     else
     {
+        cout << "Invalid command, name will not be changed!" << endl;
         name = sc.getName();
     }
     return name;
@@ -279,16 +291,28 @@ string ConsoleUI::editName(Scientist sc)
 string ConsoleUI::editBirthDate(Scientist sc)
 {
     string editSC, dob;
-    cout << "Would you like to edit date of birth? yes or no: ";
+    cout << "Would you like to edit year of birth? yes or no: ";
     cin >> editSC;
 
     if(editSC == "yes")
     {
-        cout << "Enter new date of birth: ";
-        cin >> dob;
+        do
+        {
+            cout    << "Enter new year of Birth (YYYY): ";
+            cin     >> dob;
+            if(dob.size() != 4)
+            {
+                cout << "Invalid year format!" << endl;
+            }
+        }while(dob.size() != 4);
+    }
+    else if(editSC == "no")
+    {
+        dob = sc.getBirthDate();
     }
     else
     {
+        cout << "Invalid command, year of birth will not be changed!" << endl;
         dob = sc.getBirthDate();
     }
     return dob;
@@ -297,16 +321,28 @@ string ConsoleUI::editBirthDate(Scientist sc)
 string ConsoleUI::editDeathDate(Scientist sc)
 {
     string editSC, dod;
-    cout << "Would you like to edit date of death? yes or no: ";
+    cout << "Would you like to edit year of death? yes or no: ";
     cin >> editSC;
 
     if(editSC == "yes")
     {
-        cout << "Enter new date of death: ";
-        cin >> dod;
+        do
+        {
+            cout    << "Enter new year of Death (YYYY, or if still alive, write 'alive'): ";
+            cin     >> dod;
+            if(dod.size() != 4 && dod != "alive")
+            {
+                cout << "Invalid year format!" << endl;
+            }
+        }while(dod.size() != 4 && dod != "alive");
+    }
+    else if(editSC == "no")
+    {
+        dod = sc.getDeathDate();
     }
     else
     {
+        cout << "Invalid command, year of death will not be changed!" << endl;
         dod = sc.getDeathDate();
     }
 
@@ -321,11 +357,23 @@ string ConsoleUI::editGender(Scientist sc)
 
     if(editSC == "yes")
     {
-        cout << "Enter new gender: ";
-        cin >> gender;
+        do
+        {
+            cout    << "Enter new gender (f/m): ";
+            cin     >> gender;
+            if(gender != "f" && gender != "m")
+            {
+                cout << "This selection was invalid" << endl;
+            }
+        }while(gender != "f" && gender != "m");
+    }
+    else if(editSC == "no")
+    {
+        gender = sc.getGender();
     }
     else
     {
+        cout << "Invalid command, gender will not be changed!" << endl;
         gender = sc.getGender();
     }
 
