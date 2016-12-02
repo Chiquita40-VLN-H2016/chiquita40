@@ -6,5 +6,5 @@ Adele Goldberg	1945	alive	f
 Grace Hopper	1906	1992	f
 Winifred Asprey	1917	2007	f
 Frances Allen	1932	alive	f
-Shafi Goldwasser	1958	alive	f
+Shafi Goldwasser1958	alive	f
 Annie Easley	1933	2011	f
