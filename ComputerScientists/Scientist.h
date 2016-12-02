@@ -26,7 +26,7 @@ public:
     void setGender(string g);
     //Overload of outstream operator to print out scientist.
     friend ostream& operator << (ostream& out, Scientist s);
-    string addTab(string name);
+    string addTab(ostream& out, string name);
 };
 
 #endif // SCIENTIST_H

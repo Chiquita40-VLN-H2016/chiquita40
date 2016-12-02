@@ -188,25 +188,19 @@ void ConsoleUI::findScientist()
     }
     else
     {
-        cout << "Scientist \t DoB \t DoD \t Gender" << endl;
-        cout << "==================================================" << endl;
+        printHeader();
         cout << sc;
-        //Þetta á að vera hægt út af overloading.
     }
-
     cout << endl;
 }
 
 void ConsoleUI::printList(vector<Scientist> v)
 {
-    cout << endl;
-    cout << "Scientist \t DoB \t DoD \t Gender" << endl;
-    cout << "==================================================" << endl;
-
-       for(size_t i = 0; i < v.size(); i++)
-       {
-           cout << v.at(i);
-       }
+   printHeader();
+   for(size_t i = 0; i < v.size(); i++)
+   {
+       cout << v.at(i);
+   }
    cout << endl;
 }
 
@@ -241,6 +235,7 @@ void ConsoleUI::editScientist()
     else
     {
         cout << "You want to edit: " << endl;
+        printHeader();
         cout << sc << endl;
         name = editName(sc);
         dob = editBirthDate(sc);
@@ -251,8 +246,7 @@ void ConsoleUI::editScientist()
         sc = _scs.findScientistByName(name);
 
         cout << "Scientist has now been edited: " << endl;
-        cout << "Scientist \t DoB \t DoD \t Gender" << endl;
-        cout << "==================================================" << endl;
+        printHeader();
         cout << sc << endl;
     }
 }
@@ -378,4 +372,11 @@ string ConsoleUI::editGender(Scientist sc)
     }
 
     return gender;
+}
+
+void ConsoleUI::printHeader()
+{
+    cout << endl;
+    cout << "Scientist" << "\t" << "\t" << "\t" << "YoB" << "\t" << "YoD" << "\t" << "Gender" << endl;
+    cout << "=======================================================" << endl;
 }

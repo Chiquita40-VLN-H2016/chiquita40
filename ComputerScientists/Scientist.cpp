@@ -54,7 +54,7 @@ void Scientist::setGender(string g)
 
 ostream& operator << (ostream& out, Scientist s)
 {
-    out << s.addTab(s.getName());
+    out << s.addTab(out, s.getName());
     out << s.getBirthDate() << '\t';
     out << s.getDeathDate() << '\t';
     out << s.getGender() << endl;
@@ -62,16 +62,16 @@ ostream& operator << (ostream& out, Scientist s)
 }
 
 // If name is longer than 15 characters, print 2 tabs
-string Scientist::addTab(string name)
+string Scientist::addTab(ostream& out, string name)
 {
     string tab = "\t";
     if(name.size() < 16)
     {
-        cout << name << tab << tab;
+        out << name << tab << tab;
     }
     else
     {
-        cout << name << tab;
+        out << name << tab;
     }
     return tab;
 }

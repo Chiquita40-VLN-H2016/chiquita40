@@ -14,6 +14,7 @@ private:
     ScientistService _scs;
 
     void printList(vector<Scientist> v);
+    void printHeader();
     void commands();
     void add();
     void list();
