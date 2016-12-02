@@ -271,8 +271,13 @@ string ConsoleUI::editName(Scientist sc)
         cin.ignore();
         getline(cin,name);
     }
+    else if(editSC == "no")
+    {
+        name = sc.getName();
+    }
     else
     {
+        cout << "Invalid command, name will not be changed!" << endl;
         name = sc.getName();
     }
     return name;
@@ -281,16 +286,21 @@ string ConsoleUI::editName(Scientist sc)
 string ConsoleUI::editBirthDate(Scientist sc)
 {
     string editSC, dob;
-    cout << "Would you like to edit date of birth? yes or no: ";
+    cout << "Would you like to edit year of birth? yes or no: ";
     cin >> editSC;
 
     if(editSC == "yes")
     {
-        cout << "Enter new date of birth: ";
+        cout << "Enter new year of birth: ";
         cin >> dob;
+    }
+    else if(editSC == "no")
+    {
+        dob = sc.getBirthDate();
     }
     else
     {
+        cout << "Invalid command, year of birth will not be changed!" << endl;
         dob = sc.getBirthDate();
     }
     return dob;
@@ -299,16 +309,21 @@ string ConsoleUI::editBirthDate(Scientist sc)
 string ConsoleUI::editDeathDate(Scientist sc)
 {
     string editSC, dod;
-    cout << "Would you like to edit date of death? yes or no: ";
+    cout << "Would you like to edit year of death? yes or no: ";
     cin >> editSC;
 
     if(editSC == "yes")
     {
-        cout << "Enter new date of death: ";
+        cout << "Enter new year of death: ";
         cin >> dod;
+    }
+    else if(editSC == "no")
+    {
+        dod = sc.getDeathDate();
     }
     else
     {
+        cout << "Invalid command, year of death will not be changed!" << endl;
         dod = sc.getDeathDate();
     }
 
@@ -326,8 +341,13 @@ string ConsoleUI::editGender(Scientist sc)
         cout << "Enter new gender: ";
         cin >> gender;
     }
+    else if(editSC == "no")
+    {
+        gender = sc.getGender();
+    }
     else
     {
+        cout << "Invalid command, gender will not be changed!" << endl;
         gender = sc.getGender();
     }
 
