@@ -61,7 +61,7 @@ ostream& operator << (ostream& out, Scientist s)
     return out;
 }
 
-// If name is longer than 15 characters, print 2 tabs
+// If name is shorter than 16 characters, print 2 tabs
 string Scientist::addTab(ostream& out, string name)
 {
     string tab = "\t";
