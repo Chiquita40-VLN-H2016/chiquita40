@@ -1,9 +1,10 @@
 # Computer Scientists Readme
 
-## Program which lists known characters from Computer Science
+Program which lists known characters from Computer Science
 
-I. Description how the program works
-------------------------------------------------------------------------------------
+## I. Coding conventions
+
+## II. Description
 We have developed a program that holds a list over Computer Scientists.
 
 * You can add a new Computer Scientist to the list. 
@@ -14,19 +15,46 @@ We have developed a program that holds a list over Computer Scientists.
 
 You can do these commands as often as you whish or until you type in 'quit'.
 
-II. File list
-------------------------------------------------------------------------------------
-ConsoleUI.cpp
-ConsoleUI.h
-Scientist.cpp
-Scientist.h
-ScientistService.cpp
-ScientistService.h
-DataAccess.cpp
-DataAccess.h
+## III. File list
++ ConsoleUI.cpp
++ ConsoleUI.h
++ Scientist.cpp
++ Scientist.h
++ ScientistService.cpp
++ ScientistService.h
++ DataAccess.cpp
++ DataAccess.h
++ main.cpp
++ scientists.txt        -   This is a data file which holds a list of Computer Scientists.
++ README.md             -   This file
 
-main.cpp
-scientists.txt          This is a data file which holds a list of Computer Scientists.
-README.md               This file
+## IV. Using Qt
+1. Clone the Repository
+2. Open ComputerScientists.pro in Qt
+3. Change working directory to where the folder is saved on your computer
+4. Build the program
 
-## Using Qt
+## V. Instructions 
+When you run the program a list of commands appear on the screen.
+
+**Add**
+
+Name can of new Scientist can not be longer than 31 characters (with spaces) and you can only have a first name and a last name, no middle name
+
+**List**
+
+Lists that you can choose from are all in ascending order.
+
+**Find**
+
+Find works only with the exact first and last name, it does not give you results if you only put in first or last name.
+
+**Edit**
+
+
+
+**Delete**
+
+
+
+**Quit**
