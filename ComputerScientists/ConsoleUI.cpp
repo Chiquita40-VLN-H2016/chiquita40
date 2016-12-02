@@ -14,7 +14,7 @@ void ConsoleUI::run()
 
     do
     {
-        commands();
+        commands(); //Prints out user input options.
 
         cout << "Enter command: ";
         cin >> command;
@@ -66,7 +66,7 @@ void ConsoleUI::commands()
     cout << "**********************************************************************" << endl;
 }
 
-void ConsoleUI::add()
+void ConsoleUI::add() //Adds scientist to the list.
 {
     string name;
     string bDate;
@@ -82,7 +82,7 @@ void ConsoleUI::add()
     listName();
 }
 
-string ConsoleUI::addName()
+string ConsoleUI::addName() //Gets a name of scientist from the user.
 {
     string name;
     cin.ignore();
@@ -109,7 +109,7 @@ string ConsoleUI::addName()
     return name;
 }
 
-string ConsoleUI::addBirthDate()
+string ConsoleUI::addBirthDate() //Gets a year of birth of scientist from user.
 {
     string bDate;
     do
@@ -127,7 +127,7 @@ string ConsoleUI::addBirthDate()
     return bDate;
 }
 
-string ConsoleUI::addDeathDate()
+string ConsoleUI::addDeathDate() //Gets a year of death of scientist from user.
 {
     string dDate;
     do
@@ -147,7 +147,7 @@ string ConsoleUI::addDeathDate()
     return dDate;
 }
 
-string ConsoleUI::addGender()
+string ConsoleUI::addGender() //Gets a gender of scientist from user.
 {
     string gender;
     do
@@ -165,7 +165,7 @@ string ConsoleUI::addGender()
     return gender;
 }
 
-void ConsoleUI::list()
+void ConsoleUI::list() //Gets user input on how to sort the list.
 {
     char in;
 
@@ -200,28 +200,28 @@ void ConsoleUI::list()
     }
 
 }
-void ConsoleUI::listName()
+void ConsoleUI::listName() //Gets a list of the scientists and prints it out ordered by name.
 {
     _scs.ScientistsOrderByName();
     vector<Scientist> sc = _scs.getScientists();
     printList(sc);
 }
 
-void ConsoleUI::listDoB()
+void ConsoleUI::listDoB() //Gets a list of the scientists and prints it out ordered by year of birth.
 {
     _scs.ScientistsOrderByDoB();
     vector<Scientist> sc = _scs.getScientists();
     printList(sc);
 }
 
-void ConsoleUI::listDoD()
+void ConsoleUI::listDoD() //Gets a list of the scientists and prints it out ordered by year of death.
 {
     _scs.ScientistsOrderByDoD();
     vector<Scientist> sc = _scs.getScientists();
     printList(sc);
 }
 
-void ConsoleUI::listGender()
+void ConsoleUI::listGender() //Gets a list of the scientists and prints it out ordered by gender.
 {
     _scs.ScientistsOrderByGender();
     vector<Scientist> sc = _scs.getScientists();
@@ -461,7 +461,7 @@ string ConsoleUI::editGender(Scientist sc)
     return gender;
 }
 
-void ConsoleUI::printHeader()
+void ConsoleUI::printHeader() //Prints out table header.
 {
     cout << endl;
     cout << "Scientist" << "\t" << "\t" << "\t" << "YoB" << "\t" << "YoD" << "\t" << "Gender" << endl;
