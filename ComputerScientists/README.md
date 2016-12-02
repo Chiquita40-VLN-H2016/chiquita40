@@ -2,9 +2,7 @@
 
 Program which lists known characters from Computer Science
 
-## I. Coding conventions
-
-## II. Description
+## I. Description
 We have developed a program that holds a list over Computer Scientists.
 
 * You can add a new Computer Scientist to the list. 
@@ -15,7 +13,7 @@ We have developed a program that holds a list over Computer Scientists.
 
 You can do these commands as often as you whish or until you type in 'quit'.
 
-## III. File list
+## II. File list
 + ConsoleUI.cpp
 + ConsoleUI.h
 + Scientist.cpp
@@ -28,13 +26,13 @@ You can do these commands as often as you whish or until you type in 'quit'.
 + scientists.txt        -   This is a data file which holds a list of Computer Scientists.
 + README.md             -   This file
 
-## IV. Using Qt
+## III. Using Qt
 1. Clone the Repository
 2. Open ComputerScientists.pro in Qt
-3. Change working directory to where the folder is saved on your computer
+3. Change working directory to where the chiquita40\ComputerScientists folder is saved on your computer
 4. Build the program
 
-## V. Instructions 
+## IV. Instructions 
 When you run the program a list of commands appear on the screen.
 
 **Add**
@@ -57,4 +55,20 @@ Find works only with the exact first and last name, it does not give you results
 
 
 
+
 **Quit**
+
+## V. Coding conventions
+* Member variables start with an _underscore.
+* Other variables start with a lower case letter (theVariable).
+* Class names start with an upper case letter (TheClass).
+* Curly brackets are always used even when code in statements is one line.
+* Curly brackets are always placed beneath the statement they refer to.
+* Code is indented with a single tab.
+Example:
+```c++
+if(n == 0)
+{
+  return n;
+}
+```
