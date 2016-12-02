@@ -249,7 +249,7 @@ void ConsoleUI::editScientist()
         dod = editDeathDate(sc);
         gender = editGender(sc);
 
-        _scs.editScientist(name, dob, dod, gender);
+        _scs.editScientist(editSC, name, dob, dod, gender);
         sc = _scs.findScientistByName(name);
 
         cout << "Scientist has now been edited: " << endl;
@@ -267,10 +267,10 @@ string ConsoleUI::editName(Scientist sc)
 
     if(editSC == "yes")
     {
+        cin.ignore();
         do
         {
             cout    << "Enter new first and last name: ";
-            cin.ignore();
             getline(cin,name);
             if(name.size() == 0)
             {
