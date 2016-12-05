@@ -1,15 +1,20 @@
 #include "DataAccess.h"
 
-#include <iostream>
-#include <vector>
-#include <string>
-#include <fstream>
-
 using namespace std;
 
 DataAccess::DataAccess()
 {
+    _db = QSqlDatabase::addDatabase("QSQLITE");
+    _db.setDatabaseName("C:/CSHistory.sqlite");
 
+/*    if (!_db.open())
+    {
+        qDebug() << "Error: connection with database failed";
+    }
+    else
+    {
+        qDebug() << "Database: connection ok";
+    }*/
 }
 
 void DataAccess::addScientist(string sc) //Writes a single addition to the file.

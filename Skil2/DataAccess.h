@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <QtSql>
 
 using namespace std;
 
@@ -16,6 +17,9 @@ public:
     void addScientist(string sc);
     vector<string> getData();
     void deleteScientist(string sNew);
+
+private:
+    QSqlDatabase _db;
 };
 
 #endif // DATAACCESS_H
