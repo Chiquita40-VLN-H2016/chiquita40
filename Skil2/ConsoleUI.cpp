@@ -69,9 +69,9 @@ void ConsoleUI::commands()
 void ConsoleUI::add() //Adds scientist to the list.
 {
     string name;
-    string bDate;
-    string dDate;
-    string gender;
+    int bDate;
+    int dDate;
+    char gender;
 
     name = addName();
     bDate = addBirthDate();
@@ -110,10 +110,10 @@ string ConsoleUI::addName() //Gets a name of scientist from the user.
     return name;
 }
 
-string ConsoleUI::addBirthDate() //Gets a year of birth of scientist from user.
+int ConsoleUI::addBirthDate() //Gets a year of birth of scientist from user.
 {
-    string bDate;
-    do
+    int bDate = 2000;
+    /*do
     {
         cout << "Year of Birth (YYYY): ";
         cin >> bDate;
@@ -123,15 +123,15 @@ string ConsoleUI::addBirthDate() //Gets a year of birth of scientist from user.
             cout << "! - Invalid year format - !" << endl;
             cout << endl;
         }
-    }while(bDate.size() != 4 || isalpha(bDate[0]) || isalpha(bDate[1]) || isalpha(bDate[2]) || isalpha(bDate[3]));
+    }while(bDate.size() != 4 || isalpha(bDate[0]) || isalpha(bDate[1]) || isalpha(bDate[2]) || isalpha(bDate[3]));*/
 
     return bDate;
 }
 
-string ConsoleUI::addDeathDate() //Gets a year of death of scientist from user.
+int ConsoleUI::addDeathDate() //Gets a year of death of scientist from user.
 {
-    string dDate;
-    do
+    int dDate = 2020;
+   /* do
     {
         cout << "Year of Death (YYYY, or if still alive, write 'alive'): ";
         cin >> dDate;
@@ -144,25 +144,25 @@ string ConsoleUI::addDeathDate() //Gets a year of death of scientist from user.
             cout << endl;
         }
      }while((isalpha(dDate[0]) && dDate != "alive") || (isalpha(dDate[1]) && dDate != "alive") || (isalpha(dDate[2])
-        && dDate != "alive") || (isalpha(dDate[3]) && dDate != "alive") || (isdigit(dDate[0]) && dDate.size() != 4));
+        && dDate != "alive") || (isalpha(dDate[3]) && dDate != "alive") || (isdigit(dDate[0]) && dDate.size() != 4));*/
 
     return dDate;
 }
 
-string ConsoleUI::addGender() //Gets a gender of scientist from user.
+char ConsoleUI::addGender() //Gets a gender of scientist from user.
 {
-    string gender;
+    char gender;
     do
     {
         cout << "Gender (f/m): ";
         cin >> gender;
-        if(gender != "f" && gender != "m")
+        if(gender != 'f' && gender != 'm')
         {
             cout << endl;
             cout << "! - This selection was invalid - !" << endl;
             cout << endl;
         }
-    }while(gender != "f" && gender != "m");
+    }while(gender != 'f' && gender != 'm');
 
     return gender;
 }
@@ -283,7 +283,9 @@ void ConsoleUI::deleteScientist()
 
 void ConsoleUI::editScientist()
 {
-    string editSC, name, dob, dod, gender;
+    string editSC, name;
+    int dob, dod;
+    char gender;
     cout << "Enter first and last name of the scientist you want to edit: " << endl;
     cin.ignore();
     getline(cin,editSC);
@@ -357,15 +359,16 @@ string ConsoleUI::editName(Scientist sc)
     return name;
 }
 
-string ConsoleUI::editBirthDate(Scientist sc)
+int ConsoleUI::editBirthDate(Scientist sc)
 {
-    string editSC, dob;
+    string editSC;
+    int dob;
     cout << "Would you like to edit year of birth? yes or no: ";
     cin >> editSC;
 
     if(editSC == "yes")
     {
-        do
+       /* do
         {
             cout << "Enter new year of Birth (YYYY): ";
             cin >> dob;
@@ -375,7 +378,7 @@ string ConsoleUI::editBirthDate(Scientist sc)
                 cout << "! - Invalid year format - !" << endl;
                 cout << endl;
             }
-        }while(dob.size() != 4 || isalpha(dob[0]) || isalpha(dob[1]) || isalpha(dob[2]) || isalpha(dob[3]));
+        }while(dob.size() != 4 || isalpha(dob[0]) || isalpha(dob[1]) || isalpha(dob[2]) || isalpha(dob[3]));*/
     }
     else if(editSC == "no")
     {
@@ -391,15 +394,16 @@ string ConsoleUI::editBirthDate(Scientist sc)
     return dob;
 }
 
-string ConsoleUI::editDeathDate(Scientist sc)
+int ConsoleUI::editDeathDate(Scientist sc)
 {
-    string editSC, dDate;
+    string editSC;
+    int dDate;
     cout << "Would you like to edit year of death? yes or no: ";
     cin >> editSC;
 
     if(editSC == "yes")
     {
-        do
+        /*do
         {
             cout << "Year of Death (YYYY, or if still alive, write 'alive'): ";
             cin >> dDate;
@@ -411,7 +415,7 @@ string ConsoleUI::editDeathDate(Scientist sc)
                 cout << endl;
             }
          }while((isalpha(dDate[0]) && dDate != "alive") || (isalpha(dDate[1]) && dDate != "alive") || (isalpha(dDate[2])
-            && dDate != "alive") || (isalpha(dDate[3]) && dDate != "alive") || (isdigit(dDate[0]) && dDate.size() != 4));
+            && dDate != "alive") || (isalpha(dDate[3]) && dDate != "alive") || (isdigit(dDate[0]) && dDate.size() != 4));*/
     }
     else if(editSC == "no")
     {
@@ -427,10 +431,10 @@ string ConsoleUI::editDeathDate(Scientist sc)
 
     return dDate;
 }
-
-string ConsoleUI::editGender(Scientist sc)
+char ConsoleUI::editGender(Scientist sc)
 {
-    string editSC, gender;
+    string editSC;
+    char gender;
     cout << "Would you like to edit gender? yes or no: ";
     cin >> editSC;
 
@@ -440,13 +444,13 @@ string ConsoleUI::editGender(Scientist sc)
         {
             cout << "Enter new gender (f/m): ";
             cin >> gender;
-            if(gender != "f" && gender != "m")
+            if(gender != 'f' && gender != 'm')
             {
                 cout << endl;
                 cout << "! - This selection was invalid - !" << endl;
                 cout << endl;
             }
-        }while(gender != "f" && gender != "m");
+        }while(gender != 'f' && gender != 'm');
     }
     else if(editSC == "no")
     {

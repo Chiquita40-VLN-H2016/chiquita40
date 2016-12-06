@@ -17,17 +17,17 @@ string Scientist::getName() const
     return _name;
 }
 
-string Scientist::getBirthDate() const
+int Scientist::getBirthDate() const
 {
     return _birthDate;
 }
 
-string Scientist::getDeathDate() const
+int Scientist::getDeathDate() const
 {
     return _deathDate;
 }
 
-string Scientist::getGender() const
+char Scientist::getGender() const
 {
     return _gender;
 }
