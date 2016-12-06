@@ -5,8 +5,9 @@ Computer::Computer()
 
 }
 
-Computer::Computer(string n, int b, string t, string wb)
+Computer::Computer(int id, string n, int b, string t, bool wb)
 {
+    _id = id;
     _name = n;
     _buildYear = b;
     _type = t;
@@ -25,7 +26,7 @@ string Computer::getType() const
 {
     return _type;
 }
-string Computer::getWasBuilt() const
+bool Computer::getWasBuilt() const
 {
     return _wasBuilt;
 }
@@ -44,7 +45,7 @@ void Computer::setType(string type)
     _type = type;
 }
 
-void Computer::setWasBuilt(string wasb)
+void Computer::setWasBuilt(bool wasb)
 {
     _wasBuilt = wasb;
 }

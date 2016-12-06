@@ -37,13 +37,13 @@ void ComputerService::ComputersOrderByWasBuilt() //Order computers by if compute
 
 Computer ComputerService::findComputerByName(string name)
 {
-    int n = findScientistName(name);
+    int n = findComputerName(name);
 
     if(n != -1)
     {
         return _computers.at(n);
     }
-    Computer c("", 0, "", ""); //If computer is not found in list an empty computer is returned.
+    Computer c(-1,"", 0, "", false); //If computer is not found in list an empty computer is returned.
 
     return c;
 }
@@ -56,6 +56,7 @@ void ComputerService::addComputer(string n, int b, string t, string wb)
 int ComputerService::deleteComputer(string name)
 {
     //Erum ekki lengur að constructa string.. það þarf að útfæra annað í staðinn fyrir það.
+    return 0;
 }
 
 void ComputerService::editComputer(string originName, string name, int by, string type, string wasb)

@@ -3,26 +3,29 @@
 
 #include <string>
 
+using namespace std;
+
 class Computer
 {
 public:
     Computer();
-    Computer(string n, int b, string t, string wb);
+    Computer(int id, string n, int b, string t, bool wb);
     string getName() const;
     int getBuildYear() const;
     string getType() const;
-    string getWasBuilt() const;
+    bool getWasBuilt() const;
     void setName(string name);
     void setBuildYear(int by);
     void setType(string type);
-    void setWasBuilt(string wasb);
+    void setWasBuilt(bool wasb);
     //??? Búa til friend ostream << fall til að prenta út computer?
 
 private:
+    int _id;
     string _name;
     int _buildYear;
     string _type;
-    string _wasBuilt;
+    bool _wasBuilt;
 };
 
 #endif // COMPUTER_H
