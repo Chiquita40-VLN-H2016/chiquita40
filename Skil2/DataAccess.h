@@ -25,7 +25,7 @@ public:
     vector<Computer> getComputers();
     void addComputer(Computer c);
     void deleteComputer(Computer c);
-    Computer findComputer(string name);
+    vector<Computer> findComputer(string name);
     void editComputer(Computer cNew);
 
     /*void addScientist(string sc);
