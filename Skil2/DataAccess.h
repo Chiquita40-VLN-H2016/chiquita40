@@ -1,22 +1,36 @@
 #ifndef DATAACCESS_H
 #define DATAACCESS_H
+#include "Scientist.h"
+#include "Computer.h"
 
 #include <iostream>
 #include <vector>
 #include <string>
-#include <fstream>
 #include <QtSql>
 
 using namespace std;
 
-//Class to get data from file and to add data to the same file.
+//Class to get data from data base and to add data to the same data base.
 class DataAccess
 {
 public:
     DataAccess();
-    void addScientist(string sc);
+
+    vector<Scientist> getScientists();
+    void addScientist(Scientist sc);
+    void deleteScientist(Scientist sc);
+    vector<Scientist> findScientist(string name);
+    void editScientist(Scientist scNew);
+
+    vector<Computer> getComputers();
+    void addComputer(Computer c);
+    void deleteComputer(Computer c);
+    vector<Computer> findComputer(string name);
+    void editComputer(Computer cNew);
+
+    /*void addScientist(string sc);
     vector<string> getData();
-    void deleteScientist(string sNew);
+    void deleteScientist(string sNew);*/
 
 private:
     QSqlDatabase _db;

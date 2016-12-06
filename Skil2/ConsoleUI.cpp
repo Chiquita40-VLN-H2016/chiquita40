@@ -237,8 +237,8 @@ void ConsoleUI::findScientist()
     cin.ignore();
     cout << "Enter the name of scientist: ";
     getline(cin,findSc);
-    Scientist sc = _scs.findScientistByName(findSc);
-    if(sc.getName() == "")
+    vector<Scientist> sc = _scs.findScientistByName(findSc);
+    /*if(sc.getName() == "")
     {
         cout << endl;
         cout << "! - Scientist was not found. - !" << endl;
@@ -249,7 +249,7 @@ void ConsoleUI::findScientist()
         printHeader();
         cout << sc;
     }
-    cout << endl;
+    cout << endl;*/
 }
 
 void ConsoleUI::printList(vector<Scientist> v)
@@ -289,8 +289,8 @@ void ConsoleUI::editScientist()
     cout << "Enter first and last name of the scientist you want to edit: " << endl;
     cin.ignore();
     getline(cin,editSC);
-    Scientist sc = _scs.findScientistByName(editSC);
-    if(sc.getName() == "")
+    vector<Scientist> sc = _scs.findScientistByName(editSC);
+    /*if(sc.getName() == "")
     {
         cout << endl;
         cout << "! - Scientist was not found. - !" << endl;
@@ -314,7 +314,7 @@ void ConsoleUI::editScientist()
         printHeader();
         cout << sc << endl;
         cout << endl;
-    }
+    }*/
 }
 
 string ConsoleUI::editName(Scientist sc)
