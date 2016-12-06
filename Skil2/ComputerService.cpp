@@ -2,8 +2,7 @@
 
 ComputerService::ComputerService()
 {
-    //Það þarf að útfæra createComputer fall.
-    //createComputers();
+    _computers = _data.getComputers();
 }
 
 vector<Computer> ComputerService::getComputers()
@@ -35,33 +34,60 @@ void ComputerService::ComputersOrderByWasBuilt() //Order computers by if compute
     std::sort(_computers.begin(), _computers.end(), cmp);
 }
 
-Computer ComputerService::findComputerByName(string name)
+vector<Computer> ComputerService::findComputerByName(string name)
 {
-    int n = findComputerName(name);
+    vector<Computer> computers = _data.findComputer(name);
 
-    if(n != -1)
-    {
-        return _computers.at(n);
-    }
-    Computer c(-1,"", 0, "", false); //If computer is not found in list an empty computer is returned.
-
-    return c;
+    return computers;
 }
 
 void ComputerService::addComputer(string n, int b, string t, string wb)
 {
-    //Erum ekki lengur að constructa string.. það þarf að útfæra annað í staðinn fyrir það.
+    bool wasBuilt = false;
+
+    if (wb == "yes" || wb == "Yes" || wb == "YES")
+    {
+        wasBuilt = true;
+    }
+
+    Computer c(-1, n, b, t, wasBuilt);
+    int i = _data.addComputer(c);
+    c.setId(i);
+
+    _computers.push_back(c);
 }
 
 int ComputerService::deleteComputer(string name)
 {
-    //Erum ekki lengur að constructa string.. það þarf að útfæra annað í staðinn fyrir það.
-    return 0;
+    int n = findComputerName(name);
+    _data.deleteComputer(_computers.at(n));
+    if(n != -1)
+    {
+        _computers.erase(_computers.begin()+n);
+    }
+
+    return n;
 }
 
 void ComputerService::editComputer(string originName, string name, int by, string type, string wasb)
 {
-    //Erum ekki lengur að constructa string.. það þarf að útfæra annað í staðinn fyrir það.
+    bool wasBuilt = false;
+
+    if (wasb == "yes" || wasb == "Yes" || wasb == "YES")
+    {
+        wasBuilt = true;
+    }
+
+    int n = findComputerName(originName);
+    if(n != -1)
+    {
+        _computers.at(n).setName(name);
+        _computers.at(n).setBuildYear(by);
+        _computers.at(n).setType(type);
+        _computers.at(n).setWasBuilt(wasBuilt);
+
+        _data.editComputer(_computers.at(n));
+    }
 }
 
 /*void ComputerService::createComputers()

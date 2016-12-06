@@ -59,3 +59,33 @@ void Computer::setWasBuilt(bool wasb)
 {
     _wasBuilt = wasb;
 }
+
+ostream& operator << (ostream& out, Computer c)
+{
+    out << c.addTab(out, c.getName());
+    out << c.getBuildYear() << '\t';
+    out << c.getType() << '\t';
+    out << c.getWasBuilt() << endl;
+
+    return out;
+}
+
+string Computer::addTab(ostream& out, string name)
+{
+    string tab = "\t";
+
+    if(name.size() < 16 && name.size() > 7)
+    {
+        out << name << tab << tab;
+    }
+    else if(name.size() < 8)
+    {
+        out << name << tab << tab << tab;
+    }
+    else
+    {
+        out << name << tab;
+    }
+
+    return tab;
+}
