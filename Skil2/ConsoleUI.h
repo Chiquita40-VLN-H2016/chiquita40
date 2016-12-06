@@ -21,9 +21,9 @@ private:
     void commands(); //Prints out the program's commands.
     void add(); //Add new scientist.
     string addName();
-    string addBirthDate();
-    string addDeathDate();
-    string addGender();
+    int addBirthDate();
+    int addDeathDate();
+    char addGender();
     void list(); //Gets user input on how to sort the list.
     void listName(); //Gets a list of the scientists and prints it out ordered by name.
     void listDoB(); //Gets a list of the scientists and prints it out ordered by year of birth.
@@ -33,9 +33,9 @@ private:
     void deleteScientist();
     void editScientist();
     string editName(Scientist sc);
-    string editBirthDate(Scientist sc);
-    string editDeathDate(Scientist sc);
-    string editGender(Scientist sc);
+    int editBirthDate(Scientist sc);
+    int editDeathDate(Scientist sc);
+    char editGender(Scientist sc);
 };
 
 #endif // CONSOLEUI_H
