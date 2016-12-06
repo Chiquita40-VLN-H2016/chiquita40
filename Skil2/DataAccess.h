@@ -17,13 +17,13 @@ public:
     DataAccess();
 
     vector<Scientist> getScientists();
-    void addScientist(Scientist sc);
+    int addScientist(Scientist sc);
     void deleteScientist(Scientist sc);
     vector<Scientist> findScientist(string name);
     void editScientist(Scientist scNew);
 
     vector<Computer> getComputers();
-    void addComputer(Computer c);
+    int addComputer(Computer c);
     void deleteComputer(Computer c);
     vector<Computer> findComputer(string name);
     void editComputer(Computer cNew);

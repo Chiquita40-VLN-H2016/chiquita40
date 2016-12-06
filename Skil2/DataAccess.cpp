@@ -41,11 +41,13 @@ vector<Scientist> DataAccess::getScientists()
     return scientists;
 }
 
-void DataAccess::addScientist(Scientist sc)
+int DataAccess::addScientist(Scientist sc)
 {
     QSqlQuery query(_db);
 
     query.exec("INSERT INTO Scientists(Name, Birth_Year, Death_Year, Gender) VALUES (:sc.name, :sc.birthYear, :sc.deathYear, :sc.gender)");
+    int n = query.lastInsertId().toUInt();
+    return n;
 }
 
 void DataAccess::deleteScientist(Scientist sc)
@@ -105,11 +107,13 @@ vector<Computer> DataAccess::getComputers()
     return computers;
 }
 
-void DataAccess::addComputer(Computer c)
+int DataAccess::addComputer(Computer c)
 {
     QSqlQuery query(_db);
 
     query.exec("INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES (:c.name, :c.buildYear, :c.type, :c.wasBuilt)");
+    int n = query.lastInsertId().toUInt();
+    return n;
 }
 
 void DataAccess::deleteComputer(Computer c)

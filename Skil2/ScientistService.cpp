@@ -55,7 +55,8 @@ void ScientistService::addScientist(string n, int bd, int dd, char g)
     //int n1 = findScientistName(n);
 
     Scientist sc(-1, n, bd, dd, g);
-    _data.addScientist(sc);
+    int i = _data.addScientist(sc);
+    sc.setId(i); //sc.id now has the right value from the database.
     _scientists.push_back(sc);
     /*if(n1 == -1)
     {

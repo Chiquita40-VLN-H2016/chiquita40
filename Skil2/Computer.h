@@ -10,10 +10,12 @@ class Computer
 public:
     Computer();
     Computer(int id, string n, int b, string t, bool wb);
+    int getId() const;
     string getName() const;
     int getBuildYear() const;
     string getType() const;
     bool getWasBuilt() const;
+    void setId(int id);
     void setName(string name);
     void setBuildYear(int by);
     void setType(string type);

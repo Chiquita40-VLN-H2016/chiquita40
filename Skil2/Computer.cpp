@@ -14,6 +14,11 @@ Computer::Computer(int id, string n, int b, string t, bool wb)
     _wasBuilt = wb;
 }
 
+int Computer::getId() const
+{
+    return _id;
+}
+
 string Computer::getName() const
 {
     return _name;
@@ -30,6 +35,11 @@ bool Computer::getWasBuilt() const
 {
     return _wasBuilt;
 }
+void Computer::setId(int id)
+{
+    _id = id;
+}
+
 void Computer::setName(string name)
 {
     _name = name;

@@ -10,10 +10,12 @@ class Scientist
 public:
     Scientist();
     Scientist(int id, string n, int bd, int dd, char g);
+    int getId() const;
     string getName() const;
     int getBirthDate() const;
     int getDeathDate() const;
     char getGender() const;
+    void setId(int id);
     void setName(string name);
     void setBirthDate(int bd);
     void setDeathDate(int dd);
