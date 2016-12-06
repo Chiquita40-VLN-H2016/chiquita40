@@ -52,9 +52,9 @@ private:
     size_t size();
     string constructStringForFile();
     int findScientistName(string name); //Helper function to find, add, edit and delete scientist.
-    void createScientists(); //Helper function that fills vector. Called by constructor.
+    //void createScientists(); //Helper function that fills vector. Called by constructor.
     //Helper function that constructs the string that is written to file in DataAccess.
-    void constructString(string& s, string name, int dob, int dod, char g);
+    //void constructString(string& s, string name, int dob, int dod, char g);
 };
 
 #endif // SCIENTISTSERVICE_H
