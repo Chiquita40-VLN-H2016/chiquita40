@@ -41,7 +41,7 @@ public:
     void ScientistsOrderByDoB(); //Order scientists by birth year.
     void ScientistsOrderByDoD(); //Order scientists by death year.
     void ScientistsOrderByGender(); //Order scientists by gender.
-    Scientist findScientistByName(string name);
+    vector<Scientist> findScientistByName(string name);
     void addScientist(string n, int bd, int dd, char g);
     int deleteScientist(string name);
     void editScientist(string originName, string name, int dob, int dod, char g);
@@ -50,7 +50,7 @@ private:
     DataAccess _data;
     vector<Scientist> _scientists;
     size_t size();
-    string constructStringForFile();
+    //string constructStringForFile();
     int findScientistName(string name); //Helper function to find, add, edit and delete scientist.
     //void createScientists(); //Helper function that fills vector. Called by constructor.
     //Helper function that constructs the string that is written to file in DataAccess.

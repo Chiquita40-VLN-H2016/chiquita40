@@ -9,7 +9,7 @@ class Scientist
 {
 public:
     Scientist();
-    Scientist(string n, int bd, int dd, char g);
+    Scientist(int id, string n, int bd, int dd, char g);
     string getName() const;
     int getBirthDate() const;
     int getDeathDate() const;
@@ -22,6 +22,7 @@ public:
     string addTab(ostream& out, string name); //Add tabs to even out table spaces.
 
 private:
+    int _id;
     string _name;
     int _birthDate;
     int _deathDate;

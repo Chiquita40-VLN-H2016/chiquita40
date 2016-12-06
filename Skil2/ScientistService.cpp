@@ -2,7 +2,7 @@
 
 ScientistService::ScientistService()
 {
-    //createScientists(); //Helper function that fills vector.
+    _scientists = _data.getScientists();
 }
 
 vector<Scientist> ScientistService::getScientists()
@@ -34,9 +34,10 @@ void ScientistService::ScientistsOrderByGender() //Order scientists by gender.
     std::sort(_scientists.begin(), _scientists.end(), cmp);
 }
 
-Scientist ScientistService::findScientistByName(string name)
+vector<Scientist> ScientistService::findScientistByName(string name)
 {
-    int n = findScientistName(name);
+    vector<Scientist> scientists = _data.findScientist(name);
+    /*int n = findScientistName(name);
 
     if(n != -1)
     {
@@ -44,33 +45,38 @@ Scientist ScientistService::findScientistByName(string name)
     }
     Scientist s("", 0, 0,' '); //If Scientist is not found in list an empty scientist is returned.
 
-    return s;
+    return s;*/
+    return scientists;
 }
 
 //Checks whether scientist exists in list and only adds the new one if it doesn't.
 void ScientistService::addScientist(string n, int bd, int dd, char g)
 {
-    int n1 = findScientistName(n);
+    //int n1 = findScientistName(n);
 
-    if(n1 == -1)
+    Scientist sc(-1, n, bd, dd, g);
+    _data.addScientist(sc);
+    _scientists.push_back(sc);
+    /*if(n1 == -1)
     {
         string s2;
         constructString(s2, n, bd, dd, g);
         _data.addScientist(s2);
         Scientist sc(n, bd, dd, g);
         _scientists.push_back(sc);
-    }
+    }*/
 }
 
 int ScientistService::deleteScientist(string name)
 {
-    int n = findScientistName(name);
 
+    int n = findScientistName(name);
+    _data.deleteScientist(_scientists.at(n));
     if(n != -1)
     {
         _scientists.erase(_scientists.begin()+n);
-        string s = constructStringForFile();
-        _data.deleteScientist(s);
+        //string s = constructStringForFile();
+        //_data.deleteScientist(s);
     }
 
     return n;
@@ -85,8 +91,9 @@ void ScientistService::editScientist(string originName, string name, int dob, in
         _scientists.at(n).setBirthDate(dob);
         _scientists.at(n).setDeathDate(dod);
         _scientists.at(n).setGender(g);
-        string s = constructStringForFile();
-        _data.deleteScientist(s); //delete function in data used to overwrite file with updated version.
+        //string s = constructStringForFile();
+        _data.editScientist(_scientists.at(n));
+        //_data.deleteScientist(s); //delete function in data used to overwrite file with updated version.
     }
 }
 
@@ -106,7 +113,7 @@ int ScientistService::findScientistName(string name)
     return -1;
 }
 
-string ScientistService::constructStringForFile() //Creates vector to print in file.
+/*string ScientistService::constructStringForFile() //Creates vector to print in file.
 {
     string s;
 
@@ -125,7 +132,7 @@ string ScientistService::constructStringForFile() //Creates vector to print in f
     }
 
     return s;
-}
+}*/
 
 /*void ScientistService::createScientists() //Helper function that fills vector.
 {
@@ -166,7 +173,7 @@ string ScientistService::constructStringForFile() //Creates vector to print in f
 }*/
 
 //Adds tabs to file where appropriate.
-void ScientistService::constructString(string& s, string name, int dob, int dod, char g)
+/*void ScientistService::constructString(string& s, string name, int dob, int dod, char g)
 {
     s+=name;
     s.push_back('\t');
@@ -175,7 +182,7 @@ void ScientistService::constructString(string& s, string name, int dob, int dod,
     s+=dod;
     s.push_back('\t');
     s+=g;
-}
+}*/
 
 size_t ScientistService::size()
 {

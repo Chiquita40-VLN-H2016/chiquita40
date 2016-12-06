@@ -4,8 +4,9 @@ Scientist::Scientist()
 {
 
 }
-Scientist::Scientist(string n, int bd, int dd, char g)
+Scientist::Scientist(int id, string n, int bd, int dd, char g)
 {
+    _id = id;
     _name = n;
     _birthDate = bd;
     _deathDate = dd;

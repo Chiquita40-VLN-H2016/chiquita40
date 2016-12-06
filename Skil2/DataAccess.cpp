@@ -32,7 +32,8 @@ vector<Scientist> DataAccess::getScientists()
         string name = query.value("Name").toString().toStdString();
         int birth_year = query.value("Birth_Year").toUInt();
         int death_year = query.value("Death_Year").toUInt();
-        char gender = query.value("Gender").toUChar();
+        string g = query.value("Gender").toString().toStdString();
+        char gender = g.front();
 
         scientists.push_back(Scientist(id, name, birth_year, death_year, gender));
     }
@@ -67,8 +68,8 @@ vector<Scientist> DataAccess::findScientist(string name)
         string name = query.value("Name").toString().toStdString();
         int birth_year = query.value("Birth_Year").toUInt();
         int death_year = query.value("Death_Year").toUInt();
-        char gender = query.value("Gender").toUChar();
-
+        string g = query.value("Gender").toString().toStdString();
+        char gender = g.front();
         scientists.push_back(Scientist(id, name, birth_year, death_year, gender));
     }
 
