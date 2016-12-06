@@ -4,7 +4,7 @@ Scientist::Scientist()
 {
 
 }
-Scientist::Scientist(string n, string bd, string dd, string g)
+Scientist::Scientist(string n, int bd, int dd, char g)
 {
     _name = n;
     _birthDate = bd;
@@ -37,17 +37,17 @@ void Scientist::setName(string name)
     _name = name;
 }
 
-void Scientist::setBirthDate(string bd)
+void Scientist::setBirthDate(int bd)
 {
     _birthDate = bd;
 }
 
-void Scientist::setDeathDate(string dd)
+void Scientist::setDeathDate(int dd)
 {
     _deathDate = dd;
 }
 
-void Scientist::setGender(string g)
+void Scientist::setGender(char g)
 {
     _gender = g;
 }

@@ -9,23 +9,23 @@ class Scientist
 {
 public:
     Scientist();
-    Scientist(string n, string bd, string dd, string g);
+    Scientist(string n, int bd, int dd, char g);
     string getName() const;
-    string getBirthDate() const;
-    string getDeathDate() const;
-    string getGender() const;
+    int getBirthDate() const;
+    int getDeathDate() const;
+    char getGender() const;
     void setName(string name);
-    void setBirthDate(string bd);
-    void setDeathDate(string dd);
-    void setGender(string g);
+    void setBirthDate(int bd);
+    void setDeathDate(int dd);
+    void setGender(char gender);
     friend ostream& operator << (ostream& out, Scientist s); //Overload of outstream operator to print out scientist.
     string addTab(ostream& out, string name); //Add tabs to even out table spaces.
 
 private:
     string _name;
-    string _birthDate;
-    string _deathDate;
-    string _gender;
+    int _birthDate;
+    int _deathDate;
+    char _gender;
 };
 
 #endif // SCIENTIST_H
