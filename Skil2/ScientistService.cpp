@@ -2,7 +2,7 @@
 
 ScientistService::ScientistService()
 {
-    createScientists(); //Helper function that fills vector.
+    //createScientists(); //Helper function that fills vector.
 }
 
 vector<Scientist> ScientistService::getScientists()
@@ -127,7 +127,7 @@ string ScientistService::constructStringForFile() //Creates vector to print in f
     return s;
 }
 
-void ScientistService::createScientists() //Helper function that fills vector.
+/*void ScientistService::createScientists() //Helper function that fills vector.
 {
     vector<string> list = _data.getData();
     int count = 1;
@@ -163,7 +163,7 @@ void ScientistService::createScientists() //Helper function that fills vector.
         }
         count++;
     }
-}
+}*/
 
 //Adds tabs to file where appropriate.
 void ScientistService::constructString(string& s, string name, int dob, int dod, char g)
