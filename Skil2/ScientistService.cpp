@@ -42,13 +42,13 @@ Scientist ScientistService::findScientistByName(string name)
     {
         return _scientists.at(n);
     }
-    Scientist s("", "", "", ""); //If Scientist is not found in list an empty scientist is returned.
+    Scientist s("", 0, 0,' '); //If Scientist is not found in list an empty scientist is returned.
 
     return s;
 }
 
 //Checks whether scientist exists in list and only adds the new one if it doesn't.
-void ScientistService::addScientist(string n, string bd, string dd, string g)
+void ScientistService::addScientist(string n, int bd, int dd, char g)
 {
     int n1 = findScientistName(n);
 
@@ -76,7 +76,7 @@ int ScientistService::deleteScientist(string name)
     return n;
 }
 
-void ScientistService::editScientist(string originName, string name, string dob, string dod, string g)
+void ScientistService::editScientist(string originName, string name, int dob, int dod, char g)
 {
     int n = findScientistName(originName);
     if(n != -1)
@@ -114,9 +114,9 @@ string ScientistService::constructStringForFile() //Creates vector to print in f
     {
         Scientist sc = _scientists.at(i);
         string n = sc.getName();
-        string bd = sc.getBirthDate();
-        string dd = sc.getDeathDate();
-        string g = sc.getGender();
+        int bd = sc.getBirthDate();
+        int dd = sc.getDeathDate();
+        char g = sc.getGender();
         constructString(s, n, bd, dd, g); //Adds tabs to file where appropriate for correct setup in file.
         if(i != size()-1)
         {
@@ -131,7 +131,9 @@ void ScientistService::createScientists() //Helper function that fills vector.
 {
     vector<string> list = _data.getData();
     int count = 1;
-    string name, dob, dod, g;
+    string name;
+    int dob, dod;
+    char g;
 
     for(size_t i = 0; i < list.size(); i++)
     {
@@ -164,7 +166,7 @@ void ScientistService::createScientists() //Helper function that fills vector.
 }
 
 //Adds tabs to file where appropriate.
-void ScientistService::constructString(string& s, string name, string dob, string dod, string g)
+void ScientistService::constructString(string& s, string name, int dob, int dod, char g)
 {
     s+=name;
     s.push_back('\t');
