@@ -30,16 +30,10 @@ vector<Scientist> DataAccess::getScientists()
     {
         int id = query.value("ID").toUInt();
         string name = query.value("Name").toString().toStdString();
-<<<<<<< HEAD
         int birth_year = query.value("Birth_Year").toUInt();
         int death_year = query.value("Death_Year").toUInt();
         string g = query.value("Gender").toString().toStdString();
         char gender = g.front();
-=======
-        int birthYear = query.value("Birth_Year").toUInt();
-        int deathYear = query.value("Death_Year").toUInt();
-        char gender = query.value("Gender").toUChar();
->>>>>>> a4bfd7779412c654cd8e650578d2257c7fe3ab60
 
         scientists.push_back(Scientist(id, name, birthYear, deathYear, gender));
     }
@@ -72,19 +66,11 @@ vector<Scientist> DataAccess::findScientist(string name)
     {
         int id = query.value("ID").toUInt();
         string name = query.value("Name").toString().toStdString();
-<<<<<<< HEAD
         int birth_year = query.value("Birth_Year").toUInt();
         int death_year = query.value("Death_Year").toUInt();
         string g = query.value("Gender").toString().toStdString();
         char gender = g.front();
         scientists.push_back(Scientist(id, name, birth_year, death_year, gender));
-=======
-        int birthYear = query.value("Birth_Year").toUInt();
-        int deathYear = query.value("Death_Year").toUInt();
-        char gender = query.value("Gender").toUChar();
-
-        scientists.push_back(Scientist(id, name, birthYear, deathYear, gender));
->>>>>>> a4bfd7779412c654cd8e650578d2257c7fe3ab60
     }
 
     return scientists;
