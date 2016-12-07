@@ -41,7 +41,7 @@ public:
     void ComputersOrderByBuildYear(); //Order computers by year built.
     void ComputersOrderByType(); //Order computers by type.
     void ComputersOrderByWasBuilt(); //Order computers by if computer was built or not.
-    Computer findComputerByName(string name);
+    vector<Computer> findComputerByName(string name);
     void addComputer(string n, int b, string t, string wb);
     int deleteComputer(string name);
     void editComputer(string originName, string name, int by, string type, string wasb);

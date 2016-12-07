@@ -13,6 +13,11 @@ Scientist::Scientist(int id, string n, int bd, int dd, char g)
     _gender = g;
 }
 
+int Scientist::getId() const
+{
+    return _id;
+}
+
 string Scientist::getName() const
 {
     return _name;
@@ -31,6 +36,11 @@ int Scientist::getDeathDate() const
 char Scientist::getGender() const
 {
     return _gender;
+}
+
+void Scientist::setId(int id)
+{
+    _id = id;
 }
 
 void Scientist::setName(string name)
