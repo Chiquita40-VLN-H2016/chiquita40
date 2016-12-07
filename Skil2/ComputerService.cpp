@@ -10,7 +10,17 @@ vector<Computer> ComputerService::getComputers()
     return _computers;
 }
 
-void ComputerService::ComputersOrderByName() //Order computers by name.
+void ComputerService::ComputersAscendingOrder(int n) //Ascending order.
+{
+    _computers = _data.ComputersAscendingOrder(n);
+}
+
+void ComputerService::ComputersDescendingOrder(int n) //Descending order.
+{
+    _computers = _data.ComputersDescendingOrder(n);
+}
+
+/*void ComputerService::ComputersOrderByName() //Order computers by name.
 {
     NameComparison cmp;
     std::sort(_computers.begin(), _computers.end(), cmp);
@@ -32,7 +42,7 @@ void ComputerService::ComputersOrderByWasBuilt() //Order computers by if compute
 {
     WasBuiltComparison cmp;
     std::sort(_computers.begin(), _computers.end(), cmp);
-}
+}*/
 
 vector<Computer> ComputerService::findComputerByName(string name)
 {

@@ -20,12 +20,16 @@ public:
     int addScientist(Scientist sc);
     void deleteScientist(Scientist sc);
     vector<Scientist> findScientist(string name);
+    vector<Scientist> ScientistsAscendingOrder(int n);
+    vector<Scientist> ScientistsDescendingOrder(int n);
     void editScientist(Scientist scNew);
 
     vector<Computer> getComputers();
     int addComputer(Computer c);
     void deleteComputer(Computer c);
     vector<Computer> findComputer(string name);
+    vector<Computer> ComputersAscendingOrder(int n);
+    vector<Computer> ComputersDescendingOrder(int n);
     void editComputer(Computer cNew);
 
     /*void addScientist(string sc);

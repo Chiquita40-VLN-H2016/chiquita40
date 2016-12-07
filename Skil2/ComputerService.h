@@ -37,10 +37,10 @@ class ComputerService
 public:
     ComputerService();
     vector<Computer> getComputers(); //Returns member variable _computers.
-    void ComputersOrderByName(); //Order computers by name.
-    void ComputersOrderByBuildYear(); //Order computers by year built.
-    void ComputersOrderByType(); //Order computers by type.
-    void ComputersOrderByWasBuilt(); //Order computers by if computer was built or not.
+    void ComputersAscendingOrder(int n); //Ascending order.
+    void ComputersDescendingOrder(int n); //Descending order.
+    //void ComputersOrderByType(); //Order computers by type.
+    //void ComputersOrderByWasBuilt(); //Order computers by if computer was built or not.
     vector<Computer> findComputerByName(string name);
     void addComputer(string n, int b, string t, string wb);
     int deleteComputer(string name);
