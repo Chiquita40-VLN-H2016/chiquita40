@@ -58,11 +58,14 @@ void DataAccess::deleteScientist(Scientist sc)
     //query.bindValue(":sc.name", name);
 }
 
-vector<Scientist> DataAccess::findScientist(string name)
+vector<Scientist> DataAccess::findScientistByName(string search)
 {
     vector<Scientist> scientists;
     QSqlQuery query(_db);
-    query.exec("SELECT * FROM Scientists WHERE Name = (:name)");
+    query.prepare("SELECT * FROM Scientists WHERE Name LIKE \"%(:search)%\"");
+    QString qstr = QString::fromStdString(search);
+    query.bindValue(":search", qstr);
+    query.exec();
 
     while(query.next())
     {
@@ -77,6 +80,100 @@ vector<Scientist> DataAccess::findScientist(string name)
 
     return scientists;
 }
+
+vector<Scientist> DataAccess::findScientistByYear(int search)
+{
+    vector<Scientist> scientists;
+    QSqlQuery query(_db);
+    query.prepare("SELECT * FROM Scientists WHERE Birth_Year LIKE \"%(:search)%\" OR Death_Year LIKE \"%(:search)%\"");
+    query.bindValue(":search", search);
+    query.exec();
+    while(query.next())
+    {
+        int id = query.value("ID").toUInt();
+        string name = query.value("Name").toString().toStdString();
+        int birth_year = query.value("Birth_Year").toUInt();
+        int death_year = query.value("Death_Year").toUInt();
+        string g = query.value("Gender").toString().toStdString();
+        char gender = g.front();
+        scientists.push_back(Scientist(id, name, birth_year, death_year, gender));
+    }
+
+    return scientists;
+}
+
+vector<Scientist> DataAccess::ScientistsAscendingOrder(int n)
+{
+    vector<Scientist> scientists;
+    QSqlQuery query(_db);
+    switch(n)
+    {
+        case 0:
+                query.exec("SELECT * FROM Scientists ORDER BY Name");
+                break;
+        case 1:
+                query.exec("SELECT * FROM Scientists ORDER BY Birth_Year");
+                break;
+        case 2:
+                query.exec("SELECT * FROM Scientists ORDER BY Death_Year");
+                break;
+        case 3:
+                query.exec("SELECT * FROM Scientists ORDER BY Gender");
+                break;
+        default:
+                query.exec("SELECT * FROM Scientists");
+    }
+
+    while(query.next())
+    {
+        int id = query.value("ID").toUInt();
+        string name = query.value("Name").toString().toStdString();
+        int birth_year = query.value("Birth_Year").toUInt();
+        int death_year = query.value("Death_Year").toUInt();
+        string g = query.value("Gender").toString().toStdString();
+        char gender = g.front();
+        scientists.push_back(Scientist(id, name, birth_year, death_year, gender));
+    }
+
+    return scientists;
+}
+
+vector<Scientist> DataAccess::ScientistsDescendingOrder(int n)
+{
+    vector<Scientist> scientists;
+    QSqlQuery query(_db);
+    switch(n)
+    {
+        case 0:
+                query.exec("SELECT * FROM Scientists ORDER BY Name desc");
+                break;
+        case 1:
+                query.exec("SELECT * FROM Scientists ORDER BY Birth_Year desc");
+                break;
+        case 2:
+                query.exec("SELECT * FROM Scientists ORDER BY Death_Year desc");
+                break;
+        case 3:
+                query.exec("SELECT * FROM Scientists ORDER BY Gender desc");
+                break;
+        default:
+                query.exec("SELECT * FROM Scientists ORDER BY ID desc");
+    }
+
+    while(query.next())
+    {
+        int id = query.value("ID").toUInt();
+        string name = query.value("Name").toString().toStdString();
+        int birth_year = query.value("Birth_Year").toUInt();
+        int death_year = query.value("Death_Year").toUInt();
+        string g = query.value("Gender").toString().toStdString();
+        char gender = g.front();
+        scientists.push_back(Scientist(id, name, birth_year, death_year, gender));
+    }
+
+    return scientists;
+}
+
 
 void DataAccess::editScientist(Scientist scNew)
 {
@@ -123,11 +220,108 @@ void DataAccess::deleteComputer(Computer c)
     query.exec("DELETE FROM Computers WHERE Name = (:c.name) AND Build_Year = (:c.buildYear) AND Type = (:c.type) AND Was_Built = (:c.wasBuilt)");
 }
 
-vector<Computer> DataAccess::findComputer(string name)
+vector<Computer> DataAccess::findComputerByName(string search)
 {
     vector<Computer> computers;
     QSqlQuery query(_db);
-    query.exec("SELECT * FROM Computers WHERE Name = (:name)");
+    query.prepare("SELECT * FROM Computers WHERE Name LIKE \"%(:search)%\"");
+    QString qstr = QString::fromStdString(search);
+    query.bindValue(":search", qstr);
+    query.exec();
+
+    while(query.next())
+    {
+        int id = query.value("ID").toUInt();
+        string name = query.value("Name").toString().toStdString();
+        int buildYear = query.value("Build_Year").toUInt();
+        string type = query.value("Type").toString().toStdString();
+        bool wasBuilt = query.value("Was_Built").toBool();
+
+        computers.push_back(Computer(id, name, buildYear, type, wasBuilt));
+    }
+
+    return computers;
+}
+
+vector<Computer> DataAccess::findComputerByYear(int search)
+{
+    vector<Computer> computers;
+    QSqlQuery query(_db);
+    query.prepare("SELECT * FROM Scientists WHERE Build_Year LIKE \"%(:search)%\"");
+    query.bindValue(":search", search);
+    query.exec();
+
+    while(query.next())
+    {
+        int id = query.value("ID").toUInt();
+        string name = query.value("Name").toString().toStdString();
+        int buildYear = query.value("Build_Year").toUInt();
+        string type = query.value("Type").toString().toStdString();
+        bool wasBuilt = query.value("Was_Built").toBool();
+
+        computers.push_back(Computer(id, name, buildYear, type, wasBuilt));
+    }
+
+    return computers;
+}
+
+vector<Computer> DataAccess::ComputersAscendingOrder(int n)
+{
+    vector<Computer> computers;
+    QSqlQuery query(_db);
+    switch(n)
+    {
+        case 0:
+                query.exec("SELECT * FROM Computers ORDER BY Name");
+                break;
+        case 1:
+                query.exec("SELECT * FROM Scientists ORDER BY Build_Year");
+                break;
+        case 2:
+                query.exec("SELECT * FROM Scientists ORDER BY Type");
+                break;
+        case 3:
+                query.exec("SELECT * FROM Scientists ORDER BY Was_Built");
+                break;
+        default:
+                query.exec("SELECT * FROM Scientists");
+    }
+
+    while(query.next())
+    {
+        int id = query.value("ID").toUInt();
+        string name = query.value("Name").toString().toStdString();
+        int buildYear = query.value("Build_Year").toUInt();
+        string type = query.value("Type").toString().toStdString();
+        bool wasBuilt = query.value("Was_Built").toBool();
+
+        computers.push_back(Computer(id, name, buildYear, type, wasBuilt));
+    }
+
+    return computers;
+}
+
+vector<Computer> DataAccess::ComputersDescendingOrder(int n)
+{
+    vector<Computer> computers;
+    QSqlQuery query(_db);
+    switch(n)
+    {
+        case 0:
+                query.exec("SELECT * FROM Computers ORDER BY Name desc");
+                break;
+        case 1:
+                query.exec("SELECT * FROM Scientists ORDER BY Build_Year desc");
+                break;
+        case 2:
+                query.exec("SELECT * FROM Scientists ORDER BY Type desc");
+                break;
+        case 3:
+                query.exec("SELECT * FROM Scientists ORDER BY Was_Built desc");
+                break;
+        default:
+                query.exec("SELECT * FROM Scientists ORDER BY ID desc");
+    }
 
     while(query.next())
     {

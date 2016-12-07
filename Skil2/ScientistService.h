@@ -37,10 +37,10 @@ class ScientistService
 public:
     ScientistService();
     vector<Scientist> getScientists(); //Returns member variable _scientists.
-    void ScientistsOrderByName(); //Order scientists by name.
-    void ScientistsOrderByDoB(); //Order scientists by birth year.
-    void ScientistsOrderByDoD(); //Order scientists by death year.
-    void ScientistsOrderByGender(); //Order scientists by gender.
+    void ScientistsAscendingOrder(int n); //Ascending Order.
+    void ScientistsDescendingOrder(int n); //Descending Order scientists by birth year.
+    //void ScientistsOrderByDoD(); //Order scientists by death year.
+    //void ScientistsOrderByGender(); //Order scientists by gender.
     vector<Scientist> findScientistByName(string name);
     void addScientist(string n, int bd, int dd, char g);
     int deleteScientist(string name);

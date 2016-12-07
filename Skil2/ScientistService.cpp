@@ -10,19 +10,21 @@ vector<Scientist> ScientistService::getScientists()
     return _scientists;
 }
 
-void ScientistService::ScientistsOrderByName() //Order scientists by name.
+void ScientistService::ScientistsAscendingOrder(int n) //Ascending order.
 {
-    NameComparisonScientist cmp;
-    std::sort(_scientists.begin(), _scientists.end(), cmp);
+    _scientists = _data.ScientistsAscendingOrder(n);
+    //NameComparison cmp;
+    //std::sort(_scientists.begin(), _scientists.end(), cmp);
 }
 
-void ScientistService::ScientistsOrderByDoB() //Order scientists by birth year.
+void ScientistService::ScientistsDescendingOrder(int n) //Descending order.
 {
-    DoBComparison cmp;
-    std::sort(_scientists.begin(), _scientists.end(), cmp);
+    _scientists = _data.ScientistsDescendingOrder(n);
+    //DoBComparison cmp;
+    //std::sort(_scientists.begin(), _scientists.end(), cmp);
 }
 
-void ScientistService::ScientistsOrderByDoD() //Order scientists by death year.
+/*void ScientistService::ScientistsOrderByDoD() //Order scientists by death year.
 {
     DoDComparison cmp;
     std::sort(_scientists.begin(), _scientists.end(), cmp);
@@ -32,11 +34,11 @@ void ScientistService::ScientistsOrderByGender() //Order scientists by gender.
 {
     GenderComparison cmp;
     std::sort(_scientists.begin(), _scientists.end(), cmp);
-}
+}*/
 
 vector<Scientist> ScientistService::findScientistByName(string name)
 {
-    vector<Scientist> scientists = _data.findScientist(name);
+    vector<Scientist> scientists = _data.findScientistByName(name);
     /*int n = findScientistName(name);
 
     if(n != -1)
