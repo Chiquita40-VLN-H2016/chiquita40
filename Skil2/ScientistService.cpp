@@ -70,13 +70,13 @@ void ScientistService::addScientist(string n, int bd, int dd, char g)
     }*/
 }
 
-int ScientistService::deleteScientist(string name)
+int ScientistService::deleteScientist(int id)
 {
 
-    int n = findScientistName(name);
-    _data.deleteScientist(_scientists.at(n));
+    int n = findScientistId(id);
     if(n != -1)
     {
+        _data.deleteScientist(id);
         _scientists.erase(_scientists.begin()+n);
         //string s = constructStringForFile();
         //_data.deleteScientist(s);
@@ -100,14 +100,14 @@ void ScientistService::editScientist(string originName, string name, int dob, in
     }
 }
 
-int ScientistService::findScientistName(string name)
+int ScientistService::findScientistId(int id)
 {
     Scientist s;
 
     for(unsigned int i = 0; i < size(); i++)
     {
         s = _scientists.at(i);
-        if(s.getName() == name)
+        if(s.getId() == id)
         {
             return i;
         }

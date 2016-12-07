@@ -43,14 +43,14 @@ public:
     //void ComputersOrderByWasBuilt(); //Order computers by if computer was built or not.
     vector<Computer> findComputerByName(string name);
     void addComputer(string n, int b, string t, string wb);
-    int deleteComputer(string name);
+    int deleteComputer(int id);
     void editComputer(string originName, string name, int by, string type, string wasb);
 
 private:
     DataAccess _data;
     vector<Computer> _computers;
     size_t size();
-    int findComputerName(string name); //Helper function to find, add, edit and delete computer.
+    int findComputerId(int id); //Helper function to find, add, edit and delete computer.
 //    void createComputer(); // Það þarf að útfæra þetta uppá nýtt
 
 };
