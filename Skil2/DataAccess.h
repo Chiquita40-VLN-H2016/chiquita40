@@ -19,7 +19,8 @@ public:
     vector<Scientist> getScientists();
     int addScientist(Scientist sc);
     void deleteScientist(Scientist sc);
-    vector<Scientist> findScientist(string name);
+    vector<Scientist> findScientistByName(string search);
+    vector<Scientist> findScientistByYear(int search);
     vector<Scientist> ScientistsAscendingOrder(int n);
     vector<Scientist> ScientistsDescendingOrder(int n);
     void editScientist(Scientist scNew);
@@ -27,7 +28,8 @@ public:
     vector<Computer> getComputers();
     int addComputer(Computer c);
     void deleteComputer(Computer c);
-    vector<Computer> findComputer(string name);
+    vector<Computer> findComputerByName(string search);
+    vector<Computer> findComputerByYear(int search);
     vector<Computer> ComputersAscendingOrder(int n);
     vector<Computer> ComputersDescendingOrder(int n);
     void editComputer(Computer cNew);

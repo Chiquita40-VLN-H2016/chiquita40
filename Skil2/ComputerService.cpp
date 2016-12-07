@@ -46,7 +46,7 @@ void ComputerService::ComputersOrderByWasBuilt() //Order computers by if compute
 
 vector<Computer> ComputerService::findComputerByName(string name)
 {
-    vector<Computer> computers = _data.findComputer(name);
+    vector<Computer> computers = _data.findComputerByName(name);
 
     return computers;
 }

@@ -204,28 +204,28 @@ void ConsoleUI::list() //Gets user input on how to sort the list.
 }
 void ConsoleUI::listName() //Gets a list of the scientists and prints it out ordered by name.
 {
-    _scs.ScientistsOrderByName();
+    //_scs.ScientistsOrderByName();
     vector<Scientist> sc = _scs.getScientists();
     printList(sc);
 }
 
 void ConsoleUI::listDoB() //Gets a list of the scientists and prints it out ordered by year of birth.
 {
-    _scs.ScientistsOrderByDoB();
+    //_scs.ScientistsOrderByDoB();
     vector<Scientist> sc = _scs.getScientists();
     printList(sc);
 }
 
 void ConsoleUI::listDoD() //Gets a list of the scientists and prints it out ordered by year of death.
 {
-    _scs.ScientistsOrderByDoD();
+    //_scs.ScientistsOrderByDoD();
     vector<Scientist> sc = _scs.getScientists();
     printList(sc);
 }
 
 void ConsoleUI::listGender() //Gets a list of the scientists and prints it out ordered by gender.
 {
-    _scs.ScientistsOrderByGender();
+    //_scs.ScientistsOrderByGender();
     vector<Scientist> sc = _scs.getScientists();
     printList(sc);
 }

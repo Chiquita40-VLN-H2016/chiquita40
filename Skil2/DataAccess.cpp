@@ -62,8 +62,32 @@ vector<Scientist> DataAccess::findScientistByName(string search)
 {
     vector<Scientist> scientists;
     QSqlQuery query(_db);
-    query.exec("SELECT * FROM Scientists WHERE Name like \"%(:search)%\"");
+    query.prepare("SELECT * FROM Scientists WHERE Name LIKE \"%(:search)%\"");
+    QString qstr = QString::fromStdString(search);
+    query.bindValue(":search", qstr);
+    query.exec();
 
+    while(query.next())
+    {
+        int id = query.value("ID").toUInt();
+        string name = query.value("Name").toString().toStdString();
+        int birth_year = query.value("Birth_Year").toUInt();
+        int death_year = query.value("Death_Year").toUInt();
+        string g = query.value("Gender").toString().toStdString();
+        char gender = g.front();
+        scientists.push_back(Scientist(id, name, birth_year, death_year, gender));
+    }
+
+    return scientists;
+}
+
+vector<Scientist> DataAccess::findScientistByYear(int search)
+{
+    vector<Scientist> scientists;
+    QSqlQuery query(_db);
+    query.prepare("SELECT * FROM Scientists WHERE Birth_Year LIKE \"%(:search)%\" OR Death_Year LIKE \"%(:search)%\"");
+    query.bindValue(":search", search);
+    query.exec();
     while(query.next())
     {
         int id = query.value("ID").toUInt();
@@ -196,11 +220,36 @@ void DataAccess::deleteComputer(Computer c)
     query.exec("DELETE FROM Computers WHERE Name = (:c.name) AND Build_Year = (:c.buildYear) AND Type = (:c.type) AND Was_Built = (:c.wasBuilt)");
 }
 
-vector<Computer> DataAccess::findComputer(string name)
+vector<Computer> DataAccess::findComputerByName(string search)
 {
     vector<Computer> computers;
     QSqlQuery query(_db);
-    query.exec("SELECT * FROM Computers WHERE Name = (:name)");
+    query.prepare("SELECT * FROM Computers WHERE Name LIKE \"%(:search)%\"");
+    QString qstr = QString::fromStdString(search);
+    query.bindValue(":search", qstr);
+    query.exec();
+
+    while(query.next())
+    {
+        int id = query.value("ID").toUInt();
+        string name = query.value("Name").toString().toStdString();
+        int buildYear = query.value("Build_Year").toUInt();
+        string type = query.value("Type").toString().toStdString();
+        bool wasBuilt = query.value("Was_Built").toBool();
+
+        computers.push_back(Computer(id, name, buildYear, type, wasBuilt));
+    }
+
+    return computers;
+}
+
+vector<Computer> DataAccess::findComputerByYear(int search)
+{
+    vector<Computer> computers;
+    QSqlQuery query(_db);
+    query.prepare("SELECT * FROM Scientists WHERE Build_Year LIKE \"%(:search)%\"");
+    query.bindValue(":search", search);
+    query.exec();
 
     while(query.next())
     {

@@ -38,7 +38,7 @@ void ScientistService::ScientistsOrderByGender() //Order scientists by gender.
 
 vector<Scientist> ScientistService::findScientistByName(string name)
 {
-    vector<Scientist> scientists = _data.findScientist(name);
+    vector<Scientist> scientists = _data.findScientistByName(name);
     /*int n = findScientistName(name);
 
     if(n != -1)
