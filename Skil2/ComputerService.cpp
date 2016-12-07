@@ -12,7 +12,7 @@ vector<Computer> ComputerService::getComputers()
 
 void ComputerService::ComputersOrderByName() //Order computers by name.
 {
-    NameComparison cmp;
+    NameComparisonComputer cmp;
     std::sort(_computers.begin(), _computers.end(), cmp);
 }
 

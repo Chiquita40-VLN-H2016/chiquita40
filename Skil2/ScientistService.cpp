@@ -12,7 +12,7 @@ vector<Scientist> ScientistService::getScientists()
 
 void ScientistService::ScientistsOrderByName() //Order scientists by name.
 {
-    NameComparison cmp;
+    NameComparisonScientist cmp;
     std::sort(_scientists.begin(), _scientists.end(), cmp);
 }
 

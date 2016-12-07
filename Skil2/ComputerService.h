@@ -9,7 +9,7 @@
 using namespace std;
 
 //Struct to order by name.
-struct NameComparison
+struct NameComparisonComputer
 {
   bool operator() (Computer i, Computer j) { return (i.getName()<j.getName());}
 };

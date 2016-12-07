@@ -21,7 +21,7 @@ void ConsoleUI::run()
 
         if(command == "add")
         {
-            add();
+            addScientist();
         }
         else if(command == "list")
         {
@@ -66,51 +66,85 @@ void ConsoleUI::commands()
     cout << "**********************************************************************" << endl;
 }
 
-void ConsoleUI::add() //Adds scientist to the list.
+void ConsoleUI::printListOfScientists(vector<Scientist> vs)
 {
-    string name;
+   printHeaderScientists();
+   for(size_t i = 0; i < vs.size(); i++)
+   {
+       cout << vs.at(i);
+   }
+   cout << endl;
+}
+
+void ConsoleUI::printHeaderScientists()
+{
+    cout << endl;
+    cout << "ID" << "\t" << "Scientist" << "\t" << "\t" << "\t" << "YoB" << "\t" << "YoD" << "\t" << "Gender" << endl;
+    cout << "=============================================================" << endl;
+}
+
+void ConsoleUI::printListOfComputers(vector<Computer> vc)
+{
+    printHeaderComputers();
+    for(size_t i = 0; i < vc.size(); i++)
+    {
+        cout << vc.at(i);
+    }
+    cout << endl;
+}
+
+void ConsoleUI::printHeaderComputers()
+{
+    cout << endl;
+    cout << "ID" << "\t" << "Computer" << "\t" << "\t" << "\t" << "Build year" << "\t" << "Type" << "\t" << "Was built" << endl;
+    cout << "=============================================================" << endl;
+}
+
+void ConsoleUI::addScientist() //Adds scientist to the list.
+{
+    string sName;
     int bDate;
     int dDate;
     char gender;
 
-    name = addName();
-    bDate = addBirthDate();
-    dDate = addDeathDate();
-    gender = addGender();
+    sName = addNameOfScientist();
+    bDate = addBirthDateOfScientist();
+    dDate = addDeathDateOfScientist();
+    gender = addGenderOfScientist();
 
-    _scs.addScientist(name, bDate, dDate, gender);
+    _scs.addScientist(sName, bDate, dDate, gender);
     listName();
 }
 
-string ConsoleUI::addName() //Gets a name of scientist from the user.
+string ConsoleUI::addNameOfScientist() //Gets a name of scientist from the user.
 {
-    string name;
+    string sName;
     cin.ignore(); //To empty cin in order to use getline();
     do
     {
         cout << "First and last name of scientist to add: ";
 
-        getline(cin,name);
+        getline(cin,sName);
 
-        if(name.size() == 0)
+        if(sName.size() == 0)
         {
             cout << endl;
-            cout << "! - No name was entered. - !" << endl;
+            cout << "! - No scientist name was entered. - !" << endl;
             cout << endl;
         }
-        else if(name.size() > 23)
+        else if(sName.size() > 23)
         {
             cout << endl;
-            cout << "! - Name you entered is too long. - !" << endl
-                 << "! - Name can be max 23 characters with space. - !" << endl;
+            cout << "! - Scientist name you entered is too long. - !" << endl
+                 << "! - Scientist name can be max 23 characters with space. - !" << endl;
             cout << endl;
         }
-    }while(name.size() == 0 || name.size() > 23);
+    }while(sName.size() == 0 || sName.size() > 23);
 
-    return name;
+    return sName;
 }
 
-int ConsoleUI::addBirthDate() //Gets a year of birth of scientist from user.
+int ConsoleUI::addBirthDateOfScientist() //Gets a year of birth of scientist from user.
 {
     int bDate = 2000;
     /*do
@@ -128,7 +162,7 @@ int ConsoleUI::addBirthDate() //Gets a year of birth of scientist from user.
     return bDate;
 }
 
-int ConsoleUI::addDeathDate() //Gets a year of death of scientist from user.
+int ConsoleUI::addDeathDateOfScientist() //Gets a year of death of scientist from user.
 {
     int dDate = 2020;
    /* do
@@ -149,7 +183,7 @@ int ConsoleUI::addDeathDate() //Gets a year of death of scientist from user.
     return dDate;
 }
 
-char ConsoleUI::addGender() //Gets a gender of scientist from user.
+char ConsoleUI::addGenderOfScientist() //Gets a gender of scientist from user.
 {
     char gender;
     do
@@ -165,6 +199,106 @@ char ConsoleUI::addGender() //Gets a gender of scientist from user.
     }while(gender != 'f' && gender != 'm');
 
     return gender;
+}
+
+void ConsoleUI::addComputer() //Adds computer to the list.
+{
+    string cName;
+    int buildYear;
+    string type;
+    string wasBuilt;
+
+    cName = addNameOfComputer();
+    buildYear = addBuildYearOfComputer();
+    type = addTypeOfComputer();
+    wasBuilt = addWasBuiltOfComputer();
+
+    _cs.addComputer(cName, buildYear, type, wasBuilt);
+    //listName();
+}
+
+string ConsoleUI::addNameOfComputer()
+{
+    string cName;
+    cin.ignore();
+    do
+    {
+        cout << "Name of Computer to add: ";
+
+        getline(cin,cName);
+
+        if(cName.size() == 0)
+        {
+            cout << endl;
+            cout << "! - No computer name was entered. - !" << endl;
+            cout << endl;
+        }
+        else if(cName.size() > 23)
+        {
+            cout << endl;
+            cout << "! - Computer name you entered is too long. - !" << endl
+                 << "! - Computer name can be max 23 characters with space. - !" << endl;
+            cout << endl;
+        }
+    }while(cName.size() == 0 || cName.size() > 23);
+
+    return cName;
+}
+
+int ConsoleUI::addBuildYearOfComputer()
+{
+    int buildYear = 1879;
+
+    return buildYear;
+}
+
+string ConsoleUI::addTypeOfComputer()
+{
+    string cType;
+    cin.ignore(); //To empty cin in order to use getline();
+    do
+    {
+        cout << "Type to add: ";
+
+        getline(cin,cType);
+
+        if(cType.size() == 0)
+        {
+            cout << endl;
+            cout << "! - No type was entered. - !" << endl;
+            cout << endl;
+        }
+        else if(cType.size() > 7)
+        {
+            cout << endl;
+            cout << "! - Computer name you entered is too long. - !" << endl
+                 << "! - Computer name can be max 7 characters with space. - !" << endl;
+            cout << endl;
+        }
+    }while(cType.size() == 0 || cType.size() > 7);
+
+    return cType;
+}
+
+string ConsoleUI::addWasBuiltOfComputer()
+{
+    string wasBuilt;
+    cin.ignore(); //To empty cin in order to use getline();
+    do
+    {
+        cout << "Has the computer been built, yes/no: ";
+
+        getline(cin,wasBuilt);
+
+        if(wasBuilt.size() == 0 || wasBuilt != "yes" || wasBuilt != "Yes" || wasBuilt != "YES"|| wasBuilt != "no" || wasBuilt != "No" || wasBuilt != "NO")
+        {
+            cout << endl;
+            cout << "! - Invalid input. - !" << endl;
+            cout << endl;
+        }
+    }while(wasBuilt.size() == 0 || wasBuilt != "yes" || wasBuilt != "Yes" || wasBuilt != "YES"|| wasBuilt != "no" || wasBuilt != "No" || wasBuilt != "NO");
+
+    return wasBuilt;
 }
 
 void ConsoleUI::list() //Gets user input on how to sort the list.
@@ -202,32 +336,33 @@ void ConsoleUI::list() //Gets user input on how to sort the list.
     }
 
 }
+
 void ConsoleUI::listName() //Gets a list of the scientists and prints it out ordered by name.
 {
     _scs.ScientistsOrderByName();
     vector<Scientist> sc = _scs.getScientists();
-    printList(sc);
+    printListOfScientists(sc);
 }
 
 void ConsoleUI::listDoB() //Gets a list of the scientists and prints it out ordered by year of birth.
 {
     _scs.ScientistsOrderByDoB();
     vector<Scientist> sc = _scs.getScientists();
-    printList(sc);
+    printListOfScientists(sc);
 }
 
 void ConsoleUI::listDoD() //Gets a list of the scientists and prints it out ordered by year of death.
 {
     _scs.ScientistsOrderByDoD();
     vector<Scientist> sc = _scs.getScientists();
-    printList(sc);
+    printListOfScientists(sc);
 }
 
 void ConsoleUI::listGender() //Gets a list of the scientists and prints it out ordered by gender.
 {
     _scs.ScientistsOrderByGender();
     vector<Scientist> sc = _scs.getScientists();
-    printList(sc);
+    printListOfScientists(sc);
 }
 
 void ConsoleUI::findScientist()
@@ -252,27 +387,27 @@ void ConsoleUI::findScientist()
     cout << endl;*/
 }
 
-void ConsoleUI::printList(vector<Scientist> v)
+void ConsoleUI::findComputer()
 {
-   printHeader();
-   for(size_t i = 0; i < v.size(); i++)
-   {
-       cout << v.at(i);
-   }
-   cout << endl;
+    string findC;
+
+    cin.ignore();
+    cout << "Enter the name of computer: ";
+    getline(cin,findC);
+    vector<Computer> c = _cs.findComputerByName(findC);
 }
 
 void ConsoleUI::deleteScientist()
 {
-    string deleteName;
+    string deleteScientistName;
     cout << "Enter first and last name of the scientist you want to delete: " << endl;
     cin.ignore();
-    getline(cin,deleteName);
-    int n = _scs.deleteScientist(deleteName);
+    getline(cin,deleteScientistName);
+    int n = _scs.deleteScientist(deleteScientistName);
     if(n == -1)
     {
         cout << endl;
-        cout << "! - " << deleteName << " was not found in the list. - !" << endl;
+        cout << "! - " << deleteScientistName << " was not found in the list. - !" << endl;
         cout << endl;
     }
     else
@@ -281,9 +416,28 @@ void ConsoleUI::deleteScientist()
     }
 }
 
+void ConsoleUI::deleteComputer()
+{
+    string deleteComputerName;
+    cout << "Enter the name of the computer you want to delete: " << endl;
+    cin.ignore();
+    getline(cin,deleteComputerName);
+    int n = _cs.deleteComputer(deleteComputerName);
+    if(n == -1)
+    {
+        cout << endl;
+        cout << "! - " << deleteComputerName << " was not found in the list. - !" << endl;
+        cout << endl;
+    }
+    else
+    {
+        //listName();
+    }
+}
+
 void ConsoleUI::editScientist()
 {
-    string editSC, name;
+    string editSC, sName;
     int dob, dod;
     char gender;
     cout << "Enter first and last name of the scientist you want to edit: " << endl;
@@ -317,9 +471,9 @@ void ConsoleUI::editScientist()
     }*/
 }
 
-string ConsoleUI::editName(Scientist sc)
+string ConsoleUI::editNameOfScientist(Scientist sc)
 {
-    string editSC, name;
+    string editSC, sName;
     cout << "Would you like to edit the name? yes or no: ";
     cin >> editSC;
 
@@ -329,37 +483,37 @@ string ConsoleUI::editName(Scientist sc)
         do
         {
             cout    << "Enter new first and last name: ";
-            getline(cin,name);
-            if(name.size() == 0)
+            getline(cin,sName);
+            if(sName.size() == 0)
             {
                 cout << endl;
                 cout << "! - No name was entered. - !" << endl;
                 cout << endl;
             }
-            else if(name.size() > 23)
+            else if(sName.size() > 23)
             {
                 cout << endl;
                 cout << "! - Name you entered is too long. - !" << endl << "! - Name can only be under 23 characters with space. - !" << endl;
                 cout << endl;
             }
 
-        }while(name.size() == 0 || name.size() > 23);
+        }while(sName.size() == 0 || sName.size() > 23);
     }
     else if(editSC == "no")
     {
-        name = sc.getName();
+        sName = sc.getName();
     }
     else
     {
         cout << endl;
         cout << "! - Invalid command, name will not be changed - !" << endl;
-        name = sc.getName();
+        sName = sc.getName();
         cout << endl;
     }
-    return name;
+    return sName;
 }
 
-int ConsoleUI::editBirthDate(Scientist sc)
+int ConsoleUI::editBirthDateOfScientist(Scientist sc)
 {
     string editSC;
     int dob;
@@ -394,7 +548,7 @@ int ConsoleUI::editBirthDate(Scientist sc)
     return dob;
 }
 
-int ConsoleUI::editDeathDate(Scientist sc)
+int ConsoleUI::editDeathDateOfScientist(Scientist sc)
 {
     string editSC;
     int dDate;
@@ -431,7 +585,8 @@ int ConsoleUI::editDeathDate(Scientist sc)
 
     return dDate;
 }
-char ConsoleUI::editGender(Scientist sc)
+
+char ConsoleUI::editGenderOfScientist(Scientist sc)
 {
     string editSC;
     char gender;
@@ -467,9 +622,167 @@ char ConsoleUI::editGender(Scientist sc)
     return gender;
 }
 
-void ConsoleUI::printHeader() //Prints out table header.
+void ConsoleUI::editComputer()
 {
-    cout << endl;
-    cout << "Scientist" << "\t" << "\t" << "\t" << "YoB" << "\t" << "YoD" << "\t" << "Gender" << endl;
-    cout << "=======================================================" << endl;
+    string editC, cName;
+    int by;
+    string t, wb;
+    cout << "Enter name of the computer you want to edit: " << endl;
+    cin.ignore();
+    getline(cin,editC);
+    vector<Computer> c = _cs.findComputerByName(editC);
+}
+
+string ConsoleUI::editNameOfComputer(Computer c)
+{
+    string editC, cName;
+    cout << "Would you like to edit the name? yes or no: ";
+    cin >> editC;
+
+    if(editC == "yes")
+    {
+        cin.ignore();
+        do
+        {
+            cout    << "Enter new first and last name: ";
+            getline(cin,cName);
+            if(cName.size() == 0)
+            {
+                cout << endl;
+                cout << "! - No name was entered. - !" << endl;
+                cout << endl;
+            }
+            else if(cName.size() > 23)
+            {
+                cout << endl;
+                cout << "! - Name you entered is too long. - !" << endl << "! - Name can only be under 23 characters with space. - !" << endl;
+                cout << endl;
+            }
+
+        }while(cName.size() == 0 || cName.size() > 23);
+    }
+    else if(editC == "no")
+    {
+        cName = c.getName();
+    }
+    else
+    {
+        cout << endl;
+        cout << "! - Invalid command, name will not be changed - !" << endl;
+        cName = c.getName();
+        cout << endl;
+    }
+    return cName;
+}
+
+int ConsoleUI::editBuildYearOfComputer(Computer c)
+{
+    string editC;
+    int by;
+    cout << "Would you like to edit the build year? yes or no: ";
+    cin >> editC;
+
+    if(editC == "yes")
+    {
+       /* do
+        {
+            cout << "Enter new year of Birth (YYYY): ";
+            cin >> dob;
+            if(dob.size() != 4 || isalpha(dob[0]) || isalpha(dob[1]) || isalpha(dob[2]) || isalpha(dob[3]))
+            {
+                cout << endl;
+                cout << "! - Invalid year format - !" << endl;
+                cout << endl;
+            }
+        }while(dob.size() != 4 || isalpha(dob[0]) || isalpha(dob[1]) || isalpha(dob[2]) || isalpha(dob[3]));*/
+    }
+    else if(editC == "no")
+    {
+        by = c.getBuildYear();
+    }
+    else
+    {
+        cout << endl;
+        cout << "! - Invalid command, build year will not be changed - !" << endl;
+        by = c.getBuildYear();
+        cout << endl;
+    }
+    return by;
+}
+
+string ConsoleUI::editTypeOfComputer(Computer c)
+{
+    string editC, cType;
+    cout << "Would you like to edit the type? yes or no: ";
+    cin >> editC;
+
+    if(editC == "yes")
+    {
+        cin.ignore();
+        do
+        {
+            cout    << "Enter new type: ";
+            getline(cin,cType);
+            if(cType.size() == 0)
+            {
+                cout << endl;
+                cout << "! - No type was entered. - !" << endl;
+                cout << endl;
+            }
+            else if(cType.size() > 7)
+            {
+                cout << endl;
+                cout << "! - Type you entered is too long. - !" << endl << "! - Type can only be under 7 characters with space. - !" << endl;
+                cout << endl;
+            }
+
+        }while(cType.size() == 0 || cType.size() > 7);
+    }
+    else if(editC == "no")
+    {
+        cType = c.getType();
+    }
+    else
+    {
+        cout << endl;
+        cout << "! - Invalid command, type will not be changed - !" << endl;
+        cType = c.getType();
+        cout << endl;
+    }
+    return cType;
+}
+
+string ConsoleUI::editWasBuiltOfComputer(Computer c)
+{
+    string editC, wasBuilt;
+    cout << "Would you like to edit if the computer has been built? yes or no: ";
+    cin >> editC;
+
+    if(editC == "yes")
+    {
+        cin.ignore();
+        do
+        {
+            cout    << "Enter yes or no: ";
+            getline(cin,wasBuilt);
+            if(wasBuilt.size() == 0 || wasBuilt != "yes" || wasBuilt != "Yes" || wasBuilt != "YES"|| wasBuilt != "no" || wasBuilt != "No" || wasBuilt != "NO")
+            {
+                cout << endl;
+                cout << "! - Invalid input. - !" << endl;
+                cout << endl;
+            }
+        }while(wasBuilt.size() == 0 || wasBuilt != "yes" || wasBuilt != "Yes" || wasBuilt != "YES"|| wasBuilt != "no" || wasBuilt != "No" || wasBuilt != "NO");
+    }
+    else if(editC == "no")
+    {
+        wasBuilt = c.getWasBuilt();
+    }
+    else
+    {
+        cout << endl;
+        cout << "! - Invalid command, type will not be changed - !" << endl;
+        wasBuilt = c.getWasBuilt();
+        cout << endl;
+    }
+    return wasBuilt;
 }
