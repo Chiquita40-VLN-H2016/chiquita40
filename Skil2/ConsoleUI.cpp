@@ -607,49 +607,49 @@ void ConsoleUI::listComputers()
 
 void ConsoleUI::listComputersByNameAsc()
 {
-    vector<Computer> c = _cs.getComputers();
+    vector<Computer> c = _scs.getComputers();
     printListOfComputers(c);
 }
 
 void ConsoleUI::listComputersByNameDesc()
 {
-    vector<Computer> c = _cs.getComputers();
+    vector<Computer> c = _scs.getComputers();
     printListOfComputers(c);
 }
 
 void ConsoleUI::listComputersByBuildYearAsc()
 {
-    vector<Computer> c = _cs.getComputers();
+    vector<Computer> c = _scs.getComputers();
     printListOfComputers(c);
 }
 
 void ConsoleUI::listComputersByBuildYearDesc()
 {
-    vector<Computer> c = _cs.getComputers();
+    vector<Computer> c = _scs.getComputers();
     printListOfComputers(c);
 }
 
 void ConsoleUI::listComputersByTypeAsc()
 {
-    vector<Computer> c = _cs.getComputers();
+    vector<Computer> c = _scs.getComputers();
     printListOfComputers(c);
 }
 
 void ConsoleUI::listComputersByTypeDesc()
 {
-    vector<Computer> c = _cs.getComputers();
+    vector<Computer> c = _scs.getComputers();
     printListOfComputers(c);
 }
 
 void ConsoleUI::listComputersIfWasBuiltAsc()
 {
-    vector<Computer> c = _cs.getComputers();
+    vector<Computer> c = _scs.getComputers();
     printListOfComputers(c);
 }
 
 void ConsoleUI::listComputersIfWasBuiltDesc()
 {
-    vector<Computer> c = _cs.getComputers();
+    vector<Computer> c = _scs.getComputers();
     printListOfComputers(c);
 }
 
