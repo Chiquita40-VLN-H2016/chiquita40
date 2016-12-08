@@ -410,3 +410,73 @@ void DataAccess::joinScientistAndComputer(int scientistId, int computerId)
     query.exec();
 }
 
+vector<Scientist> DataAccess::getScientistsByComputer(int id)
+{
+    vector<Scientist> scientists;
+    QSqlQuery query(_db);
+    query.prepare("SELECT S.ID, S.Name, S.Birth_Year, S.Death_Year, S.Gender "
+                  "FROM Scientists S "
+                  "JOIN Invented I ON S.ID = I.SID "
+                  "WHERE I.CID = (:id);");
+    query.bindValue(":id", id);
+    query.exec();
+
+    while(query.next())
+    {
+        int id = query.value("S.ID").toUInt();
+        string name = query.value("S.Name").toString().toStdString();
+        int birth_year = query.value("S.Birth_Year").toUInt();
+        int death_year = query.value("S.Death_Year").toUInt();
+        string g = query.value("S.Gender").toString().toStdString();
+        char gender = g.front();
+        scientists.push_back(Scientist(id, name, birth_year, death_year, gender));
+    }
+
+    return scientists;
+}
+
+vector<Computer> DataAccess::getComputersByScientist(int id)
+{
+    vector<Computer> computers;
+    QSqlQuery query(_db);
+
+    query.prepare("SELECT C.ID, C.Name, C.Build_Year, C.Type, C.Was_Built "
+                  "FROM Computers C "
+                  "JOIN Invented I ON C.ID = I.CID "
+                  "WHERE I.SID = (:id);");
+    query.bindValue(":id", id);
+    query.exec();
+
+    while(query.next())
+    {
+        int id = query.value("C.ID").toUInt();
+        string name = query.value("C.Name").toString().toStdString();
+        int buildYear = query.value("C.Build_Year").toUInt();
+        string type = query.value("C.Type").toString().toStdString();
+        bool wasBuilt = query.value("C.Was_Built").toBool();
+
+        computers.push_back(Computer(id, name, buildYear, type, wasBuilt));
+    }
+
+    return computers;
+}
+
+vector<Invented> DataAccess::getListOfComputersAndScientists()
+{
+    vector<Invented> connections;
+    QSqlQuery query(_db);
+    query.exec("SELECT S.Name as s_name, C.Name as c_name "
+               "FROM Scientists S "
+               "JOIN Invented I ON S.ID = I.SID "
+               "JOIN Computers C ON C.ID = I.CID;");
+
+    while(query.next())
+    {
+        string sName = query.value("s_name").toString().toStdString();
+        string cName = query.value("c_name").toString().toStdString();
+        connections.push_back(Invented(sName, cName));
+    }
+
+    return connections;
+}
+

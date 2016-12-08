@@ -2,6 +2,7 @@
 #define DATAACCESS_H
 #include "Scientist.h"
 #include "Computer.h"
+#include "Invented.h"
 
 #include <iostream>
 #include <vector>
@@ -36,6 +37,10 @@ public:
     void editComputer(Computer cNew);
 
     void joinScientistAndComputer(int scientistId, int computerId);
+    vector<Scientist> getScientistsByComputer(int id);
+    vector<Computer> getComputersByScientist(int id);
+    vector<Invented> getListOfComputersAndScientists();
+
 
 private:
     QSqlDatabase _db;
