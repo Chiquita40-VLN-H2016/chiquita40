@@ -122,6 +122,20 @@ int ScientistService::findScientistId(int id)
     return -1;
 }
 
+bool ScientistService::validYearCheck(int year)
+{
+    time_t t = time(NULL);
+    tm* timePtr = localtime(&t);
+
+    if(year >= 1000 && year <= timePtr->tm_year + 1900)
+    {
+        return true;
+    }
+
+    return false;
+
+}
+
 /*string ScientistService::constructStringForFile() //Creates vector to print in file.
 {
     string s;

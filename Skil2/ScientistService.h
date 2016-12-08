@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <ctime>
 
 using namespace std;
 
@@ -44,6 +45,7 @@ public:
     vector<Scientist> findScientistByYear(int year);
     vector<Scientist> findScientistByName(string search);
     void addScientist(string n, int bd, int dd, char g);
+    bool validYearCheck(int year);
     int deleteScientist(int id);
     void editScientist(int id, string name, int dob, int dod, char g);
 
