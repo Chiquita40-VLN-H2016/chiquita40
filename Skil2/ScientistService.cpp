@@ -106,6 +106,11 @@ void ScientistService::editScientist(int id, string name, int dob, int dod, char
     }
 }
 
+void ScientistService::closeDb()
+{
+    _data.dbClose();
+}
+
 int ScientistService::findScientistId(int id)
 {
     Scientist s;

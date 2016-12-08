@@ -4,10 +4,11 @@ using namespace std;
 
 DataAccess::DataAccess()
 {
-    _db = QSqlDatabase::addDatabase("QSQLITE");
+    _db = QSqlDatabase::addDatabase("QSQLITE", "CSdatabase");
     _db.setDatabaseName("C:/CSHistory.sqlite");
+    _db.open();
 
-/*    if (!_db.open())
+    /*if (!_db.open())
     {
         qDebug() << "Error: connection with database failed";
     }
@@ -17,10 +18,20 @@ DataAccess::DataAccess()
     }*/
 }
 
+DataAccess::~DataAccess()                    // Destructor
+{
+    //QSqlDatabase::removeDatabase("CSdatabase");
+}
+
+void DataAccess::dbClose()
+{
+    _db.close();
+    //QSqlDatabase::removeDatabase("CSdatabase");
+}
+
 vector<Scientist> DataAccess::getScientists()
 {
     vector<Scientist> scientists;
-    _db.open();
 
     QSqlQuery query(_db);
 
@@ -190,7 +201,6 @@ vector<Scientist> DataAccess::ScientistsDescendingOrder(int n)
     return scientists;
 }
 
-
 void DataAccess::editScientist(Scientist scNew)
 {
     QSqlQuery query(_db);
@@ -209,7 +219,6 @@ void DataAccess::editScientist(Scientist scNew)
 vector<Computer> DataAccess::getComputers()
 {
     vector<Computer> computers;
-    _db.open();
 
     QSqlQuery query(_db);
 
@@ -391,8 +400,10 @@ void DataAccess::editComputer(Computer cNew)
 
 //============================ Join functions =================================
 
-void joinScientistAndComputer(int scientistId, int computerId)
+void DataAccess::joinScientistAndComputer(int scientistId, int computerId)
 {
+    QSqlQuery query(_db);
+    query.exec("PRAGMA foreign_keys = ON");
     query.prepare("INSERT INTO Invented(SID, CID) "
                   "VALUES (:scId, :cId)");
     query.bindValue(":scId", scientistId);
