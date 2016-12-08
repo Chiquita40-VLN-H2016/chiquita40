@@ -16,7 +16,8 @@ SOURCES += main.cpp \
     DataAccess.cpp \
     ConsoleUI.cpp \
     Computer.cpp \
-    ComputerService.cpp
+    ComputerService.cpp \
+    SCService.cpp
 
 HEADERS += \
     ScientistService.h \
@@ -24,4 +25,5 @@ HEADERS += \
     DataAccess.h \
     ConsoleUI.h \
     Computer.h \
-    ComputerService.h
+    ComputerService.h \
+    SCService.h

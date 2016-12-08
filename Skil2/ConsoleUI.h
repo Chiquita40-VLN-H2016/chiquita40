@@ -3,10 +3,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "ScientistService.h"
 #include "Scientist.h"
-#include "ComputerService.h"
 #include "Computer.h"
+#include "SCService.h"
+
+//#include "ScientistService.h"
+//#include "ComputerService.h"
 
 using namespace std;
 
@@ -17,8 +19,7 @@ public:
     void run(); //Function to run ConsoleUI in main function.
 
 private:
-    ScientistService _scs;
-    ComputerService _cs;
+    SCService _scs;
 
     void commands(); //Prints out the program's commands.
 
