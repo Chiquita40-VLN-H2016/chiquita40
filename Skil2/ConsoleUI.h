@@ -30,7 +30,7 @@ private:
     void addScientist(); //Add new scientist.
     string addNameOfScientist();
     int addBirthDateOfScientist();
-    int addDeathDateOfScientist();
+    int addDeathDateOfScientist(int bDate);
     char addGenderOfScientist();
 
     void addComputer(); //Add new computer.

@@ -109,7 +109,7 @@ void ConsoleUI::addScientist() //Adds scientist to the list.
 
     sName = addNameOfScientist();
     bDate = addBirthDateOfScientist();
-    dDate = addDeathDateOfScientist();
+    dDate = addDeathDateOfScientist(bDate);
     gender = addGenderOfScientist();
 
     _scs.addScientist(sName, bDate, dDate, gender);
@@ -146,25 +146,75 @@ string ConsoleUI::addNameOfScientist() //Gets a name of scientist from the user.
 
 int ConsoleUI::addBirthDateOfScientist() //Gets a year of birth of scientist from user.
 {
-    int bDate = 2000;
-    /*do
+    int bDate;
+    //int bDate = 2020;
+
+    do
     {
         cout << "Year of Birth (YYYY): ";
         cin >> bDate;
-        if(bDate.size() != 4 || isalpha(bDate[0]) || isalpha(bDate[1]) || isalpha(bDate[2]) || isalpha(bDate[3]))
+        if(!_scs.validYearCheck(bDate))
         {
             cout << endl;
             cout << "! - Invalid year format - !" << endl;
             cout << endl;
+        }
+
+    }while(!_scs.validYearCheck(bDate));
+
+    /*do
+    {
+        cout << "Year of Birth (YYYY): ";
+        cin >> bDate;
+        if(bDate.sizecout << endl;
+            cout << "! - Invalid year format - !" << endl;
+            cout << endl;() != 4 || isalpha(bDate[0]) || isalpha(bDate[1]) || isalpha(bDate[2]) || isalpha(bDate[3]))
+        {
+
         }
     }while(bDate.size() != 4 || isalpha(bDate[0]) || isalpha(bDate[1]) || isalpha(bDate[2]) || isalpha(bDate[3]));*/
 
     return bDate;
 }
 
-int ConsoleUI::addDeathDateOfScientist() //Gets a year of death of scientist from user.
+int ConsoleUI::addDeathDateOfScientist(int bDate) //Gets a year of death of scientist from user.
 {
-    int dDate = 2020;
+    //int dDate = 2020;
+
+    int dDate;
+    string deadOrAlive;
+
+    do
+    {
+        cout << "Is scientist still alive? (yes/no): ";
+        cin >> deadOrAlive;
+
+        if(deadOrAlive == "no")
+        {
+            do
+            {
+                cout << "Year of Death (YYYY): ";
+                cin >> dDate;
+                if(!_scs.validYearCheck(dDate) || dDate < bDate)
+                {
+                    cout << endl;
+                    cout << "! - Invalid year format - !" << endl;
+                    cout << endl;
+                }
+            }while(!_scs.validYearCheck(dDate) || dDate < bDate);
+        }
+        else if(deadOrAlive == "yes")
+        {
+            dDate = 9999;
+        }
+        else
+        {
+            cout << endl;
+            cout << "! - Invalid choice, please enter 'yes' or 'no' - !" << endl;
+        }
+    }while(deadOrAlive != "no" && deadOrAlive != "yes");
+
+
    /* do
     {
         cout << "Year of Death (YYYY, or if still alive, write 'alive'): ";
@@ -247,7 +297,21 @@ string ConsoleUI::addNameOfComputer()
 
 int ConsoleUI::addBuildYearOfComputer()
 {
-    int buildYear = 1879;
+   // int buildYear = 1879;
+    int buildYear;
+
+    do
+    {
+        cout << "Enter build year (YYYY): ";
+        cin >> buildYear;
+        if(!_scs.validYearCheck(buildYear))
+        {
+            cout << endl;
+            cout << "! - Invalid year format - !" << endl;
+            cout << endl;
+        }
+
+    }while(!_scs.validYearCheck(buildYear));
 
     return buildYear;
 }
