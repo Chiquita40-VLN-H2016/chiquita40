@@ -7,9 +7,6 @@
 #include "Computer.h"
 #include "SCService.h"
 
-//#include "ScientistService.h"
-//#include "ComputerService.h"
-
 using namespace std;
 
 class ConsoleUI
