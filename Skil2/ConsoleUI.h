@@ -50,6 +50,15 @@ private:
     void listScientistsByDeathYearDesc();
     void listScientistsByGenderAsc();
     void listScientistsByGenderDesc();
+    void listComputers(); //Gets user input on how to sort the list of Computers.
+    void listComputersByNameAsc();
+    void listComputersByNameDesc();
+    void listComputersByBuildYearAsc();
+    void listComputersByBuildYearDesc();
+    void listComputersByTypeAsc();
+    void listComputersByTypeDesc();
+    void listComputersIfWasBuiltAsc();
+    void listComputersIfWasBuiltDesc();
 
     void findScientist();
     void findComputer();
