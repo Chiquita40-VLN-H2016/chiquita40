@@ -85,9 +85,9 @@ int ScientistService::deleteScientist(int id)
     return n;
 }
 
-void ScientistService::editScientist(string originName, string name, int dob, int dod, char g)
+void ScientistService::editScientist(int id, string name, int dob, int dod, char g)
 {
-    int n = findScientistName(originName);
+    int n = findScientistId(id);
     if(n != -1)
     { //Information on scientist updated using set functions.
         _scientists.at(n).setName(name);

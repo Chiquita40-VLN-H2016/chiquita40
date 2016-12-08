@@ -43,8 +43,8 @@ public:
     //void ScientistsOrderByGender(); //Order scientists by gender.
     vector<Scientist> findScientistByName(string name);
     void addScientist(string n, int bd, int dd, char g);
-    int deleteScientist(int idS);
-    void editScientist(string originName, string name, int dob, int dod, char g);
+    int deleteScientist(int id);
+    void editScientist(int id, string name, int dob, int dod, char g);
 
 private:
     DataAccess _data;

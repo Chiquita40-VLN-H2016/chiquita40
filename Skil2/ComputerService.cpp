@@ -79,7 +79,7 @@ int ComputerService::deleteComputer(int id)
     return n;
 }
 
-void ComputerService::editComputer(string originName, string name, int by, string type, string wasb)
+void ComputerService::editComputer(int id, string name, int by, string type, string wasb)
 {
     bool wasBuilt = false;
 
@@ -88,7 +88,7 @@ void ComputerService::editComputer(string originName, string name, int by, strin
         wasBuilt = true;
     }
 
-    int n = findComputerName(originName);
+    int n = findComputerId(id);
     if(n != -1)
     {
         _computers.at(n).setName(name);

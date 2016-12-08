@@ -44,7 +44,7 @@ public:
     vector<Computer> findComputerByName(string name);
     void addComputer(string n, int b, string t, string wb);
     int deleteComputer(int id);
-    void editComputer(string originName, string name, int by, string type, string wasb);
+    void editComputer(int id, string name, int by, string type, string wasb);
 
 private:
     DataAccess _data;
