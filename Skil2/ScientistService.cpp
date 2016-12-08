@@ -121,14 +121,13 @@ bool ScientistService::validYearCheck(int year)
     time_t t = time(NULL);
     tm* timePtr = localtime(&t);
 
-    if(year >= 1000 && year <= timePtr->tm_year)
+    if(year >= 1000 && year <= timePtr->tm_year + 1900)
     {
         return true;
     }
-    else
-    {
-        return false;
-    }
+
+    return false;
+
 }
 
 /*string ScientistService::constructStringForFile() //Creates vector to print in file.

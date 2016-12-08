@@ -586,7 +586,21 @@ int ConsoleUI::editBirthDateOfScientist(Scientist sc)
 
     if(editSC == "yes")
     {
-       /* do
+        do
+        {
+            cout << "Enter new year of Birth (YYYY): ";
+            cin >> dob;
+            if(!_scs.validYearCheck(dob))
+            {
+                cout << endl;
+                cout << "! - Invalid year format - !" << endl;
+                cout << endl;
+            }
+
+        }while(!_scs.validYearCheck(dob));
+
+
+        /* do
         {
             cout << "Enter new year of Birth (YYYY): ";
             cin >> dob;
