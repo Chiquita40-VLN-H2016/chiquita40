@@ -504,7 +504,7 @@ void ConsoleUI::deleteComputer()
 void ConsoleUI::editScientist()
 {
     string editSC, sName;
-    int dob, dod;
+    int bDate, dDate;
     char gender;
     cout << "Enter first and last name of the scientist you want to edit: " << endl;
     cin.ignore();
@@ -522,11 +522,11 @@ void ConsoleUI::editScientist()
         printHeader();
         cout << sc << endl;
         name = editName(sc);
-        dob = editBirthDate(sc);
-        dod = editDeathDate(sc);
+        bDate = editBirthDate(sc);
+        dDate = editDeathDate(sc, bDate);
         gender = editGender(sc);
 
-        _scs.editScientist(editSC, name, dob, dod, gender);
+        _scs.editScientist(editSC, name, bDate, dDate, gender);
         sc = _scs.findScientistByName(name);
 
         cout << endl;
@@ -582,7 +582,7 @@ string ConsoleUI::editNameOfScientist(Scientist sc)
 int ConsoleUI::editBirthDateOfScientist(Scientist sc)
 {
     string editSC;
-    int dob;
+    int bDate;
     cout << "Would you like to edit year of birth? yes or no: ";
     cin >> editSC;
 
@@ -591,52 +591,84 @@ int ConsoleUI::editBirthDateOfScientist(Scientist sc)
         do
         {
             cout << "Enter new year of Birth (YYYY): ";
-            cin >> dob;
-            if(!_scs.validYearCheck(dob))
+            cin >> bDate;
+            if(!_scs.validYearCheck(bDate))
             {
                 cout << endl;
                 cout << "! - Invalid year format - !" << endl;
                 cout << endl;
             }
 
-        }while(!_scs.validYearCheck(dob));
+        }while(!_scs.validYearCheck(bDate));
 
 
         /* do
         {
             cout << "Enter new year of Birth (YYYY): ";
-            cin >> dob;
-            if(dob.size() != 4 || isalpha(dob[0]) || isalpha(dob[1]) || isalpha(dob[2]) || isalpha(dob[3]))
+            cin >> bDate;
+            if(bDate.size() != 4 || isalpha(bDate[0]) || isalpha(bDate[1]) || isalpha(bDate[2]) || isalpha(bDate[3]))
             {
                 cout << endl;
                 cout << "! - Invalid year format - !" << endl;
                 cout << endl;
             }
-        }while(dob.size() != 4 || isalpha(dob[0]) || isalpha(dob[1]) || isalpha(dob[2]) || isalpha(dob[3]));*/
+        }while(bDate.size() != 4 || isalpha(bDate[0]) || isalpha(bDate[1]) || isalpha(bDate[2]) || isalpha(bDate[3]));*/
     }
     else if(editSC == "no")
     {
-        dob = sc.getBirthDate();
+        bDate = sc.getBirthDate();
     }
     else
     {
         cout << endl;
         cout << "! - Invalid command, year of birth will not be changed - !" << endl;
-        dob = sc.getBirthDate();
+        bDate = sc.getBirthDate();
         cout << endl;
     }
-    return dob;
+    return bDate;
 }
 
-int ConsoleUI::editDeathDateOfScientist(Scientist sc)
+int ConsoleUI::editDeathDateOfScientist(Scientist sc, int bDate)
 {
     string editSC;
+    string deadOrAlive;
     int dDate;
+
     cout << "Would you like to edit year of death? yes or no: ";
     cin >> editSC;
 
     if(editSC == "yes")
     {
+        do
+        {
+            cout << "Is scientist still alive? (yes/no): ";
+            cin >> deadOrAlive;
+
+            if(deadOrAlive == "no")
+            {
+                do
+                {
+                    cout << "Year of Death (YYYY): ";
+                    cin >> dDate;
+                    if(!_scs.validYearCheck(dDate) || dDate < bDate)
+                    {
+                        cout << endl;
+                        cout << "! - Invalid year format - !" << endl;
+                        cout << endl;
+                    }
+                }while(!_scs.validYearCheck(dDate) || dDate < bDate);
+            }
+            else if(deadOrAlive == "yes")
+            {
+                dDate = 9999;
+            }
+            else
+            {
+                cout << endl;
+                cout << "! - Invalid choice, please enter 'yes' or 'no' - !" << endl;
+            }
+        }while(deadOrAlive != "no" && deadOrAlive != "yes");
+
         /*do
         {
             cout << "Year of Death (YYYY, or if still alive, write 'alive'): ";
@@ -711,6 +743,8 @@ void ConsoleUI::editComputer()
     cin.ignore();
     getline(cin,editC);
     vector<Computer> c = _cs.findComputerByName(editC);
+
+    // Vantar föll hér til að kalla í editNameOfComputer osfrv.
 }
 
 string ConsoleUI::editNameOfComputer(Computer c)
@@ -758,36 +792,38 @@ string ConsoleUI::editNameOfComputer(Computer c)
 int ConsoleUI::editBuildYearOfComputer(Computer c)
 {
     string editC;
-    int by;
+    int buildYear;
+
     cout << "Would you like to edit the build year? yes or no: ";
     cin >> editC;
 
     if(editC == "yes")
     {
-       /* do
+        do
         {
-            cout << "Enter new year of Birth (YYYY): ";
-            cin >> dob;
-            if(dob.size() != 4 || isalpha(dob[0]) || isalpha(dob[1]) || isalpha(dob[2]) || isalpha(dob[3]))
+            cout << "Enter build year (YYYY): ";
+            cin >> buildYear;
+            if(!_scs.validYearCheck(buildYear))
             {
                 cout << endl;
                 cout << "! - Invalid year format - !" << endl;
                 cout << endl;
             }
-        }while(dob.size() != 4 || isalpha(dob[0]) || isalpha(dob[1]) || isalpha(dob[2]) || isalpha(dob[3]));*/
+
+        }while(!_scs.validYearCheck(buildYear));
     }
     else if(editC == "no")
     {
-        by = c.getBuildYear();
+        buildYear = c.getBuildYear();
     }
     else
     {
         cout << endl;
         cout << "! - Invalid command, build year will not be changed - !" << endl;
-        by = c.getBuildYear();
+        buildYear = c.getBuildYear();
         cout << endl;
     }
-    return by;
+    return buildYear;
 }
 
 string ConsoleUI::editTypeOfComputer(Computer c)

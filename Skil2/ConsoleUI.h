@@ -53,7 +53,7 @@ private:
     void editScientist();
     string editNameOfScientist(Scientist sc);
     int editBirthDateOfScientist(Scientist sc);
-    int editDeathDateOfScientist(Scientist sc);
+    int editDeathDateOfScientist(Scientist sc, int bDate);
     char editGenderOfScientist(Scientist sc);
     void editComputer();
     string editNameOfComputer(Computer c);
