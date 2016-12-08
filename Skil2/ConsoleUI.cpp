@@ -6,7 +6,7 @@ ConsoleUI::ConsoleUI()
 }
 
 void ConsoleUI::run()
-{   
+{
     string command;
 
     cout    << "Welcome!" << endl
@@ -47,7 +47,7 @@ void ConsoleUI::run()
             }
             else if(choice == 2)
             {
-                //listComputers(); print list of computers
+                listComputers();
             }
             else if(choice == 3)
             {
@@ -106,7 +106,7 @@ void ConsoleUI::run()
         else if(command == "quit")
         {
             _scs.closeDb();
-            _cs.closeDb();
+
             break;
         }
         else
@@ -228,24 +228,11 @@ int ConsoleUI::addBirthDateOfScientist() //Gets a year of birth of scientist fro
 
     }while(!_scs.validYearCheck(bDate));
 
-    /*do
-    {
-        cout << "Year of Birth (YYYY): ";
-        cin >> bDate;
-        if(bDate.sizecout << endl;
-            cout << "! - Invalid year format - !" << endl;
-            cout << endl;() != 4 || isalpha(bDate[0]) || isalpha(bDate[1]) || isalpha(bDate[2]) || isalpha(bDate[3]))
-        {
-
-        }
-    }while(bDate.size() != 4 || isalpha(bDate[0]) || isalpha(bDate[1]) || isalpha(bDate[2]) || isalpha(bDate[3]));*/
-
     return bDate;
 }
 
 int ConsoleUI::addDeathDateOfScientist(int bDate) //Gets a year of death of scientist from user.
 {
-    //int dDate = 2020;
 
     int dDate;
     char deadOrAlive;
@@ -280,22 +267,6 @@ int ConsoleUI::addDeathDateOfScientist(int bDate) //Gets a year of death of scie
         }
     }while(deadOrAlive != 'n' && deadOrAlive != 'y');
 
-
-   /* do
-    {
-        cout << "Year of Death (YYYY, or if still alive, write 'alive'): ";
-        cin >> dDate;
-        //This boolean ensures that the user either enters 4 digits or the word 'alive'.
-        if((isalpha(dDate[0]) && dDate != "alive") || (isalpha(dDate[1]) && dDate != "alive") || (isalpha(dDate[2])
-            && dDate != "alive") || (isalpha(dDate[3]) && dDate != "alive") || (isdigit(dDate[0]) && dDate.size() != 4))
-        {
-            cout << endl;
-            cout << "! - Invalid year format - !" << endl;
-            cout << endl;
-        }
-     }while((isalpha(dDate[0]) && dDate != "alive") || (isalpha(dDate[1]) && dDate != "alive") || (isalpha(dDate[2])
-        && dDate != "alive") || (isalpha(dDate[3]) && dDate != "alive") || (isdigit(dDate[0]) && dDate.size() != 4));*/
-
     return dDate;
 }
 
@@ -329,7 +300,7 @@ void ConsoleUI::addComputer() //Adds computer to the list.
     type = addTypeOfComputer();
     wasBuilt = addWasBuiltOfComputer();
 
-    _cs.addComputer(cName, buildYear, type, wasBuilt);
+    _scs.addComputer(cName, buildYear, type, wasBuilt);
     //listName();
 }
 
@@ -518,63 +489,170 @@ void ConsoleUI::listScientists()
                 cout << "! - Invalid command - !" << endl;
                 cout << endl;
     }
-
 }
 
 void ConsoleUI::listScientistsByNameAsc()
 {
-    //_scs.ScientistsOrderByName();
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
 }
 
 void ConsoleUI::listScientistsByNameDesc()
 {
-    //_scs.ScientistsOrderByName();
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
 }
 
 void ConsoleUI::listScientistsByBirthYearAsc()
 {
-    //_scs.ScientistsOrderByDoB();
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
 }
 
 void ConsoleUI::listScientistsByBirthYearDesc()
 {
-    //_scs.ScientistsOrderByDoB();
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
 }
 
 void ConsoleUI::listScientistsByDeathYearAsc()
 {
-    //_scs.ScientistsOrderByDoD();
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
 }
 
 void ConsoleUI::listScientistsByDeathYearDesc()
 {
-    //_scs.ScientistsOrderByDoD();
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
 }
 
 void ConsoleUI::listScientistsByGenderAsc()
 {
-    //_scs.ScientistsOrderByGender();
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
 }
 
 void ConsoleUI::listScientistsByGenderDesc()
 {
-    //_scs.ScientistsOrderByGender();
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
+}
+
+void ConsoleUI::listComputers()
+{
+    char in;
+    char sort;
+
+    cout    << "********************************************************" << endl;
+    cout    << "1 - For a list of computers ordered by name" << endl;
+    cout    << "2 - For a list of computers ordered by build year" << endl;
+    cout    << "3 - For a list of computers ordered by type" << endl;
+    cout    << "4 - For a list of computers ordered by if was built or not" << endl;
+    cout    << "********************************************************" << endl;
+
+    cout << "Please enter now: " << endl;
+    cin >> in;
+
+    switch(in)
+    {
+        case '1':
+                sort = chooseSortingMethod();
+                if(sort == '1')
+                {
+                    listComputersIfWasBuiltAsc();
+                }
+                else if(sort == '2')
+                {
+                    listComputersIfWasBuiltDesc();
+                }
+                break;
+        case '2':
+                sort = chooseSortingMethod();
+                if(sort == '1')
+                {
+                    listComputersByBuildYearAsc();
+                }
+                else if(sort == '2')
+                {
+                    listComputersByBuildYearDesc();
+                }
+                break;
+        case '3':
+                sort = chooseSortingMethod();
+                if(sort == '1')
+                {
+                    listComputersByTypeAsc();
+                }
+                else if(sort == '2')
+                {
+                    listComputersByTypeDesc();
+                }
+                break;
+        case '4':
+                sort = chooseSortingMethod();
+                if(sort == '1')
+                {
+                    listComputersIfWasBuiltAsc();
+                }
+                else if(sort == '2')
+                {
+                    listComputersIfWasBuiltDesc();
+                }
+                break;
+        default:
+                cout << endl;
+                cout << "! - Invalid command - !" << endl;
+                cout << endl;
+    }
+}
+
+void ConsoleUI::listComputersByNameAsc()
+{
+    vector<Computer> c = _scs.getComputers();
+    printListOfComputers(c);
+}
+
+void ConsoleUI::listComputersByNameDesc()
+{
+    vector<Computer> c = _scs.getComputers();
+    printListOfComputers(c);
+}
+
+void ConsoleUI::listComputersByBuildYearAsc()
+{
+    vector<Computer> c = _scs.getComputers();
+    printListOfComputers(c);
+}
+
+void ConsoleUI::listComputersByBuildYearDesc()
+{
+    vector<Computer> c = _scs.getComputers();
+    printListOfComputers(c);
+}
+
+void ConsoleUI::listComputersByTypeAsc()
+{
+    vector<Computer> c = _scs.getComputers();
+    printListOfComputers(c);
+}
+
+void ConsoleUI::listComputersByTypeDesc()
+{
+    vector<Computer> c = _scs.getComputers();
+    printListOfComputers(c);
+}
+
+void ConsoleUI::listComputersIfWasBuiltAsc()
+{
+    vector<Computer> c = _scs.getComputers();
+    printListOfComputers(c);
+}
+
+void ConsoleUI::listComputersIfWasBuiltDesc()
+{
+    vector<Computer> c = _scs.getComputers();
+    printListOfComputers(c);
 }
 
 void ConsoleUI::findScientist()
@@ -585,18 +663,7 @@ void ConsoleUI::findScientist()
     cout << "Enter the name of scientist: ";
     getline(cin,findSc);
     vector<Scientist> sc = _scs.findScientistByName(findSc);
-    /*if(sc.getName() == "")
-    {
-        cout << endl;
-        cout << "! - Scientist was not found. - !" << endl;
-        cout << endl;
-    }
-    else
-    {
-        printHeader();
-        cout << sc;
-    }
-    cout << endl;*/
+
 }
 
 void ConsoleUI::findComputer()
@@ -606,7 +673,7 @@ void ConsoleUI::findComputer()
     cin.ignore();
     cout << "Enter the name of computer: ";
     getline(cin,findC);
-    vector<Computer> c = _cs.findComputerByName(findC);
+    vector<Computer> c = _scs.findComputerByName(findC);
 }
 
 void ConsoleUI::deleteScientist()
@@ -636,7 +703,7 @@ void ConsoleUI::deleteComputer()
     cin.ignore();
     getline(cin,deleteComputerName);
     int id = 0; //Preliminary placeholder. Þarf að breyta.
-    int n = _cs.deleteComputer(id);
+    int n = _scs.deleteComputer(id);
     if(n == -1)
     {
         cout << endl;
@@ -658,31 +725,7 @@ void ConsoleUI::editScientist()
     cin.ignore();
     getline(cin,editSC);
     vector<Scientist> sc = _scs.findScientistByName(editSC);
-    /*if(sc.getName() == "")
-    {
-        cout << endl;
-        cout << "! - Scientist was not found. - !" << endl;
-        cout << endl;
-    }
-    else
-    {
-        cout << "You want to edit: " << endl;
-        printHeader();
-        cout << sc << endl;
-        name = editName(sc);
-        bDate = editBirthDate(sc);
-        dDate = editDeathDate(sc, bDate);
-        gender = editGender(sc);
 
-        _scs.editScientist(editSC, name, bDate, dDate, gender);
-        sc = _scs.findScientistByName(name);
-
-        cout << endl;
-        cout << "Scientist has now been edited: " << endl;
-        printHeader();
-        cout << sc << endl;
-        cout << endl;
-    }*/
 }
 
 string ConsoleUI::editNameOfScientist(Scientist sc)
@@ -750,18 +793,6 @@ int ConsoleUI::editBirthDateOfScientist(Scientist sc)
 
         }while(!_scs.validYearCheck(bDate));
 
-
-        /* do
-        {
-            cout << "Enter new year of Birth (YYYY): ";
-            cin >> bDate;
-            if(bDate.size() != 4 || isalpha(bDate[0]) || isalpha(bDate[1]) || isalpha(bDate[2]) || isalpha(bDate[3]))
-            {
-                cout << endl;
-                cout << "! - Invalid year format - !" << endl;
-                cout << endl;
-            }
-        }while(bDate.size() != 4 || isalpha(bDate[0]) || isalpha(bDate[1]) || isalpha(bDate[2]) || isalpha(bDate[3]));*/
     }
     else if(editSC == tolower('n'))
     {
@@ -817,20 +848,6 @@ int ConsoleUI::editDeathDateOfScientist(Scientist sc, int bDate)
                 cout << "! - Invalid choice, please enter 'y' or 'n' - !" << endl;
             }
         }while(deadOrAlive != tolower('n') && deadOrAlive != tolower('y'));
-
-        /*do
-        {
-            cout << "Year of Death (YYYY, or if still alive, write 'alive'): ";
-            cin >> dDate;
-            if((isalpha(dDate[0]) && dDate != "alive") || (isalpha(dDate[1]) && dDate != "alive") || (isalpha(dDate[2])
-                && dDate != "alive") || (isalpha(dDate[3]) && dDate != "alive") || (isdigit(dDate[0]) && dDate.size() != 4))
-            {
-                cout << endl;
-                cout << "! - Invalid year format - !" << endl;
-                cout << endl;
-            }
-         }while((isalpha(dDate[0]) && dDate != "alive") || (isalpha(dDate[1]) && dDate != "alive") || (isalpha(dDate[2])
-            && dDate != "alive") || (isalpha(dDate[3]) && dDate != "alive") || (isdigit(dDate[0]) && dDate.size() != 4));*/
     }
     else if(editSC == tolower('n'))
     {
@@ -891,7 +908,7 @@ void ConsoleUI::editComputer()
     cout << "Enter name of the computer you want to edit: " << endl;
     cin.ignore();
     getline(cin,editC);
-    vector<Computer> c = _cs.findComputerByName(editC);
+    vector<Computer> c = _scs.findComputerByName(editC);
 
     // Vantar föll hér til að kalla í editNameOfComputer osfrv.
 }
