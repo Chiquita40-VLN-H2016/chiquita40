@@ -25,6 +25,12 @@ private:
     void printListOfComputers(vector<Computer> vc);
     void printHeaderComputers(); //Prints out Computers table header.
 
+    void commandAdd();
+    void commandList();
+    void commandFind();
+    void commandEdit();
+    void commandDelete();
+
     void addScientist(); //Add new scientist.
     string addNameOfScientist();
     int addBirthDateOfScientist();
@@ -72,6 +78,7 @@ private:
     int editBuildYearOfComputer(Computer c);
     string editTypeOfComputer(Computer c);
     char editWasBuiltOfComputer(Computer c);
+
 };
 
 #endif // CONSOLEUI_H

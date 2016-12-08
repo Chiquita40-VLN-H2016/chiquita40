@@ -12,7 +12,8 @@ void ConsoleUI::run()
     string command;
 
     cout    << "Welcome!" << endl
-            << "This is a list that contains well known characters from Computer Science\n" << endl;
+            << "This is a list that contains well known characters" << endl
+            << "and computers from Computer Science\n" << endl;
 
     do
     {
@@ -23,83 +24,23 @@ void ConsoleUI::run()
 
         if(command == "add")
         {
-            int choice = 0;
-            cout << "1 - To add new scientist" << endl;
-            cout << "2 - To add new computer" << endl;
-            cin >> choice;
-            if(choice == 1)
-            {
-                addScientist();
-            }
-            else if(choice == 2)
-            {
-                addComputer();
-            }
+            commandAdd();
         }
         else if(command == "list")
         {
-            int choice = 0;
-            cout << "1 - Show and sort list of scientists" << endl;
-            cout << "2 - Show and sort list of computers" << endl;
-            cout << "3 - Show and sort list of scientists and computers" << endl;
-            cin >> choice;
-            if(choice == 1)
-            {
-                listScientists();
-            }
-            else if(choice == 2)
-            {
-                listComputers();
-            }
-            else if(choice == 3)
-            {
-                //print list of scientists and computers
-            }
+            commandList();
         }
         else if(command == "find")
         {
-            int choice = 0;
-            cout << "1 - Find scientist" << endl;
-            cout << "2 - Find computer" << endl;
-            cin >> choice;
-            if(choice == 1)
-            {
-                findScientist();
-            }
-            else if(choice == 2)
-            {
-                findComputer();
-            }
+            commandFind();
         }
         else if(command == "edit")
         {
-            int choice = 0;
-            cout << "1 - Edit scientist" << endl;
-            cout << "2 - Edit computer" << endl;
-            cin >> choice;
-            if(choice == 1)
-            {
-                editScientist();
-            }
-            else if(choice == 2)
-            {
-                editComputer();
-            }
+            commandEdit();
         }
         else if(command == "delete")
         {
-            int choice = 0;
-            cout << "1 - Delete scientist" << endl;
-            cout << "2 - Delete computer" << endl;
-            cin >> choice;
-            if(choice == 1)
-            {
-                deleteScientist();
-            }
-            else if(choice == 2)
-            {
-                deleteComputer();
-            }
+            commandDelete();
         }
         else if(command == "join")
         {
@@ -121,7 +62,7 @@ void ConsoleUI::run()
 
 void ConsoleUI::commands()
 {
-    cout << "**********************************************************************" << endl;
+    cout << "*********************************************************************" << endl;
     cout << "Please enter one of the following commands:" << endl
          << "add \t - Add new scientist or computer" << endl
          << "list \t - Show a list of all scientists and/or computers" << endl
@@ -131,6 +72,121 @@ void ConsoleUI::commands()
          << "join \t - Connect scientist with computer" << endl
          << "quit \t - Quit the program" << endl;
     cout << "**********************************************************************" << endl;
+}
+
+void ConsoleUI::commandAdd()
+{
+    int choice = 0;
+
+    cout << "----------------------------------------------------------------------" << endl;
+    cout << "1 - To add new scientist" << endl;
+    cout << "2 - To add new computer" << endl;
+    cout << "----------------------------------------------------------------------" << endl;
+
+    cout << "Please enter now: ";
+    cin >> choice;
+
+    if(choice == 1)
+    {
+        addScientist();
+    }
+    else if(choice == 2)
+    {
+        addComputer();
+    }
+}
+
+void ConsoleUI::commandList()
+{
+    int choice = 0;
+
+    cout << "----------------------------------------------------------------------" << endl;
+    cout << "1 - Show and sort list of scientists" << endl;
+    cout << "2 - Show and sort list of computers" << endl;
+    cout << "3 - Show and sort list of scientists and computers" << endl;
+    cout << "----------------------------------------------------------------------" << endl;
+
+    cout << "Please enter now: ";
+    cin >> choice;
+
+    if(choice == 1)
+    {
+        listScientists();
+    }
+    else if(choice == 2)
+    {
+        listComputers();
+    }
+    else if(choice == 3)
+    {
+        //print list of scientists and computers
+    }
+}
+
+void ConsoleUI::commandFind()
+{
+    int choice = 0;
+
+    cout << "----------------------------------------------------------------------" << endl;
+    cout << "1 - Find scientist" << endl;
+    cout << "2 - Find computer" << endl;
+    cout << "----------------------------------------------------------------------" << endl;
+
+    cout << "Please enter now: ";
+    cin >> choice;
+
+    if(choice == 1)
+    {
+        findScientist();
+    }
+    else if(choice == 2)
+    {
+        findComputer();
+    }
+}
+
+void ConsoleUI::commandEdit()
+{
+    int choice = 0;
+
+    cout << "----------------------------------------------------------------------" << endl;
+    cout << "1 - Edit scientist" << endl;
+    cout << "2 - Edit computer" << endl;
+    cout << "----------------------------------------------------------------------" << endl;
+
+    cout << "Please enter now: ";
+    cin >> choice;
+
+    if(choice == 1)
+    {
+        editScientist();
+    }
+    else if(choice == 2)
+    {
+        editComputer();
+    }
+}
+
+void ConsoleUI::commandDelete()
+{
+    int choice = 0;
+
+    cout << "----------------------------------------------------------------------" << endl;
+    cout << "1 - Delete scientist" << endl;
+    cout << "2 - Delete computer" << endl;
+    cout << "----------------------------------------------------------------------" << endl;
+
+    cout << "Please enter now: ";
+    cin >> choice;
+
+    if(choice == 1)
+    {
+        deleteScientist();
+    }
+    else if(choice == 2)
+    {
+        deleteComputer();
+    }
 }
 
 void ConsoleUI::printListOfScientists(vector<Scientist> vs)
@@ -164,7 +220,7 @@ void ConsoleUI::printHeaderComputers()
 {
     cout << endl;
     cout << "ID" << "\t" << "Computer" << "\t" << "\t" << "\t" << "Build year" << "\t" << "Type" << "\t" << "Was built" << endl;
-    cout << "=============================================================" << endl;
+    cout << "=====================================================================" << endl;
 }
 
 void ConsoleUI::addScientist() //Adds scientist to the list.
@@ -385,15 +441,15 @@ char ConsoleUI::addWasBuiltOfComputer()
     char wasBuilt;
     do
     {
-        cout << "Has the computer been built, y/n: ";
+        cout    << "Has the computer been built, y/n: ";
 
-        cin >> wasBuilt;
+        cin     >> wasBuilt;
 
         if(wasBuilt != tolower('y') || wasBuilt != tolower('n'))
         {
-            cout << endl;
-            cout << "! - Invalid choice, please enter 'y' or 'n' - !" << endl;
-            cout << endl;
+            cout    << endl;
+            cout    << "! - Invalid choice, please enter 'y' or 'n' - !" << endl;
+            cout    << endl;
         }
     }while(wasBuilt != tolower('y') || wasBuilt != tolower('n'));
 
@@ -405,18 +461,19 @@ char ConsoleUI::chooseSortingMethod()
     char sort;
     do
     {
-        cout    << "**********************************" << endl;
-        cout << "1 - Print in ascending order." << endl;
-        cout << "2 - Print in descending order." << endl;
-        cout    << "**********************************" << endl;
+        cout    << "----------------------------------------------------------------------" << endl;
+        cout    << "1 - Print in ascending order." << endl;
+        cout    << "2 - Print in descending order." << endl;
+        cout    << "----------------------------------------------------------------------" << endl;
 
+        cout << "Please enter now: ";
         cin >> sort;
 
         if(sort != '1' && sort != '2')
         {
-            cout << endl;
-            cout << "! - Invalid choice, please enter '1' or '2' - !" << endl;
-            cout << endl;
+            cout    << endl;
+            cout    << "! - Invalid choice, please enter '1' or '2' - !" << endl;
+            cout    << endl;
         }
     }while(sort != '1' && sort != '2');
 
@@ -428,14 +485,14 @@ void ConsoleUI::listScientists()
     char in;
     char sort;
 
-    cout    << "********************************************************" << endl;
+    cout    << "----------------------------------------------------------------------" << endl;
     cout    << "1 - For a list of scientists ordered by name" << endl;
     cout    << "2 - For a list of scientists ordered by birth year" << endl;
     cout    << "3 - For a list of scientists ordered by death year" << endl;
     cout    << "4 - For a list of scientists ordered by gender" << endl;
-    cout    << "********************************************************" << endl;
+    cout    << "----------------------------------------------------------------------" << endl;
 
-    cout << "Please enter now: " << endl;
+    cout << "Please enter now: ";
     cin >> in;
 
     switch(in)
@@ -544,14 +601,14 @@ void ConsoleUI::listComputers()
     char in;
     char sort;
 
-    cout    << "********************************************************" << endl;
+    cout    << "----------------------------------------------------------------------" << endl;
     cout    << "1 - For a list of computers ordered by name" << endl;
     cout    << "2 - For a list of computers ordered by build year" << endl;
     cout    << "3 - For a list of computers ordered by type" << endl;
     cout    << "4 - For a list of computers ordered by if was built or not" << endl;
-    cout    << "********************************************************" << endl;
+    cout    << "----------------------------------------------------------------------" << endl;
 
-    cout << "Please enter now: " << endl;
+    cout << "Please enter now: ";
     cin >> in;
 
     switch(in)
@@ -1070,3 +1127,4 @@ char ConsoleUI::editWasBuiltOfComputer(Computer c)
     }
     return wasBuilt;
 }
+

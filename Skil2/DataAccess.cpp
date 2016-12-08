@@ -5,7 +5,7 @@ using namespace std;
 DataAccess::DataAccess()
 {
     _db = QSqlDatabase::addDatabase("QSQLITE", "CSdatabase");
-    _db.setDatabaseName("C:/CSHistory.sqlite");
+    _db.setDatabaseName("C:/sql/CSHistory.sqlite");
     _db.open();
 
     /*if (!_db.open())
