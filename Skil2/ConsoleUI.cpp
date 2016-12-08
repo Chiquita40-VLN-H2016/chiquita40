@@ -36,7 +36,23 @@ void ConsoleUI::run()
         }
         else if(command == "list")
         {
-            list();
+            int choice = 0;
+            cout << "1 - Show and sort list of scientists" << endl;
+            cout << "2 - Show and sort list of computers" << endl;
+            cout << "3 - Show and sort list of scientists and computers" << endl;
+            cin >> choice;
+            if(choice == 1)
+            {
+                listScientists();
+            }
+            else if(choice == 2)
+            {
+                //listComputers(); print list of computers
+            }
+            else if(choice == 3)
+            {
+                //print list of scientists and computers
+            }
         }
         else if(command == "find")
         {
@@ -162,7 +178,7 @@ void ConsoleUI::addScientist() //Adds scientist to the list.
     gender = addGenderOfScientist();
 
     _scs.addScientist(sName, bDate, dDate, gender);
-    listName();
+    listScientistsByNameAsc();
 }
 
 string ConsoleUI::addNameOfScientist() //Gets a name of scientist from the user.
@@ -411,15 +427,39 @@ char ConsoleUI::addWasBuiltOfComputer()
     return wasBuilt;
 }
 
-void ConsoleUI::list() //Gets user input on how to sort the list.
+char ConsoleUI::chooseSortingMethod()
+{
+    char sort;
+    do
+    {
+        cout    << "**********************************" << endl;
+        cout << "1 - Print in ascending order." << endl;
+        cout << "2 - Print in descending order." << endl;
+        cout    << "**********************************" << endl;
+
+        cin >> sort;
+
+        if(sort != tolower('1') || sort != tolower('2'))
+        {
+            cout << endl;
+            cout << "! - Invalid choice, please enter '1' or '2' - !" << endl;
+            cout << endl;
+        }
+    }while(sort != tolower('1') || sort != tolower('2'));
+
+    return sort;
+}
+
+void ConsoleUI::listScientists()
 {
     char in;
+    char sort;
 
     cout    << "********************************************************" << endl;
-    cout    << "Enter n - For a list of scientists ordered by name" << endl;
-    cout    << "Enter b - For a list of scientists ordered by birth year" << endl;
-    cout    << "Enter d - For a list of scientists ordered by death year" << endl;
-    cout    << "Enter g - For a list of scientists ordered by gender" << endl;
+    cout    << "1 - For a list of scientists ordered by name" << endl;
+    cout    << "2 - For a list of scientists ordered by birth year" << endl;
+    cout    << "3 - For a list of scientists ordered by death year" << endl;
+    cout    << "4 - For a list of scientists ordered by gender" << endl;
     cout    << "********************************************************" << endl;
 
     cout << "Please enter now: " << endl;
@@ -427,17 +467,49 @@ void ConsoleUI::list() //Gets user input on how to sort the list.
 
     switch(in)
     {
-        case 'n':
-                listName();
+        case '1':
+                sort = chooseSortingMethod();
+                if(sort == '1')
+                {
+                    listScientistsByNameAsc();
+                }
+                else if(sort == '2')
+                {
+                    listScientistsByNameDesc();
+                }
                 break;
-        case 'b':
-                listDoB();
+        case '2':
+                sort = chooseSortingMethod();
+                if(sort == '1')
+                {
+                    listScientistsByBirthYearAsc();
+                }
+                else if(sort == '2')
+                {
+                    listScientistsByBirthYearDesc();
+                }
                 break;
-        case 'd':
-                listDoD();
+        case '3':
+                sort = chooseSortingMethod();
+                if(sort == '1')
+                {
+                    listScientistsByDeathYearAsc();
+                }
+                else if(sort == '2')
+                {
+                    listScientistsByDeathYearDesc();
+                }
                 break;
-        case 'g':
-                listGender();
+        case '4':
+                sort = chooseSortingMethod();
+                if(sort == '1')
+                {
+                    listScientistsByGenderAsc();
+                }
+                else if(sort == '2')
+                {
+                    listScientistsByGenderDesc();
+                }
                 break;
         default:
                 cout << endl;
@@ -447,28 +519,56 @@ void ConsoleUI::list() //Gets user input on how to sort the list.
 
 }
 
-void ConsoleUI::listName() //Gets a list of the scientists and prints it out ordered by name.
+void ConsoleUI::listScientistsByNameAsc()
 {
     //_scs.ScientistsOrderByName();
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
 }
 
-void ConsoleUI::listDoB() //Gets a list of the scientists and prints it out ordered by year of birth.
+void ConsoleUI::listScientistsByNameDesc()
+{
+    //_scs.ScientistsOrderByName();
+    vector<Scientist> sc = _scs.getScientists();
+    printListOfScientists(sc);
+}
+
+void ConsoleUI::listScientistsByBirthYearAsc()
 {
     //_scs.ScientistsOrderByDoB();
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
 }
 
-void ConsoleUI::listDoD() //Gets a list of the scientists and prints it out ordered by year of death.
+void ConsoleUI::listScientistsByBirthYearDesc()
+{
+    //_scs.ScientistsOrderByDoB();
+    vector<Scientist> sc = _scs.getScientists();
+    printListOfScientists(sc);
+}
+
+void ConsoleUI::listScientistsByDeathYearAsc()
 {
     //_scs.ScientistsOrderByDoD();
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
 }
 
-void ConsoleUI::listGender() //Gets a list of the scientists and prints it out ordered by gender.
+void ConsoleUI::listScientistsByDeathYearDesc()
+{
+    //_scs.ScientistsOrderByDoD();
+    vector<Scientist> sc = _scs.getScientists();
+    printListOfScientists(sc);
+}
+
+void ConsoleUI::listScientistsByGenderAsc()
+{
+    //_scs.ScientistsOrderByGender();
+    vector<Scientist> sc = _scs.getScientists();
+    printListOfScientists(sc);
+}
+
+void ConsoleUI::listScientistsByGenderDesc()
 {
     //_scs.ScientistsOrderByGender();
     vector<Scientist> sc = _scs.getScientists();
@@ -523,7 +623,7 @@ void ConsoleUI::deleteScientist()
     }
     else
     {
-        listName();
+        listScientistsByNameAsc();
     }
 }
 

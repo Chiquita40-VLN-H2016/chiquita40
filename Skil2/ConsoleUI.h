@@ -39,11 +39,16 @@ private:
     string addTypeOfComputer();
     char addWasBuiltOfComputer();
 
-    void list(); //Gets user input on how to sort the list.
-    void listName(); //Gets a list of the scientists and prints it out ordered by name.
-    void listDoB(); //Gets a list of the scientists and prints it out ordered by year of birth.
-    void listDoD(); //Gets a list of the scientists and prints it out ordered by year of death.
-    void listGender(); //Gets a list of the scientists and prints it out ordered by gender.
+    char chooseSortingMethod();
+    void listScientists(); //Gets user input on how to sort the list of Scientists.
+    void listScientistsByNameAsc();
+    void listScientistsByNameDesc();
+    void listScientistsByBirthYearAsc();
+    void listScientistsByBirthYearDesc();
+    void listScientistsByDeathYearAsc();
+    void listScientistsByDeathYearDesc();
+    void listScientistsByGenderAsc();
+    void listScientistsByGenderDesc();
 
     void findScientist();
     void findComputer();
