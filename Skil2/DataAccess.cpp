@@ -4,10 +4,11 @@ using namespace std;
 
 DataAccess::DataAccess()
 {
-    _db = QSqlDatabase::addDatabase("QSQLITE");
+    _db = QSqlDatabase::addDatabase("QSQLITE", "CSdatabase");
     _db.setDatabaseName("C:/CSHistory.sqlite");
+    _db.open();
 
-/*    if (!_db.open())
+    /*if (!_db.open())
     {
         qDebug() << "Error: connection with database failed";
     }
@@ -17,10 +18,20 @@ DataAccess::DataAccess()
     }*/
 }
 
+DataAccess::~DataAccess()                    // Destructor
+{
+    //QSqlDatabase::removeDatabase("CSdatabase");
+}
+
+void DataAccess::dbClose()
+{
+    _db.close();
+    //QSqlDatabase::removeDatabase("CSdatabase");
+}
+
 vector<Scientist> DataAccess::getScientists()
 {
     vector<Scientist> scientists;
-    _db.open();
 
     QSqlQuery query(_db);
 
@@ -190,7 +201,6 @@ vector<Scientist> DataAccess::ScientistsDescendingOrder(int n)
     return scientists;
 }
 
-
 void DataAccess::editScientist(Scientist scNew)
 {
     QSqlQuery query(_db);
@@ -209,7 +219,6 @@ void DataAccess::editScientist(Scientist scNew)
 vector<Computer> DataAccess::getComputers()
 {
     vector<Computer> computers;
-    _db.open();
 
     QSqlQuery query(_db);
 
@@ -389,35 +398,16 @@ void DataAccess::editComputer(Computer cNew)
     query.exec();
 }
 
-/*void DataAccess::addScientist(string sc) //Writes a single addition to the file.
+//============================ Join functions =================================
+
+void DataAccess::joinScientistAndComputer(int scientistId, int computerId)
 {
-    ofstream input;
-    input.open("scientists.txt", ios::app);
-    input << endl << sc;
-    input.close();
+    QSqlQuery query(_db);
+    query.exec("PRAGMA foreign_keys = ON");
+    query.prepare("INSERT INTO Invented(SID, CID) "
+                  "VALUES (:scId, :cId)");
+    query.bindValue(":scId", scientistId);
+    query.bindValue(":cId", computerId);
+    query.exec();
 }
 
-void DataAccess::deleteScientist(string sNew) //Overwrites whole file with new string.
-{
-    ofstream del;
-
-    del.open("scientists.txt");
-    del << sNew;
-    del.close();
-}
-
-vector<string> DataAccess::getData() //Returns a vector of strings with data from file to next layer.
-{
-    vector<string> data;
-    ifstream document;
-    string word;
-
-    document.open("scientists.txt");
-    while(document >> word)
-    {
-        data.push_back(word);
-    }
-    document.close();
-
-    return data;
-}*/

@@ -15,6 +15,8 @@ class DataAccess
 {
 public:
     DataAccess();
+    ~DataAccess();
+    void dbClose();
 
     vector<Scientist> getScientists();
     int addScientist(Scientist sc);
@@ -34,9 +36,7 @@ public:
     vector<Computer> ComputersDescendingOrder(int n);
     void editComputer(Computer cNew);
 
-    /*void addScientist(string sc);
-    vector<string> getData();
-    void deleteScientist(string sNew);*/
+    void joinScientistAndComputer(int scientistId, int computerId);
 
 private:
     QSqlDatabase _db;
