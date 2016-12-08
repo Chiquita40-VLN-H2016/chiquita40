@@ -67,19 +67,19 @@ void ComputerService::addComputer(string n, int b, string t, string wb)
     _computers.push_back(c);
 }
 
-int ComputerService::deleteComputer(string name)
+int ComputerService::deleteComputer(int id)
 {
-    int n = findComputerName(name);
-    _data.deleteComputer(_computers.at(n));
+    int n = findComputerId(id);
     if(n != -1)
     {
+        _data.deleteComputer(id);
         _computers.erase(_computers.begin()+n);
     }
 
     return n;
 }
 
-void ComputerService::editComputer(string originName, string name, int by, string type, string wasb)
+void ComputerService::editComputer(int id, string name, int by, string type, string wasb)
 {
     bool wasBuilt = false;
 
@@ -88,7 +88,7 @@ void ComputerService::editComputer(string originName, string name, int by, strin
         wasBuilt = true;
     }
 
-    int n = findComputerName(originName);
+    int n = findComputerId(id);
     if(n != -1)
     {
         _computers.at(n).setName(name);
@@ -105,14 +105,14 @@ void ComputerService::editComputer(string originName, string name, int by, strin
     //Erum ekki lengur að constructa string.. það þarf að útfæra annað í staðinn fyrir það.
 }*/
 
-int ComputerService::findComputerName(string name)
+int ComputerService::findComputerId(int id)
 {
     Computer c;
 
     for(unsigned int i = 0; i < size(); i++)
     {
         c = _computers.at(i);
-        if(c.getName() == name)
+        if(c.getId() == id)
         {
             return i;
         }

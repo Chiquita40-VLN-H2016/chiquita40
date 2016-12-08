@@ -467,7 +467,8 @@ void ConsoleUI::deleteScientist()
     cout << "Enter first and last name of the scientist you want to delete: " << endl;
     cin.ignore();
     getline(cin,deleteScientistName);
-    int n = _scs.deleteScientist(deleteScientistName);
+    int id = 0; //Preliminary svo það buildist. Þarf að breyta.
+    int n = _scs.deleteScientist(id);
     if(n == -1)
     {
         cout << endl;
@@ -486,7 +487,8 @@ void ConsoleUI::deleteComputer()
     cout << "Enter the name of the computer you want to delete: " << endl;
     cin.ignore();
     getline(cin,deleteComputerName);
-    int n = _cs.deleteComputer(deleteComputerName);
+    int id = 0; //Preliminary placeholder. Þarf að breyta.
+    int n = _cs.deleteComputer(id);
     if(n == -1)
     {
         cout << endl;

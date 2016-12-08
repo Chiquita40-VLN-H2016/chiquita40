@@ -45,27 +45,37 @@ int DataAccess::addScientist(Scientist sc)
 {
     QSqlQuery query(_db);
 
-    query.exec("INSERT INTO Scientists(Name, Birth_Year, Death_Year, Gender) VALUES (:sc.name, :sc.birthYear, :sc.deathYear, :sc.gender)");
+    query.prepare("INSERT INTO Scientists(Name, Birth_Year, Death_Year, Gender) "
+                  "VALUES (:name, :birthYear, :deathYear, :gender)");
+    query.bindValue(":name", QString::fromStdString(sc.getName()));
+    query.bindValue(":birthYear", sc.getBirthDate());
+    query.bindValue(":deathYear", sc.getDeathDate());
+    query.bindValue(":gender", QString::fromStdString(string(1,sc.getGender())));
+    query.exec();
     int n = query.lastInsertId().toUInt();
     return n;
 }
 
-void DataAccess::deleteScientist(Scientist sc)
+void DataAccess::deleteScientist(int id)
 {
     QSqlQuery query(_db);
 
-    query.exec("DELETE FROM Scientists WHERE Name = (:sc.name) AND Birth_Year = (:sc.birthYear) AND Death_Year = (:sc.deathYear) AND Gender = (:sc.gender)");
-    //query.bindValue(":sc.name", name);
+    query.prepare("DELETE FROM Scientists WHERE ID = (:id)");
+    query.bindValue(":id", id);
+    query.exec();
 }
 
 vector<Scientist> DataAccess::findScientistByName(string search)
 {
     vector<Scientist> scientists;
     QSqlQuery query(_db);
-    query.prepare("SELECT * FROM Scientists WHERE Name LIKE \"%(:search)%\"");
-    QString qstr = QString::fromStdString(search);
-    query.bindValue(":search", qstr);
-    query.exec();
+    string s = "SELECT * FROM Scientists WHERE Name LIKE '%";
+    s += search;
+    s += "%'";
+    //query.prepare("SELECT * FROM Scientists WHERE Name LIKE \"%(:search)%\"");
+    QString qstr = QString::fromStdString(s);
+    //query.bindValue(":search", qstr);
+    query.exec(qstr);
 
     while(query.next())
     {
@@ -85,9 +95,15 @@ vector<Scientist> DataAccess::findScientistByYear(int search)
 {
     vector<Scientist> scientists;
     QSqlQuery query(_db);
-    query.prepare("SELECT * FROM Scientists WHERE Birth_Year LIKE \"%(:search)%\" OR Death_Year LIKE \"%(:search)%\"");
-    query.bindValue(":search", search);
-    query.exec();
+    string s = "SELECT * FROM Scientists WHERE Birth_Year LIKE '%";
+    s += to_string(search);
+    s += "%' OR Death_Year LIKE '%";
+    s += to_string(search);
+    s += "%'";
+    QString qstr = QString::fromStdString(s);
+    //query.prepare("SELECT * FROM Scientists WHERE Birth_Year LIKE \"%(:search)%\" OR Death_Year LIKE \"%(:search)%\"");
+    //query.bindValue(":search", search);
+    query.exec(qstr);
     while(query.next())
     {
         int id = query.value("ID").toUInt();
@@ -178,8 +194,17 @@ vector<Scientist> DataAccess::ScientistsDescendingOrder(int n)
 void DataAccess::editScientist(Scientist scNew)
 {
     QSqlQuery query(_db);
-    query.exec("UPDATE Scientists SET Name = (:scNew.name) AND Birth_Year = (:scNew.birthYear) AND Death_Year = (:scNew.deathYear) AND Gender = (:scNew.gender)");
+    query.prepare("UPDATE Scientists SET Name = (:name), Birth_Year = (:birthYear), "
+                  "Death_Year = (:deathYear), Gender = (:gender) WHERE ID = (:id)");
+    query.bindValue(":id", scNew.getId());
+    query.bindValue(":name", QString::fromStdString(scNew.getName()));
+    query.bindValue(":birthYear", scNew.getBirthDate());
+    query.bindValue(":deathYear", scNew.getDeathDate());
+    query.bindValue(":gender", QString::fromStdString(string(1,scNew.getGender())));
+    query.exec();
 }
+
+//==================Computer functions======================================
 
 vector<Computer> DataAccess::getComputers()
 {
@@ -208,26 +233,36 @@ int DataAccess::addComputer(Computer c)
 {
     QSqlQuery query(_db);
 
-    query.exec("INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES (:c.name, :c.buildYear, :c.type, :c.wasBuilt)");
+    query.prepare("INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES "
+                  "(:name, :buildYear, :type, :wasBuilt)");
+    query.bindValue(":name", QString::fromStdString(c.getName()));
+    query.bindValue(":buildYear", c.getBuildYear());
+    query.bindValue(":type", QString::fromStdString(c.getType()));
+    query.bindValue(":wasBuilt", c.getWasBuilt());
+    query.exec();
     int n = query.lastInsertId().toUInt();
     return n;
 }
 
-void DataAccess::deleteComputer(Computer c)
+void DataAccess::deleteComputer(int id)
 {
     QSqlQuery query(_db);
-
-    query.exec("DELETE FROM Computers WHERE Name = (:c.name) AND Build_Year = (:c.buildYear) AND Type = (:c.type) AND Was_Built = (:c.wasBuilt)");
+    query.prepare("DELETE FROM Computers WHERE ID = (:id)");
+    query.bindValue(":id", id);
+    query.exec();
 }
 
 vector<Computer> DataAccess::findComputerByName(string search)
 {
     vector<Computer> computers;
     QSqlQuery query(_db);
-    query.prepare("SELECT * FROM Computers WHERE Name LIKE \"%(:search)%\"");
-    QString qstr = QString::fromStdString(search);
-    query.bindValue(":search", qstr);
-    query.exec();
+    string s = "SELECT * FROM Computers WHERE Name LIKE '%";
+    s += search;
+    s += "%'";
+    //query.prepare("SELECT * FROM Computers WHERE Name LIKE \"%(:search)%\"");
+    QString qstr = QString::fromStdString(s);
+    //query.bindValue(":search", qstr);
+    query.exec(qstr);
 
     while(query.next())
     {
@@ -247,9 +282,13 @@ vector<Computer> DataAccess::findComputerByYear(int search)
 {
     vector<Computer> computers;
     QSqlQuery query(_db);
-    query.prepare("SELECT * FROM Scientists WHERE Build_Year LIKE \"%(:search)%\"");
-    query.bindValue(":search", search);
-    query.exec();
+    string s = "SELECT * FROM Computers WHERE Build_Year LIKE '%";
+    s += to_string(search);
+    s += "%'";
+    QString qstr = QString::fromStdString(s);
+    //query.prepare("SELECT * FROM Scientists WHERE Build_Year LIKE \"%(:search)%\"");
+    //query.bindValue(":search", search);
+    query.exec(qstr);
 
     while(query.next())
     {
@@ -340,7 +379,14 @@ vector<Computer> DataAccess::ComputersDescendingOrder(int n)
 void DataAccess::editComputer(Computer cNew)
 {
     QSqlQuery query(_db);
-    query.exec("UPDATE Computers SET Name = (:cNew.name) AND Build_Year = (:cNew.buildYear) AND Type = (:cNew.type) AND Was_Built = (:cNew.wasBuilt)");
+    query.exec("UPDATE Computers SET Name = (:name), Build_Year = (:buildYear), "
+               "Type = (:type), Was_Built = (:wasBuilt) WHERE ID = (:id)");
+    query.bindValue(":name", QString::fromStdString(cNew.getName()));
+    query.bindValue(":buildYear", cNew.getBuildYear());
+    query.bindValue(":type", QString::fromStdString(cNew.getType()));
+    query.bindValue(":wasBuilt", cNew.getWasBuilt());
+    query.bindValue(":id", cNew.getId());
+    query.exec();
 }
 
 /*void DataAccess::addScientist(string sc) //Writes a single addition to the file.
