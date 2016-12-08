@@ -21,9 +21,18 @@ void ConsoleUI::run()
 
         if(command == "add")
         {
-            cout << "s - To add new scientist" << endl;
-            cout << "c - To add new computer" << endl;
-            addScientist();
+            int choice = 0;
+            cout << "1 - To add new scientist" << endl;
+            cout << "2 - To add new computer" << endl;
+            cin >> choice;
+            if(choice == 1)
+            {
+                addScientist();
+            }
+            else if(choice == 2)
+            {
+                addComputer();
+            }
         }
         else if(command == "list")
         {
@@ -31,15 +40,52 @@ void ConsoleUI::run()
         }
         else if(command == "find")
         {
-            findScientist();
+            int choice = 0;
+            cout << "1 - Find scientist" << endl;
+            cout << "2 - Find computer" << endl;
+            cin >> choice;
+            if(choice == 1)
+            {
+                findScientist();
+            }
+            else if(choice == 2)
+            {
+                findComputer();
+            }
         }
         else if(command == "edit")
         {
-            editScientist();
+            int choice = 0;
+            cout << "1 - Edit scientist" << endl;
+            cout << "2 - Edit computer" << endl;
+            cin >> choice;
+            if(choice == 1)
+            {
+                editScientist();
+            }
+            else if(choice == 2)
+            {
+                editComputer();
+            }
         }
         else if(command == "delete")
         {
-            deleteScientist();
+            int choice = 0;
+            cout << "1 - Delete scientist" << endl;
+            cout << "2 - Delete computer" << endl;
+            cin >> choice;
+            if(choice == 1)
+            {
+                deleteScientist();
+            }
+            else if(choice == 2)
+            {
+                deleteComputer();
+            }
+        }
+        else if(command == "connect")
+        {
+            // connect scientist and computer
         }
         else if(command == "quit")
         {
@@ -64,6 +110,7 @@ void ConsoleUI::commands()
          << "find \t - Find scientist or computer" << endl
          << "edit \t - Edit scientist or computer" << endl
          << "delete \t - Delete scientist or computer" << endl
+         << "connect \t - Connect scientist with computer" << endl
          << "quit \t - Quit the program" << endl;
     cout << "**********************************************************************" << endl;
 }
