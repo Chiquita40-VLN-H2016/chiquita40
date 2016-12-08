@@ -15,11 +15,13 @@ SOURCES += main.cpp \
     DataAccess.cpp \
     ConsoleUI.cpp \
     Computer.cpp \
-    SCService.cpp
+    SCService.cpp \
+    Invented.cpp
 
 HEADERS += \
     Scientist.h \
     DataAccess.h \
     ConsoleUI.h \
     Computer.h \
-    SCService.h
+    SCService.h \
+    Invented.h

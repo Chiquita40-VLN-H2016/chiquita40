@@ -196,7 +196,3 @@ size_t SCService::size()
     return _computers.size();
 }
 
-void SCService::closeDb()
-{
-    _data.dbClose();
-}
