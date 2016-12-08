@@ -106,6 +106,11 @@ void ComputerService::editComputer(int id, string name, int by, string type, str
     }
 }
 
+void ComputerService::closeDb()
+{
+    _data.dbClose();
+}
+
 /*void ComputerService::createComputers()
 {
     //Erum ekki lengur að constructa string.. það þarf að útfæra annað í staðinn fyrir það.

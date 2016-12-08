@@ -46,6 +46,7 @@ public:
     void addComputer(string n, int b, string t, string wb);
     int deleteComputer(int id);
     void editComputer(int id, string name, int by, string type, string wasb);
+    void closeDb();
 
 private:
     DataAccess _data;
