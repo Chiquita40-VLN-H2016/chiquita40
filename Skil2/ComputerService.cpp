@@ -44,9 +44,15 @@ void ComputerService::ComputersOrderByWasBuilt() //Order computers by if compute
     std::sort(_computers.begin(), _computers.end(), cmp);
 }*/
 
-vector<Computer> ComputerService::findComputerByName(string name)
+vector<Computer> ComputerService::findComputerByYear(int year)
 {
-    vector<Computer> computers = _data.findComputerByName(name);
+    vector<Computer> computers = _data.findComputerByYear(year);
+    return computers;
+}
+
+vector<Computer> ComputerService::findComputerByName(string search)
+{
+    vector<Computer> computers = _data.findComputerByName(search);
 
     return computers;
 }

@@ -41,7 +41,8 @@ public:
     void ComputersDescendingOrder(int n); //Descending order.
     //void ComputersOrderByType(); //Order computers by type.
     //void ComputersOrderByWasBuilt(); //Order computers by if computer was built or not.
-    vector<Computer> findComputerByName(string name);
+    vector<Computer> findComputerByYear(int year);
+    vector<Computer> findComputerByName(string search);
     void addComputer(string n, int b, string t, string wb);
     int deleteComputer(int id);
     void editComputer(int id, string name, int by, string type, string wasb);
