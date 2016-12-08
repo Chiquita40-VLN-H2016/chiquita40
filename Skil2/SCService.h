@@ -31,7 +31,6 @@ public:
     int deleteComputer(int id);
     void editScientist(int id, string name, int dob, int dod, char g);
     void editComputer(int id, string name, int by, string type, string wasb);
-    void closeDb();
 
 private:
     DataAccess _data;

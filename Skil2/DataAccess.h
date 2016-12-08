@@ -16,7 +16,6 @@ class DataAccess
 public:
     DataAccess();
     ~DataAccess();
-    void dbClose();
 
     vector<Scientist> getScientists();
     int addScientist(Scientist sc);

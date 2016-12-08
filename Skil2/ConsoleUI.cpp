@@ -107,8 +107,6 @@ void ConsoleUI::run()
         }
         else if(command == "quit")
         {
-            _scs.closeDb();
-
             break;
         }
         else

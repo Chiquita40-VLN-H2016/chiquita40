@@ -4,7 +4,7 @@ using namespace std;
 
 DataAccess::DataAccess()
 {
-    _db = QSqlDatabase::addDatabase("QSQLITE", "CSdatabase");
+    _db = QSqlDatabase::addDatabase("QSQLITE");
     _db.setDatabaseName("C:/CSHistory.sqlite");
     _db.open();
 
@@ -20,12 +20,11 @@ DataAccess::DataAccess()
 
 DataAccess::~DataAccess()                    // Destructor
 {
-    //QSqlDatabase::removeDatabase("CSdatabase");
-}
-
-void DataAccess::dbClose()
-{
+    QString connection;
+    connection = _db.connectionName();
     _db.close();
+    _db = QSqlDatabase();
+    QSqlDatabase::removeDatabase(connection);
     //QSqlDatabase::removeDatabase("CSdatabase");
 }
 
