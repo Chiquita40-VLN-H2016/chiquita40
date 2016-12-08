@@ -6,7 +6,7 @@ ConsoleUI::ConsoleUI()
 }
 
 void ConsoleUI::run()
-{   
+{
     string command;
 
     cout    << "Welcome!" << endl
@@ -47,7 +47,7 @@ void ConsoleUI::run()
             }
             else if(choice == 2)
             {
-                listComputers(); //print list of computers
+                listComputers();
             }
             else if(choice == 3)
             {
@@ -105,7 +105,6 @@ void ConsoleUI::run()
         }
         else if(command == "quit")
         {
-            _scs.closeDb();
             break;
         }
         else
@@ -596,44 +595,44 @@ void ConsoleUI::listComputers()
                 sort = chooseSortingMethod();
                 if(sort == '1')
                 {
-                    //listComputersIfWasBuiltAsc();
+                    listComputersIfWasBuiltAsc();
                 }
                 else if(sort == '2')
                 {
-                    //listComputersIfWasBuiltDesc();
+                    listComputersIfWasBuiltDesc();
                 }
                 break;
         case '2':
                 sort = chooseSortingMethod();
                 if(sort == '1')
                 {
-                    //listComputersByBuildYearAsc();
+                    listComputersByBuildYearAsc();
                 }
                 else if(sort == '2')
                 {
-                    //listComputersByBuildYearDesc();
+                    listComputersByBuildYearDesc();
                 }
                 break;
         case '3':
                 sort = chooseSortingMethod();
                 if(sort == '1')
                 {
-                    //listComputersByTypeAsc();
+                    listComputersByTypeAsc();
                 }
                 else if(sort == '2')
                 {
-                    //listComputersByTypeDesc();
+                    listComputersByTypeDesc();
                 }
                 break;
         case '4':
                 sort = chooseSortingMethod();
                 if(sort == '1')
                 {
-                    //listComputersIfWasBuiltAsc();
+                    listComputersIfWasBuiltAsc();
                 }
                 else if(sort == '2')
                 {
-                    //listComputersIfWasBuiltDesc();
+                    listComputersIfWasBuiltDesc();
                 }
                 break;
         default:
@@ -641,6 +640,54 @@ void ConsoleUI::listComputers()
                 cout << "! - Invalid command - !" << endl;
                 cout << endl;
     }
+}
+
+void ConsoleUI::listComputersByNameAsc()
+{
+    vector<Computer> c = _cs.getComputers();
+    printListOfComputers(c);
+}
+
+void ConsoleUI::listComputersByNameDesc()
+{
+    vector<Computer> c = _cs.getComputers();
+    printListOfComputers(c);
+}
+
+void ConsoleUI::listComputersByBuildYearAsc()
+{
+    vector<Computer> c = _cs.getComputers();
+    printListOfComputers(c);
+}
+
+void ConsoleUI::listComputersByBuildYearDesc()
+{
+    vector<Computer> c = _cs.getComputers();
+    printListOfComputers(c);
+}
+
+void ConsoleUI::listComputersByTypeAsc()
+{
+    vector<Computer> c = _cs.getComputers();
+    printListOfComputers(c);
+}
+
+void ConsoleUI::listComputersByTypeDesc()
+{
+    vector<Computer> c = _cs.getComputers();
+    printListOfComputers(c);
+}
+
+void ConsoleUI::listComputersIfWasBuiltAsc()
+{
+    vector<Computer> c = _cs.getComputers();
+    printListOfComputers(c);
+}
+
+void ConsoleUI::listComputersIfWasBuiltDesc()
+{
+    vector<Computer> c = _cs.getComputers();
+    printListOfComputers(c);
 }
 
 void ConsoleUI::findScientist()
