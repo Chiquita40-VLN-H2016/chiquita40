@@ -168,10 +168,10 @@ void ConsoleUI::addScientist() //Adds scientist to the list.
 string ConsoleUI::addNameOfScientist() //Gets a name of scientist from the user.
 {
     string sName;
-    cin.ignore(); //To empty cin in order to use getline();
+    cin.ignore();
     do
     {
-        cout << "First and last name of scientist to add: ";
+        cout << "Enter name of scientist: ";
 
         getline(cin,sName);
 
@@ -196,11 +196,10 @@ string ConsoleUI::addNameOfScientist() //Gets a name of scientist from the user.
 int ConsoleUI::addBirthDateOfScientist() //Gets a year of birth of scientist from user.
 {
     int bDate;
-    //int bDate = 2020;
 
     do
     {
-        cout << "Year of Birth (YYYY): ";
+        cout << "Enter year of Birth (YYYY): ";
         cin >> bDate;
         if(!_scs.validYearCheck(bDate))
         {
@@ -231,18 +230,18 @@ int ConsoleUI::addDeathDateOfScientist(int bDate) //Gets a year of death of scie
     //int dDate = 2020;
 
     int dDate;
-    string deadOrAlive;
+    char deadOrAlive;
 
     do
     {
-        cout << "Is scientist still alive? (yes/no): ";
+        cout << "Is scientist still alive? (y/n): ";
         cin >> deadOrAlive;
 
-        if(deadOrAlive == "no")
+        if(deadOrAlive == tolower('n'))
         {
             do
             {
-                cout << "Year of Death (YYYY): ";
+                cout << "Enter year of Death (YYYY): ";
                 cin >> dDate;
                 if(!_scs.validYearCheck(dDate) || dDate < bDate)
                 {
@@ -252,16 +251,16 @@ int ConsoleUI::addDeathDateOfScientist(int bDate) //Gets a year of death of scie
                 }
             }while(!_scs.validYearCheck(dDate) || dDate < bDate);
         }
-        else if(deadOrAlive == "yes")
+        else if(deadOrAlive == tolower('y'))
         {
             dDate = 9999;
         }
         else
         {
             cout << endl;
-            cout << "! - Invalid choice, please enter 'yes' or 'no' - !" << endl;
+            cout << "! - Invalid choice, please enter 'y' or 'n' - !" << endl;
         }
-    }while(deadOrAlive != "no" && deadOrAlive != "yes");
+    }while(deadOrAlive != 'n' && deadOrAlive != 'y');
 
 
    /* do
@@ -346,7 +345,6 @@ string ConsoleUI::addNameOfComputer()
 
 int ConsoleUI::addBuildYearOfComputer()
 {
-   // int buildYear = 1879;
     int buildYear;
 
     do
@@ -393,23 +391,22 @@ string ConsoleUI::addTypeOfComputer()
     return cType;
 }
 
-string ConsoleUI::addWasBuiltOfComputer()
+char ConsoleUI::addWasBuiltOfComputer()
 {
-    string wasBuilt;
-    cin.ignore(); //To empty cin in order to use getline();
+    char wasBuilt;
     do
     {
-        cout << "Has the computer been built, yes/no: ";
+        cout << "Has the computer been built, y/n: ";
 
-        getline(cin,wasBuilt);
+        cin >> wasBuilt;
 
-        if(wasBuilt.size() == 0 || wasBuilt != "yes" || wasBuilt != "Yes" || wasBuilt != "YES"|| wasBuilt != "no" || wasBuilt != "No" || wasBuilt != "NO")
+        if(wasBuilt != tolower('y') || wasBuilt != tolower('n'))
         {
             cout << endl;
-            cout << "! - Invalid input. - !" << endl;
+            cout << "! - Invalid choice, please enter 'y' or 'n' - !" << endl;
             cout << endl;
         }
-    }while(wasBuilt.size() == 0 || wasBuilt != "yes" || wasBuilt != "Yes" || wasBuilt != "YES"|| wasBuilt != "no" || wasBuilt != "No" || wasBuilt != "NO");
+    }while(wasBuilt != tolower('y') || wasBuilt != tolower('n'));
 
     return wasBuilt;
 }
@@ -513,7 +510,7 @@ void ConsoleUI::findComputer()
 void ConsoleUI::deleteScientist()
 {
     string deleteScientistName;
-    cout << "Enter first and last name of the scientist you want to delete: " << endl;
+    cout << "Enter name of the scientist you want to delete: " << endl;
     cin.ignore();
     getline(cin,deleteScientistName);
     int id = 0; //Preliminary svo það buildist. Þarf að breyta.
@@ -555,7 +552,7 @@ void ConsoleUI::editScientist()
     string editSC, sName;
     int bDate, dDate;
     char gender;
-    cout << "Enter first and last name of the scientist you want to edit: " << endl;
+    cout << "Enter name of the scientist you want to edit: " << endl;
     cin.ignore();
     getline(cin,editSC);
     vector<Scientist> sc = _scs.findScientistByName(editSC);
@@ -588,16 +585,17 @@ void ConsoleUI::editScientist()
 
 string ConsoleUI::editNameOfScientist(Scientist sc)
 {
-    string editSC, sName;
-    cout << "Would you like to edit the name? yes or no: ";
+    char editSC;
+    string sName;
+    cout << "Would you like to edit the name? y/n: ";
     cin >> editSC;
 
-    if(editSC == "yes")
+    if(editSC == tolower('y'))
     {
         cin.ignore();
         do
         {
-            cout    << "Enter new first and last name: ";
+            cout    << "Enter new name: ";
             getline(cin,sName);
             if(sName.size() == 0)
             {
@@ -614,7 +612,7 @@ string ConsoleUI::editNameOfScientist(Scientist sc)
 
         }while(sName.size() == 0 || sName.size() > 23);
     }
-    else if(editSC == "no")
+    else if(editSC == tolower('n'))
     {
         sName = sc.getName();
     }
@@ -630,12 +628,12 @@ string ConsoleUI::editNameOfScientist(Scientist sc)
 
 int ConsoleUI::editBirthDateOfScientist(Scientist sc)
 {
-    string editSC;
+    char editSC;
     int bDate;
-    cout << "Would you like to edit year of birth? yes or no: ";
+    cout << "Would you like to edit year of birth? y/n: ";
     cin >> editSC;
 
-    if(editSC == "yes")
+    if(editSC == tolower('y'))
     {
         do
         {
@@ -663,7 +661,7 @@ int ConsoleUI::editBirthDateOfScientist(Scientist sc)
             }
         }while(bDate.size() != 4 || isalpha(bDate[0]) || isalpha(bDate[1]) || isalpha(bDate[2]) || isalpha(bDate[3]));*/
     }
-    else if(editSC == "no")
+    else if(editSC == tolower('n'))
     {
         bDate = sc.getBirthDate();
     }
@@ -679,21 +677,21 @@ int ConsoleUI::editBirthDateOfScientist(Scientist sc)
 
 int ConsoleUI::editDeathDateOfScientist(Scientist sc, int bDate)
 {
-    string editSC;
-    string deadOrAlive;
+    char editSC;
+    char deadOrAlive;
     int dDate;
 
-    cout << "Would you like to edit year of death? yes or no: ";
+    cout << "Would you like to edit year of death? y/n: ";
     cin >> editSC;
 
-    if(editSC == "yes")
+    if(editSC == tolower('y'))
     {
         do
         {
-            cout << "Is scientist still alive? (yes/no): ";
+            cout << "Is scientist still alive? y/n: ";
             cin >> deadOrAlive;
 
-            if(deadOrAlive == "no")
+            if(deadOrAlive == tolower('n'))
             {
                 do
                 {
@@ -707,16 +705,16 @@ int ConsoleUI::editDeathDateOfScientist(Scientist sc, int bDate)
                     }
                 }while(!_scs.validYearCheck(dDate) || dDate < bDate);
             }
-            else if(deadOrAlive == "yes")
+            else if(deadOrAlive == tolower('y'))
             {
                 dDate = 9999;
             }
             else
             {
                 cout << endl;
-                cout << "! - Invalid choice, please enter 'yes' or 'no' - !" << endl;
+                cout << "! - Invalid choice, please enter 'y' or 'n' - !" << endl;
             }
-        }while(deadOrAlive != "no" && deadOrAlive != "yes");
+        }while(deadOrAlive != tolower('n') && deadOrAlive != tolower('y'));
 
         /*do
         {
@@ -732,7 +730,7 @@ int ConsoleUI::editDeathDateOfScientist(Scientist sc, int bDate)
          }while((isalpha(dDate[0]) && dDate != "alive") || (isalpha(dDate[1]) && dDate != "alive") || (isalpha(dDate[2])
             && dDate != "alive") || (isalpha(dDate[3]) && dDate != "alive") || (isdigit(dDate[0]) && dDate.size() != 4));*/
     }
-    else if(editSC == "no")
+    else if(editSC == tolower('n'))
     {
         dDate = sc.getDeathDate();
     }
@@ -749,12 +747,12 @@ int ConsoleUI::editDeathDateOfScientist(Scientist sc, int bDate)
 
 char ConsoleUI::editGenderOfScientist(Scientist sc)
 {
-    string editSC;
+    char editSC;
     char gender;
     cout << "Would you like to edit gender? yes or no: ";
     cin >> editSC;
 
-    if(editSC == "yes")
+    if(editSC == tolower('y'))
     {
         do
         {
@@ -768,7 +766,7 @@ char ConsoleUI::editGenderOfScientist(Scientist sc)
             }
         }while(gender != 'f' && gender != 'm');
     }
-    else if(editSC == "no")
+    else if(editSC == tolower('n'))
     {
         gender = sc.getGender();
     }
@@ -798,16 +796,17 @@ void ConsoleUI::editComputer()
 
 string ConsoleUI::editNameOfComputer(Computer c)
 {
-    string editC, cName;
-    cout << "Would you like to edit the name? yes or no: ";
+    char editC;
+    string cName;
+    cout << "Would you like to edit the name? y/n: ";
     cin >> editC;
 
-    if(editC == "yes")
+    if(editC == tolower('y'))
     {
         cin.ignore();
         do
         {
-            cout    << "Enter new first and last name: ";
+            cout    << "Enter new name: ";
             getline(cin,cName);
             if(cName.size() == 0)
             {
@@ -824,7 +823,7 @@ string ConsoleUI::editNameOfComputer(Computer c)
 
         }while(cName.size() == 0 || cName.size() > 23);
     }
-    else if(editC == "no")
+    else if(editC == tolower('n'))
     {
         cName = c.getName();
     }
@@ -840,13 +839,13 @@ string ConsoleUI::editNameOfComputer(Computer c)
 
 int ConsoleUI::editBuildYearOfComputer(Computer c)
 {
-    string editC;
+    char editC;
     int buildYear;
 
-    cout << "Would you like to edit the build year? yes or no: ";
+    cout << "Would you like to edit the build year? y/n: ";
     cin >> editC;
 
-    if(editC == "yes")
+    if(editC == tolower('y'))
     {
         do
         {
@@ -861,7 +860,7 @@ int ConsoleUI::editBuildYearOfComputer(Computer c)
 
         }while(!_scs.validYearCheck(buildYear));
     }
-    else if(editC == "no")
+    else if(editC == tolower('n'))
     {
         buildYear = c.getBuildYear();
     }
@@ -877,11 +876,12 @@ int ConsoleUI::editBuildYearOfComputer(Computer c)
 
 string ConsoleUI::editTypeOfComputer(Computer c)
 {
-    string editC, cType;
-    cout << "Would you like to edit the type? yes or no: ";
+    char editC;
+    string cType;
+    cout << "Would you like to edit the type? y/n: ";
     cin >> editC;
 
-    if(editC == "yes")
+    if(editC == tolower('y'))
     {
         cin.ignore();
         do
@@ -903,7 +903,7 @@ string ConsoleUI::editTypeOfComputer(Computer c)
 
         }while(cType.size() == 0 || cType.size() > 7);
     }
-    else if(editC == "no")
+    else if(editC == tolower('n'))
     {
         cType = c.getType();
     }
@@ -917,28 +917,28 @@ string ConsoleUI::editTypeOfComputer(Computer c)
     return cType;
 }
 
-string ConsoleUI::editWasBuiltOfComputer(Computer c)
+char ConsoleUI::editWasBuiltOfComputer(Computer c)
 {
-    string editC, wasBuilt;
-    cout << "Would you like to edit if the computer has been built? yes or no: ";
+    char editC;
+    char wasBuilt;
+    cout << "Would you like to edit if the computer has been built? y/n: ";
     cin >> editC;
 
-    if(editC == "yes")
+    if(editC == tolower('y'))
     {
-        cin.ignore();
         do
         {
-            cout    << "Enter yes or no: ";
-            getline(cin,wasBuilt);
-            if(wasBuilt.size() == 0 || wasBuilt != "yes" || wasBuilt != "Yes" || wasBuilt != "YES"|| wasBuilt != "no" || wasBuilt != "No" || wasBuilt != "NO")
+            cout    << "Has the computer been built? y/n: ";
+            cin >> wasBuilt;
+            if(wasBuilt != tolower('y') || wasBuilt != tolower('n'))
             {
                 cout << endl;
-                cout << "! - Invalid input. - !" << endl;
+                cout << "! - Invalid choice, please enter 'y' or 'n' - !" << endl;
                 cout << endl;
             }
-        }while(wasBuilt.size() == 0 || wasBuilt != "yes" || wasBuilt != "Yes" || wasBuilt != "YES"|| wasBuilt != "no" || wasBuilt != "No" || wasBuilt != "NO");
+        }while(wasBuilt != tolower('y') || wasBuilt != tolower('n'));
     }
-    else if(editC == "no")
+    else if(editC == tolower('n'))
     {
         wasBuilt = c.getWasBuilt();
     }

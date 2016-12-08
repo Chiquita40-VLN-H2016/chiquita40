@@ -37,7 +37,7 @@ private:
     string addNameOfComputer();
     int addBuildYearOfComputer();
     string addTypeOfComputer();
-    string addWasBuiltOfComputer();
+    char addWasBuiltOfComputer();
 
     void list(); //Gets user input on how to sort the list.
     void listName(); //Gets a list of the scientists and prints it out ordered by name.
@@ -59,7 +59,7 @@ private:
     string editNameOfComputer(Computer c);
     int editBuildYearOfComputer(Computer c);
     string editTypeOfComputer(Computer c);
-    string editWasBuiltOfComputer(Computer c);
+    char editWasBuiltOfComputer(Computer c);
 };
 
 #endif // CONSOLEUI_H
