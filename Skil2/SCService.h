@@ -16,10 +16,10 @@ public:
     SCService();
     vector<Scientist> getScientists(); //Returns member variable _scientists.
     vector<Computer> getComputers(); //Returns member variable _computers.
-    void ScientistsAscendingOrder(int n); //Ascending Order.
-    void ScientistsDescendingOrder(int n); //Descending Order scientists by birth year.
-    void ComputersAscendingOrder(int n); //Ascending order.
-    void ComputersDescendingOrder(int n); //Descending order.
+    void scientistsAscendingOrder(int n); //Ascending Order.
+    void scientistsDescendingOrder(int n); //Descending Order scientists by birth year.
+    void computersAscendingOrder(int n); //Ascending order.
+    void computersDescendingOrder(int n); //Descending order.
     vector<Scientist> findScientistByYear(int year);
     vector<Scientist> findScientistByName(string search);
     vector<Computer> findComputerByYear(int year);

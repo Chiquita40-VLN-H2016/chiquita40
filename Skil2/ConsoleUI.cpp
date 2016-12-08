@@ -550,48 +550,56 @@ void ConsoleUI::listScientists()
 
 void ConsoleUI::listScientistsByNameAsc()
 {
+    _scs.scientistsAscendingOrder(0);
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
 }
 
 void ConsoleUI::listScientistsByNameDesc()
 {
+    _scs.scientistsDescendingOrder(0);
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
 }
 
 void ConsoleUI::listScientistsByBirthYearAsc()
 {
+    _scs.scientistsAscendingOrder(1);
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
 }
 
 void ConsoleUI::listScientistsByBirthYearDesc()
 {
+    _scs.scientistsDescendingOrder(1);
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
 }
 
 void ConsoleUI::listScientistsByDeathYearAsc()
 {
+    _scs.scientistsAscendingOrder(2);
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
 }
 
 void ConsoleUI::listScientistsByDeathYearDesc()
 {
+    _scs.scientistsDescendingOrder(2);
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
 }
 
 void ConsoleUI::listScientistsByGenderAsc()
 {
+    _scs.scientistsAscendingOrder(3);
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
 }
 
 void ConsoleUI::listScientistsByGenderDesc()
 {
+    _scs.scientistsDescendingOrder(3);
     vector<Scientist> sc = _scs.getScientists();
     printListOfScientists(sc);
 }
@@ -617,11 +625,11 @@ void ConsoleUI::listComputers()
                 sort = chooseSortingMethod();
                 if(sort == '1')
                 {
-                    listComputersIfWasBuiltAsc();
+                    listComputersByNameAsc();
                 }
                 else if(sort == '2')
                 {
-                    listComputersIfWasBuiltDesc();
+                    listComputersByNameDesc();
                 }
                 break;
         case '2':
@@ -666,48 +674,56 @@ void ConsoleUI::listComputers()
 
 void ConsoleUI::listComputersByNameAsc()
 {
+    _scs.computersAscendingOrder(0);
     vector<Computer> c = _scs.getComputers();
     printListOfComputers(c);
 }
 
 void ConsoleUI::listComputersByNameDesc()
 {
+    _scs.computersDescendingOrder(0);
     vector<Computer> c = _scs.getComputers();
     printListOfComputers(c);
 }
 
 void ConsoleUI::listComputersByBuildYearAsc()
 {
+    _scs.computersAscendingOrder(1);
     vector<Computer> c = _scs.getComputers();
     printListOfComputers(c);
 }
 
 void ConsoleUI::listComputersByBuildYearDesc()
 {
+    _scs.computersDescendingOrder(1);
     vector<Computer> c = _scs.getComputers();
     printListOfComputers(c);
 }
 
 void ConsoleUI::listComputersByTypeAsc()
 {
+    _scs.computersAscendingOrder(2);
     vector<Computer> c = _scs.getComputers();
     printListOfComputers(c);
 }
 
 void ConsoleUI::listComputersByTypeDesc()
 {
+    _scs.computersDescendingOrder(3);
     vector<Computer> c = _scs.getComputers();
     printListOfComputers(c);
 }
 
 void ConsoleUI::listComputersIfWasBuiltAsc()
 {
+    _scs.computersAscendingOrder(3);
     vector<Computer> c = _scs.getComputers();
     printListOfComputers(c);
 }
 
 void ConsoleUI::listComputersIfWasBuiltDesc()
 {
+    _scs.computersDescendingOrder(3);
     vector<Computer> c = _scs.getComputers();
     printListOfComputers(c);
 }
