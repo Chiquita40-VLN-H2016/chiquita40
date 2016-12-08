@@ -21,6 +21,8 @@ void ConsoleUI::run()
 
         if(command == "add")
         {
+            cout << "s - To add new scientist" << endl;
+            cout << "c - To add new computer" << endl;
             addScientist();
         }
         else if(command == "list")
@@ -57,12 +59,12 @@ void ConsoleUI::commands()
 {
     cout << "**********************************************************************" << endl;
     cout << "Please enter one of the following commands:" << endl
-         << "add \t - Add new scientist to the list" << endl
-         << "list \t - Show a list of all scientist" << endl
-         << "find \t - Find scientist in list" << endl
-         << "edit \t - Edit scientist in list" << endl
-         << "delete \t - Delete scientist, write exact name of scientist to delete." << endl
-         << "quit \t - Quit the program." << endl;
+         << "add \t - Add new scientist or computer" << endl
+         << "list \t - Show a list of all scientists and/or computers" << endl
+         << "find \t - Find scientist or computer" << endl
+         << "edit \t - Edit scientist or computer" << endl
+         << "delete \t - Delete scientist or computer" << endl
+         << "quit \t - Quit the program" << endl;
     cout << "**********************************************************************" << endl;
 }
 
