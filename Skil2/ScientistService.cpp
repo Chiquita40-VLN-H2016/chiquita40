@@ -36,9 +36,15 @@ void ScientistService::ScientistsOrderByGender() //Order scientists by gender.
     std::sort(_scientists.begin(), _scientists.end(), cmp);
 }*/
 
-vector<Scientist> ScientistService::findScientistByName(string name)
+vector<Scientist> ScientistService::findScientistByYear(int year)
 {
-    vector<Scientist> scientists = _data.findScientistByName(name);
+    vector<Scientist> scientists = _data.findScientistByYear(year);
+    return scientists;
+}
+
+vector<Scientist> ScientistService::findScientistByName(string search)
+{
+    vector<Scientist> scientists = _data.findScientistByName(search);
     /*int n = findScientistName(name);
 
     if(n != -1)

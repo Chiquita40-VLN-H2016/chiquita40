@@ -41,7 +41,8 @@ public:
     void ScientistsDescendingOrder(int n); //Descending Order scientists by birth year.
     //void ScientistsOrderByDoD(); //Order scientists by death year.
     //void ScientistsOrderByGender(); //Order scientists by gender.
-    vector<Scientist> findScientistByName(string name);
+    vector<Scientist> findScientistByYear(int year);
+    vector<Scientist> findScientistByName(string search);
     void addScientist(string n, int bd, int dd, char g);
     int deleteScientist(int id);
     void editScientist(int id, string name, int dob, int dod, char g);
