@@ -48,6 +48,7 @@ public:
     bool validYearCheck(int year);
     int deleteScientist(int id);
     void editScientist(int id, string name, int dob, int dod, char g);
+    void closeDb();
 
 private:
     DataAccess _data;
