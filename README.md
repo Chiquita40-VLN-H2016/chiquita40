@@ -1,6 +1,6 @@
 # Computer Scientists Readme
 
-Program which lists known characters from Computer Science
+Program which lists known computers and characters from Computer Science.
 
 ## I. Description
 We have developed a program that holds a list over Computer Scientists and Computers.
@@ -9,15 +9,19 @@ When working with the list of Computer Scientists:
 
 * You can add a new Computer Scientist to the list. 
 * You can print out a list of Computer Scientists on screen ordered by name, birth year, death year and gender.
-* You can search for a whole name of a Computer Scientist or just a letter that's in the name of a Computer Scientist.
+* You can search for a name of a Computer Scientist.
 * You can edit an entry of a Computer Scientist.
 * You can delete an entry of a Computer Scientist.
+* You can join a Computer Scientist and a Computer together.
 
 When working with the list of Computers:
 
 * You can add a new Computer to the list.
 * You can print out a list of Computers on screen ordered by name, build year, type and if it was built or not.
-* You can search for a whole name of a Computer
+* You can search for a name of a Computer.
+* You can edit an entry of a Computer.
+* You can delete an entry of a Computer.
+* You can join a Computer Scientist and a Computer together.
 
 You can do these commands as often as you wish. To stop type in 'quit'.
 
@@ -32,6 +36,8 @@ You can do these commands as often as you wish. To stop type in 'quit'.
 + DataAccess.h
 + Computer.cpp
 + Computer.h
++ Invented.cpp
++ Invented.h
 + main.cpp
 + scientists.txt        -   This is a data file which holds a list of Computer Scientists.
 + scientists_backup.txt        -   This is a backup of the data file above.
@@ -52,17 +58,16 @@ Please do not enter any special characters, only characters from the ASCII table
 
 **Add/Edit**
 
-Name of new Scientist cannot be longer than 23 characters (with spaces). He/She has to have a first and a last name; middle name is not possible. It is not possible to add the same Scientist more than once.
+Name of a new Scientist and/ or a Computer cannot be longer than 31 characters (with spaces).
 
-Edit works only with the exact first and last name entered.
 
 **List**
 
-The different lists represent the same list ordered by different information about the scientists. The lists you can choose from are all in ascending order.
+The different lists represent the same list ordered by different information about the scientists. You can choose if you want the lists sorted in ascending or descending order.
 
 **Find**
 
-Find works only with the exact first and last name, it does not give you results if you only enter first or last name or if you enter the name incorrectly.
+Find works whether you put a whole name or any letter in a name of either Scientist or Computer.
 
 **Delete**
 
