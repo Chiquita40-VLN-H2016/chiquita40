@@ -62,6 +62,15 @@ vector<Computer> SCService::findComputerByName(string search)
     return computers;
 }
 
+/*vector<Scientist> SCService::findComputerByScientist(int id)
+{
+    int idComputer;
+
+    idComputer = _data.getComputersByScientist(id);
+
+    return idComputer;
+}*/
+
 //Checks whether scientist exists in list and only adds the new one if it doesn't.
 void SCService::addScientist(string n, int bd, int dd, char g)
 {
