@@ -246,6 +246,9 @@ void ConsoleUI::commandJoin()
     cin >> cid;
 
     _scs.joinSC(sid, cid);
+
+    cout << endl << "Updated list:" << endl;
+    listJoinedByScientistsNameAsc();
 }
 
 void ConsoleUI::printListOfScientists(vector<Scientist> vs)
