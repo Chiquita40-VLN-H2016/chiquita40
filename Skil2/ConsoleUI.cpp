@@ -327,6 +327,7 @@ void ConsoleUI::addScientist() //Adds scientist to the list.
     int dDate;
     char gender;
 
+    cin.ignore();
     sName = addNameOfScientist();
     bDate = addBirthDateOfScientist();
     dDate = addDeathDateOfScientist(bDate);
@@ -339,8 +340,6 @@ void ConsoleUI::addScientist() //Adds scientist to the list.
 string ConsoleUI::addNameOfScientist() //Gets a name of scientist from the user.
 {
     string sName;
-
-    cin.ignore();
 
     do
     {
@@ -382,6 +381,7 @@ int ConsoleUI::addBirthDateOfScientist() //Gets a year of birth of scientist fro
 
     }while(!_scs.validYearCheck(bDate));
 
+    cin.ignore();
     return bDate;
 }
 
@@ -390,9 +390,6 @@ int ConsoleUI::addDeathDateOfScientist(int bDate) //Gets a year of death of scie
 
     int dDate;
     string deadOrAlive;
-
-    cin.ignore();
-
     do
     {
         cout << "Is scientist still alive? (yes/no): ";
@@ -429,9 +426,7 @@ int ConsoleUI::addDeathDateOfScientist(int bDate) //Gets a year of death of scie
 char ConsoleUI::addGenderOfScientist() //Gets a gender of scientist from user.
 {
     string gender;
-
     cin.ignore();
-
     do
     {
         cout << "Gender (f/m): ";
@@ -455,10 +450,19 @@ void ConsoleUI::addComputer() //Adds computer to the list.
     string type;
     string wasBuilt;
 
+    cin.ignore();
     cName = addNameOfComputer();
-    buildYear = addBuildYearOfComputer();
-    type = addTypeOfComputer();
     wasBuilt = addWasBuiltOfComputer();
+    if(wasBuilt == "yes" || wasBuilt == "Yes" || wasBuilt == "YES")
+    {
+        buildYear = addBuildYearOfComputer();
+        cin.ignore();
+    }
+    else
+    {
+        buildYear = 0;
+    }
+    type = addTypeOfComputer();
 
     _scs.addComputer(cName, buildYear, type, wasBuilt);
     //listName();
@@ -467,8 +471,6 @@ void ConsoleUI::addComputer() //Adds computer to the list.
 string ConsoleUI::addNameOfComputer()
 {
     string cName;
-
-    cin.ignore();
 
     do
     {
@@ -510,15 +512,12 @@ int ConsoleUI::addBuildYearOfComputer()
         }
 
     }while(!_scs.validYearCheck(buildYear));
-
     return buildYear;
 }
 
 string ConsoleUI::addTypeOfComputer()
 {
     string cType;
-
-    cin.ignore();
 
     do
     {
@@ -550,13 +549,12 @@ string ConsoleUI::addWasBuiltOfComputer()
     do
     {
         cout << "Has the computer been built, yes/no: ";
-        cin.ignore();
         getline(cin,wasBuilt);
 
         if(wasBuilt != "no" && wasBuilt != "No" && wasBuilt != "NO" && wasBuilt != "yes" && wasBuilt != "Yes" && wasBuilt != "YES")
         {
             cout << endl;
-            cout << "! - Invalid choice, please enter 'y' or 'n' - !" << endl;
+            cout << "! - Invalid choice, please enter 'yes' or 'no' - !" << endl;
             cout << endl;
         }
     }while(wasBuilt != "no" && wasBuilt != "No" && wasBuilt != "NO" && wasBuilt != "yes" && wasBuilt != "Yes" && wasBuilt != "YES");
@@ -953,14 +951,12 @@ string ConsoleUI::editNameOfScientist(Scientist sc)
     string editSC;
     string sName;
 
-    cin.ignore();
+    //cin.ignore();
     cout << "Would you like to edit the name? yes/no: ";
     getline(cin,editSC);
 
     if(editSC == "yes" || editSC == "Yes" || editSC == "YES")
     {
-        cin.ignore();
-
         do
         {
             cout    << "Enter new name: ";
@@ -1000,7 +996,7 @@ int ConsoleUI::editBirthDateOfScientist(Scientist sc)
     string editSC;
     int bDate;
 
-    cin.ignore();
+    //cin.ignore();
     cout << "Would you like to edit year of birth? yes/no: ";
     getline(cin,editSC);
 
@@ -1018,6 +1014,7 @@ int ConsoleUI::editBirthDateOfScientist(Scientist sc)
             }
 
         }while(!_scs.validYearCheck(bDate));
+        cin.ignore();
 
     }
     else if(editSC == "no" || editSC == "No" || editSC == "NO")
@@ -1041,7 +1038,7 @@ int ConsoleUI::editDeathDateOfScientist(Scientist sc, int bDate)
     string deadOrAlive;
     int dDate;
 
-    cin.ignore();
+    //cin.ignore();
     cout << "Would you like to edit year of death? yes/no: ";
     getline(cin,editSC);
 
@@ -1050,7 +1047,6 @@ int ConsoleUI::editDeathDateOfScientist(Scientist sc, int bDate)
         do
         {
             cout << "Is scientist still alive? yes/no: ";
-            cin.ignore();
             getline(cin,deadOrAlive);
 
             if(deadOrAlive == "no" || deadOrAlive == "No" || deadOrAlive == "NO")
@@ -1066,6 +1062,7 @@ int ConsoleUI::editDeathDateOfScientist(Scientist sc, int bDate)
                         cout << endl;
                     }
                 }while(!_scs.validYearCheck(dDate) || dDate < bDate);
+                cin.ignore();
             }
             else if(deadOrAlive == "yes" || deadOrAlive == "Yes" || deadOrAlive == "YES")
             {
@@ -1098,7 +1095,7 @@ char ConsoleUI::editGenderOfScientist(Scientist sc)
     string editSC;
     string gender;
 
-    cin.ignore();
+    //cin.ignore();
     cout << "Would you like to edit gender? yes or no: ";
     getline(cin,editSC);
 
@@ -1107,7 +1104,7 @@ char ConsoleUI::editGenderOfScientist(Scientist sc)
         do
         {
             cout << "Enter new gender (f/m): ";
-            cin.ignore();
+            //cin.ignore();
             getline(cin,gender);
             if(gender != "f" && gender != "m")
             {
@@ -1164,9 +1161,18 @@ void ConsoleUI::editComputer()
         getline(cin,yesOrNo);
     }
     cName = editNameOfComputer(co);
+    wasBuilt = editWasBuiltOfComputer(co);
+    if(wasBuilt == "yes" || wasBuilt == "Yes" || wasBuilt == "YES")
+    {
+        buildYear = editBuildYearOfComputer(co);
+        cin.ignore();
+    }
+    else
+    {
+        buildYear = 0;
+    }
     buildYear = editBuildYearOfComputer(co);
     type = editTypeOfComputer(co);
-    wasBuilt = editWasBuiltOfComputer(co);
     _scs.editComputer(id, cName, buildYear, type, wasBuilt);
 
     co = _scs.computerToEdit(id);
@@ -1180,14 +1186,12 @@ string ConsoleUI::editNameOfComputer(Computer c)
     string editC;
     string cName;
 
-    cin.ignore();
+    //cin.ignore();
     cout << "Would you like to edit the name? yes/no: ";
     getline(cin,editC);
 
     if(editC == "yes" || editC == "Yes" || editC == "YES")
     {
-        cin.ignore();
-
         do
         {
             cout    << "Enter new name: ";
@@ -1228,7 +1232,7 @@ int ConsoleUI::editBuildYearOfComputer(Computer c)
     string editC;
     int buildYear;
 
-    cin.ignore();
+    //cin.ignore();
     cout << "Would you like to edit the build year? yes/no: ";
     getline(cin,editC);
 
@@ -1246,6 +1250,7 @@ int ConsoleUI::editBuildYearOfComputer(Computer c)
             }
 
         }while(!_scs.validYearCheck(buildYear));
+        cin.ignore();
     }
     else if(editC == "no" || editC == "No" || editC == "NO")
     {
@@ -1267,14 +1272,12 @@ string ConsoleUI::editTypeOfComputer(Computer c)
     string editC;
     string cType;
 
-    cin.ignore();
+    //cin.ignore();
     cout << "Would you like to edit the type? yes/no: ";
     getline(cin,editC);
 
     if(editC == "yes" || editC == "Yes" || editC == "YES")
     {
-        cin.ignore();
-
         do
         {
             cout    << "Enter new type: ";
@@ -1316,14 +1319,12 @@ char ConsoleUI::editWasBuiltOfComputer(Computer c)
     string editC;
     string wasBuilt;
 
-    cin.ignore();
+    //cin.ignore();
     cout << "Would you like to edit if the computer has been built? yes/no: ";
     getline(cin,editC);
 
     if(editC == "yes" || editC == "Yes" || editC == "YES")
     {
-        cin.ignore();
-
         do
         {
             cout    << "Has the computer been built? yes/no: ";
@@ -1331,7 +1332,7 @@ char ConsoleUI::editWasBuiltOfComputer(Computer c)
             if(wasBuilt != "no" && wasBuilt != "No" && wasBuilt != "NO" && wasBuilt != "yes" && wasBuilt != "Yes" && wasBuilt != "YES")
             {
                 cout << endl;
-                cout << "! - Invalid choice, please enter 'y' or 'n' - !" << endl;
+                cout << "! - Invalid choice, please enter 'yes' or 'no' - !" << endl;
                 cout << endl;
             }
         }while(wasBuilt != "no" && wasBuilt != "No" && wasBuilt != "NO" && wasBuilt != "yes" && wasBuilt != "Yes" && wasBuilt != "YES");

@@ -6,7 +6,7 @@ DataAccess::DataAccess()
 {
 
     _db = QSqlDatabase::addDatabase("QSQLITE");
-    _db.setDatabaseName("C:/sql/CSHistory.sqlite");
+    _db.setDatabaseName("C:/CSHistory.sqlite");
 
     _db.open();
 
@@ -248,6 +248,7 @@ int DataAccess::addComputer(Computer c)
     query.bindValue(":buildYear", c.getBuildYear());
     query.bindValue(":type", QString::fromStdString(c.getType()));
     query.bindValue(":wasBuilt", c.getWasBuilt());
+    query.exec();
     int n = query.lastInsertId().toUInt();
     return n;
 }
