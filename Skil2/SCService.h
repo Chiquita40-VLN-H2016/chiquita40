@@ -33,15 +33,17 @@ public:
     int deleteScientist(int id);
     int deleteComputer(int id);
     void editScientist(int id, string name, int dob, int dod, char g);
-    Computer computerToEdit(int id);
+    Scientist scientistToEdit(int id);
     void editComputer(int id, string name, int by, string type, string wasb);
+    Computer computerToEdit(int id);
     void joinSC(int sid, int cid);
 
 private:
     DataAccess _data;
     vector<Scientist> _scientists;
     vector<Computer> _computers;
-    size_t size();
+    size_t sSize();
+    size_t cSize();
     int findScientistId(int id); //Helper function to find, add, edit and delete scientist.
     int findComputerId(int id); //Helper function to find, add, edit and delete computer.
     void constructString(string& s, string name, int dob, int dod, char g);

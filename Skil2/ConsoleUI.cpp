@@ -21,6 +21,12 @@ void ConsoleUI::run()
         commands(); //Prints out user input options.
 
         cout << "Enter command: ";
+        if(!cin)
+        {
+            cin.clear();
+            string ignoreLine;
+            getline(cin, ignoreLine);
+        }
         cin >> command;
 
         if(command == "add")
@@ -144,6 +150,12 @@ void ConsoleUI::commandFind()
     else if(choice == 2)
     {
         findComputer();
+    }
+    else
+    {
+        cout << endl;
+        cout << "! - Invalid input - !" << endl;
+        cout << endl;
     }
 }
 
@@ -840,13 +852,46 @@ void ConsoleUI::deleteComputer()
 
 void ConsoleUI::editScientist()
 {
-    string editSC, sName;
-    int bDate, dDate;
+    string editSC, sName, yesOrNo;
+    int bDate, dDate, id;
     char gender;
+    Scientist s;
     cout << "Enter name of the scientist you want to edit: " << endl;
     cin.ignore();
     getline(cin,editSC);
     vector<Scientist> sc = _scs.findScientistByName(editSC);
+    cout << "These Scientists matched your search:" << endl;
+    printListOfScientists(sc);
+    while(yesOrNo != "yes" && yesOrNo != "Yes" && yesOrNo != "YES")
+    {
+        cout << "Select the id of the scientist you want to edit: ";
+        cin >> id;
+        s = _scs.scientistToEdit(id);
+        if(s.getId() == -1)
+        {
+            cout << endl;
+            cout << "! - Invalid id chosen - !" << endl;
+            cout << endl;
+            continue;
+        }
+        printHeaderScientists();
+        cout << s << endl;
+        cout << endl;
+        cout << "Would you like to edit this scientist, yes or no?: ";
+        cin.ignore();
+        getline(cin,yesOrNo);
+    }
+
+    sName = editNameOfScientist(s);
+    bDate = editBirthDateOfScientist(s);
+    dDate = editDeathDateOfScientist(s,bDate);
+    gender = editGenderOfScientist(s);
+    _scs.editScientist(id, sName, bDate, dDate, gender);
+
+    s = _scs.scientistToEdit(id);
+    cout << "The scientist has been edited: " << endl;
+    printHeaderScientists();
+    cout << s << endl;
 
 }
 
@@ -1055,11 +1100,8 @@ void ConsoleUI::editComputer()
         getline(cin,yesOrNo);
     }
     cName = editNameOfComputer(co);
-    //cout << "Name is " << cName << endl;
     buildYear = editBuildYearOfComputer(co);
-    //cout << "buildYear is " << buildYear << endl;
     type = editTypeOfComputer(co);
-    //cout << "Type is " << type << endl;
     wasBuilt = editWasBuiltOfComputer(co);
     _scs.editComputer(id, cName, buildYear, type, wasBuilt);
 
