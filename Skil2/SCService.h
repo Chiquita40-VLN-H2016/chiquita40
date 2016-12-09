@@ -36,6 +36,7 @@ public:
     bool validYearCheck(int year);
     int deleteScientist(int id);
     int deleteComputer(int id);
+    int deleteConnection(int sId, int cId);
     void editScientist(int id, string name, int dob, int dod, char g);
     Scientist scientistToEdit(int id);
     void editComputer(int id, string name, int by, string type, string wasb);

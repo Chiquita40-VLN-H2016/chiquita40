@@ -191,6 +191,7 @@ void ConsoleUI::commandDelete()
     cout << "-------------------------------------------------------------------------" << endl;
     cout << "1 - Delete scientist" << endl;
     cout << "2 - Delete computer" << endl;
+    cout << "3 - Delete a computer-scientist connection" << endl;
     cout << "-------------------------------------------------------------------------" << endl;
 
     cout << "Please enter now: ";
@@ -203,6 +204,16 @@ void ConsoleUI::commandDelete()
     else if(choice == 2)
     {
         deleteComputer();
+    }
+    else if(choice == 3)
+    {
+        deleteConnection();
+    }
+    else
+    {
+        cout << endl;
+        cout << "! - This selection was invalid - !" << endl;
+        cout << endl;
     }
 }
 
@@ -217,7 +228,7 @@ void ConsoleUI::commandJoin()
     printListOfScientists(sc);
 
     cout << "Please enter the ID of the scientist you want to connect." << endl
-         << "You can see the id in the table above." << endl;
+         << "You can find the id in the table above." << endl;
     cin >> sid;
 
     _scs.computersAscendingOrder(0);
@@ -225,7 +236,7 @@ void ConsoleUI::commandJoin()
     printListOfComputers(c);
 
     cout << "Please enter the ID of the computer you want to connect." << endl
-         << "You can see the id in the table above." << endl;
+         << "You can find the id in the table above." << endl;
     cin >> cid;
 
     _scs.joinSC(sid, cid);
@@ -1005,6 +1016,83 @@ void ConsoleUI::deleteComputer()
     {
         //listName();
     }
+}
+
+void ConsoleUI::deleteConnection()
+{
+    int sId, cId;
+    printListOfConnectionsForDeletion();
+    cout << "Select the id of the scientist you want to delete the connection from: " << endl;
+    cin >> sId;
+    cout << "Select the id of the computer you want to delete the connection from: " << endl;
+    cin >> cId;
+
+    int deleted = _scs.deleteConnection(sId, cId);
+
+    if(deleted == -1)
+    {
+        cout << "This connection does not exist!" << endl;
+    }
+    else if(deleted == -2)
+    {
+        cout << "Connection deleted successfully!" << endl;
+    }
+    else
+    {
+        cout << "Connection was not deleted!" << endl;
+    }
+
+}
+
+void ConsoleUI::printListOfConnectionsForDeletion()
+{
+    string tab,tab2;
+    vector<Invented> vi = _scs.inventedAscendingOrder(0);
+    cout << "These are the current scientist-computer connections: ";
+    cout << endl;
+
+    cout << "Scientest Id" << "\t" << "Scientist Name" << "\t" << "\t"
+         << "Computer Name" << "\t" << "\t" << "Computer Id" << endl;
+    cout << "=========================================================================" << endl;
+    for(size_t i = 0; i < vi.size(); i++)
+    {
+        if(vi.at(i).getSName().size() < 24 && vi.at(i).getSName().size() > 15)
+        {
+            tab = "\t";
+        }
+        else if(vi.at(i).getSName().size() < 16 && vi.at(i).getSName().size() > 7)
+        {
+            tab = "\t\t";
+        }
+        else if(vi.at(i).getSName().size() < 8)
+        {
+            tab = "\t\t\t";
+        }
+        else
+        {
+            tab = "";
+        }
+
+        if(vi.at(i).getCName().size() < 24 && vi.at(i).getCName().size() > 15)
+        {
+            tab2 = "\t";
+        }
+        else if(vi.at(i).getCName().size() < 16 && vi.at(i).getCName().size() > 7)
+        {
+            tab2 = "\t\t";
+        }
+        else if(vi.at(i).getCName().size() < 8)
+        {
+            tab2 = "\t\t\t";
+        }
+        else
+        {
+            tab2 = "";
+        }
+        cout << vi.at(i).getSId() << "\t\t" << vi.at(i).getSName() << tab
+             << vi.at(i).getCName() << tab2 << vi.at(i).getCId() << endl;
+    }
+    cout << endl;
 }
 
 void ConsoleUI::editScientist()
