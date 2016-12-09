@@ -182,6 +182,12 @@ void ConsoleUI::commandEdit()
     {
         editComputer();
     }
+    else
+    {
+        cout << endl;
+        cout << "! - This selection was invalid - !" << endl;
+        cout << endl;
+    }
 }
 
 void ConsoleUI::commandDelete()
@@ -1026,19 +1032,23 @@ void ConsoleUI::editScientist()
         cout << "Select the id of the scientist you want to edit: ";
         cin >> id;
         s = _scs.scientistToEdit(id);
-        if(s.getId() == -1)
+        if((s.getId() == -1) || (!cin))
         {
+            cin.clear();
+            cin.ignore(256, '\n');
             cout << endl;
             cout << "! - Invalid id chosen - !" << endl;
             cout << endl;
             continue;
         }
+
         printHeaderScientists();
         cout << s << endl;
         cout << endl;
         cout << "Would you like to edit this scientist, yes or no?: ";
         cin.ignore();
         getline(cin,yesOrNo);
+
     }
 
     sName = editNameOfScientist(s);
@@ -1233,6 +1243,8 @@ char ConsoleUI::editGenderOfScientist(Scientist sc)
         cout << endl;
     }
 
+    cout << endl;
+
     return gender.front();
 }
 
@@ -1253,8 +1265,10 @@ void ConsoleUI::editComputer()
         cout << "Select the id of the computer you want to edit: ";
         cin >> id;
         co = _scs.computerToEdit(id);
-        if(co.getId() == -1)
+        if((co.getId() == -1) || (!cin))
         {
+            cin.clear();
+            cin.ignore(256, '\n');
             cout << endl;
             cout << "! - Invalid id chosen - !" << endl;
             cout << endl;
@@ -1455,6 +1469,8 @@ char ConsoleUI::editWasBuiltOfComputer(Computer c)
         wasBuilt = c.getWasBuilt();
         cout << endl;
     }
+
+    cout << endl;
 
     return wasBuilt.front();
 }
