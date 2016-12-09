@@ -204,7 +204,7 @@ void ConsoleUI::printListOfScientists(vector<Scientist> vs)
 void ConsoleUI::printHeaderScientists()
 {
     cout << endl;
-    cout << "ID" << "\t" << "Scientist" << "\t" << "\t" << "\t" << "YoB" << "\t" << "YoD" << "\t" << "Gender" << endl;
+    cout << "ID" << "\t" << "Scientist" << "\t" << "\t" << "\t" << "Born" << "\t" << "Died" << "\t" << "Gender" << endl;
     cout << "=========================================================================" << endl;
 }
 
@@ -221,7 +221,24 @@ void ConsoleUI::printListOfComputers(vector<Computer> vc)
 void ConsoleUI::printHeaderComputers()
 {
     cout << endl;
-    cout << "ID" << "\t" << "Computer" << "\t" << "\t" << "\t" << "Build year" << "\t" << "Type" << "\t" << "Was built" << endl;
+    cout << "ID" << "\t" << "Computer" << "\t" << "\t" << "\t" << "Build" << "\t" << "Type" << "\t" << "\t" << "Was built" << endl;
+    cout << "=========================================================================" << endl;
+}
+
+void ConsoleUI::printJoinedList(vector<Invented> vi)
+{
+    printJoinedHeader();
+    for(size_t i = 0; i < vi.size(); i++)
+    {
+        cout << vi.at(i);
+    }
+    cout << endl;
+}
+
+void ConsoleUI::printJoinedHeader()
+{
+    cout << endl;
+    cout << "Scientist Name" << "\t" << "\t" << "\t" << "Computer Name" << "\t" << "\t" << "\t" << endl;
     cout << "=========================================================================" << endl;
 }
 

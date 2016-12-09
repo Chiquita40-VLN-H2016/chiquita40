@@ -32,7 +32,11 @@ string Invented::addTab(ostream& out, string name)
 {
     string tab = "\t";
 
-    if(name.size() < 16 && name.size() > 7)
+    if(name.size() < 24 && name.size() > 15)
+    {
+        out << name << tab;
+    }
+    else if(name.size() < 16 && name.size() > 7)
     {
         out << name << tab << tab;
     }
@@ -42,7 +46,7 @@ string Invented::addTab(ostream& out, string name)
     }
     else
     {
-        out << name << tab;
+        out << name;
     }
 
     return tab;
