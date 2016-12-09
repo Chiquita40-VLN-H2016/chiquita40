@@ -442,7 +442,8 @@ int ConsoleUI::addDeathDateOfScientist(int bDate) //Gets a year of death of scie
     do
     {
         cout << "Is scientist still alive? (yes/no): ";
-        getline(cin,deadOrAlive);
+
+        getline(cin, deadOrAlive);
 
         if(deadOrAlive == "no" || deadOrAlive == "No" || deadOrAlive == "NO")
         {
@@ -457,6 +458,8 @@ int ConsoleUI::addDeathDateOfScientist(int bDate) //Gets a year of death of scie
                     cout << endl;
                 }
             }while(!_scs.validYearCheck(dDate) || dDate < bDate);
+
+            cin.ignore();
         }
         else if(deadOrAlive == "yes" || deadOrAlive == "Yes" || deadOrAlive == "YES")
         {
@@ -474,8 +477,9 @@ int ConsoleUI::addDeathDateOfScientist(int bDate) //Gets a year of death of scie
 
 char ConsoleUI::addGenderOfScientist() //Gets a gender of scientist from user.
 {
+
     string gender;
-    cin.ignore();
+
     do
     {
         cout << "Gender (f/m): ";
@@ -514,7 +518,7 @@ void ConsoleUI::addComputer() //Adds computer to the list.
     type = addTypeOfComputer();
 
     _scs.addComputer(cName, buildYear, type, wasBuilt);
-    //listName();
+    listComputersByNameAsc();
 }
 
 string ConsoleUI::addNameOfComputer()
@@ -598,6 +602,7 @@ string ConsoleUI::addWasBuiltOfComputer()
     do
     {
         cout << "Has the computer been built, yes/no: ";
+
         getline(cin,wasBuilt);
 
         if(wasBuilt != "no" && wasBuilt != "No" && wasBuilt != "NO" && wasBuilt != "yes" && wasBuilt != "Yes" && wasBuilt != "YES")
@@ -955,25 +960,75 @@ void ConsoleUI::listJoinedByComputersNameAscDesc()
 void ConsoleUI::findScientist()
 {
     string findSc;
+    bool containsNum = false;
 
     cin.ignore();
-    cout << "Enter the name of scientist: ";
-    getline(cin,findSc);
-    vector<Scientist> sc = _scs.findScientistByName(findSc);
 
-    printListOfScientistsWithComputer(sc);
+    do
+    {
+        cout << "Enter the name of scientist: ";
+        getline(cin,findSc);
+
+        containsNum = _scs.checkIfContainsNumber(findSc);
+
+        if(findSc.size() == 0)
+        {
+            cout << endl;
+            cout << "! - No scientist name was entered. - !" << endl;
+        }
+        else if(containsNum == true)
+        {
+            cout << endl;
+            cout << "! - Invalid input. Name cannot contain numbers. - !" << endl;
+        }
+    }while(findSc.size() == 0 || containsNum == true);
+
+    vector<Scientist> sc = _scs.findScientistByName(findSc);
+    if(sc.size() == 0)
+    {
+        cout << "Nothing matched your search" << endl;
+    }
+    else
+    {
+        printListOfScientistsWithComputer(sc);
+    }
 }
 
 void ConsoleUI::findComputer()
 {
     string findC;
+    bool containsNum = false;
 
     cin.ignore();
-    cout << "Enter the name of computer: ";
-    getline(cin,findC);
-    vector<Computer> c = _scs.findComputerByName(findC);
 
-    printListOfComputerWithScientist(c);
+    do
+    {
+        cout << "Enter the name of computer: ";
+        getline(cin,findC);
+
+        containsNum = _scs.checkIfContainsNumber(findC);
+
+        if(findC.size() == 0)
+        {
+            cout << endl;
+            cout << "! - No computer name was entered. - !" << endl;
+        }
+        else if(containsNum == true)
+        {
+            cout << endl;
+            cout << "! - Invalid input. Name cannot contain numbers. - !" << endl;
+        }
+    }while(findC.size() == 0 || containsNum == true);
+
+    vector<Computer> c = _scs.findComputerByName(findC);
+    if(c.size() == 0)
+    {
+        cout << "Nothing matched your search" << endl;
+    }
+    else
+    {
+        printListOfComputerWithScientist(c);
+    }
 }
 
 void ConsoleUI::deleteScientist()
@@ -1332,7 +1387,7 @@ void ConsoleUI::editComputer()
     Computer co;
     cout << "Enter name of the computer you want to edit: " << endl;
     cin.ignore();
-    getline(cin,editC);
+    getline(cin, editC);
     vector<Computer> c = _scs.findComputerByName(editC);
     cout << "These computers matched your search:" << endl;
     printListOfComputers(c);

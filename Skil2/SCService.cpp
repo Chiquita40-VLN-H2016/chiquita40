@@ -278,6 +278,18 @@ bool SCService::validYearCheck(int year)
 
 }
 
+bool SCService::checkIfContainsNumber(string s)
+{
+    for(size_t i = 0; i < s.length(); i++)
+    {
+        if(s[i] >= '0' && s[i] <= '9')
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
 size_t SCService::cSize()
 {
     return _computers.size();

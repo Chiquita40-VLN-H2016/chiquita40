@@ -78,6 +78,7 @@ Delete works only with the exact first and last name.
 If you get a compile time error when you have entered "quit", please rebuild (choose "Rebuild All") the program.
 
 **Join**
+When you join a Computer and a Computer Scientist, their id's will appear in the Invented table in the SQLite Manager file.
 
 
 
@@ -85,8 +86,8 @@ If you get a compile time error when you have entered "quit", please rebuild (ch
 * Member variables start with an _underscore.
 * Other variables start with a lower case letter (theVariable)(Camel case).
 * Class names start with an upper case letter (TheClass)(Pascal case).
-* Curly brackets are always used even when code in statements is one line.
-* Curly brackets are always placed beneath the statement they refer to.
+* Curly braces are always used even when code in statements is one line.
+* Curly braces are always placed beneath the statement they refer to.
 * Code is indented with a single tab.
 
 Example:
