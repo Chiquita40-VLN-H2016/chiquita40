@@ -30,6 +30,7 @@ private:
     void commandFind();
     void commandEdit();
     void commandDelete();
+    void commandJoin();
 
     void addScientist(); //Add new scientist.
     string addNameOfScientist();

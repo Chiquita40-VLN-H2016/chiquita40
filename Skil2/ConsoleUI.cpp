@@ -44,6 +44,7 @@ void ConsoleUI::run()
         }
         else if(command == "join")
         {
+            commandJoin();
             // connect scientist and computer
         }
         else if(command == "quit")
@@ -187,6 +188,29 @@ void ConsoleUI::commandDelete()
     {
         deleteComputer();
     }
+}
+
+void ConsoleUI::commandJoin()
+{
+    int choice = 0;
+
+    cout << "-------------------------------------" << endl;
+    cout << "1 - Connect a computer to a scientist" << endl;
+    cout << "2 - Connect a scientist to a computer" << endl;
+    cout << "-------------------------------------" << endl;
+
+    cout << "Please enter now: ";
+    cin >> choice;
+
+    if(choice == 1)
+    {
+        //joinComputer();
+    }
+    else if(choice == 2)
+    {
+        //joinScientist();
+    }
+
 }
 
 void ConsoleUI::printListOfScientists(vector<Scientist> vs)
