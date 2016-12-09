@@ -34,6 +34,7 @@ public:
     int deleteScientist(int id);
     int deleteComputer(int id);
     void editScientist(int id, string name, int dob, int dod, char g);
+    Computer computerToEdit(int id);
     void editComputer(int id, string name, int by, string type, string wasb);
     void joinSC(int sid, int cid);
 

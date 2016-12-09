@@ -1060,15 +1060,48 @@ char ConsoleUI::editGenderOfScientist(Scientist sc)
 
 void ConsoleUI::editComputer()
 {
-    string editC, cName;
-    int by;
-    string t, wb;
+    string editC, cName, yesOrNo;
+    int buildYear, id;
+    string type, wasBuilt;
+    Computer co;
     cout << "Enter name of the computer you want to edit: " << endl;
     cin.ignore();
     getline(cin,editC);
     vector<Computer> c = _scs.findComputerByName(editC);
+    cout << "These computers matched your search:" << endl;
+    printListOfComputers(c);
+    while(yesOrNo != "yes" && yesOrNo != "Yes" && yesOrNo != "YES")
+    {
+        cout << "Select the id of the computer you want to edit: ";
+        cin >> id;
+        co = _scs.computerToEdit(id);
+        if(co.getId() == -1)
+        {
+            cout << endl;
+            cout << "! - Invalid id chosen - !" << endl;
+            cout << endl;
+            continue;
+        }
+        printHeaderComputers();
+        cout << co << endl;
+        cout << endl;
+        cout << "Would you like to edit this computer, yes or no?: ";
+        cin.ignore();
+        getline(cin,yesOrNo);
+    }
+    cName = editNameOfComputer(co);
+    //cout << "Name is " << cName << endl;
+    buildYear = editBuildYearOfComputer(co);
+    //cout << "buildYear is " << buildYear << endl;
+    type = editTypeOfComputer(co);
+    //cout << "Type is " << type << endl;
+    wasBuilt = editWasBuiltOfComputer(co);
+    _scs.editComputer(id, cName, buildYear, type, wasBuilt);
 
-    // Vantar föll hér til að kalla í editNameOfComputer osfrv.
+    co = _scs.computerToEdit(id);
+    cout << "The computer has been edited: " << endl;
+    printHeaderComputers();
+    cout << co << endl;
 }
 
 string ConsoleUI::editNameOfComputer(Computer c)
