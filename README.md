@@ -39,8 +39,7 @@ You can do these commands as often as you wish. To stop type in 'quit'.
 + Invented.cpp
 + Invented.h
 + main.cpp
-+ scientists.txt        -   This is a data file which holds a list of Computer Scientists.
-+ scientists_backup.txt        -   This is a backup of the data file above.
++ CSHistory.sqlite    Database that holds lists of Scientists, Computers and a joined list.
 + Insert skipanir.txt
 
 ## III. Using Qt
