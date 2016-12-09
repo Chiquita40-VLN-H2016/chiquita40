@@ -21,7 +21,7 @@ public:
     void setType(string type);
     void setWasBuilt(bool wasb);
     friend ostream& operator << (ostream& out, Computer c);//Overload of outstream operator to print out computer.
-    string addTab(ostream& out, string name);
+    string addTab(ostream& out, string name);//Add tabs to even out table spaces.
 
 private:
     int _id;
