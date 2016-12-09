@@ -254,11 +254,12 @@ void ConsoleUI::printHeaderScientists()
 
 void ConsoleUI::printListOfScientistsWithComputer(vector<Scientist> vs)
 {
-   int idComputer;
-   printHeaderScientists();
+//   int idComputer;
+// á eftir að útfæra kall í nafn á computer.
+   printHeaderScientistsWithComputer();
    for(size_t i = 0; i < vs.size(); i++)
    {
-       cout << vs.at(i) << '\t' << idComputer;
+       cout << vs.at(i) << '\t';
    }
    cout << endl;
 }
