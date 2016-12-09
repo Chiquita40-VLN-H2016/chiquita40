@@ -62,6 +62,7 @@ void Computer::setWasBuilt(bool wasb)
 
 ostream& operator << (ostream& out, Computer c)
 {
+    out << c.getId() << '\t';
     out << c.addTab(out, c.getName());
     out << c.getBuildYear() << '\t';
     out << c.getType() << '\t';
@@ -70,11 +71,16 @@ ostream& operator << (ostream& out, Computer c)
     return out;
 }
 
+//If name is shorter than 24 characters, even out table spaces.
 string Computer::addTab(ostream& out, string name)
 {
     string tab = "\t";
 
-    if(name.size() < 16 && name.size() > 7)
+    if(name.size() < 24 && name.size() > 15)
+    {
+        out << name << tab;
+    }
+    else if(name.size() < 16 && name.size() > 7)
     {
         out << name << tab << tab;
     }
@@ -84,7 +90,7 @@ string Computer::addTab(ostream& out, string name)
     }
     else
     {
-        out << name << tab;
+        out << name;
     }
 
     return tab;
