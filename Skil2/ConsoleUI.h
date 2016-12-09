@@ -23,6 +23,8 @@ private:
 
     void printListOfScientists(vector<Scientist> vs);
     void printHeaderScientists(); //Prints out Scientists table header.
+    void printListOfScientistsWithComputer(vector<Scientist> vs);
+    void printHeaderScientistsWithComputer();
     void printListOfComputers(vector<Computer> vc);
     void printHeaderComputers(); //Prints out Computers table header.
     void printJoinedList(vector<Invented> vi);
@@ -83,6 +85,7 @@ private:
     int editBuildYearOfComputer(Computer c);
     string editTypeOfComputer(Computer c);
     char editWasBuiltOfComputer(Computer c);
+
 };
 
 #endif // CONSOLEUI_H

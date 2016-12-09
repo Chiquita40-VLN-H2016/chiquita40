@@ -27,6 +27,7 @@ public:
     vector<Scientist> findScientistByName(string search);
     vector<Computer> findComputerByYear(int year);
     vector<Computer> findComputerByName(string search);
+    vector<Computer> findComputerByScientist(int id);
     void addScientist(string n, int bd, int dd, char g);
     void addComputer(string n, int b, string t, string wb);
     bool validYearCheck(int year);

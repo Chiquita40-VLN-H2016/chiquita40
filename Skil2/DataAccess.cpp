@@ -6,7 +6,7 @@ DataAccess::DataAccess()
 {
 
     _db = QSqlDatabase::addDatabase("QSQLITE");
-    _db.setDatabaseName("C:/CSHistory.sqlite");
+    _db.setDatabaseName("C:/sql/CSHistory.sqlite");
 
     _db.open();
 
@@ -434,11 +434,11 @@ vector<Scientist> DataAccess::getScientistsByComputer(int id)
 
     while(query.next())
     {
-        int id = query.value("S.ID").toUInt();
-        string name = query.value("S.Name").toString().toStdString();
-        int birth_year = query.value("S.Birth_Year").toUInt();
-        int death_year = query.value("S.Death_Year").toUInt();
-        string g = query.value("S.Gender").toString().toStdString();
+        int id = query.value("ID").toUInt();
+        string name = query.value("Name").toString().toStdString();
+        int birth_year = query.value("Birth_Year").toUInt();
+        int death_year = query.value("Death_Year").toUInt();
+        string g = query.value("Gender").toString().toStdString();
         char gender = g.front();
         scientists.push_back(Scientist(id, name, birth_year, death_year, gender));
     }
@@ -460,11 +460,11 @@ vector<Computer> DataAccess::getComputersByScientist(int id)
 
     while(query.next())
     {
-        int id = query.value("C.ID").toUInt();
-        string name = query.value("C.Name").toString().toStdString();
-        int buildYear = query.value("C.Build_Year").toUInt();
-        string type = query.value("C.Type").toString().toStdString();
-        bool wasBuilt = query.value("C.Was_Built").toBool();
+        int id = query.value("ID").toUInt();
+        string name = query.value("Name").toString().toStdString();
+        int buildYear = query.value("Build_Year").toUInt();
+        string type = query.value("Type").toString().toStdString();
+        bool wasBuilt = query.value("Was_Built").toBool();
 
         computers.push_back(Computer(id, name, buildYear, type, wasBuilt));
     }
