@@ -71,6 +71,9 @@ int DataAccess::addScientist(Scientist sc)
 void DataAccess::deleteScientist(int id)
 {
     QSqlQuery query(_db);
+    query.prepare("DELETE FROM Invented WHERE SID = (:id)");
+    query.bindValue(":id", id);
+    query.exec();
 
     query.prepare("DELETE FROM Scientists WHERE ID = (:id)");
     query.bindValue(":id", id);
@@ -257,6 +260,11 @@ int DataAccess::addComputer(Computer c)
 void DataAccess::deleteComputer(int id)
 {
     QSqlQuery query(_db);
+
+    query.prepare("DELETE FROM Invented WHERE CID = (:id)");
+    query.bindValue(":id", id);
+    query.exec();
+
     query.prepare("DELETE FROM Computers WHERE ID = (:id)");
     query.bindValue(":id", id);
     query.exec();
@@ -412,6 +420,16 @@ void DataAccess::joinScientistAndComputer(int scientistId, int computerId)
     query.exec();
 }
 
+void DataAccess::deleteConnection(int scientistId, int computerId)
+{
+    QSqlQuery query(_db);
+
+    query.prepare("DELETE FROM Invented WHERE SID = (:scId) AND CID = (:cId);");
+    query.bindValue(":scId", scientistId);
+    query.bindValue(":cId", computerId);
+    query.exec();
+}
+
 vector<Scientist> DataAccess::getScientistsByComputer(int id)
 {
     vector<Scientist> scientists;
@@ -463,14 +481,37 @@ vector<Computer> DataAccess::getComputersByScientist(int id)
     return computers;
 }
 
-vector<Invented> DataAccess::getListOfComputersAndScientists()
+vector<Invented> DataAccess::getListOfComputersAndScientistsAsc(int n)
 {
     vector<Invented> connections;
     QSqlQuery query(_db);
-    query.exec("SELECT S.Name as s_name, C.Name as c_name "
+    switch(n)
+    {
+        case 0:
+                query.exec("SELECT S.Name as s_name, C.Name as c_name "
+                           "FROM Scientists S "
+                           "JOIN Invented I ON S.ID = I.SID "
+                           "JOIN Computers C ON C.ID = I.CID "
+                           "ORDER BY S.Name;");
+                break;
+        case 1:
+                query.exec("SELECT S.Name as s_name, C.Name as c_name "
+                           "FROM Scientists S "
+                           "JOIN Invented I ON S.ID = I.SID "
+                           "JOIN Computers C ON C.ID = I.CID "
+                           "ORDER BY C.Name;");
+                break;
+        default:
+                 query.exec("SELECT S.Name as s_name, C.Name as c_name "
+                            "FROM Scientists S "
+                            "JOIN Invented I ON S.ID = I.SID "
+                            "JOIN Computers C ON C.ID = I.CID "
+                            "ORDER BY S.Name;");
+    }
+    /*query.exec("SELECT S.Name as s_name, C.Name as c_name "
                "FROM Scientists S "
                "JOIN Invented I ON S.ID = I.SID "
-               "JOIN Computers C ON C.ID = I.CID;");
+               "JOIN Computers C ON C.ID = I.CID;");*/
 
     while(query.next())
     {
@@ -482,3 +523,44 @@ vector<Invented> DataAccess::getListOfComputersAndScientists()
     return connections;
 }
 
+vector<Invented> DataAccess::getListOfComputersAndScientistsDesc(int n)
+{
+    vector<Invented> connections;
+    QSqlQuery query(_db);
+    switch(n)
+    {
+        case 0:
+                query.exec("SELECT S.Name as s_name, C.Name as c_name "
+                           "FROM Scientists S "
+                           "JOIN Invented I ON S.ID = I.SID "
+                           "JOIN Computers C ON C.ID = I.CID "
+                           "ORDER BY S.Name DESC;");
+                break;
+        case 1:
+                query.exec("SELECT S.Name as s_name, C.Name as c_name "
+                           "FROM Scientists S "
+                           "JOIN Invented I ON S.ID = I.SID "
+                           "JOIN Computers C ON C.ID = I.CID "
+                           "ORDER BY C.Name DESC;");
+                break;
+        default:
+                 query.exec("SELECT S.Name as s_name, C.Name as c_name "
+                            "FROM Scientists S "
+                            "JOIN Invented I ON S.ID = I.SID "
+                            "JOIN Computers C ON C.ID = I.CID "
+                            "ORDER BY S.Name DESC;");
+    }
+    /*query.exec("SELECT S.Name as s_name, C.Name as c_name "
+               "FROM Scientists S "
+               "JOIN Invented I ON S.ID = I.SID "
+               "JOIN Computers C ON C.ID = I.CID;");*/
+
+    while(query.next())
+    {
+        string sName = query.value("s_name").toString().toStdString();
+        string cName = query.value("c_name").toString().toStdString();
+        connections.push_back(Invented(sName, cName));
+    }
+
+    return connections;
+}
