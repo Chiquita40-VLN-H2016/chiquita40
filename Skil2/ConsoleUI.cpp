@@ -54,7 +54,7 @@ void ConsoleUI::run()
         }
         else if(command == "join")
         {
-            // connect scientist and computer
+            commandJoin(); // connect scientist and computer
         }
         else if(command == "quit")
         {
@@ -204,6 +204,35 @@ void ConsoleUI::commandDelete()
     {
         deleteComputer();
     }
+}
+
+void ConsoleUI::commandJoin()
+{
+    int sid, cid;
+    vector<Scientist> sc;
+    vector<Computer> c;
+
+    _scs.scientistsAscendingOrder(0);
+    sc = _scs.getScientists();
+    printListOfScientists(sc);
+
+    cout << "Please enter the ID of the scientist you want to connect." << endl
+         << "You can see the id in the table above." << endl;
+    cin >> sid;
+
+    _scs.computersAscendingOrder(0);
+    c = _scs.getComputers();
+    printListOfComputers(c);
+
+    cout << "Please enter the ID of the computer you want to connect." << endl
+         << "You can see the id in the table above." << endl;
+    cin >> cid;
+
+    _scs.joinSC(sid, cid);
+
+
+
+
 }
 
 void ConsoleUI::printListOfScientists(vector<Scientist> vs)
@@ -1202,4 +1231,3 @@ char ConsoleUI::editWasBuiltOfComputer(Computer c)
     }
     return wasBuilt;
 }
-

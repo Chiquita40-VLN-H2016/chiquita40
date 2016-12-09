@@ -3,6 +3,7 @@
 #include "Scientist.h"
 #include "Computer.h"
 #include "DataAccess.h"
+#include "Invented.h"
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -20,6 +21,8 @@ public:
     void scientistsDescendingOrder(int n); //Descending Order scientists by birth year.
     void computersAscendingOrder(int n); //Ascending order.
     void computersDescendingOrder(int n); //Descending order.
+    vector<Invented> inventedAscendingOrder(int n);
+    vector<Invented> inventedDescendingOrder(int n);
     vector<Scientist> findScientistByYear(int year);
     vector<Scientist> findScientistByName(string search);
     vector<Computer> findComputerByYear(int year);
@@ -32,6 +35,7 @@ public:
     int deleteComputer(int id);
     void editScientist(int id, string name, int dob, int dod, char g);
     void editComputer(int id, string name, int by, string type, string wasb);
+    void joinSC(int sid, int cid);
 
 private:
     DataAccess _data;

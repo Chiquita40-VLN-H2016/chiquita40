@@ -37,9 +37,12 @@ public:
     void editComputer(Computer cNew);
 
     void joinScientistAndComputer(int scientistId, int computerId);
+    void deleteConnection(int scientistId, int computerId);
     vector<Scientist> getScientistsByComputer(int id);
     vector<Computer> getComputersByScientist(int id);
-    vector<Invented> getListOfComputersAndScientists();
+    vector<Invented> getListOfComputersAndScientistsAsc(int n);
+    vector<Invented> getListOfComputersAndScientistsDesc(int n);
+
 
 
 private:

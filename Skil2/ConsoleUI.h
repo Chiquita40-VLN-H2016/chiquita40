@@ -35,6 +35,7 @@ private:
     void commandFind();
     void commandEdit();
     void commandDelete();
+    void commandJoin();
 
     void addScientist(); //Add new scientist.
     string addNameOfScientist();
@@ -72,6 +73,7 @@ private:
     void findComputer();
     void deleteScientist();
     void deleteComputer();
+    void joinSC();
 
     void editScientist();
     string editNameOfScientist(Scientist sc);

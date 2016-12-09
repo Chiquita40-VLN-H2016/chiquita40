@@ -26,6 +26,12 @@ void SCService::computersAscendingOrder(int n) //Ascending order.
     _computers = _data.computersAscendingOrder(n);
 }
 
+vector<Invented> SCService::inventedAscendingOrder(int n)
+{
+    vector<Invented> connections = _data.getListOfComputersAndScientistsAsc(n);
+    return connections;
+}
+
 void SCService::scientistsDescendingOrder(int n) //Descending order.
 {
     _scientists = _data.scientistsDescendingOrder(n);
@@ -34,6 +40,12 @@ void SCService::scientistsDescendingOrder(int n) //Descending order.
 void SCService::computersDescendingOrder(int n) //Descending order.
 {
     _computers = _data.computersDescendingOrder(n);
+}
+
+vector<Invented> SCService::inventedDescendingOrder(int n)
+{
+    vector<Invented> connections = _data.getListOfComputersAndScientistsDesc(n);
+    return connections;
 }
 
 vector<Scientist> SCService::findScientistByYear(int year)
@@ -205,3 +217,7 @@ size_t SCService::size()
     return _computers.size();
 }
 
+void SCService::joinSC(int sid, int cid)
+{
+    _data.joinScientistAndComputer(sid, cid);
+}
