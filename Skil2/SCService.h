@@ -17,12 +17,12 @@ public:
     SCService();
     vector<Scientist> getScientists(); //Returns member variable _scientists.
     vector<Computer> getComputers(); //Returns member variable _computers.
-    void scientistsAscendingOrder(int n); //Ascending Order.
-    void scientistsDescendingOrder(int n); //Descending Order scientists by birth year.
-    void computersAscendingOrder(int n); //Ascending order.
-    void computersDescendingOrder(int n); //Descending order.
-    void getListOfComputersAndScientistsAsc(int n); //Ascending order.
-    void getListOfComputersAndScientistsDesc(int n); //Descending order.
+    void scientistsAscendingOrder(int n); //Variable n orders by name, birth year, death year or gender.
+    void scientistsDescendingOrder(int n); //Variable n orders by name, build year, type or was built.
+    void computersAscendingOrder(int n); //Variable n orders by name, birth year, death year or gender.
+    void computersDescendingOrder(int n); //Variable n orders by name, build year, type or was built.
+    void getListOfComputersAndScientistsAsc(int n);
+    void getListOfComputersAndScientistsDesc(int n);
     vector<Invented> inventedAscendingOrder(int n);
     vector<Invented> inventedDescendingOrder(int n);
     vector<Scientist> findScientistByYear(int year);
@@ -42,7 +42,7 @@ public:
     Scientist scientistToEdit(int id);
     void editComputer(int id, string name, int by, string type, string wasb);
     Computer computerToEdit(int id);
-    void joinSC(int sid, int cid);
+    void joinSC(int sid, int cid); // Joins scientist and computer.
 
 private:
     DataAccess _data;

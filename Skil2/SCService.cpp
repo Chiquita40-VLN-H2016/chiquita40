@@ -16,12 +16,13 @@ vector<Computer> SCService::getComputers()
     return _computers;
 }
 
-void SCService::scientistsAscendingOrder(int n) //Ascending order.
+
+void SCService::scientistsAscendingOrder(int n)
 {
     _scientists = _data.scientistsAscendingOrder(n);
 }
 
-void SCService::computersAscendingOrder(int n) //Ascending order.
+void SCService::computersAscendingOrder(int n)
 {
     _computers = _data.computersAscendingOrder(n);
 }
@@ -32,12 +33,12 @@ vector<Invented> SCService::inventedAscendingOrder(int n)
     return connections;
 }
 
-void SCService::scientistsDescendingOrder(int n) //Descending order.
+void SCService::scientistsDescendingOrder(int n)
 {
     _scientists = _data.scientistsDescendingOrder(n);
 }
 
-void SCService::computersDescendingOrder(int n) //Descending order.
+void SCService::computersDescendingOrder(int n)
 {
     _computers = _data.computersDescendingOrder(n);
 }
@@ -93,7 +94,6 @@ vector<Computer> SCService::findComputerByScientist(int id)
     return c;
 }
 
-//Checks whether scientist exists in list and only adds the new one if it doesn't.
 void SCService::addScientist(string n, int bd, int dd, char g)
 {
     Scientist sc(-1, n, bd, dd, g);
