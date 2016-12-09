@@ -130,7 +130,7 @@ vector<Scientist> DataAccess::findScientistByYear(int search)
     return scientists;
 }
 
-vector<Scientist> DataAccess::ScientistsAscendingOrder(int n)
+vector<Scientist> DataAccess::scientistsAscendingOrder(int n)
 {
     vector<Scientist> scientists;
     QSqlQuery query(_db);
@@ -166,7 +166,7 @@ vector<Scientist> DataAccess::ScientistsAscendingOrder(int n)
     return scientists;
 }
 
-vector<Scientist> DataAccess::ScientistsDescendingOrder(int n)
+vector<Scientist> DataAccess::scientistsDescendingOrder(int n)
 {
     vector<Scientist> scientists;
     QSqlQuery query(_db);
@@ -314,26 +314,26 @@ vector<Computer> DataAccess::findComputerByYear(int search)
     return computers;
 }
 
-vector<Computer> DataAccess::ComputersAscendingOrder(int n)
+vector<Computer> DataAccess::computersAscendingOrder(int n)
 {
     vector<Computer> computers;
     QSqlQuery query(_db);
     switch(n)
     {
         case 0:
-                query.exec("SELECT * FROM Computers ORDER BY Name");
+                query.exec("SELECT * FROM Computers ORDER BY Name desc");
                 break;
         case 1:
-                query.exec("SELECT * FROM Scientists ORDER BY Build_Year");
+                query.exec("SELECT * FROM Computers ORDER BY Build_Year desc");
                 break;
         case 2:
-                query.exec("SELECT * FROM Scientists ORDER BY Type");
+                query.exec("SELECT * FROM Computers ORDER BY Type desc");
                 break;
         case 3:
-                query.exec("SELECT * FROM Scientists ORDER BY Was_Built");
+                query.exec("SELECT * FROM Computers ORDER BY Was_Built desc");
                 break;
         default:
-                query.exec("SELECT * FROM Scientists");
+                query.exec("SELECT * FROM Computers ORDER BY ID desc");
     }
 
     while(query.next())
@@ -350,7 +350,7 @@ vector<Computer> DataAccess::ComputersAscendingOrder(int n)
     return computers;
 }
 
-vector<Computer> DataAccess::ComputersDescendingOrder(int n)
+vector<Computer> DataAccess::computersDescendingOrder(int n)
 {
     vector<Computer> computers;
     QSqlQuery query(_db);
@@ -360,16 +360,16 @@ vector<Computer> DataAccess::ComputersDescendingOrder(int n)
                 query.exec("SELECT * FROM Computers ORDER BY Name desc");
                 break;
         case 1:
-                query.exec("SELECT * FROM Scientists ORDER BY Build_Year desc");
+                query.exec("SELECT * FROM Computers ORDER BY Build_Year desc");
                 break;
         case 2:
-                query.exec("SELECT * FROM Scientists ORDER BY Type desc");
+                query.exec("SELECT * FROM Computers ORDER BY Type desc");
                 break;
         case 3:
-                query.exec("SELECT * FROM Scientists ORDER BY Was_Built desc");
+                query.exec("SELECT * FROM Computers ORDER BY Was_Built desc");
                 break;
         default:
-                query.exec("SELECT * FROM Scientists ORDER BY ID desc");
+                query.exec("SELECT * FROM Computers ORDER BY ID desc");
     }
 
     while(query.next())

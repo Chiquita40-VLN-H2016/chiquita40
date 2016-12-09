@@ -16,24 +16,24 @@ vector<Computer> SCService::getComputers()
     return _computers;
 }
 
-void SCService::ScientistsAscendingOrder(int n) //Ascending order.
+void SCService::scientistsAscendingOrder(int n) //Ascending order.
 {
-    _scientists = _data.ScientistsAscendingOrder(n);
+    _scientists = _data.scientistsAscendingOrder(n);
 }
 
-void SCService::ComputersAscendingOrder(int n) //Ascending order.
+void SCService::computersAscendingOrder(int n) //Ascending order.
 {
-    _computers = _data.ComputersAscendingOrder(n);
+    _computers = _data.computersAscendingOrder(n);
 }
 
-void SCService::ScientistsDescendingOrder(int n) //Descending order.
+void SCService::scientistsDescendingOrder(int n) //Descending order.
 {
-    _scientists = _data.ScientistsDescendingOrder(n);
+    _scientists = _data.scientistsDescendingOrder(n);
 }
 
-void SCService::ComputersDescendingOrder(int n) //Descending order.
+void SCService::computersDescendingOrder(int n) //Descending order.
 {
-    _computers = _data.ComputersDescendingOrder(n);
+    _computers = _data.computersDescendingOrder(n);
 }
 
 vector<Scientist> SCService::findScientistByYear(int year)

@@ -23,8 +23,8 @@ public:
     void deleteScientist(int id);
     vector<Scientist> findScientistByName(string search);
     vector<Scientist> findScientistByYear(int search);
-    vector<Scientist> ScientistsAscendingOrder(int n);
-    vector<Scientist> ScientistsDescendingOrder(int n);
+    vector<Scientist> scientistsAscendingOrder(int n);
+    vector<Scientist> scientistsDescendingOrder(int n);
     void editScientist(Scientist scNew);
 
     vector<Computer> getComputers();
@@ -32,8 +32,8 @@ public:
     void deleteComputer(int id);
     vector<Computer> findComputerByName(string search);
     vector<Computer> findComputerByYear(int search);
-    vector<Computer> ComputersAscendingOrder(int n);
-    vector<Computer> ComputersDescendingOrder(int n);
+    vector<Computer> computersAscendingOrder(int n);
+    vector<Computer> computersDescendingOrder(int n);
     void editComputer(Computer cNew);
 
     void joinScientistAndComputer(int scientistId, int computerId);
