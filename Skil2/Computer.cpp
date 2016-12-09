@@ -59,7 +59,7 @@ void Computer::setWasBuilt(bool wasb)
 {
     _wasBuilt = wasb;
 }
-
+//Overload of outstream operator to print out computer.
 ostream& operator << (ostream& out, Computer c)
 {
     out << c.getId() << '\t';

@@ -1,7 +1,8 @@
 #include "Invented.h"
 
 Invented::Invented()
-{    
+{
+
 }
 
 Invented::Invented(string s, string c, int sId, int cId)
@@ -32,14 +33,16 @@ int Invented::getCId()
     return _cId;
 }
 
+//Overload of outstream operator to print out Invented list.
 ostream& operator << (ostream& out, Invented i)
 {
     out << i.addTab(out, i.getSName());
     out << i.getCName() << endl;
+
     return out;
 }
 
-//If name is shorter than 16 characters, even out table spaces.
+//If name is shorter than 24 characters, even out table spaces.
 string Invented::addTab(ostream& out, string name)
 {
     string tab = "\t";
