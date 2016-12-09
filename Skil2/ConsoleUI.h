@@ -85,6 +85,7 @@ private:
     int editBuildYearOfComputer(Computer c);
     string editTypeOfComputer(Computer c);
     char editWasBuiltOfComputer(Computer c);
+
 };
 
 #endif // CONSOLEUI_H

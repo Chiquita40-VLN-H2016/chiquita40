@@ -254,14 +254,33 @@ void ConsoleUI::printHeaderScientists()
 
 void ConsoleUI::printListOfScientistsWithComputer(vector<Scientist> vs)
 {
-//   int idComputer;
-// á eftir að útfæra kall í nafn á computer.
-   printHeaderScientistsWithComputer();
+   int id;
+   vector<Computer> c;
+
+   printHeaderScientists();
+
    for(size_t i = 0; i < vs.size(); i++)
    {
-       cout << vs.at(i) << '\t';
+       id = vs.at(i).getId();
+       c = _scs.findComputerByScientist(id);
+
+       if(c.size() > 0)
+       {
+            for(size_t j = 0; j < c.size(); j++)
+            {
+                cout << vs.at(i) << '\t' << "Computer invented: " << c.at(j).getName();
+            }
+
+            cout << endl;
+       }
+       else
+       {
+           cout << vs.at(i);
+       }
+
+       cout << endl;
    }
-   cout << endl;
+ //  cout << endl;
 }
 
 void ConsoleUI::printHeaderScientistsWithComputer()
@@ -819,7 +838,8 @@ void ConsoleUI::findScientist()
     cout << "Enter the name of scientist: ";
     getline(cin,findSc);
     vector<Scientist> sc = _scs.findScientistByName(findSc);
-    printListOfScientists(sc); // Nýtt print, sem sækir líka ID af computer.
+ //   printListOfScientists(sc); // Nýtt print, sem sækir líka ID af computer.
+    printListOfScientistsWithComputer(sc);
 }
 
 void ConsoleUI::findComputer()
