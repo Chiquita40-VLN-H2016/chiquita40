@@ -71,6 +71,7 @@ private:
     void findComputer();
     void deleteScientist();
     void deleteComputer();
+    void joinSC();
 
     void editScientist();
     string editNameOfScientist(Scientist sc);

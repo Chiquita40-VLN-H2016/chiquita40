@@ -196,3 +196,7 @@ size_t SCService::size()
     return _computers.size();
 }
 
+void SCService::joinSC(int sid, int cid)
+{
+    _data.joinScientistAndComputer(sid, cid);
+}
