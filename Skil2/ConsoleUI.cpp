@@ -1039,43 +1039,113 @@ void ConsoleUI::findComputer()
 
 void ConsoleUI::deleteScientist()
 {
-    string deleteScientistName;
+    string deleteScientistName, yesOrNo;
+    int id, count = 0;
+    Scientist s;
+    bool toDelete = true;
 
     cout << "Enter name of the scientist you want to delete: " << endl;
     cin.ignore();
     getline(cin,deleteScientistName);
-    int id = 0; //Preliminary svo það buildist. Þarf að breyta.
-    int n = _scs.deleteScientist(id);
-    if(n == -1)
+
+    vector<Scientist> sc = _scs.findScientistByName(deleteScientistName);
+    if(sc.size() == 0)
     {
-        cout << endl;
-        cout << "! - " << deleteScientistName << " was not found in the list. - !" << endl;
-        cout << endl;
+        cout << "No scientist matched your search!" << endl;
     }
-    else
-    {
-        listScientistsByNameAsc();
+    else{
+        cout << "These Scientists matched your search:" << endl;
+        printListOfScientists(sc);
+
+        while(yesOrNo != "yes" && yesOrNo != "Yes" && yesOrNo != "YES" && toDelete)
+        {
+            cout << "Select the id of the scientist you want to delete: ";
+            cin >> id;
+            s = _scs.scientistToEdit(id);
+            if((s.getId() == -1) || (!cin))
+            {
+                cin.clear();
+                cin.ignore(256, '\n');
+                cout << endl;
+                cout << "! - Invalid id chosen - !" << endl;
+                cout << endl;
+                continue;
+            }
+
+            printHeaderScientists();
+            cout << s << endl;
+            cout << endl;
+            cout << "Would you like to delete this scientist, yes or no?: ";
+            cin.ignore();
+            getline(cin,yesOrNo);
+            count++;
+            if(yesOrNo == "no" || yesOrNo == "No" || yesOrNo == "NO")
+            {
+                if(count == sc.size())
+                {
+                    toDelete = false;
+                }
+            }
+
+        }
+            _scs.deleteScientist(id);
+            listScientistsByNameAsc();
     }
 }
 
 void ConsoleUI::deleteComputer()
 {
-    string deleteComputerName;
+    string deleteComputerName, yesOrNo;
+    int id, count = 0;
+    Computer c;
+    bool toDelete = true;
 
-    cout << "Enter the name of the computer you want to delete: " << endl;
+    cout << "Enter name of the computer you want to delete: " << endl;
     cin.ignore();
     getline(cin,deleteComputerName);
-    int id = 0; //Preliminary placeholder. Þarf að breyta.
-    int n = _scs.deleteComputer(id);
-    if(n == -1)
+
+    vector<Computer> cs = _scs.findComputerByName(deleteComputerName);
+    if(cs.size() == 0)
     {
-        cout << endl;
-        cout << "! - " << deleteComputerName << " was not found in the list. - !" << endl;
-        cout << endl;
+        cout << "No computer matched your search!" << endl;
     }
-    else
-    {
-        //listName();
+    else{
+        cout << "These computers matched your search:" << endl;
+        printListOfComputers(cs);
+
+        while(yesOrNo != "yes" && yesOrNo != "Yes" && yesOrNo != "YES" && toDelete)
+        {
+            cout << "Select the id of the computer you want to delete: ";
+            cin >> id;
+            c = _scs.computerToEdit(id);
+            if((c.getId() == -1) || (!cin))
+            {
+                cin.clear();
+                cin.ignore(256, '\n');
+                cout << endl;
+                cout << "! - Invalid id chosen - !" << endl;
+                cout << endl;
+                continue;
+            }
+
+            printHeaderComputers();
+            cout << c << endl;
+            cout << endl;
+            cout << "Would you like to delete this computer, yes or no?: ";
+            cin.ignore();
+            getline(cin,yesOrNo);
+            count++;
+            if(yesOrNo == "no" || yesOrNo == "No" || yesOrNo == "NO")
+            {
+                if(count == cs.size())
+                {
+                    toDelete = false;
+                }
+            }
+
+        }
+            _scs.deleteComputer(id);
+            listComputersByNameAsc();
     }
 }
 
@@ -1167,43 +1237,49 @@ void ConsoleUI::editScientist()
     cin.ignore();
     getline(cin,editSC);
     vector<Scientist> sc = _scs.findScientistByName(editSC);
-    cout << "These Scientists matched your search:" << endl;
-    printListOfScientists(sc);
-
-    while(yesOrNo != "yes" && yesOrNo != "Yes" && yesOrNo != "YES")
+    if(sc.size() == 0)
     {
-        cout << "Select the id of the scientist you want to edit: ";
-        cin >> id;
-        s = _scs.scientistToEdit(id);
-        if((s.getId() == -1) || (!cin))
+        cout << "No Scientists matched your search!" << endl;
+    }
+    else
+    {
+        cout << "These Scientists matched your search:" << endl;
+        printListOfScientists(sc);
+
+        while(yesOrNo != "yes" && yesOrNo != "Yes" && yesOrNo != "YES")
         {
-            cin.clear();
-            cin.ignore(256, '\n');
+            cout << "Select the id of the scientist you want to edit: ";
+            cin >> id;
+            s = _scs.scientistToEdit(id);
+            if((s.getId() == -1) || (!cin))
+            {
+                cin.clear();
+                cin.ignore(256, '\n');
+                cout << endl;
+                cout << "! - Invalid id chosen - !" << endl;
+                cout << endl;
+                continue;
+            }
+
+            printHeaderScientists();
+            cout << s << endl;
             cout << endl;
-            cout << "! - Invalid id chosen - !" << endl;
-            cout << endl;
-            continue;
+            cout << "Would you like to edit this scientist, yes or no?: ";
+            cin.ignore();
+            getline(cin,yesOrNo);
         }
 
+        sName = editNameOfScientist(s);
+        bDate = editBirthDateOfScientist(s);
+        dDate = editDeathDateOfScientist(s,bDate);
+        gender = editGenderOfScientist(s);
+        _scs.editScientist(id, sName, bDate, dDate, gender);
+
+        s = _scs.scientistToEdit(id);
+        cout << "The scientist has been edited: " << endl;
         printHeaderScientists();
         cout << s << endl;
-        cout << endl;
-        cout << "Would you like to edit this scientist, yes or no?: ";
-        cin.ignore();
-        getline(cin,yesOrNo);
-
     }
-
-    sName = editNameOfScientist(s);
-    bDate = editBirthDateOfScientist(s);
-    dDate = editDeathDateOfScientist(s,bDate);
-    gender = editGenderOfScientist(s);
-    _scs.editScientist(id, sName, bDate, dDate, gender);
-
-    s = _scs.scientistToEdit(id);
-    cout << "The scientist has been edited: " << endl;
-    printHeaderScientists();
-    cout << s << endl;
 }
 
 string ConsoleUI::editNameOfScientist(Scientist sc)
@@ -1401,48 +1477,55 @@ void ConsoleUI::editComputer()
     cin.ignore();
     getline(cin, editC);
     vector<Computer> c = _scs.findComputerByName(editC);
-    cout << "These computers matched your search:" << endl;
-    printListOfComputers(c);
-    while(yesOrNo != "yes" && yesOrNo != "Yes" && yesOrNo != "YES")
+    if(c.size() == 0)
     {
-        cout << "Select the id of the computer you want to edit: ";
-        cin >> id;
-        co = _scs.computerToEdit(id);
-        if((co.getId() == -1) || (!cin))
-        {
-            cin.clear();
-            cin.ignore(256, '\n');
-            cout << endl;
-            cout << "! - Invalid id chosen - !" << endl;
-            cout << endl;
-            continue;
-        }
-        printHeaderComputers();
-        cout << co << endl;
-        cout << endl;
-        cout << "Would you like to edit this computer, yes or no?: ";
-        cin.ignore();
-        getline(cin,yesOrNo);
-    }
-    cName = editNameOfComputer(co);
-    wasBuilt = editWasBuiltOfComputer(co);
-    if(wasBuilt == "yes" || wasBuilt == "Yes" || wasBuilt == "YES")
-    {
-        buildYear = editBuildYearOfComputer(co);
-        cin.ignore();
+        cout << "No computers matched your search!" << endl;
     }
     else
     {
-        buildYear = 0;
-    }
-    buildYear = editBuildYearOfComputer(co);
-    type = editTypeOfComputer(co);
-    _scs.editComputer(id, cName, buildYear, type, wasBuilt);
+        cout << "These computers matched your search:" << endl;
+        printListOfComputers(c);
+        while(yesOrNo != "yes" && yesOrNo != "Yes" && yesOrNo != "YES")
+        {
+            cout << "Select the id of the computer you want to edit: ";
+            cin >> id;
+            co = _scs.computerToEdit(id);
+            if((co.getId() == -1) || (!cin))
+            {
+                cin.clear();
+                cin.ignore(256, '\n');
+                cout << endl;
+                cout << "! - Invalid id chosen - !" << endl;
+                cout << endl;
+                continue;
+            }
+            printHeaderComputers();
+            cout << co << endl;
+            cout << endl;
+            cout << "Would you like to edit this computer, yes or no?: ";
+            cin.ignore();
+            getline(cin,yesOrNo);
+        }
+        cName = editNameOfComputer(co);
+        wasBuilt = editWasBuiltOfComputer(co);
+        if(wasBuilt == "yes" || wasBuilt == "Yes" || wasBuilt == "YES")
+        {
+            buildYear = editBuildYearOfComputer(co);
+            cin.ignore();
+        }
+        else
+        {
+            buildYear = 0;
+        }
+        buildYear = editBuildYearOfComputer(co);
+        type = editTypeOfComputer(co);
+        _scs.editComputer(id, cName, buildYear, type, wasBuilt);
 
-    co = _scs.computerToEdit(id);
-    cout << "The computer has been edited: " << endl;
-    printHeaderComputers();
-    cout << co << endl;
+        co = _scs.computerToEdit(id);
+        cout << "The computer has been edited: " << endl;
+        printHeaderComputers();
+        cout << co << endl;
+    }
 }
 
 string ConsoleUI::editNameOfComputer(Computer c)
