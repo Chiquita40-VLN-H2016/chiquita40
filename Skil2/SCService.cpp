@@ -157,6 +157,17 @@ void SCService::editComputer(int id, string name, int by, string type, string wa
     }
 }
 
+Computer SCService::computerToEdit(int id)
+{
+    int n = findComputerId(id);
+    if(n != -1)
+    {
+        return _computers.at(n);
+    }
+    Computer c(-1, "", -1, "", false);
+    return c;
+}
+
 int SCService::findScientistId(int id)
 {
     Scientist s;
