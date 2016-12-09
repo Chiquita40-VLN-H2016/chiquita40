@@ -79,7 +79,7 @@ If you get a compile time error when you have entered "quit", please rebuild (ch
 
 **Join**
 
-Connect a Scientist with a Computer. When you join a Computer and a Computer Scientist, their ids will appear in the Invented table in the SQLite Manager file.
+Connect a Scientist with a Computer. When you join a Computer and a Computer Scientist, their ids will appear in the Invented table in the SQLite Manager.
 
 
 
