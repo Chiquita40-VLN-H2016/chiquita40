@@ -67,6 +67,16 @@ vector<Scientist> SCService::findScientistByName(string search)
     return scientists;
 }
 
+vector<Scientist> SCService::findScientistByComputer(int id)
+{
+    vector<Scientist> sc;
+
+    sc = _data.getScientistsByComputer(id);
+
+    return sc;
+}
+
+
 vector<Computer> SCService::findComputerByName(string search)
 {
     vector<Computer> computers = _data.findComputerByName(search);

@@ -262,12 +262,20 @@ void ConsoleUI::printListOfScientistsWithComputer(vector<Scientist> vs)
 
        if(c.size() > 0)
        {
-            for(size_t j = 0; j < c.size(); j++)
-            {
-                cout << vs.at(i) << '\t' << "Computer invented: " << c.at(j).getName();
-            }
+           if(c.size() == 1)
+           {
+               cout << vs.at(i) << '\t' << "Computer invented: " << c.at(0).getName() << endl;
+           }
+           if(c.size() > 1)
+           {
+               cout << vs.at(i) << '\t' << "Computers invented: " << endl;
 
-            cout << endl;
+               for(size_t j = 0; j < c.size(); j++)
+               {
+                   cout << '\t' << '\t' << '\t' << "   " << c.at(j).getName() << endl;
+               }
+           }
+
        }
        else
        {
@@ -276,14 +284,7 @@ void ConsoleUI::printListOfScientistsWithComputer(vector<Scientist> vs)
 
        cout << endl;
    }
- //  cout << endl;
-}
 
-void ConsoleUI::printHeaderScientistsWithComputer()
-{
-    cout << endl;
-    cout << "ID" << "\t" << "Scientist" << "\t" << "\t" << "\t" << "Born" << "\t" << "Died" << "\t" << "Gender" << "Computers" << endl;
-    cout << "=========================================================================" << endl;
 }
 
 void ConsoleUI::printListOfComputers(vector<Computer> vc)
@@ -301,6 +302,43 @@ void ConsoleUI::printHeaderComputers()
     cout << endl;
     cout << "ID" << "\t" << "Computer" << "\t" << "\t" << "\t" << "Build" << "\t" << "Type" << "\t" << "\t" << "Was built" << endl;
     cout << "=========================================================================" << endl;
+}
+
+void ConsoleUI::printListOfComputerWithScientist(vector<Computer> vc)
+{
+    int id;
+    vector<Scientist> sc;
+
+    printHeaderComputers();
+
+    for(size_t i = 0; i < vc.size(); i++)
+    {
+        id = vc.at(i).getId();
+        sc = _scs.findScientistByComputer(id);
+
+        if(sc.size() > 0)
+        {
+            if(sc.size() == 1)
+            {
+                cout << vc.at(i) << '\t' << "Inventor: " << sc.at(0).getName() << endl;
+            }
+            if(sc.size() > 1)
+            {
+                cout << vc.at(i) << '\t' << "Inventors: " << endl;
+
+                for(size_t j = 0; j < sc.size(); j++)
+                {
+                    cout << '\t' << '\t' << "  " << sc.at(j).getName() << endl;
+                }
+            }
+        }
+        else
+        {
+            cout << vc.at(i);
+        }
+
+        cout << endl;
+    }
 }
 
 void ConsoleUI::printJoinedList(vector<Invented> vi)
@@ -845,7 +883,7 @@ void ConsoleUI::findScientist()
     cout << "Enter the name of scientist: ";
     getline(cin,findSc);
     vector<Scientist> sc = _scs.findScientistByName(findSc);
- //   printListOfScientists(sc); // Nýtt print, sem sækir líka ID af computer.
+
     printListOfScientistsWithComputer(sc);
 }
 
@@ -857,7 +895,8 @@ void ConsoleUI::findComputer()
     cout << "Enter the name of computer: ";
     getline(cin,findC);
     vector<Computer> c = _scs.findComputerByName(findC);
-    printListOfComputers(c); // Nýtt print sem sækir líka ID af scientist
+
+    printListOfComputerWithScientist(c);
 }
 
 void ConsoleUI::deleteScientist()

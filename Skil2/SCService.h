@@ -25,6 +25,7 @@ public:
     vector<Invented> inventedDescendingOrder(int n);
     vector<Scientist> findScientistByYear(int year);
     vector<Scientist> findScientistByName(string search);
+    vector<Scientist> findScientistByComputer(int id);
     vector<Computer> findComputerByYear(int year);
     vector<Computer> findComputerByName(string search);
     vector<Computer> findComputerByScientist(int id);

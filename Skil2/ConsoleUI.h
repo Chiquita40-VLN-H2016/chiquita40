@@ -24,7 +24,7 @@ private:
     void printListOfScientists(vector<Scientist> vs);
     void printHeaderScientists(); //Prints out Scientists table header.
     void printListOfScientistsWithComputer(vector<Scientist> vs);
-    void printHeaderScientistsWithComputer();
+    void printListOfComputerWithScientist(vector<Computer> vs);
     void printListOfComputers(vector<Computer> vc);
     void printHeaderComputers(); //Prints out Computers table header.
     void printJoinedList(vector<Invented> vi);
