@@ -21,6 +21,8 @@ public:
     void scientistsDescendingOrder(int n); //Descending Order scientists by birth year.
     void computersAscendingOrder(int n); //Ascending order.
     void computersDescendingOrder(int n); //Descending order.
+    void getListOfComputersAndScientistsAsc(int n); //Ascending order.
+    void getListOfComputersAndScientistsDesc(int n); //Descending order.
     vector<Invented> inventedAscendingOrder(int n);
     vector<Invented> inventedDescendingOrder(int n);
     vector<Scientist> findScientistByYear(int year);

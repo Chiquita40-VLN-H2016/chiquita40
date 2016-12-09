@@ -130,7 +130,7 @@ void ConsoleUI::commandList()
     }
     else if(choice == 3)
     {
-        //print list of scientists and computers
+        listJoined();
     }
 }
 
@@ -873,6 +873,74 @@ void ConsoleUI::listComputersIfWasBuiltDesc()
     _scs.computersDescendingOrder(3);
     vector<Computer> c = _scs.getComputers();
     printListOfComputers(c);
+}
+
+void ConsoleUI::listJoined() //Gets user input on how to sort the joined list of Scientists and Computers.
+{
+    int in;
+    int sort;
+
+    cout    << "-------------------------------------------------------------------------" << endl;
+    cout    << "1 - Order list by scientist name" << endl;
+    cout    << "2 - Order list by computer name" << endl;
+    cout    << "-------------------------------------------------------------------------" << endl;
+
+    cout << "Please enter now: ";
+    cin >> in;
+
+    switch(in)
+    {
+        case 1:
+                sort = chooseSortingMethod();
+                if(sort == 1)
+                {
+                    listJoinedByScientistsNameAsc();
+                }
+                else if(sort == 2)
+                {
+                    listJoinedByScientistsNameDesc();
+                }
+                break;
+        case 2:
+                sort = chooseSortingMethod();
+                if(sort == 1)
+                {
+                    listJoinedByComputersNameAsc();
+                }
+                else if(sort == 2)
+                {
+                    listJoinedByComputersNameAscDesc();
+                }
+                break;
+        default:
+                cout << endl;
+                cout << "! - Invalid command - !" << endl;
+                cout << endl;
+    }
+}
+
+void ConsoleUI::listJoinedByScientistsNameAsc()
+{
+    vector<Invented> sJoined = _scs.inventedAscendingOrder(0);
+    printJoinedList(sJoined);
+}
+
+void ConsoleUI::listJoinedByScientistsNameDesc()
+{
+    vector<Invented> sJoined = _scs.inventedDescendingOrder(0);
+    printJoinedList(sJoined);
+}
+
+void ConsoleUI::listJoinedByComputersNameAsc()
+{
+    vector<Invented> cJoined = _scs.inventedAscendingOrder(1);
+    printJoinedList(cJoined);
+}
+
+void ConsoleUI::listJoinedByComputersNameAscDesc()
+{
+    vector<Invented> cJoined = _scs.inventedDescendingOrder(1);
+    printJoinedList(cJoined);
 }
 
 void ConsoleUI::findScientist()

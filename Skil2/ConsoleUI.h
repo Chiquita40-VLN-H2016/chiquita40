@@ -68,6 +68,11 @@ private:
     void listComputersByTypeDesc();
     void listComputersIfWasBuiltAsc();
     void listComputersIfWasBuiltDesc();
+    void listJoined(); //Gets user input on how to sort the joined list of Scientists and Computers.
+    void listJoinedByScientistsNameAsc();
+    void listJoinedByScientistsNameDesc();
+    void listJoinedByComputersNameAsc();
+    void listJoinedByComputersNameAscDesc();
 
     void findScientist();
     void findComputer();
