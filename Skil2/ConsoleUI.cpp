@@ -1043,7 +1043,8 @@ void ConsoleUI::findComputer()
 void ConsoleUI::deleteScientist()
 {
     string deleteScientistName, yesOrNo;
-    int id, count = 0;
+    int id;
+    unsigned int count = 0;
     Scientist s;
     bool toDelete = true;
 
@@ -1099,7 +1100,8 @@ void ConsoleUI::deleteScientist()
 void ConsoleUI::deleteComputer()
 {
     string deleteComputerName, yesOrNo;
-    int id, count = 0;
+    int id;
+    unsigned int count = 0;
     Computer c;
     bool toDelete = true;
 
