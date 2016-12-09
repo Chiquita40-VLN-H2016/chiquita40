@@ -1,6 +1,7 @@
 #include "ConsoleUI.h"
 
-int const TAB = 31;
+int const TAB_NAME = 31;
+int const TAB_TYPE = 15;
 
 ConsoleUI::ConsoleUI()
 {
@@ -63,7 +64,8 @@ void ConsoleUI::run()
 
 void ConsoleUI::commands()
 {
-    cout << "*********************************************************************" << endl;
+    cout << endl;
+    cout << "************************************************************************" << endl;
     cout << "Please enter one of the following commands:" << endl
          << "add \t - Add new scientist or computer" << endl
          << "list \t - Show a list of all scientists and/or computers" << endl
@@ -72,17 +74,17 @@ void ConsoleUI::commands()
          << "delete \t - Delete scientist or computer" << endl
          << "join \t - Connect scientist with computer" << endl
          << "quit \t - Quit the program" << endl;
-    cout << "**********************************************************************" << endl;
+    cout << "************************************************************************" << endl;
 }
 
 void ConsoleUI::commandAdd()
 {
     int choice = 0;
 
-    cout << "----------------------------------------------------------------------" << endl;
+    cout << "-------------------------------------------------------------------------" << endl;
     cout << "1 - To add new scientist" << endl;
     cout << "2 - To add new computer" << endl;
-    cout << "----------------------------------------------------------------------" << endl;
+    cout << "-------------------------------------------------------------------------" << endl;
 
     cout << "Please enter now: ";
     cin >> choice;
@@ -101,11 +103,11 @@ void ConsoleUI::commandList()
 {
     int choice = 0;
 
-    cout << "----------------------------------------------------------------------" << endl;
+    cout << "-------------------------------------------------------------------------" << endl;
     cout << "1 - Show and sort list of scientists" << endl;
     cout << "2 - Show and sort list of computers" << endl;
     cout << "3 - Show and sort list of scientists and computers" << endl;
-    cout << "----------------------------------------------------------------------" << endl;
+    cout << "-------------------------------------------------------------------------" << endl;
 
     cout << "Please enter now: ";
     cin >> choice;
@@ -128,10 +130,10 @@ void ConsoleUI::commandFind()
 {
     int choice = 0;
 
-    cout << "----------------------------------------------------------------------" << endl;
+    cout << "-------------------------------------------------------------------------" << endl;
     cout << "1 - Find scientist" << endl;
     cout << "2 - Find computer" << endl;
-    cout << "----------------------------------------------------------------------" << endl;
+    cout << "-------------------------------------------------------------------------" << endl;
 
     cout << "Please enter now: ";
     cin >> choice;
@@ -150,10 +152,10 @@ void ConsoleUI::commandEdit()
 {
     int choice = 0;
 
-    cout << "----------------------------------------------------------------------" << endl;
+    cout << "-------------------------------------------------------------------------" << endl;
     cout << "1 - Edit scientist" << endl;
     cout << "2 - Edit computer" << endl;
-    cout << "----------------------------------------------------------------------" << endl;
+    cout << "-------------------------------------------------------------------------" << endl;
 
     cout << "Please enter now: ";
     cin >> choice;
@@ -172,10 +174,10 @@ void ConsoleUI::commandDelete()
 {
     int choice = 0;
 
-    cout << "----------------------------------------------------------------------" << endl;
+    cout << "-------------------------------------------------------------------------" << endl;
     cout << "1 - Delete scientist" << endl;
     cout << "2 - Delete computer" << endl;
-    cout << "----------------------------------------------------------------------" << endl;
+    cout << "-------------------------------------------------------------------------" << endl;
 
     cout << "Please enter now: ";
     cin >> choice;
@@ -226,8 +228,8 @@ void ConsoleUI::printListOfScientists(vector<Scientist> vs)
 void ConsoleUI::printHeaderScientists()
 {
     cout << endl;
-    cout << "ID" << "\t" << "Scientist" << "\t" << "\t" << "\t" << "\t" << "YoB" << "\t" << "YoD" << "\t" << "Gender" << endl;
-    cout << "=====================================================================" << endl;
+    cout << "ID" << "\t" << "Scientist" << "\t" << "\t" << "\t" << "Born" << "\t" << "Died" << "\t" << "Gender" << endl;
+    cout << "=========================================================================" << endl;
 }
 
 void ConsoleUI::printListOfComputers(vector<Computer> vc)
@@ -243,8 +245,25 @@ void ConsoleUI::printListOfComputers(vector<Computer> vc)
 void ConsoleUI::printHeaderComputers()
 {
     cout << endl;
-    cout << "ID" << "\t" << "Computer" << "\t" << "\t" << "\t" << "Build year" << "\t" << "Type" << "\t" << "Was built" << endl;
-    cout << "=====================================================================" << endl;
+    cout << "ID" << "\t" << "Computer" << "\t" << "\t" << "\t" << "Build" << "\t" << "Type" << "\t" << "\t" << "Was built" << endl;
+    cout << "=========================================================================" << endl;
+}
+
+void ConsoleUI::printJoinedList(vector<Invented> vi)
+{
+    printJoinedHeader();
+    for(size_t i = 0; i < vi.size(); i++)
+    {
+        cout << vi.at(i);
+    }
+    cout << endl;
+}
+
+void ConsoleUI::printJoinedHeader()
+{
+    cout << endl;
+    cout << "Scientist Name" << "\t" << "\t" << "\t" << "Computer Name" << "\t" << "\t" << "\t" << endl;
+    cout << "=========================================================================" << endl;
 }
 
 void ConsoleUI::addScientist() //Adds scientist to the list.
@@ -279,14 +298,14 @@ string ConsoleUI::addNameOfScientist() //Gets a name of scientist from the user.
             cout << "! - No scientist name was entered. - !" << endl;
             cout << endl;
         }
-        else if(sName.size() > TAB)
+        else if(sName.size() > TAB_NAME)
         {
             cout << endl;
-            cout << "! - Scientist name you entered is too long. - !" << endl
-                 << "! - Scientist name can be max 31 characters with space. - !" << endl;
+            cout << "! - Name you entered is too long. - !" << endl
+                 << "! - Name can be max " << TAB_NAME << " characters with space. - !" << endl;
             cout << endl;
         }
-    }while(sName.size() == 0 || sName.size() > TAB);
+    }while(sName.size() == 0 || sName.size() > TAB_NAME);
 
     return sName;
 }
@@ -400,14 +419,14 @@ string ConsoleUI::addNameOfComputer()
             cout << "! - No computer name was entered. - !" << endl;
             cout << endl;
         }
-        else if(cName.size() > TAB)
+        else if(cName.size() > TAB_NAME)
         {
             cout << endl;
-            cout << "! - Computer name you entered is too long. - !" << endl
-                 << "! - Computer name can be max 31 characters with space. - !" << endl;
+            cout << "! - Name you entered is too long. - !" << endl
+                 << "! - Name can be max " << TAB_NAME << " characters with space. - !" << endl;
             cout << endl;
         }
-    }while(cName.size() == 0 || cName.size() > TAB);
+    }while(cName.size() == 0 || cName.size() > TAB_NAME);
 
     return cName;
 }
@@ -420,6 +439,7 @@ int ConsoleUI::addBuildYearOfComputer()
     {
         cout << "Enter build year (YYYY): ";
         cin >> buildYear;
+
         if(!_scs.validYearCheck(buildYear))
         {
             cout << endl;
@@ -448,14 +468,14 @@ string ConsoleUI::addTypeOfComputer()
             cout << "! - No type was entered. - !" << endl;
             cout << endl;
         }
-        else if(cType.size() > 7)
+        else if(cType.size() > TAB_TYPE)
         {
             cout << endl;
-            cout << "! - Computer name you entered is too long. - !" << endl
-                 << "! - Computer name can be max 7 characters with space. - !" << endl;
+            cout << "! - Type you entered is too long. - !" << endl
+                 << "! - Type can be max " << TAB_TYPE << " characters with space. - !" << endl;
             cout << endl;
         }
-    }while(cType.size() == 0 || cType.size() > 7);
+    }while(cType.size() == 0 || cType.size() > TAB_TYPE);
 
     return cType;
 }
@@ -469,13 +489,13 @@ char ConsoleUI::addWasBuiltOfComputer()
 
         cin     >> wasBuilt;
 
-        if(wasBuilt != tolower('y') || wasBuilt != tolower('n'))
+        if(wasBuilt != tolower('y') && wasBuilt != tolower('n'))
         {
             cout    << endl;
             cout    << "! - Invalid choice, please enter 'y' or 'n' - !" << endl;
             cout    << endl;
         }
-    }while(wasBuilt != tolower('y') || wasBuilt != tolower('n'));
+    }while(wasBuilt != tolower('y') && wasBuilt != tolower('n'));
 
     return wasBuilt;
 }
@@ -485,10 +505,10 @@ char ConsoleUI::chooseSortingMethod()
     char sort;
     do
     {
-        cout    << "----------------------------------------------------------------------" << endl;
+        cout    << "-------------------------------------------------------------------------" << endl;
         cout    << "1 - Print in ascending order." << endl;
         cout    << "2 - Print in descending order." << endl;
-        cout    << "----------------------------------------------------------------------" << endl;
+        cout    << "-------------------------------------------------------------------------" << endl;
 
         cout << "Please enter now: ";
         cin >> sort;
@@ -509,12 +529,12 @@ void ConsoleUI::listScientists()
     char in;
     char sort;
 
-    cout    << "----------------------------------------------------------------------" << endl;
+    cout    << "-------------------------------------------------------------------------" << endl;
     cout    << "1 - For a list of scientists ordered by name" << endl;
     cout    << "2 - For a list of scientists ordered by birth year" << endl;
     cout    << "3 - For a list of scientists ordered by death year" << endl;
     cout    << "4 - For a list of scientists ordered by gender" << endl;
-    cout    << "----------------------------------------------------------------------" << endl;
+    cout    << "-------------------------------------------------------------------------" << endl;
 
     cout << "Please enter now: ";
     cin >> in;
@@ -633,12 +653,12 @@ void ConsoleUI::listComputers()
     char in;
     char sort;
 
-    cout    << "----------------------------------------------------------------------" << endl;
+    cout    << "-------------------------------------------------------------------------" << endl;
     cout    << "1 - For a list of computers ordered by name" << endl;
     cout    << "2 - For a list of computers ordered by build year" << endl;
     cout    << "3 - For a list of computers ordered by type" << endl;
     cout    << "4 - For a list of computers ordered by if was built or not" << endl;
-    cout    << "----------------------------------------------------------------------" << endl;
+    cout    << "-------------------------------------------------------------------------" << endl;
 
     cout << "Please enter now: ";
     cin >> in;
@@ -845,14 +865,15 @@ string ConsoleUI::editNameOfScientist(Scientist sc)
                 cout << "! - No name was entered. - !" << endl;
                 cout << endl;
             }
-            else if(sName.size() > TAB)
+            else if(sName.size() > TAB_NAME)
             {
                 cout << endl;
-                cout << "! - Name you entered is too long. - !" << endl << "! - Name can only be under 31 characters with space. - !" << endl;
+                cout << "! - Name you entered is too long. - !" << endl
+                     << "! - Name can be max " << TAB_NAME << " characters with space. - !" << endl;
                 cout << endl;
             }
 
-        }while(sName.size() == 0 || sName.size() > TAB);
+        }while(sName.size() == 0 || sName.size() > TAB_NAME);
     }
     else if(editSC == tolower('n'))
     {
@@ -1030,14 +1051,15 @@ string ConsoleUI::editNameOfComputer(Computer c)
                 cout << "! - No name was entered. - !" << endl;
                 cout << endl;
             }
-            else if(cName.size() > TAB)
+            else if(cName.size() > TAB_NAME)
             {
                 cout << endl;
-                cout << "! - Name you entered is too long. - !" << endl << "! - Name can only be under 31 characters with space. - !" << endl;
+                cout << "! - Name you entered is too long. - !" << endl
+                     << "! - Name can be max " << TAB_NAME << " characters with space. - !" << endl;
                 cout << endl;
             }
 
-        }while(cName.size() == 0 || cName.size() > TAB);
+        }while(cName.size() == 0 || cName.size() > TAB_NAME);
     }
     else if(editC == tolower('n'))
     {
@@ -1103,21 +1125,24 @@ string ConsoleUI::editTypeOfComputer(Computer c)
         do
         {
             cout    << "Enter new type: ";
+
             getline(cin,cType);
+
             if(cType.size() == 0)
             {
                 cout << endl;
                 cout << "! - No type was entered. - !" << endl;
                 cout << endl;
             }
-            else if(cType.size() > 7)
+            else if(cType.size() > TAB_TYPE)
             {
                 cout << endl;
-                cout << "! - Type you entered is too long. - !" << endl << "! - Type can only be under 7 characters with space. - !" << endl;
+                cout << "! - Type you entered is too long. - !" << endl
+                     << "! - Type can only be under " << TAB_TYPE << " characters with space. - !" << endl;
                 cout << endl;
             }
 
-        }while(cType.size() == 0 || cType.size() > 7);
+        }while(cType.size() == 0 || cType.size() > TAB_TYPE);
     }
     else if(editC == tolower('n'))
     {
@@ -1146,13 +1171,13 @@ char ConsoleUI::editWasBuiltOfComputer(Computer c)
         {
             cout    << "Has the computer been built? y/n: ";
             cin >> wasBuilt;
-            if(wasBuilt != tolower('y') || wasBuilt != tolower('n'))
+            if(wasBuilt != tolower('y') && wasBuilt != tolower('n'))
             {
                 cout << endl;
                 cout << "! - Invalid choice, please enter 'y' or 'n' - !" << endl;
                 cout << endl;
             }
-        }while(wasBuilt != tolower('y') || wasBuilt != tolower('n'));
+        }while(wasBuilt != tolower('y') && wasBuilt != tolower('n'));
     }
     else if(editC == tolower('n'))
     {
