@@ -29,6 +29,7 @@ private:
     void printHeaderComputers(); //Prints out Computers table header.
     void printJoinedList(vector<Invented> vi);
     void printJoinedHeader(); //Prints out joined list table header.
+    void printListOfConnectionsForDeletion();
 
     void commandAdd();
     void commandList();
@@ -77,6 +78,7 @@ private:
     void findScientist();
     void findComputer();
     void deleteScientist();
+    void deleteConnection();
     void deleteComputer();
     void joinSC();
 

@@ -197,6 +197,7 @@ void ConsoleUI::commandDelete()
     cout << "-------------------------------------------------------------------------" << endl;
     cout << "1 - Delete scientist" << endl;
     cout << "2 - Delete computer" << endl;
+    cout << "3 - Delete a computer-scientist connection" << endl;
     cout << "-------------------------------------------------------------------------" << endl;
 
     cout << "Please enter now: ";
@@ -209,6 +210,16 @@ void ConsoleUI::commandDelete()
     else if(choice == 2)
     {
         deleteComputer();
+    }
+    else if(choice == 3)
+    {
+        deleteConnection();
+    }
+    else
+    {
+        cout << endl;
+        cout << "! - This selection was invalid - !" << endl;
+        cout << endl;
     }
 }
 
@@ -223,7 +234,7 @@ void ConsoleUI::commandJoin()
     printListOfScientists(sc);
 
     cout << "Please enter the ID of the scientist you want to connect." << endl
-         << "You can see the id in the table above." << endl;
+         << "You can find the id in the table above." << endl;
     cin >> sid;
 
     _scs.computersAscendingOrder(0);
@@ -231,7 +242,7 @@ void ConsoleUI::commandJoin()
     printListOfComputers(c);
 
     cout << "Please enter the ID of the computer you want to connect." << endl
-         << "You can see the id in the table above." << endl;
+         << "You can find the id in the table above." << endl;
     cin >> cid;
 
     _scs.joinSC(sid, cid);
@@ -437,7 +448,8 @@ int ConsoleUI::addDeathDateOfScientist(int bDate) //Gets a year of death of scie
     do
     {
         cout << "Is scientist still alive? (yes/no): ";
-        getline(cin,deadOrAlive);
+
+        getline(cin, deadOrAlive);
 
         if(deadOrAlive == "no" || deadOrAlive == "No" || deadOrAlive == "NO")
         {
@@ -452,6 +464,8 @@ int ConsoleUI::addDeathDateOfScientist(int bDate) //Gets a year of death of scie
                     cout << endl;
                 }
             }while(!_scs.validYearCheck(dDate) || dDate < bDate);
+
+            cin.ignore();
         }
         else if(deadOrAlive == "yes" || deadOrAlive == "Yes" || deadOrAlive == "YES")
         {
@@ -469,8 +483,9 @@ int ConsoleUI::addDeathDateOfScientist(int bDate) //Gets a year of death of scie
 
 char ConsoleUI::addGenderOfScientist() //Gets a gender of scientist from user.
 {
+
     string gender;
-    cin.ignore();
+
     do
     {
         cout << "Gender (f/m): ";
@@ -509,7 +524,7 @@ void ConsoleUI::addComputer() //Adds computer to the list.
     type = addTypeOfComputer();
 
     _scs.addComputer(cName, buildYear, type, wasBuilt);
-    //listName();
+    listComputersByNameAsc();
 }
 
 string ConsoleUI::addNameOfComputer()
@@ -593,6 +608,7 @@ string ConsoleUI::addWasBuiltOfComputer()
     do
     {
         cout << "Has the computer been built, yes/no: ";
+
         getline(cin,wasBuilt);
 
         if(wasBuilt != "no" && wasBuilt != "No" && wasBuilt != "NO" && wasBuilt != "yes" && wasBuilt != "Yes" && wasBuilt != "YES")
@@ -950,25 +966,75 @@ void ConsoleUI::listJoinedByComputersNameAscDesc()
 void ConsoleUI::findScientist()
 {
     string findSc;
+    bool containsNum = false;
 
     cin.ignore();
-    cout << "Enter the name of scientist: ";
-    getline(cin,findSc);
-    vector<Scientist> sc = _scs.findScientistByName(findSc);
 
-    printListOfScientistsWithComputer(sc);
+    do
+    {
+        cout << "Enter the name of scientist: ";
+        getline(cin,findSc);
+
+        containsNum = _scs.checkIfContainsNumber(findSc);
+
+        if(findSc.size() == 0)
+        {
+            cout << endl;
+            cout << "! - No scientist name was entered. - !" << endl;
+        }
+        else if(containsNum == true)
+        {
+            cout << endl;
+            cout << "! - Invalid input. Name cannot contain numbers. - !" << endl;
+        }
+    }while(findSc.size() == 0 || containsNum == true);
+
+    vector<Scientist> sc = _scs.findScientistByName(findSc);
+    if(sc.size() == 0)
+    {
+        cout << "Nothing matched your search" << endl;
+    }
+    else
+    {
+        printListOfScientistsWithComputer(sc);
+    }
 }
 
 void ConsoleUI::findComputer()
 {
     string findC;
+    bool containsNum = false;
 
     cin.ignore();
-    cout << "Enter the name of computer: ";
-    getline(cin,findC);
-    vector<Computer> c = _scs.findComputerByName(findC);
 
-    printListOfComputerWithScientist(c);
+    do
+    {
+        cout << "Enter the name of computer: ";
+        getline(cin,findC);
+
+        containsNum = _scs.checkIfContainsNumber(findC);
+
+        if(findC.size() == 0)
+        {
+            cout << endl;
+            cout << "! - No computer name was entered. - !" << endl;
+        }
+        else if(containsNum == true)
+        {
+            cout << endl;
+            cout << "! - Invalid input. Name cannot contain numbers. - !" << endl;
+        }
+    }while(findC.size() == 0 || containsNum == true);
+
+    vector<Computer> c = _scs.findComputerByName(findC);
+    if(c.size() == 0)
+    {
+        cout << "Nothing matched your search" << endl;
+    }
+    else
+    {
+        printListOfComputerWithScientist(c);
+    }
 }
 
 void ConsoleUI::deleteScientist()
@@ -1011,6 +1077,83 @@ void ConsoleUI::deleteComputer()
     {
         //listName();
     }
+}
+
+void ConsoleUI::deleteConnection()
+{
+    int sId, cId;
+    printListOfConnectionsForDeletion();
+    cout << "Select the id of the scientist you want to delete the connection from: " << endl;
+    cin >> sId;
+    cout << "Select the id of the computer you want to delete the connection from: " << endl;
+    cin >> cId;
+
+    int deleted = _scs.deleteConnection(sId, cId);
+
+    if(deleted == -1)
+    {
+        cout << "This connection does not exist!" << endl;
+    }
+    else if(deleted == -2)
+    {
+        cout << "Connection deleted successfully!" << endl;
+    }
+    else
+    {
+        cout << "Connection was not deleted!" << endl;
+    }
+
+}
+
+void ConsoleUI::printListOfConnectionsForDeletion()
+{
+    string tab,tab2;
+    vector<Invented> vi = _scs.inventedAscendingOrder(0);
+    cout << "These are the current scientist-computer connections: ";
+    cout << endl;
+
+    cout << "Scientest Id" << "\t" << "Scientist Name" << "\t" << "\t"
+         << "Computer Name" << "\t" << "\t" << "Computer Id" << endl;
+    cout << "=========================================================================" << endl;
+    for(size_t i = 0; i < vi.size(); i++)
+    {
+        if(vi.at(i).getSName().size() < 24 && vi.at(i).getSName().size() > 15)
+        {
+            tab = "\t";
+        }
+        else if(vi.at(i).getSName().size() < 16 && vi.at(i).getSName().size() > 7)
+        {
+            tab = "\t\t";
+        }
+        else if(vi.at(i).getSName().size() < 8)
+        {
+            tab = "\t\t\t";
+        }
+        else
+        {
+            tab = "";
+        }
+
+        if(vi.at(i).getCName().size() < 24 && vi.at(i).getCName().size() > 15)
+        {
+            tab2 = "\t";
+        }
+        else if(vi.at(i).getCName().size() < 16 && vi.at(i).getCName().size() > 7)
+        {
+            tab2 = "\t\t";
+        }
+        else if(vi.at(i).getCName().size() < 8)
+        {
+            tab2 = "\t\t\t";
+        }
+        else
+        {
+            tab2 = "";
+        }
+        cout << vi.at(i).getSId() << "\t\t" << vi.at(i).getSName() << tab
+             << vi.at(i).getCName() << tab2 << vi.at(i).getCId() << endl;
+    }
+    cout << endl;
 }
 
 void ConsoleUI::editScientist()
@@ -1256,7 +1399,7 @@ void ConsoleUI::editComputer()
     Computer co;
     cout << "Enter name of the computer you want to edit: " << endl;
     cin.ignore();
-    getline(cin,editC);
+    getline(cin, editC);
     vector<Computer> c = _scs.findComputerByName(editC);
     cout << "These computers matched your search:" << endl;
     printListOfComputers(c);

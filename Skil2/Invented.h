@@ -9,14 +9,18 @@ class Invented
 {
 public:
     Invented();
-    Invented(string s, string c);
+    Invented(string s, string c, int sId, int cId);
     string getSName();
     string getCName();
+    int getSId();
+    int getCId();
     friend ostream& operator << (ostream& out, Invented i);
 
 private:
     string _sName;
     string _cName;
+    int _sId;
+    int _cId;
     string addTab(ostream& out, string name);
 };
 

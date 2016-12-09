@@ -142,6 +142,40 @@ int SCService::deleteComputer(int id)
     return n;
 }
 
+int SCService::deleteConnection(int sId, int cId)
+{
+    bool exists = false;
+    vector<Invented> connections = _data.getListOfComputersAndScientistsAsc(0);
+    for(size_t i = 0; i < connections.size(); i++)
+    {
+        if(connections.at(i).getSId() == sId && connections.at(i).getCId() == cId)
+        {
+            exists = true;
+            break;
+        }
+    }
+    if(!exists)
+    {
+        return -1;
+    }
+    exists = false;
+    _data.deleteConnection(sId, cId);
+    connections = _data.getListOfComputersAndScientistsAsc(0);
+    for(size_t i = 0; i < connections.size(); i++)
+    {
+        if(connections.at(i).getSId() == sId && connections.at(i).getCId() == cId)
+        {
+            exists = true;
+            break;
+        }
+    }
+    if(!exists)
+    {
+        return -2;
+    }
+    return -3;
+}
+
 void SCService::editScientist(int id, string name, int dob, int dod, char g)
 {
     int n = findScientistId(id);
@@ -242,6 +276,18 @@ bool SCService::validYearCheck(int year)
 
     return false;
 
+}
+
+bool SCService::checkIfContainsNumber(string s)
+{
+    for(size_t i = 0; i < s.length(); i++)
+    {
+        if(s[i] >= '0' && s[i] <= '9')
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 size_t SCService::cSize()

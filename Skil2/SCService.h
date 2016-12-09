@@ -34,8 +34,10 @@ public:
     void addScientist(string n, int bd, int dd, char g);
     void addComputer(string n, int b, string t, string wb);
     bool validYearCheck(int year);
+    bool checkIfContainsNumber(string s);
     int deleteScientist(int id);
     int deleteComputer(int id);
+    int deleteConnection(int sId, int cId);
     void editScientist(int id, string name, int dob, int dod, char g);
     Scientist scientistToEdit(int id);
     void editComputer(int id, string name, int by, string type, string wasb);

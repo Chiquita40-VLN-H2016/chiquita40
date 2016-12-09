@@ -4,10 +4,12 @@ Invented::Invented()
 {    
 }
 
-Invented::Invented(string s, string c)
+Invented::Invented(string s, string c, int sId, int cId)
 {
     _sName = s;
     _cName = c;
+    _sId = sId;
+    _cId = cId;
 }
 
 string Invented::getSName()
@@ -18,6 +20,16 @@ string Invented::getSName()
 string Invented::getCName()
 {
     return _cName;
+}
+
+int Invented::getSId()
+{
+    return _sId;
+}
+
+int Invented::getCId()
+{
+    return _cId;
 }
 
 ostream& operator << (ostream& out, Invented i)
