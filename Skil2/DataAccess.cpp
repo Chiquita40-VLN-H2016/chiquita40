@@ -10,16 +10,7 @@ DataAccess::DataAccess()
     _db.open();
 
     QSqlQuery query(_db);
-    query.exec("PRAGMA foreign_keys = ON");
-
-    /*if (!_db.open())
-    {
-        qDebug() << "Error: connection with database failed";
-    }
-    else
-    {
-        qDebug() << "Database: connection ok";
-    }*/
+    query.exec("PRAGMA foreign_keys = ON");  //Activate foreign key constriction in database.
 }
 
 DataAccess::~DataAccess()                    // Destructor
@@ -29,7 +20,6 @@ DataAccess::~DataAccess()                    // Destructor
     _db.close();
     _db = QSqlDatabase();
     QSqlDatabase::removeDatabase(connection);
-    //QSqlDatabase::removeDatabase("CSdatabase");
 }
 
 vector<Scientist> DataAccess::getScientists()
@@ -66,22 +56,26 @@ int DataAccess::addScientist(Scientist sc)
     query.bindValue(":deathYear", sc.getDeathDate());
     query.bindValue(":gender", QString::fromStdString(string(1,sc.getGender())));
     query.exec();
+    //Get id from database to insert into vector in service class.
     int n = query.lastInsertId().toUInt();
     return n;
 }
 
 void DataAccess::deleteScientist(int id)
 {
+    //First delete connection.
     QSqlQuery query(_db);
     query.prepare("DELETE FROM Invented WHERE SID = (:id)");
     query.bindValue(":id", id);
     query.exec();
 
+    //Then delete Scientist.
     query.prepare("DELETE FROM Scientists WHERE ID = (:id)");
     query.bindValue(":id", id);
     query.exec();
 }
 
+//Does not require exact name.
 vector<Scientist> DataAccess::findScientistByName(string search)
 {
     vector<Scientist> scientists;
@@ -425,6 +419,7 @@ bool DataAccess::deleteConnection(int scientistId, int computerId)
     return deleted;
 }
 
+//Which Scientist made the computer with id = id.
 vector<Scientist> DataAccess::getScientistsByComputer(int id)
 {
     vector<Scientist> scientists;
