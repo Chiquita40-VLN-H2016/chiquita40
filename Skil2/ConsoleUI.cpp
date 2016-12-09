@@ -585,10 +585,12 @@ string ConsoleUI::addWasBuiltOfComputer()
 {
     string wasBuilt;
 
+    cin.ignore();
+
     do
     {
         cout << "Has the computer been built, yes/no: ";
-        cin.ignore();
+  //      cin.ignore();
         getline(cin,wasBuilt);
 
         if(wasBuilt != "no" && wasBuilt != "No" && wasBuilt != "NO" && wasBuilt != "yes" && wasBuilt != "Yes" && wasBuilt != "YES")
@@ -1179,7 +1181,7 @@ void ConsoleUI::editComputer()
     Computer co;
     cout << "Enter name of the computer you want to edit: " << endl;
     cin.ignore();
-    getline(cin,editC);
+    getline(cin, editC);
     vector<Computer> c = _scs.findComputerByName(editC);
     cout << "These computers matched your search:" << endl;
     printListOfComputers(c);
