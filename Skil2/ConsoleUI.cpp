@@ -260,8 +260,8 @@ string ConsoleUI::addNameOfScientist() //Gets a name of scientist from the user.
         else if(sName.size() > TAB_NAME)
         {
             cout << endl;
-            cout << "! - Scientist name you entered is too long. - !" << endl
-                 << "! - Scientist name can be max 31 characters with space. - !" << endl;
+            cout << "! - Name you entered is too long. - !" << endl
+                 << "! - Name can be max " << TAB_NAME << " characters with space. - !" << endl;
             cout << endl;
         }
     }while(sName.size() == 0 || sName.size() > TAB_NAME);
@@ -381,8 +381,8 @@ string ConsoleUI::addNameOfComputer()
         else if(cName.size() > TAB_NAME)
         {
             cout << endl;
-            cout << "! - Computer name you entered is too long. - !" << endl
-                 << "! - Computer name can be max 31 characters with space. - !" << endl;
+            cout << "! - Name you entered is too long. - !" << endl
+                 << "! - Name can be max " << TAB_NAME << " characters with space. - !" << endl;
             cout << endl;
         }
     }while(cName.size() == 0 || cName.size() > TAB_NAME);
@@ -430,8 +430,8 @@ string ConsoleUI::addTypeOfComputer()
         else if(cType.size() > TAB_TYPE)
         {
             cout << endl;
-            cout << "! - Computer type you entered is too long. - !" << endl
-                 << "! - Computer type can be max " << TAB_TYPE << " characters with space. - !" << endl;
+            cout << "! - Type you entered is too long. - !" << endl
+                 << "! - Type can be max " << TAB_TYPE << " characters with space. - !" << endl;
             cout << endl;
         }
     }while(cType.size() == 0 || cType.size() > TAB_TYPE);
@@ -828,7 +828,7 @@ string ConsoleUI::editNameOfScientist(Scientist sc)
             {
                 cout << endl;
                 cout << "! - Name you entered is too long. - !" << endl
-                     << "! - Name can only be under 31 characters with space. - !" << endl;
+                     << "! - Name can be max " << TAB_NAME << " characters with space. - !" << endl;
                 cout << endl;
             }
 
@@ -1014,7 +1014,7 @@ string ConsoleUI::editNameOfComputer(Computer c)
             {
                 cout << endl;
                 cout << "! - Name you entered is too long. - !" << endl
-                     << "! - Name can only be under 31 characters with space. - !" << endl;
+                     << "! - Name can be max " << TAB_NAME << " characters with space. - !" << endl;
                 cout << endl;
             }
 
