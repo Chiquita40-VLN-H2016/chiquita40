@@ -39,7 +39,7 @@ You can do these commands as often as you wish. To stop type in 'quit'.
 + Invented.cpp
 + Invented.h
 + main.cpp
-+ CSHistory.sqlite    Database that holds lists of Scientists, Computers and a joined list.
++ CSHistory.sqlite           - Database that holds lists of Scientists, Computers and a joined list.
 + Insert skipanir.txt
 
 ## III. Using Qt
