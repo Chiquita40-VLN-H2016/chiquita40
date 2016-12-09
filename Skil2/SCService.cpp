@@ -74,6 +74,15 @@ vector<Computer> SCService::findComputerByName(string search)
     return computers;
 }
 
+vector<Computer> SCService::findComputerByScientist(int id)
+{
+    vector<Computer> c;
+
+    c = _data.getComputersByScientist(id);
+
+    return c;
+}
+
 //Checks whether scientist exists in list and only adds the new one if it doesn't.
 void SCService::addScientist(string n, int bd, int dd, char g)
 {
@@ -136,6 +145,17 @@ void SCService::editScientist(int id, string name, int dob, int dod, char g)
     }
 }
 
+Scientist SCService::scientistToEdit(int id)
+{
+    int n = findScientistId(id);
+    if(n != -1)
+    {
+        return _scientists.at(n);
+    }
+    Scientist s(-1, "", -1, -1, ' ');
+    return s;
+}
+
 void SCService::editComputer(int id, string name, int by, string type, string wasb)
 {
     bool wasBuilt = false;
@@ -172,7 +192,7 @@ int SCService::findScientistId(int id)
 {
     Scientist s;
 
-    for(unsigned int i = 0; i < size(); i++)
+    for(unsigned int i = 0; i < sSize(); i++)
     {
         s = _scientists.at(i);
         if(s.getId() == id)
@@ -188,7 +208,7 @@ int SCService::findComputerId(int id)
 {
     Computer c;
 
-    for(unsigned int i = 0; i < size(); i++)
+    for(unsigned int i = 0; i < cSize(); i++)
     {
         c = _computers.at(i);
         if(c.getId() == id)
@@ -214,9 +234,14 @@ bool SCService::validYearCheck(int year)
 
 }
 
-size_t SCService::size()
+size_t SCService::cSize()
 {
     return _computers.size();
+}
+
+size_t SCService::sSize()
+{
+    return _scientists.size();
 }
 
 void SCService::joinSC(int sid, int cid)

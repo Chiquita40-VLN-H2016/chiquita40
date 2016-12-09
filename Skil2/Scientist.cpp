@@ -69,8 +69,22 @@ ostream& operator << (ostream& out, Scientist s)
     out << s.getId() << '\t';
     out << s.addTab(out, s.getName());
     out << s.getBirthDate() << '\t';
-    out << s.getDeathDate() << '\t';
-    out << s.getGender() << endl;
+    if(s.getDeathDate() == 9999)
+    {
+        out << "Alive" << '\t';
+    }
+    else
+    {
+        out << s.getDeathDate() << '\t';
+    }
+    if(s.getGender() == 'f' || s.getGender() == 'F')
+    {
+        out << "F" << endl;
+    }
+    else
+    {
+        out << "M" << endl;
+    }
 
     return out;
 }
