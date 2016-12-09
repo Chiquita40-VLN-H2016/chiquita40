@@ -6,6 +6,7 @@
 #include "Scientist.h"
 #include "Computer.h"
 #include "SCService.h"
+#include "Invented.h"
 
 using namespace std;
 
