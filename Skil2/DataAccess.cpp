@@ -248,6 +248,7 @@ int DataAccess::addComputer(Computer c)
     query.bindValue(":buildYear", c.getBuildYear());
     query.bindValue(":type", QString::fromStdString(c.getType()));
     query.bindValue(":wasBuilt", c.getWasBuilt());
+    query.exec();
     int n = query.lastInsertId().toUInt();
     return n;
 }

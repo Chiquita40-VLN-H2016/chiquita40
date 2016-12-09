@@ -64,7 +64,14 @@ ostream& operator << (ostream& out, Computer c)
 {
     out << c.getId() << '\t';
     out << c.addTab(out, c.getName());
-    out << c.getBuildYear() << '\t';
+    if(c.getBuildYear() == 0)
+    {
+        out << " " << '\t';
+    }
+    else
+    {
+         out << c.getBuildYear() << '\t';
+    }
     out << c.getType() << '\t';
     if(c.getWasBuilt())
     {
