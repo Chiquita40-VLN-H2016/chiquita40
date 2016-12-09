@@ -46,9 +46,10 @@ You can do these commands as often as you wish. To stop type in 'quit'.
 1. Clone the Repository
 2. Save the .sqlite file in C:\ drive.
 3. Run SQLite Manager as administrator.
-4. Open ComputerScientists.pro in Qt
-5. Change working directory to where the chiquita40\ComputerScientists folder is saved on your computer
-6. Build and run the program
+4. Run Qt as administrator.
+5. Open ComputerScientists.pro from folder Skil2 in Qt
+6. Change working directory to where the chiquita40\ComputerScientists folder is saved on your computer
+7. Build and run the program
 
 ## IV. Instructions 
 When you run the program a list of commands appear on the screen.
