@@ -1,11 +1,11 @@
-INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES ('Difference Machine', 1823, 'Mechanical', 'TRUE');
-INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES ('Analytical Machine', 0, 'Mechanical', 'FALSE');
-INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES ('Stepped Reckoner', 1694, 'Mechanical', 'TRUE');
-INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES ('The Turing Machine', 1936, 'Mechanical', 'TRUE');
-INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES ('Pascaline', 1645, 'Mechanical', 'TRUE');
-INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES ('EDSAC', 1949, 'Electronical', 'TRUE');
-INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES ('ABC', 1942, 'Electronical', 'TRUE');
-INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES ('ENIAC', 1943, 'Electronical', 'TRUE');
+INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES ('Difference Machine', 1823, 'Mechanical', '1');
+INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES ('Analytical Machine', 0, 'Mechanical', '0');
+INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES ('Stepped Reckoner', 1694, 'Mechanical', '1');
+INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES ('The Turing Machine', 1936, 'Mechanical', '1');
+INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES ('Pascaline', 1645, 'Mechanical', '1');
+INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES ('EDSAC', 1949, 'Electronical', '1');
+INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES ('ABC', 1942, 'Electronical', '1');
+INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES ('ENIAC', 1943, 'Electronical', '1');
 INSERT INTO Scientists(Name, Birth_Year, Death_Year, Gender) VALUES ('Charles Babbage', 1791, 1871, 'm');
 INSERT INTO Scientists(Name, Birth_Year, Death_Year, Gender) VALUES ('Gottfried Wilhelm Leibniz', 1646, 1716, 'm');
 INSERT INTO Scientists(Name, Birth_Year, Death_Year, Gender) VALUES ('Alan Turing', 1912, 1954, 'm');
@@ -22,7 +22,7 @@ INSERT INTO Scientists(Name, Birth_Year, Death_Year, Gender) VALUES ('Blaise Pas
 INSERT INTO Scientists(Name, Birth_Year, Death_Year, Gender) VALUES ('Frances Allen', 1932, 9999, 'f');
 INSERT INTO Scientists(Name, Birth_Year, Death_Year, Gender) VALUES ('Grace Hopper', 1906, 1992, 'f');
 INSERT INTO Scientists(Name, Birth_Year, Death_Year, Gender) VALUES ('Shafi Goldwasser', 1958, 9999, 'f');
-INSERT INTO Scientists(Name, Birth_Year, Death_Year, Gender) VALUES ('Winifred Asprey', 1917, 2007, 'F');
+INSERT INTO Scientists(Name, Birth_Year, Death_Year, Gender) VALUES ('Winifred Asprey', 1917, 2007, 'f');
 INSERT INTO Invented(SID, CID) VALUES ( 3, 1);
 INSERT INTO Invented(SID, CID) VALUES ( 3, 2);
 INSERT INTO Invented(SID, CID) VALUES ( 4, 3);

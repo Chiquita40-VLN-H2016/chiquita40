@@ -40,15 +40,16 @@ You can do these commands as often as you wish. To stop type in 'quit'.
 + Invented.h
 + main.cpp
 + CSHistory.sqlite           - Database that holds lists of Scientists, Computers and a joined list.
-+ Insert skipanir.txt
++ Insert_queries.txt - SQL queries to fill database.
 
-## III. Using Qt
+## III. Using Qt and SQLite Manager
 1. Clone the Repository
 2. Save the .sqlite file in C:\ drive.
 3. Run SQLite Manager as administrator.
-4. Open ComputerScientists.pro in Qt
-5. Change working directory to where the chiquita40\ComputerScientists folder is saved on your computer
-6. Build and run the program
+4. Run Qt as administrator.
+5. Open ComputerScientists.pro from folder Skil2 in Qt
+6. Change working directory to where the chiquita40\Skil2 folder is saved on your computer
+7. Build and run the program
 
 ## IV. Instructions 
 When you run the program a list of commands appear on the screen.
@@ -77,7 +78,8 @@ Delete works only with the exact first and last name.
 If you get a compile time error when you have entered "quit", please rebuild (choose "Rebuild All") the program.
 
 **Join**
-When you join a Computer and a Computer Scientist, their id's will appear in the Invented table in the SQLite Manager file.
+
+Connect a Scientist with a Computer. When you join a Computer and a Computer Scientist, their ids will appear in the Invented table in the SQLite Manager.
 
 
 
