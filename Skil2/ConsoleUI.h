@@ -45,9 +45,9 @@ private:
     string addNameOfComputer();
     int addBuildYearOfComputer();
     string addTypeOfComputer();
-    char addWasBuiltOfComputer();
+    string addWasBuiltOfComputer();
 
-    char chooseSortingMethod();
+    int chooseSortingMethod();
     void listScientists(); //Gets user input on how to sort the list of Scientists.
     void listScientistsByNameAsc();
     void listScientistsByNameDesc();
