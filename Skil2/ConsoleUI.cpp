@@ -949,25 +949,75 @@ void ConsoleUI::listJoinedByComputersNameAscDesc()
 void ConsoleUI::findScientist()
 {
     string findSc;
+    bool containsNum = false;
 
     cin.ignore();
-    cout << "Enter the name of scientist: ";
-    getline(cin,findSc);
-    vector<Scientist> sc = _scs.findScientistByName(findSc);
 
-    printListOfScientistsWithComputer(sc);
+    do
+    {
+        cout << "Enter the name of scientist: ";
+        getline(cin,findSc);
+
+        containsNum = _scs.checkIfContainsNumber(findSc);
+
+        if(findSc.size() == 0)
+        {
+            cout << endl;
+            cout << "! - No scientist name was entered. - !" << endl;
+        }
+        else if(containsNum == true)
+        {
+            cout << endl;
+            cout << "! - Invalid input. Name cannot contain numbers. - !" << endl;
+        }
+    }while(findSc.size() == 0 || containsNum == true);
+
+    vector<Scientist> sc = _scs.findScientistByName(findSc);
+    if(sc.size() == 0)
+    {
+        cout << "Nothing matched your search" << endl;
+    }
+    else
+    {
+        printListOfScientistsWithComputer(sc);
+    }
 }
 
 void ConsoleUI::findComputer()
 {
     string findC;
+    bool containsNum = false;
 
     cin.ignore();
-    cout << "Enter the name of computer: ";
-    getline(cin,findC);
-    vector<Computer> c = _scs.findComputerByName(findC);
 
-    printListOfComputerWithScientist(c);
+    do
+    {
+        cout << "Enter the name of computer: ";
+        getline(cin,findC);
+
+        containsNum = _scs.checkIfContainsNumber(findC);
+
+        if(findC.size() == 0)
+        {
+            cout << endl;
+            cout << "! - No computer name was entered. - !" << endl;
+        }
+        else if(containsNum == true)
+        {
+            cout << endl;
+            cout << "! - Invalid input. Name cannot contain numbers. - !" << endl;
+        }
+    }while(findC.size() == 0 || containsNum == true);
+
+    vector<Computer> c = _scs.findComputerByName(findC);
+    if(c.size() == 0)
+    {
+        cout << "Nothing matched your search" << endl;
+    }
+    else
+    {
+        printListOfComputerWithScientist(c);
+    }
 }
 
 void ConsoleUI::deleteScientist()
