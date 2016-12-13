@@ -20,6 +20,8 @@ public:
     void setBirthDate(int bd);
     void setDeathDate(int dd);
     void setGender(char gender);
+    string toString();
+    string addTab();
     friend ostream& operator << (ostream& out, Scientist s); //Overload of outstream operator to print out scientist.
     string addTab(ostream& out, string name); //Add tabs to even out table spaces.
 

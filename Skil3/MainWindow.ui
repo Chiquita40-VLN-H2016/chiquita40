@@ -22,53 +22,60 @@
       </property>
      </widget>
     </item>
+    <item row="1" column="0" colspan="3">
+     <widget class="QLineEdit" name="input_frontPageSearch">
+      <property name="placeholderText">
+       <string>Search database</string>
+      </property>
+     </widget>
+    </item>
     <item row="1" column="3">
-     <widget class="QPushButton" name="pushButton_frontPageSearch">
+     <widget class="QPushButton" name="button_frontPageSearch">
       <property name="text">
        <string>Search</string>
       </property>
      </widget>
     </item>
     <item row="2" column="0" colspan="3">
-     <widget class="QListWidget" name="listWidget_frontPageSearchResult"/>
+     <widget class="QListWidget" name="list_frontPageSearchResult"/>
     </item>
     <item row="3" column="0">
-     <widget class="QPushButton" name="pushButton_frontSeeFullLists">
+     <widget class="QPushButton" name="button_frontSeeFullLists">
       <property name="text">
        <string>See full lists</string>
       </property>
      </widget>
     </item>
     <item row="3" column="1">
-     <widget class="QPushButton" name="pushButton_frontAdd">
+     <widget class="QPushButton" name="button_frontAdd">
       <property name="text">
        <string>Add</string>
       </property>
      </widget>
     </item>
     <item row="3" column="2">
-     <widget class="QPushButton" name="pushButton_frontEdit">
+     <widget class="QPushButton" name="button_frontEdit">
       <property name="text">
        <string>Edit</string>
       </property>
      </widget>
     </item>
     <item row="4" column="0">
-     <widget class="QPushButton" name="pushButton_frontDelete">
+     <widget class="QPushButton" name="button_frontDelete">
       <property name="text">
        <string>Delete</string>
       </property>
      </widget>
     </item>
     <item row="4" column="1">
-     <widget class="QPushButton" name="pushButton_frontConnect">
+     <widget class="QPushButton" name="button_frontConnect">
       <property name="text">
        <string>Connect computer and scientist</string>
       </property>
      </widget>
     </item>
     <item row="4" column="2">
-     <widget class="QPushButton" name="pushButton_frontQuit">
+     <widget class="QPushButton" name="button_frontQuit">
       <property name="styleSheet">
        <string notr="true">background-color: rgb(170, 0, 0);
 selection-color: rgb(170, 0, 0);
@@ -77,13 +84,6 @@ color: rgb(0, 0, 0);</string>
       </property>
       <property name="text">
        <string>Quit</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0" colspan="3">
-     <widget class="QLineEdit" name="lineEdit_frontPageSearch">
-      <property name="placeholderText">
-       <string>Search database</string>
       </property>
      </widget>
     </item>
