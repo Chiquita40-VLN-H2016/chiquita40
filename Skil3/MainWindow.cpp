@@ -13,8 +13,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-
 void MainWindow::on_button_frontQuit_clicked()
 {
     qApp->quit();
@@ -34,6 +32,14 @@ void MainWindow::displaySearchResultsFromAll(string search)
 
     _currentlyDisplayedComputers = _scs.findComputerByName(search);
     _currentlyDisplayedScientists = _scs.findScientistByName(search);
+
+    ui->list_frontPageSearchResult->addItem(QString::fromStdString("Computers that matched search:"));
+
+    for(unsigned int i = 0; i < _currentlyDisplayedComputers.size(); i++)
+    {
+        Computer c = _currentlyDisplayedComputers.at(i);
+        ui->list_frontPageSearchResult->addItem(QString::fromStdString(c.toString()));
+    }
 
     ui->list_frontPageSearchResult->addItem(QString::fromStdString("Scientists that matched search:"));
 
