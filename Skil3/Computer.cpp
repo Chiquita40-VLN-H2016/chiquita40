@@ -59,6 +59,49 @@ void Computer::setWasBuilt(bool wasb)
 {
     _wasBuilt = wasb;
 }
+
+string Computer::toString()
+{
+    string c = "";
+    c+= to_string(_id);
+    c+= '\t';
+    c+= _name + addTab();
+    c+= to_string(_buildYear);
+    c+= '\t';
+    //c+= _wasBuilt;
+    if(_wasBuilt == true)
+    {
+        c+= "yes";
+        c+= '\t';
+    }
+    else
+    {
+        c+= "no";
+        c+= '\t';
+    }
+
+    return c;
+}
+
+string Computer::addTab()
+{
+    string tab = "";
+    if(_name.size() < 24 && _name.size() > 15)
+    {
+        tab = "\t";
+    }
+    else if(_name.size() < 16 && _name.size() > 7)
+    {
+        tab = "\t\t";
+    }
+    else if(_name.size() < 8)
+    {
+        tab = "\t\t\t";
+    }
+
+    return tab;
+}
+
 //Overload of outstream operator to print out computer.
 ostream& operator << (ostream& out, Computer c)
 {
