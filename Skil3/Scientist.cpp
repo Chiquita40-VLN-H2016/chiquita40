@@ -63,6 +63,59 @@ void Scientist::setGender(char g)
     _gender = g;
 }
 
+string Scientist::toString()
+{
+    string s = "";
+    s+= to_string(_id);
+    s+= '\t';
+    s+= _name + addTab();
+    s+= to_string(_birthDate);
+    s+= '\t';
+    if(_deathDate == 9999)
+    {
+        s+= "Alive";
+        s+= '\t';
+    }
+    else
+    {
+        s+= to_string(_deathDate);
+        s+= '\t';
+    }
+    if(_gender == 'f' || _gender == 'F')
+    {
+        s+= "F\n";
+    }
+    else
+    {
+        s+= "M\n";
+    }
+
+    return s;
+}
+
+string Scientist::addTab()
+{
+    string tab = "";
+    if(_name.size() < 24 && _name.size() > 15)
+    {
+        tab = "\t";
+    }
+    else if(_name.size() < 16 && _name.size() > 7)
+    {
+        tab = "\t\t";
+    }
+    else if(_name.size() < 8)
+    {
+        tab = "\t\t\t";
+    }
+    /*else
+    {
+        out << name;
+    }*/
+
+    return tab;
+}
+
 //Overload of outstream operator to print out scientist.
 ostream& operator << (ostream& out, Scientist s)
 {
