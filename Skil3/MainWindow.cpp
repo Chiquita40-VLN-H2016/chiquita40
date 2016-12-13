@@ -12,3 +12,34 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+
+
+void MainWindow::on_button_frontQuit_clicked()
+{
+    qApp->quit();
+}
+
+void MainWindow::on_button_frontPageSearch_clicked()
+{
+    string search = ui->input_frontPageSearch->text().toStdString();
+    displaySearchResultsFromAll(search);
+}
+
+void MainWindow::displaySearchResultsFromAll(string search)
+{
+    ui->list_frontPageSearchResult->clear();
+    _currentlyDisplayedComputers.clear();
+    _currentlyDisplayedScientists.clear();
+
+    _currentlyDisplayedComputers = _scs.findComputerByName(search);
+    _currentlyDisplayedScientists = _scs.findScientistByName(search);
+
+    ui->list_frontPageSearchResult->addItem(QString::fromStdString("Scientists that matched search:"));
+
+    for(unsigned int i = 0; i < _currentlyDisplayedScientists.size(); i++)
+    {
+        Scientist s = _currentlyDisplayedScientists.at(i);
+        ui->list_frontPageSearchResult->addItem(QString::fromStdString(s.toString()));
+    }
+}
