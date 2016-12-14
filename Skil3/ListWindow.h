@@ -24,6 +24,11 @@ private slots:
 
 private:
     Ui::ListWindow *ui;
+    vector<Scientist> _currentlyDisplayedScientists;
+    vector<Computer> _currentlyDisplayedComputers;
+    SCService _scs;
+
+    void displaySearchResultsFromAll(string search);
 };
 
 #endif // LISTWINDOW_H
