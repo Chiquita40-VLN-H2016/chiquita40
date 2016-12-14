@@ -64,47 +64,54 @@ void EditWindow::displaySearchResultsFromAll(string search)
 
 void EditWindow::on_button_editScientist_clicked()
 {
-    ui->input_editNameScientist->clear();
+
+    ui->input_editNameScientist->clear();   // Clear all input fields.
     ui->input_editYearBorn->clear();
-//    ui->comboBox_editScientistAlive->clear();
     ui->input_editYearOfDeath->clear();
-//    ui->comboBox_editGender->clear();
-    ui->input_editNameScientist->show();
-    ui->input_editYearBorn->show();
-    ui->comboBox_editScientistAlive->show();
-    ui->comboBox_editGender->show();
-    ui->label_ScientistAlive->show();
-    ui->button_saveEditScientist->show();
-    ui->label_gender->show();
 
     int sId = ui->input_editIdScientist->text().toInt();
-    //Fyrst þarf að koma tékk hvort tala eða bókstafir
-    Scientist s = _scs.scientistToEdit(sId);
-    string name = s.getName();
-    string yearBorn = to_string(s.getBirthDate());
-    string yearDeath = to_string(s.getDeathDate());
-    char gender = s.getGender();
 
-    ui->input_editNameScientist->setText(QString::fromStdString(name));
-    ui->input_editYearBorn->setText(QString::fromStdString(yearBorn));
-    if(yearDeath != "9999")
+    Scientist s = _scs.scientistToEdit(sId);
+    if(s.getId() != -1)
     {
-        ui->comboBox_editScientistAlive->setCurrentText(QString::fromStdString("No"));
-        ui->input_editYearOfDeath->show();
-        ui->input_editYearOfDeath->setText(QString::fromStdString(yearDeath));
+        string name = s.getName();
+        string yearBorn = to_string(s.getBirthDate());
+        string yearDeath = to_string(s.getDeathDate());
+        char gender = s.getGender();
+
+        ui->input_editNameScientist->show();    // Show all fields when button is clicked.
+        ui->input_editYearBorn->show();
+        ui->comboBox_editScientistAlive->show();
+        ui->comboBox_editGender->show();
+        ui->label_ScientistAlive->show();
+        ui->button_saveEditScientist->show();
+        ui->label_gender->show();
+
+        ui->input_editNameScientist->setText(QString::fromStdString(name));
+        ui->input_editYearBorn->setText(QString::fromStdString(yearBorn));
+        if(yearDeath != "9999")
+        {
+            ui->comboBox_editScientistAlive->setCurrentText(QString::fromStdString("No"));
+            ui->input_editYearOfDeath->show();
+            ui->input_editYearOfDeath->setText(QString::fromStdString(yearDeath));
+        }
+        else if (yearDeath == "9999")
+        {
+            ui->comboBox_editScientistAlive->setCurrentText(QString::fromStdString("Yes"));
+     //       ui->input_editYearOfDeath->hide();
+        }
+        if(gender == 'f' || gender == 'F')
+        {
+            ui->comboBox_editGender->setCurrentText(QChar::fromLatin1('F'));
+        }
+        else if(gender == 'm' || gender == 'M')
+        {
+            ui->comboBox_editGender->setCurrentText(QChar::fromLatin1('M'));
+        }
     }
-    else if (yearDeath == "9999")
+    else
     {
-        ui->comboBox_editScientistAlive->setCurrentText(QString::fromStdString("Yes"));
- //       ui->input_editYearOfDeath->hide();
-    }
-    if(gender == 'f' || gender == 'F')
-    {
-        ui->comboBox_editGender->setCurrentText(QChar::fromLatin1('F'));
-    }
-    else if(gender == 'm' || gender == 'M')
-    {
-        ui->comboBox_editGender->setCurrentText(QChar::fromLatin1('M'));
+        ui->input_editIdScientist->clear();
     }
 
 }
