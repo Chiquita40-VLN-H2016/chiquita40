@@ -19,13 +19,16 @@ SOURCES += main.cpp\
         DataAccess.cpp\
         Invented.cpp\
         Scientist.cpp\
-        SCService.cpp
+        SCService.cpp \
+    DeleteWindow.cpp
 
 HEADERS  += MainWindow.h\
          Computer.h\
          DataAccess.h\
          Invented.h\
          Scientist.h\
-         SCService.h
+         SCService.h \
+    DeleteWindow.h
 
-FORMS    += MainWindow.ui
+FORMS    += MainWindow.ui \
+    DeleteWindow.ui
