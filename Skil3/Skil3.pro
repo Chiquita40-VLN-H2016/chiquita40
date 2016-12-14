@@ -13,22 +13,25 @@ TARGET = Skil3
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        MainWindow.cpp\
-        Computer.cpp\
-        DataAccess.cpp\
-        Invented.cpp\
-        Scientist.cpp\
+SOURCES += main.cpp \
+        MainWindow.cpp \
+        Computer.cpp \
+        DataAccess.cpp \
+        Invented.cpp \
+        Scientist.cpp \
         SCService.cpp \
-    EditDialog.cpp
+        DeleteWindow.cpp \
+    EditWindow.cpp
 
-HEADERS  += MainWindow.h\
-         Computer.h\
-         DataAccess.h\
-         Invented.h\
-         Scientist.h\
+HEADERS  += MainWindow.h \
+         Computer.h \
+         DataAccess.h \
+         Invented.h \
+         Scientist.h \
          SCService.h \
-    EditDialog.h
+         DeleteWindow.h \
+    EditWindow.h
 
 FORMS    += MainWindow.ui \
-    EditDialog.ui
+            DeleteWindow.ui \
+    EditWindow.ui

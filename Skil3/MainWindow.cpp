@@ -53,6 +53,12 @@ void MainWindow::displaySearchResultsFromAll(string search)
 
 void MainWindow::on_button_frontEdit_clicked()
 {
-    EditDialog editDialog;
-    editDialog.exec(); //Tekur/skilar int, hægt að stýra villuskilaboðum eftir því.
+    EditWindow editWindow;
+    editWindow.exec(); //Tekur/skilar int, hægt að stýra villuskilaboðum eftir því.
+}
+
+void MainWindow::on_button_frontDelete_clicked()
+{
+    DeleteWindow deleteWindow;
+    deleteWindow.exec();
 }

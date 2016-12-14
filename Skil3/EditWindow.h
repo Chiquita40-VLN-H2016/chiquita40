@@ -1,5 +1,5 @@
-#ifndef EDITDIALOG_H
-#define EDITDIALOG_H
+#ifndef EDITWINDOW_H
+#define EDITWINDOW_H
 #include "Scientist.h"
 #include "Computer.h"
 #include "SCService.h"
@@ -9,22 +9,22 @@
 #include <QDialog>
 
 namespace Ui {
-class EditDialog;
+class EditWindow;
 }
 
-class EditDialog : public QDialog
+class EditWindow : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit EditDialog(QWidget *parent = 0);
-    ~EditDialog();
+    explicit EditWindow(QWidget *parent = 0);
+    ~EditWindow();
 
 private slots:
     void on_input_editPageSearch_textChanged(const QString &arg1);
 
 private:
-    Ui::EditDialog *ui;
+    Ui::EditWindow *ui;
     vector<Scientist> _currentlyDisplayedScientists;
     vector<Computer> _currentlyDisplayedComputers;
     SCService _scs;
@@ -32,4 +32,4 @@ private:
     void displaySearchResultsFromAll(string search);
 };
 
-#endif // EDITDIALOG_H
+#endif // EDITWINDOW_H

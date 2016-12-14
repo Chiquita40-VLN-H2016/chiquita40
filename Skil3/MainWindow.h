@@ -3,7 +3,8 @@
 #include "Scientist.h"
 #include "Computer.h"
 #include "SCService.h"
-#include "EditDialog.h"
+#include "EditWindow1.h"
+#include "DeleteWindow.h"
 #include <string>
 #include <vector>
 
@@ -29,6 +30,8 @@ private slots:
     void on_button_frontPageSearch_clicked();
 
     void on_button_frontEdit_clicked();
+
+    void on_button_frontDelete_clicked();
 
 private:
     Ui::MainWindow *ui;

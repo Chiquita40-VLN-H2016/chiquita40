@@ -1,26 +1,25 @@
-#include "EditDialog.h"
-#include "ui_EditDialog.h"
+#include "EditWindow.h"
+#include "ui_EditWindow.h"
 
-
-EditDialog::EditDialog(QWidget *parent) :
+EditWindow::EditWindow(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::EditDialog)
+    ui(new Ui::EditWindow)
 {
     ui->setupUi(this);
 }
 
-EditDialog::~EditDialog()
+EditWindow::~EditWindow()
 {
     delete ui;
 }
 
-void EditDialog::on_input_editPageSearch_textChanged(const QString &arg1)
+void EditWindow::on_input_editPageSearch_textChanged(const QString &arg1)
 {
     string search = ui->input_editPageSearch->text().toStdString();
     displaySearchResultsFromAll(search);
 }
 
-void EditDialog::displaySearchResultsFromAll(string search)
+void EditWindow::displaySearchResultsFromAll(string search)
 {
     ui->list_editPageSearchResult->clear();
     _currentlyDisplayedComputers.clear();
