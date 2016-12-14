@@ -23,6 +23,12 @@ public:
 private slots:
     void on_input_editPageSearch_textChanged(const QString &arg1);
 
+ //   void on_input_editIdScientist_editingFinished(int sId);
+
+    void on_button_editScientist_clicked();
+
+    void on_comboBox_editScientistAlive_currentIndexChanged(const QString &arg1);
+
 private:
     Ui::EditWindow *ui;
     vector<Scientist> _currentlyDisplayedScientists;
