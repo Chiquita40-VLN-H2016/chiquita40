@@ -22,7 +22,7 @@ public:
     void setWasBuilt(bool wasb);
     friend ostream& operator << (ostream& out, Computer c);//Overload of outstream operator to print out computer.
     string toString();
-    string addTab();
+    string addTab(string s);
     string addTab(ostream& out, string name);//Add tabs to even out table spaces.
 
 private:

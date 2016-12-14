@@ -5,6 +5,7 @@
 #include "SCService.h"
 #include "EditWindow1.h"
 #include "DeleteWindow.h"
+#include "AddWindow.h"
 #include <string>
 #include <vector>
 
@@ -27,11 +28,15 @@ public:
 private slots:
     void on_button_frontQuit_clicked();
 
-    void on_button_frontPageSearch_clicked();
+    //void on_button_frontPageSearch_clicked();
 
     void on_button_frontEdit_clicked();
 
     void on_button_frontDelete_clicked();
+
+    void on_button_frontAdd_clicked();
+
+    void on_input_frontPageSearch_textChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;

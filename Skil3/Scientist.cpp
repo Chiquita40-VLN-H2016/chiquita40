@@ -83,11 +83,11 @@ string Scientist::toString()
     }
     if(_gender == 'f' || _gender == 'F')
     {
-        s+= "F\n";
+        s+= "F";
     }
     else
     {
-        s+= "M\n";
+        s+= "M";
     }
 
     return s;
@@ -96,23 +96,14 @@ string Scientist::toString()
 string Scientist::addTab()
 {
     string tab = "";
-    if(_name.size() < 24 && _name.size() > 15)
+    if(_name.size() < 24 && _name.size() > 13)
     {
         tab = "\t";
     }
-    else if(_name.size() < 16 && _name.size() > 7)
+    else if(_name.size() <=13)
     {
         tab = "\t\t";
     }
-    else if(_name.size() < 8)
-    {
-        tab = "\t\t\t";
-    }
-    /*else
-    {
-        out << name;
-    }*/
-
     return tab;
 }
 
