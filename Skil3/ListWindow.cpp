@@ -45,3 +45,13 @@ void ListWindow::displaySearchResultsFromAll(string search)
     }
 }
 
+
+void ListWindow::on_button_listBack_clicked()
+{
+    close();
+}
+
+void ListWindow::on_button_listQuit_clicked()
+{
+    close();
+}

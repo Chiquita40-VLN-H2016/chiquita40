@@ -22,6 +22,10 @@ public:
 private slots:
     void on_input_listPageSearch_textChanged(const QString &arg1);
 
+    void on_button_listBack_clicked();
+
+    void on_button_listQuit_clicked();
+
 private:
     Ui::ListWindow *ui;
     vector<Scientist> _currentlyDisplayedScientists;
