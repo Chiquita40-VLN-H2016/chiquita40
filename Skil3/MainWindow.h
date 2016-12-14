@@ -5,6 +5,7 @@
 #include "SCService.h"
 #include "EditWindow1.h"
 #include "DeleteWindow.h"
+#include "ListWindow.h"
 #include <string>
 #include <vector>
 
@@ -32,6 +33,8 @@ private slots:
     void on_button_frontEdit_clicked();
 
     void on_button_frontDelete_clicked();
+
+    void on_button_frontSeeFullLists_clicked();
 
 private:
     Ui::MainWindow *ui;

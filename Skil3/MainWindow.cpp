@@ -62,3 +62,9 @@ void MainWindow::on_button_frontDelete_clicked()
     DeleteWindow deleteWindow;
     deleteWindow.exec();
 }
+
+void MainWindow::on_button_frontSeeFullLists_clicked()
+{
+    ListWindow listWindow;
+    listWindow.exec();
+}
