@@ -1,26 +1,26 @@
 #include "DataAccess.h"
+#include "Utilities.h"
 
 using namespace std;
 
 DataAccess::DataAccess()
 {
 
-    _db = QSqlDatabase::addDatabase("QSQLITE");
+    /*_db = QSqlDatabase::addDatabase("QSQLITE");
     _db.setDatabaseName("C:/CSHistory.sqlite");
-    _db.open();
+    _db.open();*/
 
-    QSqlQuery query(_db);
-    query.exec("PRAGMA foreign_keys = ON");  //Activate foreign key constriction in database.
+    _db = Utilities::getDatabaseConnection();
 }
 
-DataAccess::~DataAccess()                    // Destructor
+/*DataAccess::~DataAccess()                    // Destructor
 {
     QString connection;
     connection = _db.connectionName();
     _db.close();
     _db = QSqlDatabase();
     QSqlDatabase::removeDatabase(connection);
-}
+}*/
 
 vector<Scientist> DataAccess::getScientists()
 {

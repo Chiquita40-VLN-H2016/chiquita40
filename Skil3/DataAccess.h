@@ -16,7 +16,7 @@ class DataAccess
 {
 public:
     DataAccess();
-    ~DataAccess();
+    //~DataAccess();
 
     vector<Scientist> getScientists();
     int addScientist(Scientist sc);
