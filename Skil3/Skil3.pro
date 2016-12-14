@@ -19,13 +19,16 @@ SOURCES += main.cpp\
         DataAccess.cpp\
         Invented.cpp\
         Scientist.cpp\
-        SCService.cpp
+        SCService.cpp \
+    EditDialog.cpp
 
 HEADERS  += MainWindow.h\
          Computer.h\
          DataAccess.h\
          Invented.h\
          Scientist.h\
-         SCService.h
+         SCService.h \
+    EditDialog.h
 
-FORMS    += MainWindow.ui
+FORMS    += MainWindow.ui \
+    EditDialog.ui
