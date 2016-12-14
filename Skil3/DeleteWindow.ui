@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DeleteWindow</class>
+ <widget class="QDialog" name="DeleteWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>644</width>
+    <height>608</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_deleteComputer">
+     <property name="text">
+      <string>Delete computer:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2">
+    <widget class="QPushButton" name="button_deleteScientist">
+     <property name="text">
+      <string>Delete Scientist</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QLineEdit" name="lineEdit_deleteScientistID">
+     <property name="placeholderText">
+      <string>ID of scientist you want to delete</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QPushButton" name="button_deletePageSearch">
+     <property name="text">
+      <string>Search</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QLineEdit" name="input_deletePageSearch">
+     <property name="placeholderText">
+      <string>Find scientist or computer to delete</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QListWidget" name="list_frontPageSearchResult"/>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Delete a scientist or computer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_deleteScientist">
+     <property name="text">
+      <string>Delete scientist:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="0">
+    <widget class="QPushButton" name="button_deleteBack">
+     <property name="text">
+      <string>Back</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="2">
+    <widget class="QPushButton" name="button_deleteComputer">
+     <property name="text">
+      <string>Delete Computer</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="2">
+    <widget class="QLabel" name="label_deleteConnection">
+     <property name="text">
+      <string>Delete connection:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="2">
+    <widget class="QLineEdit" name="lineEdit_deleteComputerID">
+     <property name="placeholderText">
+      <string>ID of computer you want to delete</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="2">
+    <widget class="QPushButton" name="button_deleteQuit">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(170, 0, 0);
+selection-color: rgb(170, 0, 0);
+color: rgb(170, 0, 0);
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>Quit</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="2">
+    <widget class="QPushButton" name="button_deleteConnection">
+     <property name="text">
+      <string>Delete connection</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0" colspan="2">
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="placeholderText">
+      <string>ID of scientist you want to disconnect</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="1">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>434</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="9" column="0" colspan="2">
+    <widget class="QLineEdit" name="lineEdit_2">
+     <property name="placeholderText">
+      <string>ID of computer you want to disconnect</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

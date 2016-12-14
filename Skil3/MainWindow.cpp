@@ -49,3 +49,16 @@ void MainWindow::displaySearchResultsFromAll(string search)
         ui->list_frontPageSearchResult->addItem(QString::fromStdString(s.toString()));
     }
 }
+
+
+void MainWindow::on_button_frontEdit_clicked()
+{
+    EditWindow editWindow;
+    editWindow.exec(); //Tekur/skilar int, hægt að stýra villuskilaboðum eftir því.
+}
+
+void MainWindow::on_button_frontDelete_clicked()
+{
+    DeleteWindow deleteWindow;
+    deleteWindow.exec();
+}

@@ -12,7 +12,6 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = Skil3
 TEMPLATE = app
 
-
 SOURCES += main.cpp\
         MainWindow.cpp\
         Computer.cpp\
@@ -20,7 +19,9 @@ SOURCES += main.cpp\
         Invented.cpp\
         Scientist.cpp\
         SCService.cpp \
-    Utilities.cpp
+    Utilities.cpp \
+        DeleteWindow.cpp \
+    EditWindow.cpp
 
 HEADERS  += MainWindow.h\
          Computer.h\
@@ -28,6 +29,11 @@ HEADERS  += MainWindow.h\
          Invented.h\
          Scientist.h\
          SCService.h \
-    Utilities.h
+    Utilities.h\
+         DeleteWindow.h \
+    EditWindow.h
 
-FORMS    += MainWindow.ui
+
+FORMS    += MainWindow.ui \
+            DeleteWindow.ui \
+    EditWindow.ui
