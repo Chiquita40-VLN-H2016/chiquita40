@@ -7,20 +7,24 @@ EditWindow::EditWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->input_editNameScientist->hide();
-    ui->input_editYearBorn->hide();
-    ui->comboBox_editScientistAlive->hide();
-    ui->input_editYearOfDeath->hide();
-    ui->comboBox_editGender->hide();
-    ui->label_ScientistAlive->hide();
-    ui->button_saveEditScientist->hide();
-    ui->label_gender->hide();
-
+    hideScientistFields();
+    hideComputerFields();
 }
 
 EditWindow::~EditWindow()
 {
     delete ui;
+}
+
+void EditWindow::on_button_editBack_clicked()
+{
+    close();
+}
+
+void EditWindow::on_button_editQuit_clicked()
+{
+    close();
+    qApp->quit();
 }
 
 void EditWindow::on_input_editPageSearch_textChanged(const QString &arg1)
@@ -38,33 +42,53 @@ void EditWindow::displaySearchResultsFromAll(string search)
     _currentlyDisplayedComputers = _scs.findComputerByName(search);
     _currentlyDisplayedScientists = _scs.findScientistByName(search);
 
-    ui->list_editPageSearchResult->addItem(QString::fromStdString("Computers that matched search:"));
-
-    for(unsigned int i = 0; i < _currentlyDisplayedComputers.size(); i++)
+    if(_currentlyDisplayedScientists.size() != 0)
     {
-        Computer c = _currentlyDisplayedComputers.at(i);
-        ui->list_editPageSearchResult->addItem(QString::fromStdString(c.toString()));
+        ui->list_editPageSearchResult->addItem(QString::fromStdString("Scientists that matched search:"));
+        ui->list_editPageSearchResult->addItem(QString::fromStdString(scientistListHeader()));
+
+        for(unsigned int i = 0; i < _currentlyDisplayedScientists.size(); i++)
+        {
+            Scientist s = _currentlyDisplayedScientists.at(i);
+            ui->list_editPageSearchResult->addItem(QString::fromStdString(s.toString()));
+        }
+
+        ui->list_editPageSearchResult->addItem(" ");
     }
 
-    ui->list_editPageSearchResult->addItem(QString::fromStdString("Scientists that matched search:"));
-
-    for(unsigned int i = 0; i < _currentlyDisplayedScientists.size(); i++)
+    if(_currentlyDisplayedComputers.size() != 0)
     {
-        Scientist s = _currentlyDisplayedScientists.at(i);
-        ui->list_editPageSearchResult->addItem(QString::fromStdString(s.toString()));
+        ui->list_editPageSearchResult->addItem(QString::fromStdString("Computers that matched search:"));
+        ui->list_editPageSearchResult->addItem(QString::fromStdString(computerListHeader()));
+
+        for(unsigned int i = 0; i < _currentlyDisplayedComputers.size(); i++)
+        {
+            Computer c = _currentlyDisplayedComputers.at(i);
+            ui->list_editPageSearchResult->addItem(QString::fromStdString(c.toString()));
+        }
+
+        ui->list_editPageSearchResult->addItem(" ");
+    }
+    if(_currentlyDisplayedScientists.size() == 0 && _currentlyDisplayedComputers.size() == 0)
+    {
+        ui->list_editPageSearchResult->addItem("Your search returned no results");
     }
 }
 
-/*void EditWindow::on_input_editIdScientist_editingFinished(int sId)
+void EditWindow::displayEditedScientist(int id)
 {
-    Scientist s = _scs.scientistToEdit(sId);
-    string name = s.getName();
-    ui->input_editNameScientist->setInputMask(QString::fromStdString(name));
-}*/
+    ui->input_editPageSearch->clear();
+    ui->list_editPageSearchResult->clear();
+    Scientist s = _scs.scientistToEdit(id);
+
+    ui->list_editPageSearchResult->addItem(QString::fromStdString("Updated Scientist:"));
+    ui->list_editPageSearchResult->addItem(QString::fromStdString(scientistListHeader()));
+
+    ui->list_editPageSearchResult->addItem(QString::fromStdString(s.toString()));
+}
 
 void EditWindow::on_button_editScientist_clicked()
 {
-
     ui->input_editNameScientist->clear();   // Clear all input fields.
     ui->input_editYearBorn->clear();
     ui->input_editYearOfDeath->clear();
@@ -74,13 +98,15 @@ void EditWindow::on_button_editScientist_clicked()
     Scientist s = _scs.scientistToEdit(sId);
     if(s.getId() != -1)
     {
+        ui->input_editIdScientist->setEnabled(false);   // Lock ID field for editing.
+
         string name = s.getName();
         string yearBorn = to_string(s.getBirthDate());
         string yearDeath = to_string(s.getDeathDate());
         char gender = s.getGender();
 
-        ui->input_editNameScientist->show();    // Show all fields when button is clicked.
-        ui->input_editYearBorn->show();
+        ui->input_editNameScientist->show();    // Show all fields when button is clicked
+        ui->input_editYearBorn->show();         // and ID has been validated.
         ui->comboBox_editScientistAlive->show();
         ui->comboBox_editGender->show();
         ui->label_ScientistAlive->show();
@@ -89,6 +115,7 @@ void EditWindow::on_button_editScientist_clicked()
 
         ui->input_editNameScientist->setText(QString::fromStdString(name));
         ui->input_editYearBorn->setText(QString::fromStdString(yearBorn));
+
         if(yearDeath != "9999")
         {
             ui->comboBox_editScientistAlive->setCurrentText(QString::fromStdString("No"));
@@ -98,15 +125,17 @@ void EditWindow::on_button_editScientist_clicked()
         else if (yearDeath == "9999")
         {
             ui->comboBox_editScientistAlive->setCurrentText(QString::fromStdString("Yes"));
-     //       ui->input_editYearOfDeath->hide();
+
         }
+
         if(gender == 'f' || gender == 'F')
         {
-            ui->comboBox_editGender->setCurrentText(QChar::fromLatin1('F'));
+            ui->comboBox_editGender->setCurrentIndex(0);    // Set gender index to "Female"
+
         }
         else if(gender == 'm' || gender == 'M')
         {
-            ui->comboBox_editGender->setCurrentText(QChar::fromLatin1('M'));
+            ui->comboBox_editGender->setCurrentIndex(1);    // Set gender index to "Male"
         }
     }
     else
@@ -125,14 +154,165 @@ void EditWindow::on_comboBox_editScientistAlive_currentIndexChanged(const QStrin
         ui->input_editYearOfDeath->clear();
         ui->input_editYearOfDeath->show();
     }
-    else if(ui->comboBox_editScientistAlive->currentText() == "Yes")
+    else
     {
         ui->input_editYearOfDeath->hide();
         ui->input_editYearOfDeath->setText(QString::fromStdString(alive));
     }
+}
+
+void EditWindow::on_button_saveEditScientist_clicked()
+{
+    int id = ui->input_editIdScientist->text().toInt();
+    string name = ui->input_editNameScientist->text().toStdString();
+    int dob = ui->input_editYearBorn->text().toInt();
+    int dod = ui->input_editYearOfDeath->text().toInt();
+    string gender = ui->comboBox_editGender->currentText().toStdString();
+    char g = tolower(gender.front());
+
+    _scs.editScientist(id, name, dob, dod, g);
+
+    ui->input_editIdScientist->setEnabled(true);
+    ui->input_editIdScientist->clear();
+
+    hideScientistFields();
+    displayEditedScientist(id);
+
+}
+
+void EditWindow::hideScientistFields()
+{
+    ui->input_editNameScientist->hide();
+    ui->input_editYearBorn->hide();
+    ui->comboBox_editScientistAlive->hide();
+    ui->input_editYearOfDeath->hide();
+    ui->comboBox_editGender->hide();
+    ui->label_ScientistAlive->hide();
+    ui->button_saveEditScientist->hide();
+    ui->label_gender->hide();
+}
+
+void EditWindow::hideComputerFields()
+{
+    ui->input_editNameComputer->hide();
+    ui->input_editYearOfCompletion->hide();
+    ui->comboBox_editComputerBuilt->hide();
+    ui->label_computerBuilt->hide();
+    ui->input_editType->hide();
+    ui->button_saveEditComputer->hide();
+}
+
+string EditWindow::scientistListHeader()
+{
+    string s = "Id\t|Name\t\t|Year Born\t|Year of Death\t|Gender\n";
+    s+= "--------------------------------------------------------------------------------------------";
+    return s;
+}
+
+string EditWindow::computerListHeader()
+{
+    string c = "Id\t|Name\t\t|Year Built\t|Type\t\t|Was Built\n";
+    c+= "------------------------------------------------------------------------------------------------------------";
+    return c;
+}
+
+
+void EditWindow::on_button_editComputer_clicked()
+{
+    ui->input_editNameComputer->clear();        // Clear all input fields.
+    ui->input_editYearOfCompletion->clear();
+    ui->input_editType->clear();
+
+    int cId = ui->input_editIdComputer->text().toInt();
+
+    Computer c = _scs.computerToEdit(cId);
+    if(c.getId() != -1)
+    {
+        ui->input_editIdComputer->setEnabled(false);        // Lock ID field for editing.
+
+        string name = c.getName();
+        string yearBuilt = to_string(c.getBuildYear());
+        string type = c.getType();
+        bool wasBuilt = c.getWasBuilt();
+
+        ui->input_editNameComputer->show();
+        ui->input_editType->show();
+        ui->comboBox_editComputerBuilt->show();
+        ui->label_computerBuilt->show();
+        ui->button_saveEditComputer->show();
+
+        ui->input_editNameComputer->setText(QString::fromStdString(name));
+        ui->input_editType->setText(QString::fromStdString(type));
+
+        if(wasBuilt)
+        {
+            ui->comboBox_editComputerBuilt->setCurrentText(QString::fromStdString("Yes"));
+            ui->input_editYearOfCompletion->show();
+            ui->input_editYearOfCompletion->setText(QString::fromStdString(yearBuilt));
+        }
+        else
+        {
+            ui->comboBox_editComputerBuilt->setCurrentText(QString::fromStdString("No"));
+        }
+    }
     else
     {
-        ui->input_editYearOfDeath->hide();
-        ui->input_editYearOfDeath->setText(QString::fromStdString(""));
+        ui->input_editIdComputer->clear();
     }
+}
+
+void EditWindow::on_comboBox_editComputerBuilt_currentIndexChanged(const QString &arg1)
+{
+    if(ui->comboBox_editComputerBuilt->currentText() == "Yes")
+    {
+        ui->input_editYearOfCompletion->clear();
+        ui->input_editYearOfCompletion->show();
+    }
+    else
+    {
+        ui->input_editYearOfCompletion->setText(QString::fromStdString("0"));
+        ui->input_editYearOfCompletion->hide();
+    }
+
+}
+
+void EditWindow::on_button_saveEditComputer_clicked()
+{
+    int id = ui->input_editIdComputer->text().toInt();
+    string name = ui->input_editNameComputer->text().toStdString();
+    string type = ui->input_editType->text().toStdString();
+    string wasBuilt = ui->comboBox_editComputerBuilt->currentText().toStdString();
+    int yearBuilt = 0;
+
+    if(wasBuilt == "Yes")
+    {
+        yearBuilt = ui->input_editYearOfCompletion->text().toInt();
+    }
+
+    _scs.editComputer(id,name,yearBuilt, type, wasBuilt);
+
+    ui->input_editIdComputer->setEnabled(true);
+    ui->input_editIdComputer->clear();
+
+    hideComputerFields();
+    displayEditedComputer(id);
+
+}
+
+void EditWindow::displayEditedComputer(int id)
+{
+    ui->input_editPageSearch->clear();
+    ui->list_editPageSearchResult->clear();
+    Computer c = _scs.computerToEdit(id);
+
+    ui->list_editPageSearchResult->addItem(QString::fromStdString("Updated Computer:"));
+    ui->list_editPageSearchResult->addItem(QString::fromStdString(computerListHeader()));
+
+    ui->list_editPageSearchResult->addItem(QString::fromStdString(c.toString()));
+}
+
+void EditWindow::on_list_editPageSearchResult_doubleClicked(const QModelIndex &index)
+{
+    // Væri kúl að útfæra þetta, ef tvíklikkað, finna hvort sé Scientist eða Computer og skila
+    // ID niður í annan hvorn ID reitinn.
 }
