@@ -54,6 +54,10 @@ private:
     void displayDeletePageSearchResultsForScientists();
     void displayDeletePageSearchResultsForComputers();
     void displayDeletePageSearchResultsForConnection();
+
+    string scientistListHeader();
+    string computerListHeader();
+    string connectListHeader();
 };
 
 #endif // DELETEWINDOW_H

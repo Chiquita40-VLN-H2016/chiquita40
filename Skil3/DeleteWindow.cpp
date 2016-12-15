@@ -37,15 +37,8 @@ void DeleteWindow::displaySearchResultsFromAll(string search)
     _currentlyDisplayedScientists = _scs.findScientistByName(search);
     _currentlyDisplayedConnections = _scs.findConnectionByName(search);
 
-    ui->list_deletePageSearchResult->addItem(QString::fromStdString("Computers that matched search:"));
-
-    for(unsigned int i = 0; i < _currentlyDisplayedComputers.size(); i++)
-    {
-        Computer c = _currentlyDisplayedComputers.at(i);
-        ui->list_deletePageSearchResult->addItem(QString::fromStdString(c.toString()));
-    }
-
     ui->list_deletePageSearchResult->addItem(QString::fromStdString("Scientists that matched search:"));
+    ui->list_deletePageSearchResult->addItem(QString::fromStdString(scientistListHeader()));
 
     for(unsigned int i = 0; i < _currentlyDisplayedScientists.size(); i++)
     {
@@ -53,7 +46,19 @@ void DeleteWindow::displaySearchResultsFromAll(string search)
         ui->list_deletePageSearchResult->addItem(QString::fromStdString(s.toString()));
     }
 
+    ui->list_deletePageSearchResult->addItem(QString::fromStdString(""));
+    ui->list_deletePageSearchResult->addItem(QString::fromStdString("Computers that matched search:"));
+    ui->list_deletePageSearchResult->addItem(QString::fromStdString(computerListHeader()));
+
+    for(unsigned int i = 0; i < _currentlyDisplayedComputers.size(); i++)
+    {
+        Computer c = _currentlyDisplayedComputers.at(i);
+        ui->list_deletePageSearchResult->addItem(QString::fromStdString(c.toString()));
+    }
+
+    ui->list_deletePageSearchResult->addItem(QString::fromStdString(""));
     ui->list_deletePageSearchResult->addItem(QString::fromStdString("Scientists and connected Computers:"));
+    ui->list_deletePageSearchResult->addItem(QString::fromStdString(connectListHeader()));
 
     for(unsigned int i = 0; i < _currentlyDisplayedConnections.size(); i++)
     {
@@ -114,6 +119,7 @@ void DeleteWindow::displayDeletePageSearchResultsForScientists()
     _currentlyDisplayedScientists = _scs.getScientists();
 
     ui->list_deletePageSearchResult->addItem(QString::fromStdString("Updated list of Scientists:"));
+    ui->list_deletePageSearchResult->addItem(QString::fromStdString(scientistListHeader()));
 
     for(unsigned int i = 0; i < _currentlyDisplayedScientists.size(); i++)
     {
@@ -131,6 +137,7 @@ void DeleteWindow::displayDeletePageSearchResultsForComputers()
     _currentlyDisplayedComputers = _scs.getComputers();
 
     ui->list_deletePageSearchResult->addItem(QString::fromStdString("Updated list of Computers:"));
+    ui->list_deletePageSearchResult->addItem(QString::fromStdString(computerListHeader()));
 
     for(unsigned int i = 0; i < _currentlyDisplayedComputers.size(); i++)
     {
@@ -150,12 +157,34 @@ void DeleteWindow::displayDeletePageSearchResultsForConnection()
     _currentlyDisplayedConnections = _scs.inventedAscendingOrder(0);
 
     ui->list_deletePageSearchResult->addItem(QString::fromStdString("Updated list of Connections:"));
+    ui->list_deletePageSearchResult->addItem(QString::fromStdString(connectListHeader()));
 
     for(unsigned int i = 0; i < _currentlyDisplayedConnections.size(); i++)
     {
         Invented in = _currentlyDisplayedConnections.at(i);
         ui->list_deletePageSearchResult->addItem(QString::fromStdString(in.toString()));
     }
+}
+
+string DeleteWindow::scientistListHeader()
+{
+    string s = "Id\t|Name\t\t|Year Born\t|Year of Death\t|Gender\n";
+    s+= "--------------------------------------------------------------------------------------------";
+    return s;
+}
+
+string DeleteWindow::computerListHeader()
+{
+    string c = "Id\t|Name\t\t|Year Built\t|Type\t\t|Was Built\n";
+    c+= "------------------------------------------------------------------------------------------------------------";
+    return c;
+}
+
+string DeleteWindow::connectListHeader()
+{
+    string in = "Id\t|Scientist Name\t\t|Id\t|Computer Name\n";
+    in+= "------------------------------------------------------------------------------------------------------------";
+    return in;
 }
 
 void DeleteWindow::on_button_deleteScientist_clicked()
@@ -175,6 +204,7 @@ void DeleteWindow::on_button_deleteScientist_clicked()
         displayDeletePageSearchResultsForScientists();
     }
     ui->button_deleteScientist->setEnabled(false);
+    ui->input_deletePageSearch->clear();
     ui->lineEdit_deleteScientistID->clear();
 }
 
@@ -195,6 +225,7 @@ void DeleteWindow::on_button_deleteComputer_clicked()
         displayDeletePageSearchResultsForComputers();
     }
     ui->button_deleteComputer->setEnabled(false);
+    ui->input_deletePageSearch->clear();
     ui->lineEdit_deleteComputerID->clear();
 }
 
@@ -216,6 +247,7 @@ void DeleteWindow::on_button_deleteConnection_clicked()
         displayDeletePageSearchResultsForConnection();
     }
     ui->button_deleteComputer->setEnabled(false);
+    ui->input_deletePageSearch->clear();
     ui->lineEdit_deleteConnectionScientistID->clear();
     ui->lineEdit_deleteConnectionComputerID->clear();
 }
