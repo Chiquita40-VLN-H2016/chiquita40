@@ -37,7 +37,7 @@ private:
     vector<Invented> _allConnections;
     SCService _scs;
 
-    //void displaySearchResultsFromAll(string search);
+    void displayScientistSearchResults(string search);
     void displayAllScientist(int type, int ascdesc);
     void scientistsWhichOrder(int type, int ascdesc);
 };

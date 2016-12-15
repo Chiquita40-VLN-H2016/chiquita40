@@ -14,31 +14,50 @@ ListWindow::~ListWindow()
     delete ui;
 }
 
-/*void ListWindow::displaySearchResultsFromAll(string search)
+
+void ListWindow::displayScientistSearchResults(string search)
 {
-    ui->list_listPageSearchResult->clear();
-    _currentlyDisplayedComputers.clear();
-    _currentlyDisplayedScientists.clear();
+    ui->label_searchScientistsNoResults->setText("");
+    ui->table_Scientists->clearContents();
+   _currentlyDisplayedScientists.clear();
 
-    _currentlyDisplayedComputers = _scs.findComputerByName(search);
-    _currentlyDisplayedScientists = _scs.findScientistByName(search);
+   _currentlyDisplayedScientists = _scs.findScientistByName(search);
+   if(_currentlyDisplayedScientists.size() != 0)
+   {
 
-    ui->list_listPageSearchResult->addItem(QString::fromStdString("Computers that matched search:"));
+       ui->table_Scientists->setRowCount(_currentlyDisplayedScientists.size());
 
-    for(unsigned int i = 0; i < _currentlyDisplayedComputers.size(); i++)
-    {
-        Computer c = _currentlyDisplayedComputers.at(i);
-        ui->list_listPageSearchResult->addItem(QString::fromStdString(c.toString()));
-    }
+       for(unsigned int row = 0; row < _currentlyDisplayedScientists.size(); row++)
+       {
+           Scientist s = _currentlyDisplayedScientists.at(row);
+           //QTableWidgetItem *id = new QTableWidgetItem(s.getId());
+           //QString id = QString::number(s.getId());
+           QString name = QString::fromStdString(s.getName());
+           QString birthYear = QString::number(s.getBirthDate());
+           QString deathYear;
+           if(s.getDeathDate() == 9999)
+           {
+               deathYear = "Alive";
+           }
+           else
+           {
+               deathYear = QString::number(s.getDeathDate());
+           }
+           QString gender = QChar(toupper(s.getGender()));
 
-    ui->list_listPageSearchResult->addItem(QString::fromStdString("Scientists that matched search:"));
-
-    for(unsigned int i = 0; i < _currentlyDisplayedScientists.size(); i++)
-    {
-        Scientist s = _currentlyDisplayedScientists.at(i);
-        ui->list_listPageSearchResult->addItem(QString::fromStdString(s.toString()));
-    }
-}*/
+           ui->table_Scientists->setItem(row, 0, new QTableWidgetItem(s.getId()));
+           ui->table_Scientists->setItem(row, 1, new QTableWidgetItem(name));
+           ui->table_Scientists->setItem(row, 2, new QTableWidgetItem(birthYear));
+           ui->table_Scientists->setItem(row, 3, new QTableWidgetItem(deathYear));
+           ui->table_Scientists->setItem(row, 4, new QTableWidgetItem(gender));
+       }
+   }
+   if(search.size() != 0 && _currentlyDisplayedScientists.size() == 0)
+   {
+       ui->table_Scientists->clearContents();
+       ui->label_searchScientistsNoResults->setText("<p style=\"color:#f44242;\">Your search returned no results.</p>");
+   }
+}
 
 void ListWindow::displayAllScientist(int type, int ascdesc)
 {
@@ -65,7 +84,7 @@ void ListWindow::displayAllScientist(int type, int ascdesc)
         {
             deathYear = QString::number(s.getDeathDate());
         }
-        QString gender = toupper(s.getGender());
+        QString gender = QChar(toupper(s.getGender()));
 
         ui->table_Scientists->setItem(row, 0, new QTableWidgetItem(id));
         ui->table_Scientists->setItem(row, 1, new QTableWidgetItem(name));
@@ -136,12 +155,5 @@ void ListWindow::on_button_listQuit_clicked()
 void ListWindow::on_input_listScientistSearch_textChanged(const QString &arg1)
 {
     string search = arg1.toStdString();
-    if(search.size() != 0)
-    {
-        //displaySearchResultsFromAll(search);
-    }
-    if(search.size()== 0)
-    {
-        ui->table_Scientists->clearContents();
-    }
+    displayScientistSearchResults(search);
 }
