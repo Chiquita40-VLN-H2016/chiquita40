@@ -3,6 +3,7 @@
 #include "Scientist.h"
 #include "Computer.h"
 #include "SCService.h"
+#include "Utilities.h"
 #include <string>
 #include <vector>
 
@@ -40,6 +41,12 @@ private slots:
     void on_button_saveEditComputer_clicked();
 
     void on_list_editPageSearchResult_doubleClicked(const QModelIndex &index);
+
+    void on_input_editNameScientist_textChanged(const QString &arg1);
+
+    void on_input_editNameComputer_textChanged(const QString &arg1);
+
+    void on_input_editType_textChanged(const QString &arg1);
 
 private:
     Ui::EditWindow *ui;
