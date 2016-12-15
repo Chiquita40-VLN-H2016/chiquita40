@@ -15,6 +15,8 @@ public:
     int getSId();
     int getCId();
     friend ostream& operator << (ostream& out, Invented i);
+    string toString();
+    string addTab(string i);
 
 private:
     string _sName;

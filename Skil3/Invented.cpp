@@ -42,6 +42,33 @@ ostream& operator << (ostream& out, Invented i)
     return out;
 }
 
+string Invented::toString()
+{
+    string i = "";
+    i+= _sName + addTab(_sName);
+    i+= _cName + addTab(_cName);
+    i+= to_string(_sId);
+    i+= '\t';
+    i+= to_string(_cId);
+
+    return i;
+}
+
+string Invented::addTab(string i)
+{
+    string tab = "";
+    if(i.size() < 24 && i.size() > 13)
+    {
+        tab = "\t";
+    }
+    else if(i.size() <= 13)
+    {
+        tab = "\t\t";
+    }
+
+    return tab;
+}
+
 //If name is shorter than 24 characters, even out table spaces.
 string Invented::addTab(ostream& out, string name)
 {
