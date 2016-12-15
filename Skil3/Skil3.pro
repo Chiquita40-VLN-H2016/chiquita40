@@ -40,3 +40,6 @@ FORMS    += MainWindow.ui \
             DeleteWindow.ui \
     EditWindow.ui \
     AddWindow.ui
+
+RESOURCES += \
+    resources.qrc
