@@ -45,6 +45,7 @@ void AddWindow::on_button_addScientist_clicked()
     string bY = ui->input_addYearBorn->text().toStdString();
     int birthYear = ui->input_addYearBorn->text().toInt();
     bool birthYearIsValid = Utilities::validYearCheck(bY);
+    birthYearIsValid = _scs.validYearCheck(birthYear);
     bool deathYearIsValid = false;
     string alive = ui->comboBox_addSAlive->currentText().toStdString();
     int deathYear = 9999;
@@ -57,6 +58,7 @@ void AddWindow::on_button_addScientist_clicked()
         string dY = ui->input_addYearOfDeath->text().toStdString();
         deathYear = ui->input_addYearOfDeath->text().toInt();
         deathYearIsValid = Utilities::validYearCheck(dY);
+        deathYearIsValid = _scs.validYearCheck(deathYear);
         if(deathYearIsValid && deathYear < birthYear)
         {
             deathYearIsValid = false;
@@ -123,6 +125,7 @@ void AddWindow::on_button_addComputer_clicked()
         buildYear = ui->input_addYearOfCompletion->text().toInt();
         string buY = ui->input_addYearOfCompletion->text().toStdString();
         buildYearIsValid = Utilities::validYearCheck(buY);
+        buildYearIsValid = _scs.validYearCheck(buildYear);
     }
     if(buildYearIsValid)
     {
@@ -158,7 +161,25 @@ void AddWindow::on_input_addNameComputer_textChanged(const QString &arg1)
     }
     else
     {
-        ui->button_addComputer->setEnabled(true);
+        if(!ui->input_addType->text().isEmpty())
+        {
+            ui->button_addComputer->setEnabled(true);
+        }
+    }
+}
+
+void AddWindow::on_input_addType_textChanged(const QString &arg1)
+{
+    if(arg1.isEmpty())
+    {
+        ui->button_addComputer->setEnabled(false);
+    }
+    else
+    {
+        if(!ui->input_addNameComputer->text().isEmpty())
+        {
+            ui->button_addComputer->setEnabled(true);
+        }
     }
 }
 
