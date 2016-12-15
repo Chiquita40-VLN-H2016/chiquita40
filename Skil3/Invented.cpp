@@ -45,11 +45,12 @@ ostream& operator << (ostream& out, Invented i)
 string Invented::toString()
 {
     string i = "";
-    i+= _sName + addTab(_sName);
     i+= to_string(_sId);
     i+= '\t';
-    i+= _cName + addTab(_cName);
+    i+= _sName + addTab(_sName);
     i+= to_string(_cId);
+    i+= '\t';
+    i+= _cName + addTab(_cName);
 
     return i;
 }
