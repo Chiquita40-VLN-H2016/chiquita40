@@ -32,7 +32,7 @@ private slots:
 
     void on_input_deletePageSearchComputer_textChanged(const QString &arg1);
 
-    //void on_input_deletePageSearchConnect_textChanged(const QString &arg1);
+    void on_input_deletePageSearchConnect_textChanged(const QString &arg1);
 
     void on_lineEdit_deleteScientistID_textChanged(const QString &arg1);
 
@@ -40,13 +40,13 @@ private slots:
 
     void on_lineEdit_deleteComputerID_textChanged(const QString &arg1);
 
-    //void on_button_deleteComputer_clicked();
+    void on_button_deleteComputer_clicked();
 
     void on_lineEdit_deleteConnectionScientistID_textChanged(const QString &arg1);
 
     void on_lineEdit_deleteConnectionComputerID_textChanged(const QString &arg1);
 
-    //void on_button_deleteConnection_clicked();
+    void on_button_deleteConnection_clicked();
 
 private:
     Ui::DeleteWindow *ui;
@@ -55,12 +55,12 @@ private:
     vector<Invented> _currentlyDisplayedConnections;
     SCService _scs;
 
-    void displaySearchResultsFromAllScientists(string search);
-    void displaySearchResultsFromAllComputers(string search);
-    //void displaySearchResultsFromAllConnections(string search);
-    void displayDeletePageSearchResultsForScientists();
-    void displayDeletePageSearchResultsForComputers();
-    void displayDeletePageSearchResultsForConnection();
+    void displayAllScientists(string search);
+    void displayAllComputers(string search);
+    void displayAllConnections(string search);
+    void displayScientistsAfterDelete();
+    void displayComputersAfterDelete();
+    void displayConnectionAfterDelete();
 
     //string scientistListHeader();
     //string computerListHeader();

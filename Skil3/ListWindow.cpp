@@ -65,7 +65,7 @@ void ListWindow::displayAllScientist(int type, int ascdesc)
         {
             deathYear = QString::number(s.getDeathDate());
         }
-        QString gender = toupper(s.getGender());
+        QString gender = QChar(toupper(s.getGender()));
 
         ui->table_Scientists->setItem(row, 0, new QTableWidgetItem(id));
         ui->table_Scientists->setItem(row, 1, new QTableWidgetItem(name));

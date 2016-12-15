@@ -23,133 +23,19 @@ void DeleteWindow::on_button_deleteQuit_clicked()
 void DeleteWindow::on_input_deletePageSearchScientist_textChanged(const QString &arg1)
 {
     string search = ui->input_deletePageSearchScientist->text().toStdString();
-    displaySearchResultsFromAllScientists(search);
+    displayAllScientists(search);
 }
 
 void DeleteWindow::on_input_deletePageSearchComputer_textChanged(const QString &arg1)
 {
     string search = ui->input_deletePageSearchComputer->text().toStdString();
-    displaySearchResultsFromAllComputers(search);
+    displayAllComputers(search);
 }
 
-/*void DeleteWindow::on_input_deletePageSearchConnect_textChanged(const QString &arg1)
+void DeleteWindow::on_input_deletePageSearchConnect_textChanged(const QString &arg1)
 {
     string search = ui->input_deletePageSearchConnect->text().toStdString();
-    displaySearchResultsFromAllConnections(search);
-}*/
-
-void DeleteWindow::displaySearchResultsFromAllScientists(string search)
-{
-    ui->tableWidget_deletePageSearchResultScientist->clear();
-    //_currentlyDisplayedComputers.clear();
-    _currentlyDisplayedScientists.clear();
-    //_currentlyDisplayedConnections.clear();
-
-    //_currentlyDisplayedComputers = _scs.findComputerByName(search);
-    _currentlyDisplayedScientists = _scs.findScientistByName(search);
-    //_currentlyDisplayedConnections = _scs.findConnectionByName(search);
-
-    //ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString("Scientists that matched search:"));
-    //ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(scientistListHeader()));
-    QStringList scientistHeader;
-    ui->tableWidget_deletePageSearchResultScientist->setColumnCount(5);
-    scientistHeader << "ID" << "Scientist Name" << "Birth Year" << "Death Year" << "Gender";
-    ui->tableWidget_deletePageSearchResultScientist->setHorizontalHeaderLabels(scientistHeader);
-    ui->tableWidget_deletePageSearchResultScientist->setRowCount(_currentlyDisplayedScientists.size());
-
-    for(unsigned int row = 0; row < _currentlyDisplayedScientists.size(); row++)
-    {
-        Scientist s = _currentlyDisplayedScientists.at(row);
-
-        QString id = QString::number(s.getId());
-        QString name = QString::fromStdString(s.getName());
-        QString birthDate = QString::number(s.getBirthDate());
-        QString deathDate = QString::number(s.getDeathDate());
-        //QString gender = toupper(s.getGender());
-
-        ui->tableWidget_deletePageSearchResultScientist->setItem(row, 0, new QTableWidgetItem(id));
-        ui->tableWidget_deletePageSearchResultScientist->setItem(row, 1, new QTableWidgetItem(name));
-        ui->tableWidget_deletePageSearchResultScientist->setItem(row, 2, new QTableWidgetItem(birthDate));
-        ui->tableWidget_deletePageSearchResultScientist->setItem(row, 3, new QTableWidgetItem(deathDate));
-        ui->tableWidget_deletePageSearchResultScientist->setItem(row, 4, new QTableWidgetItem(s.getGender()));
-    }
-
-    /*ui->tableWidget_deletePageSearchResultScientist->addItem(QString::fromStdString(""));
-    ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString("Computers that matched search:"));
-    ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(computerListHeader()));
-
-    for(unsigned int i = 0; i < _currentlyDisplayedComputers.size(); i++)
-    {
-        Computer c = _currentlyDisplayedComputers.at(i);
-        ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(c.toString()));
-    }
-
-    ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(""));
-    ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString("Scientists and connected Computers:"));
-    ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(connectListHeader()));
-
-    for(unsigned int i = 0; i < _currentlyDisplayedConnections.size(); i++)
-    {
-        Invented in = _currentlyDisplayedConnections.at(i);
-        ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(in.toString()));
-    }*/
-}
-
-void DeleteWindow::displaySearchResultsFromAllComputers(string search)
-{
-    ui->tableWidget_deletePageSearchResultScientist->clear();
-    //_currentlyDisplayedComputers.clear();
-    _currentlyDisplayedScientists.clear();
-    //_currentlyDisplayedConnections.clear();
-
-    //_currentlyDisplayedComputers = _scs.findComputerByName(search);
-    _currentlyDisplayedScientists = _scs.findScientistByName(search);
-    //_currentlyDisplayedConnections = _scs.findConnectionByName(search);
-
-    //ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString("Scientists that matched search:"));
-    //ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(scientistListHeader()));
-    QStringList scientistHeader;
-    ui->tableWidget_deletePageSearchResultScientist->setColumnCount(5);
-    scientistHeader << "ID" << "Scientist Name" << "Birth Year" << "Death Year" << "Gender";
-    ui->tableWidget_deletePageSearchResultScientist->setHorizontalHeaderLabels(scientistHeader);
-    ui->tableWidget_deletePageSearchResultScientist->setRowCount(_currentlyDisplayedScientists.size());
-
-    for(unsigned int row = 0; row < _currentlyDisplayedScientists.size(); row++)
-    {
-        Scientist s = _currentlyDisplayedScientists.at(row);
-
-        QString id = QString::number(s.getId());
-        QString name = QString::fromStdString(s.getName());
-        QString birthDate = QString::number(s.getBirthDate());
-        QString deathDate = QString::number(s.getDeathDate());
-        //QString gender = toupper(s.getGender());
-
-        ui->tableWidget_deletePageSearchResultScientist->setItem(row, 0, new QTableWidgetItem(id));
-        ui->tableWidget_deletePageSearchResultScientist->setItem(row, 1, new QTableWidgetItem(name));
-        ui->tableWidget_deletePageSearchResultScientist->setItem(row, 2, new QTableWidgetItem(birthDate));
-        ui->tableWidget_deletePageSearchResultScientist->setItem(row, 3, new QTableWidgetItem(deathDate));
-        ui->tableWidget_deletePageSearchResultScientist->setItem(row, 4, new QTableWidgetItem(s.getGender()));
-    }
-
-    /*ui->tableWidget_deletePageSearchResultScientist->addItem(QString::fromStdString(""));
-    ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString("Computers that matched search:"));
-    ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(computerListHeader()));
-
-    for(unsigned int i = 0; i < _currentlyDisplayedComputers.size(); i++)
-    {
-        Computer c = _currentlyDisplayedComputers.at(i);
-        ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(c.toString()));
-    }
-
-    ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(""));
-    ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString("Scientists and connected Computers:"));
-    ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(connectListHeader()));
-
-    for(unsigned int i = 0; i < _currentlyDisplayedConnections.size(); i++)
-    {
-        Invented in = _currentlyDisplayedConnections.at(i);
-        ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(in.toString()));
-    }*/
+    displayAllConnections(search);
 }
 
 void DeleteWindow::on_button_deleteBack_clicked()
@@ -195,79 +81,263 @@ int DeleteWindow::deleteWarningMessage()
     return ret;
 }
 
-void DeleteWindow::displayDeletePageSearchResultsForScientists()
+void DeleteWindow::displayAllScientists(string search)
 {
-    ui->tableWidget_deletePageSearchResultScientist->clear();
+    ui->tableWidget_deletePageSearchResultScientist->clearContents();
+    _currentlyDisplayedScientists.clear();
+
+    _currentlyDisplayedScientists = _scs.findScientistByName(search);
+
+    /*QStringList scientistHeader;
+    ui->tableWidget_deletePageSearchResultScientist->setColumnCount(5);
+    scientistHeader << "ID" << "Scientist Name" << "Birth Year" << "Death Year" << "Gender";
+    ui->tableWidget_deletePageSearchResultScientist->setHorizontalHeaderLabels(scientistHeader);*/
+    ui->tableWidget_deletePageSearchResultScientist->setRowCount(_currentlyDisplayedScientists.size());
+
+    for(unsigned int row = 0; row < _currentlyDisplayedScientists.size(); row++)
+    {
+        Scientist s = _currentlyDisplayedScientists.at(row);
+
+        QString id = QString::number(s.getId());
+        QString name = QString::fromStdString(s.getName());
+        QString birthDate = QString::number(s.getBirthDate());
+        QString deathYear;
+        if(s.getDeathDate() == 9999)
+        {
+            deathYear = "Alive";
+        }
+        else
+        {
+            deathYear = QString::number(s.getDeathDate());
+        }
+        QString gender = QChar(toupper(s.getGender()));
+
+        ui->tableWidget_deletePageSearchResultScientist->setItem(row, 0, new QTableWidgetItem(id));
+        ui->tableWidget_deletePageSearchResultScientist->setItem(row, 1, new QTableWidgetItem(name));
+        ui->tableWidget_deletePageSearchResultScientist->setItem(row, 2, new QTableWidgetItem(birthDate));
+        ui->tableWidget_deletePageSearchResultScientist->setItem(row, 3, new QTableWidgetItem(deathYear));
+        ui->tableWidget_deletePageSearchResultScientist->setItem(row, 4, new QTableWidgetItem(gender));
+    }
+}
+
+void DeleteWindow::displayAllComputers(string search)
+{
+    ui->tableWidget_deletePageSearchResultComputer->clearContents();
+    _currentlyDisplayedComputers.clear();
+
+    _currentlyDisplayedComputers = _scs.findComputerByName(search);
+
+    /*QStringList computerHeader;
+    ui->tableWidget_deletePageSearchResultScientist->setColumnCount(5);
+    computerHeader << "ID" << "Computer Name" << "Build Year" << "Type" << "Was Built?";
+    ui->tableWidget_deletePageSearchResultComputer->setHorizontalHeaderLabels(computerHeader);*/
+    ui->tableWidget_deletePageSearchResultComputer->setRowCount(_currentlyDisplayedComputers.size());
+
+    for(unsigned int row = 0; row < _currentlyDisplayedComputers.size(); row++)
+    {
+        Computer c = _currentlyDisplayedComputers.at(row);
+
+        QString id = QString::number(c.getId());
+        QString name = QString::fromStdString(c.getName());
+        QString buildYear = QString::number(c.getBuildYear());
+        QString type = QString::fromStdString(c.getType());
+        QString wasBuilt = QString::number(c.getWasBuilt());
+
+        ui->tableWidget_deletePageSearchResultComputer->setItem(row, 0, new QTableWidgetItem(id));
+        ui->tableWidget_deletePageSearchResultComputer->setItem(row, 1, new QTableWidgetItem(name));
+        ui->tableWidget_deletePageSearchResultComputer->setItem(row, 2, new QTableWidgetItem(buildYear));
+        ui->tableWidget_deletePageSearchResultComputer->setItem(row, 3, new QTableWidgetItem(type));
+        ui->tableWidget_deletePageSearchResultComputer->setItem(row, 4, new QTableWidgetItem(wasBuilt));
+    }
+}
+
+void DeleteWindow::displayAllConnections(string search)
+{
+    ui->tableWidget_deletePageSearchResultConnect->clearContents();
+    _currentlyDisplayedConnections.clear();
+
+    _currentlyDisplayedConnections = _scs.findConnectionByName(search);
+
+    /*QStringList connectionHeader;
+    ui->tableWidget_deletePageSearchResultConnect->setColumnCount(4);
+    connectionHeader << "ID" << "Scientist Name" << "ID" << "Computer Name";
+    ui->tableWidget_deletePageSearchResultConnect->setHorizontalHeaderLabels(connectionHeader);*/
+    ui->tableWidget_deletePageSearchResultConnect->setRowCount(_currentlyDisplayedConnections.size());
+
+    for(unsigned int row = 0; row < _currentlyDisplayedConnections.size(); row++)
+    {
+        Invented in = _currentlyDisplayedConnections.at(row);
+
+        QString sId = QString::number(in.getSId());
+        QString sName = QString::fromStdString(in.getSName());
+        QString cId = QString::number(in.getCId());
+        QString cName = QString::fromStdString(in.getCName());
+
+        ui->tableWidget_deletePageSearchResultConnect->setItem(row, 0, new QTableWidgetItem(sId));
+        ui->tableWidget_deletePageSearchResultConnect->setItem(row, 1, new QTableWidgetItem(sName));
+        ui->tableWidget_deletePageSearchResultConnect->setItem(row, 2, new QTableWidgetItem(cId));
+        ui->tableWidget_deletePageSearchResultConnect->setItem(row, 3, new QTableWidgetItem(cName));
+    }
+}
+
+void DeleteWindow::displayScientistsAfterDelete()
+{
+    ui->tableWidget_deletePageSearchResultScientist->clearContents();
     _currentlyDisplayedScientists.clear();
 
     _scs.scientistsAscendingOrder(0);
     _currentlyDisplayedScientists = _scs.getScientists();
 
-    //ui->list_deletePageSearchResult->addItem(QString::fromStdString("Updated list of Scientists:"));
-    //ui->list_deletePageSearchResult->addItem(QString::fromStdString(scientistListHeader()));
-    QStringList scientistHeader;
+    /*QStringList scientistHeader;
     ui->tableWidget_deletePageSearchResultScientist->setColumnCount(5);
     scientistHeader << "ID" << "Scientist Name" << "Birth Year" << "Death Year" << "Gender";
-    ui->tableWidget_deletePageSearchResultScientist->setHorizontalHeaderLabels(scientistHeader);
+    ui->tableWidget_deletePageSearchResultScientist->setHorizontalHeaderLabels(scientistHeader);*/
     ui->tableWidget_deletePageSearchResultScientist->setRowCount(_currentlyDisplayedScientists.size());
 
     for(unsigned int row = 0; row < _currentlyDisplayedScientists.size(); row++)
     {
-        //Scientist s = _currentlyDisplayedScientists.at(i);
-        //ui->tableWidget_deletePageSearchResultScientist->setItem(QString::fromStdString(s.toString()));
         Scientist s = _currentlyDisplayedScientists.at(row);
 
         QString id = QString::number(s.getId());
         QString name = QString::fromStdString(s.getName());
         QString birthDate = QString::number(s.getBirthDate());
         QString deathDate = QString::number(s.getDeathDate());
-        //QString gender = QString::fromLatin1(s.getGender());
+        QString gender = QChar(toupper(s.getGender()));
 
         ui->tableWidget_deletePageSearchResultScientist->setItem(row, 0, new QTableWidgetItem(id));
         ui->tableWidget_deletePageSearchResultScientist->setItem(row, 1, new QTableWidgetItem(name));
         ui->tableWidget_deletePageSearchResultScientist->setItem(row, 2, new QTableWidgetItem(birthDate));
         ui->tableWidget_deletePageSearchResultScientist->setItem(row, 3, new QTableWidgetItem(deathDate));
-        ui->tableWidget_deletePageSearchResultScientist->setItem(row, 4, new QTableWidgetItem(s.getGender()));
+        ui->tableWidget_deletePageSearchResultScientist->setItem(row, 4, new QTableWidgetItem(gender));
     }
 }
 
-/*void DeleteWindow::displayDeletePageSearchResultsForComputers()
+void DeleteWindow::displayComputersAfterDelete()
 {
-    ui->list_deletePageSearchResult->clear();
+    ui->tableWidget_deletePageSearchResultComputer->clearContents();
     _currentlyDisplayedComputers.clear();
 
     _scs.computersAscendingOrder(0);
     _currentlyDisplayedComputers = _scs.getComputers();
 
-    ui->list_deletePageSearchResult->addItem(QString::fromStdString("Updated list of Computers:"));
-    ui->list_deletePageSearchResult->addItem(QString::fromStdString(computerListHeader()));
+    /*QStringList computerHeader;
+    ui->tableWidget_deletePageSearchResultScientist->setColumnCount(5);
+    computerHeader << "ID" << "Computer Name" << "Build Year" << "Type" << "Was Built?";
+    ui->tableWidget_deletePageSearchResultComputer->setHorizontalHeaderLabels(computerHeader);*/
+    ui->tableWidget_deletePageSearchResultComputer->setRowCount(_currentlyDisplayedComputers.size());
 
-    for(unsigned int i = 0; i < _currentlyDisplayedComputers.size(); i++)
+    for(unsigned int row = 0; row < _currentlyDisplayedComputers.size(); row++)
     {
-        Computer c = _currentlyDisplayedComputers.at(i);
-        ui->list_deletePageSearchResult->addItem(QString::fromStdString(c.toString()));
-    }
-}*/
+        Computer c = _currentlyDisplayedComputers.at(row);
 
-/*void DeleteWindow::displayDeletePageSearchResultsForConnection()
+        QString id = QString::number(c.getId());
+        QString name = QString::fromStdString(c.getName());
+        QString buildYear = QString::number(c.getBuildYear());
+        QString type = QString::fromStdString(c.getType());
+        QString wasBuilt = QString::number(c.getWasBuilt());
+
+        ui->tableWidget_deletePageSearchResultComputer->setItem(row, 0, new QTableWidgetItem(id));
+        ui->tableWidget_deletePageSearchResultComputer->setItem(row, 1, new QTableWidgetItem(name));
+        ui->tableWidget_deletePageSearchResultComputer->setItem(row, 2, new QTableWidgetItem(buildYear));
+        ui->tableWidget_deletePageSearchResultComputer->setItem(row, 3, new QTableWidgetItem(type));
+        ui->tableWidget_deletePageSearchResultComputer->setItem(row, 4, new QTableWidgetItem(wasBuilt));
+    }
+}
+
+void DeleteWindow::displayConnectionAfterDelete()
 {
-    ui->list_deletePageSearchResult->clear();
-    _currentlyDisplayedComputers.clear();
-    _currentlyDisplayedScientists.clear();
+    ui->tableWidget_deletePageSearchResultConnect->clearContents();
     _currentlyDisplayedConnections.clear();
 
     //_scs.getListOfComputersAndScientistsAsc(0);
     _currentlyDisplayedConnections = _scs.inventedAscendingOrder(0);
 
-    ui->list_deletePageSearchResult->addItem(QString::fromStdString("Updated list of Connections:"));
-    ui->list_deletePageSearchResult->addItem(QString::fromStdString(connectListHeader()));
+    /*QStringList connectionHeader;
+    ui->tableWidget_deletePageSearchResultConnect->setColumnCount(4);
+    connectionHeader << "ID" << "Scientist Name" << "ID" << "Computer Name";
+    ui->tableWidget_deletePageSearchResultConnect->setHorizontalHeaderLabels(connectionHeader);*/
+    ui->tableWidget_deletePageSearchResultConnect->setRowCount(_currentlyDisplayedConnections.size());
 
-    for(unsigned int i = 0; i < _currentlyDisplayedConnections.size(); i++)
+    for(unsigned int row = 0; row < _currentlyDisplayedConnections.size(); row++)
     {
-        Invented in = _currentlyDisplayedConnections.at(i);
-        ui->list_deletePageSearchResult->addItem(QString::fromStdString(in.toString()));
+        Invented in = _currentlyDisplayedConnections.at(row);
+
+        QString sId = QString::number(in.getSId());
+        QString sName = QString::fromStdString(in.getSName());
+        QString cId = QString::number(in.getCId());
+        QString cName = QString::fromStdString(in.getCName());
+
+        ui->tableWidget_deletePageSearchResultConnect->setItem(row, 0, new QTableWidgetItem(sId));
+        ui->tableWidget_deletePageSearchResultConnect->setItem(row, 1, new QTableWidgetItem(sName));
+        ui->tableWidget_deletePageSearchResultConnect->setItem(row, 2, new QTableWidgetItem(cId));
+        ui->tableWidget_deletePageSearchResultConnect->setItem(row, 3, new QTableWidgetItem(cName));
     }
-}*/
+}
+
+void DeleteWindow::on_button_deleteScientist_clicked()
+{
+    int success = -1;
+    int ret = deleteWarningMessage();
+
+    int id = ui->lineEdit_deleteScientistID->text().toInt();
+
+    if(ret == 16384)
+    {
+        success = _scs.deleteScientist(id);
+    }
+
+    if(success != -1)
+    {
+        displayScientistsAfterDelete();
+    }
+    ui->button_deleteScientist->setEnabled(false);
+    ui->input_deletePageSearchScientist->clear();
+    ui->lineEdit_deleteScientistID->clear();
+}
+
+void DeleteWindow::on_button_deleteComputer_clicked()
+{
+    int success = -1;
+    int ret = deleteWarningMessage();
+
+    int id = ui->lineEdit_deleteComputerID->text().toInt();
+
+    if(ret == 16384)
+    {
+        success = _scs.deleteComputer(id);
+    }
+
+    if(success != -1)
+    {
+        displayComputersAfterDelete();
+    }
+    ui->button_deleteComputer->setEnabled(false);
+    ui->input_deletePageSearchComputer->clear();
+    ui->lineEdit_deleteComputerID->clear();
+}
+
+void DeleteWindow::on_button_deleteConnection_clicked()
+{
+    bool success = false;
+    int ret = deleteWarningMessage();
+
+    int sId = ui->lineEdit_deleteConnectionScientistID->text().toInt();
+    int cId = ui->lineEdit_deleteConnectionComputerID->text().toInt();
+
+    if(ret == 16384)
+    {
+        success = _scs.deleteConnection(sId, cId);
+    }
+
+    if(success == true)
+    {
+        displayConnectionAfterDelete();
+    }
+    ui->button_deleteComputer->setEnabled(false);
+    ui->input_deletePageSearchConnect->clear();
+    ui->lineEdit_deleteConnectionScientistID->clear();
+    ui->lineEdit_deleteConnectionComputerID->clear();
+}
 
 /*string DeleteWindow::scientistListHeader()
 {
@@ -288,71 +358,6 @@ string DeleteWindow::connectListHeader()
     string in = "Id\t|Scientist Name\t\t|Id\t|Computer Name\n";
     in+= "------------------------------------------------------------------------------------------------------------";
     return in;
-}*/
-
-void DeleteWindow::on_button_deleteScientist_clicked()
-{
-    int success = -1;
-    int ret = deleteWarningMessage();
-
-    int id = ui->lineEdit_deleteScientistID->text().toInt();
-
-    if(ret == 16384)
-    {
-        success = _scs.deleteScientist(id);
-    }
-
-    if(success != -1)
-    {
-        displayDeletePageSearchResultsForScientists();
-    }
-    ui->button_deleteScientist->setEnabled(false);
-    ui->input_deletePageSearchScientist->clear();
-    ui->lineEdit_deleteScientistID->clear();
-}
-
-/*void DeleteWindow::on_button_deleteComputer_clicked()
-{
-    int success = -1;
-    int ret = deleteWarningMessage();
-
-    int id = ui->lineEdit_deleteComputerID->text().toInt();
-
-    if(ret == 16384)
-    {
-        success = _scs.deleteComputer(id);
-    }
-
-    if(success != -1)
-    {
-        displayDeletePageSearchResultsForComputers();
-    }
-    ui->button_deleteComputer->setEnabled(false);
-    ui->input_deletePageSearch->clear();
-    ui->lineEdit_deleteComputerID->clear();
-}*/
-
-/*void DeleteWindow::on_button_deleteConnection_clicked()
-{
-    bool success = false;
-    int ret = deleteWarningMessage();
-
-    int sId = ui->lineEdit_deleteConnectionScientistID->text().toInt();
-    int cId = ui->lineEdit_deleteConnectionComputerID->text().toInt();
-
-    if(ret == 16384)
-    {
-        success = _scs.deleteConnection(sId, cId);
-    }
-
-    if(success == true)
-    {
-        displayDeletePageSearchResultsForConnection();
-    }
-    ui->button_deleteComputer->setEnabled(false);
-    ui->input_deletePageSearch->clear();
-    ui->lineEdit_deleteConnectionScientistID->clear();
-    ui->lineEdit_deleteConnectionComputerID->clear();
 }*/
 
 /*void DeleteWindow::on_list_deletePageSearchResult_clicked(const QModelIndex &index)
