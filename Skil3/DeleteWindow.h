@@ -8,6 +8,7 @@
 #include <vector>
 
 #include <QDialog>
+#include <QTableWidget>
 
 namespace Ui {
 class DeleteWindow;
@@ -31,17 +32,17 @@ private slots:
 
     void on_lineEdit_deleteScientistID_textChanged(const QString &arg1);
 
-    void on_button_deleteScientist_clicked();
+    //void on_button_deleteScientist_clicked();
 
     void on_lineEdit_deleteComputerID_textChanged(const QString &arg1);
 
-    void on_button_deleteComputer_clicked();
+    //void on_button_deleteComputer_clicked();
 
     void on_lineEdit_deleteConnectionScientistID_textChanged(const QString &arg1);
 
     void on_lineEdit_deleteConnectionComputerID_textChanged(const QString &arg1);
 
-    void on_button_deleteConnection_clicked();
+    //void on_button_deleteConnection_clicked();
 
 private:
     Ui::DeleteWindow *ui;

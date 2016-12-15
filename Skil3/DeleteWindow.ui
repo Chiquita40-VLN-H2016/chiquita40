@@ -25,9 +25,6 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="3">
-    <widget class="QListWidget" name="list_deletePageSearchResult"/>
-   </item>
    <item row="3" column="0">
     <widget class="QLabel" name="label_deleteScientist">
      <property name="text">
@@ -145,6 +142,35 @@ color: rgb(0, 0, 0);</string>
      <property name="text">
       <string>Delete Computer</string>
      </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3">
+    <widget class="QTableWidget" name="tableWidget_deletePageSearchResult">
+     <column>
+      <property name="text">
+       <string>ID</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Year Born</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Death Year</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Gender</string>
+      </property>
+     </column>
     </widget>
    </item>
   </layout>

@@ -28,43 +28,55 @@ void DeleteWindow::on_input_deletePageSearch_textChanged(const QString &arg1)
 
 void DeleteWindow::displaySearchResultsFromAll(string search)
 {
-    ui->list_deletePageSearchResult->clear();
-    _currentlyDisplayedComputers.clear();
-    _currentlyDisplayedScientists.clear();
-    _currentlyDisplayedConnections.clear();
+    ui->tableWidget_deletePageSearchResult->clear();
+    //_currentlyDisplayedComputers.clear();
+    //_currentlyDisplayedScientists.clear();
+    //_currentlyDisplayedConnections.clear();
 
     _currentlyDisplayedComputers = _scs.findComputerByName(search);
     _currentlyDisplayedScientists = _scs.findScientistByName(search);
     _currentlyDisplayedConnections = _scs.findConnectionByName(search);
 
-    ui->list_deletePageSearchResult->addItem(QString::fromStdString("Scientists that matched search:"));
-    ui->list_deletePageSearchResult->addItem(QString::fromStdString(scientistListHeader()));
+    //ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString("Scientists that matched search:"));
+    //ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(scientistListHeader()));
+    ui->tableWidget_deletePageSearchResult->setRowCount(_currentlyDisplayedScientists.size());
 
-    for(unsigned int i = 0; i < _currentlyDisplayedScientists.size(); i++)
+    for(unsigned int row = 0; row < _currentlyDisplayedScientists.size(); row++)
     {
-        Scientist s = _currentlyDisplayedScientists.at(i);
-        ui->list_deletePageSearchResult->addItem(QString::fromStdString(s.toString()));
+        Scientist s = _currentlyDisplayedScientists.at(row);
+
+        QString id = QString::number(s.getId());
+        QString name = QString::fromStdString(s.getName());
+        QString birthDate = QString::number(s.getBirthDate());
+        QString deathDate = QString::number(s.getDeathDate());
+        //QString gender = QString::fromLatin1(s.getGender());
+
+        ui->tableWidget_deletePageSearchResult->setItem(row, 0, new QTableWidgetItem(id));
+        ui->tableWidget_deletePageSearchResult->setItem(row, 1, new QTableWidgetItem(name));
+        ui->tableWidget_deletePageSearchResult->setItem(row, 2, new QTableWidgetItem(birthDate));
+        ui->tableWidget_deletePageSearchResult->setItem(row, 3, new QTableWidgetItem(deathDate));
+        ui->tableWidget_deletePageSearchResult->setItem(row, 4, new QTableWidgetItem(s.getGender()));
     }
 
-    ui->list_deletePageSearchResult->addItem(QString::fromStdString(""));
-    ui->list_deletePageSearchResult->addItem(QString::fromStdString("Computers that matched search:"));
-    ui->list_deletePageSearchResult->addItem(QString::fromStdString(computerListHeader()));
+    /*ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(""));
+    ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString("Computers that matched search:"));
+    ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(computerListHeader()));
 
     for(unsigned int i = 0; i < _currentlyDisplayedComputers.size(); i++)
     {
         Computer c = _currentlyDisplayedComputers.at(i);
-        ui->list_deletePageSearchResult->addItem(QString::fromStdString(c.toString()));
+        ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(c.toString()));
     }
 
-    ui->list_deletePageSearchResult->addItem(QString::fromStdString(""));
-    ui->list_deletePageSearchResult->addItem(QString::fromStdString("Scientists and connected Computers:"));
-    ui->list_deletePageSearchResult->addItem(QString::fromStdString(connectListHeader()));
+    ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(""));
+    ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString("Scientists and connected Computers:"));
+    ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(connectListHeader()));
 
     for(unsigned int i = 0; i < _currentlyDisplayedConnections.size(); i++)
     {
         Invented in = _currentlyDisplayedConnections.at(i);
-        ui->list_deletePageSearchResult->addItem(QString::fromStdString(in.toString()));
-    }
+        ui->tableWidget_deletePageSearchResult->addItem(QString::fromStdString(in.toString()));
+    }*/
 }
 
 void DeleteWindow::on_button_deleteBack_clicked()
@@ -110,9 +122,9 @@ int DeleteWindow::deleteWarningMessage()
     return ret;
 }
 
-void DeleteWindow::displayDeletePageSearchResultsForScientists()
+/*void DeleteWindow::displayDeletePageSearchResultsForScientists()
 {
-    ui->list_deletePageSearchResult->clear();
+    ui->tableWidget_deletePageSearchResult->clear();
     _currentlyDisplayedScientists.clear();
 
     _scs.scientistsAscendingOrder(0);
@@ -124,11 +136,11 @@ void DeleteWindow::displayDeletePageSearchResultsForScientists()
     for(unsigned int i = 0; i < _currentlyDisplayedScientists.size(); i++)
     {
         Scientist s = _currentlyDisplayedScientists.at(i);
-        ui->list_deletePageSearchResult->addItem(QString::fromStdString(s.toString()));
+        ui->tableWidget_deletePageSearchResult->setItem(QString::fromStdString(s.toString()));
     }
-}
+}*/
 
-void DeleteWindow::displayDeletePageSearchResultsForComputers()
+/*void DeleteWindow::displayDeletePageSearchResultsForComputers()
 {
     ui->list_deletePageSearchResult->clear();
     _currentlyDisplayedComputers.clear();
@@ -144,9 +156,9 @@ void DeleteWindow::displayDeletePageSearchResultsForComputers()
         Computer c = _currentlyDisplayedComputers.at(i);
         ui->list_deletePageSearchResult->addItem(QString::fromStdString(c.toString()));
     }
-}
+}*/
 
-void DeleteWindow::displayDeletePageSearchResultsForConnection()
+/*void DeleteWindow::displayDeletePageSearchResultsForConnection()
 {
     ui->list_deletePageSearchResult->clear();
     _currentlyDisplayedComputers.clear();
@@ -164,7 +176,7 @@ void DeleteWindow::displayDeletePageSearchResultsForConnection()
         Invented in = _currentlyDisplayedConnections.at(i);
         ui->list_deletePageSearchResult->addItem(QString::fromStdString(in.toString()));
     }
-}
+}*/
 
 string DeleteWindow::scientistListHeader()
 {
@@ -187,7 +199,7 @@ string DeleteWindow::connectListHeader()
     return in;
 }
 
-void DeleteWindow::on_button_deleteScientist_clicked()
+/*void DeleteWindow::on_button_deleteScientist_clicked()
 {
     int success = -1;
     int ret = deleteWarningMessage();
@@ -206,9 +218,9 @@ void DeleteWindow::on_button_deleteScientist_clicked()
     ui->button_deleteScientist->setEnabled(false);
     ui->input_deletePageSearch->clear();
     ui->lineEdit_deleteScientistID->clear();
-}
+}*/
 
-void DeleteWindow::on_button_deleteComputer_clicked()
+/*void DeleteWindow::on_button_deleteComputer_clicked()
 {
     int success = -1;
     int ret = deleteWarningMessage();
@@ -227,9 +239,9 @@ void DeleteWindow::on_button_deleteComputer_clicked()
     ui->button_deleteComputer->setEnabled(false);
     ui->input_deletePageSearch->clear();
     ui->lineEdit_deleteComputerID->clear();
-}
+}*/
 
-void DeleteWindow::on_button_deleteConnection_clicked()
+/*void DeleteWindow::on_button_deleteConnection_clicked()
 {
     bool success = false;
     int ret = deleteWarningMessage();
@@ -250,7 +262,7 @@ void DeleteWindow::on_button_deleteConnection_clicked()
     ui->input_deletePageSearch->clear();
     ui->lineEdit_deleteConnectionScientistID->clear();
     ui->lineEdit_deleteConnectionComputerID->clear();
-}
+}*/
 
 /*void DeleteWindow::on_list_deletePageSearchResult_clicked(const QModelIndex &index)
 {
@@ -284,3 +296,4 @@ void DeleteWindow::on_button_deleteScientist_clicked()
         ui->button_deleteScientist->setEnabled(false);
     }
 }*/
+
