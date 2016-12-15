@@ -21,7 +21,9 @@ SOURCES += main.cpp\
         SCService.cpp \
     Utilities.cpp \
         DeleteWindow.cpp \
-    EditWindow.cpp
+    EditWindow.cpp \
+    ListWindow.cpp \
+    AddWindow.cpp
 
 HEADERS  += MainWindow.h\
          Computer.h\
@@ -31,9 +33,13 @@ HEADERS  += MainWindow.h\
          SCService.h \
     Utilities.h\
          DeleteWindow.h \
-    EditWindow.h
+    EditWindow.h \
+    ListWindow.h \
+    AddWindow.h
 
 
 FORMS    += MainWindow.ui \
             DeleteWindow.ui \
-    EditWindow.ui
+    EditWindow.ui \
+    ListWindow.ui \
+    AddWindow.ui

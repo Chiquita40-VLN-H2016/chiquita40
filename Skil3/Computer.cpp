@@ -65,38 +65,40 @@ string Computer::toString()
     string c = "";
     c+= to_string(_id);
     c+= '\t';
-    c+= _name + addTab();
-    c+= to_string(_buildYear);
-    c+= '\t';
-    //c+= _wasBuilt;
-    if(_wasBuilt == true)
+    c+= _name + addTab(_name);
+    if(_buildYear == 0)
     {
-        c+= "yes";
-        c+= '\t';
+        c+= " ";
     }
     else
     {
-        c+= "no";
-        c+= '\t';
+        c+= to_string(_buildYear);
+    }
+    c+= '\t';
+    c+= _type + addTab(_type);
+    //c+= _wasBuilt;
+    if(_wasBuilt)
+    {
+        c+= "Yes";
+    }
+    else
+    {
+        c+= "No";
     }
 
     return c;
 }
 
-string Computer::addTab()
+string Computer::addTab(string s)
 {
     string tab = "";
-    if(_name.size() < 24 && _name.size() > 15)
+    if(s.size() < 24 && s.size() > 13)
     {
         tab = "\t";
     }
-    else if(_name.size() < 16 && _name.size() > 7)
+    else if(s.size() <= 13)
     {
         tab = "\t\t";
-    }
-    else if(_name.size() < 8)
-    {
-        tab = "\t\t\t";
     }
 
     return tab;
