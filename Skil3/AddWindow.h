@@ -43,6 +43,8 @@ private slots:
 
     void on_input_addNameComputer_textChanged(const QString &arg1);
 
+    void on_input_addType_textChanged(const QString &arg1);
+
 private:
     Ui::AddWindow *ui;
     vector<Scientist> _currentlyDisplayedScientists;
