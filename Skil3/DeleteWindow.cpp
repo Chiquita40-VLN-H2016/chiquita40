@@ -55,7 +55,7 @@ void DeleteWindow::displaySearchResultsFromAll(string search)
 
     ui->list_deletePageSearchResult->addItem(QString::fromStdString("Scientists and connected Computers:"));
 
-    for(unsigned int i = 0; i < _currentlyDisplayedScientists.size(); i++)
+    for(unsigned int i = 0; i < _currentlyDisplayedConnections.size(); i++)
     {
         Invented in = _currentlyDisplayedConnections.at(i);
         ui->list_deletePageSearchResult->addItem(QString::fromStdString(in.toString()));
