@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>494</width>
-    <height>426</height>
+    <width>609</width>
+    <height>504</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,28 +18,236 @@
     <normaloff>:/icons/Images/computerIcon.png</normaloff>:/icons/Images/computerIcon.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" colspan="3">
+   <item row="0" column="0" colspan="2">
     <widget class="QLabel" name="label">
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Delete a scientist or computer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
+   <item row="1" column="0" colspan="3">
+    <widget class="QTabWidget" name="tabWidget_DeleteWindow">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab_Scientist">
+      <attribute name="title">
+       <string>Scientists</string>
+      </attribute>
+      <widget class="QTableWidget" name="tableWidget_deletePageSearchResultScientist">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>30</y>
+         <width>581</width>
+         <height>201</height>
+        </rect>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+       <attribute name="horizontalHeaderVisible">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="horizontalHeaderStretchLastSection">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>ID</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Name</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Year Born</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Death Year</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Gender</string>
+        </property>
+       </column>
+      </widget>
+      <widget class="QLineEdit" name="input_deletePageSearchScientist">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>581</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="placeholderText">
+        <string>Find scientist to delete</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_Computer">
+      <attribute name="title">
+       <string>Computers</string>
+      </attribute>
+      <widget class="QLineEdit" name="input_deletePageSearchComputer">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>581</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="placeholderText">
+        <string>Find scientist to delete</string>
+       </property>
+      </widget>
+      <widget class="QTableWidget" name="tableWidget_deletePageSearchResultComputer">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>30</y>
+         <width>581</width>
+         <height>201</height>
+        </rect>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+       <attribute name="horizontalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="horizontalHeaderStretchLastSection">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>ID</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Name</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>New Column</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Build Year</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Was Built?</string>
+        </property>
+       </column>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_Connect">
+      <attribute name="title">
+       <string>Connections</string>
+      </attribute>
+      <widget class="QLineEdit" name="input_deletePageSearchConnect">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>581</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="placeholderText">
+        <string>Find scientist to delete</string>
+       </property>
+      </widget>
+      <widget class="QTableWidget" name="tableWidget_deletePageSearchResultConnect">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>30</y>
+         <width>581</width>
+         <height>201</height>
+        </rect>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+       <attribute name="horizontalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="horizontalHeaderStretchLastSection">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>Scientist ID</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Scientist</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Computer ID</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Computer</string>
+        </property>
+       </column>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+   <item row="2" column="0">
     <widget class="QLabel" name="label_deleteScientist">
      <property name="text">
       <string>Delete scientist:</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="0" colspan="2">
-    <widget class="QLineEdit" name="lineEdit_deleteScientistID">
-     <property name="placeholderText">
-      <string>ID of scientist you want to delete</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="2">
+   <item row="3" column="2">
     <widget class="QPushButton" name="button_deleteScientist">
      <property name="enabled">
       <bool>false</bool>
@@ -49,42 +257,31 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="0" colspan="2">
+   <item row="4" column="0">
     <widget class="QLabel" name="label_deleteComputer">
      <property name="text">
       <string>Delete computer:</string>
      </property>
     </widget>
    </item>
-   <item row="7" column="0" colspan="2">
-    <widget class="QLineEdit" name="lineEdit_deleteComputerID">
-     <property name="placeholderText">
-      <string>ID of computer you want to delete</string>
+   <item row="5" column="2">
+    <widget class="QPushButton" name="button_deleteComputer">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>Delete Computer</string>
      </property>
     </widget>
    </item>
-   <item row="8" column="0" colspan="2">
+   <item row="6" column="0">
     <widget class="QLabel" name="label_deleteConnection">
      <property name="text">
       <string>Delete connection:</string>
      </property>
     </widget>
    </item>
-   <item row="9" column="0" colspan="2">
-    <widget class="QLineEdit" name="lineEdit_deleteConnectionScientistID">
-     <property name="placeholderText">
-      <string>ID of scientist you want to disconnect</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="0" colspan="2">
-    <widget class="QLineEdit" name="lineEdit_deleteConnectionComputerID">
-     <property name="placeholderText">
-      <string>ID of computer you want to disconnect</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="2">
+   <item row="8" column="2">
     <widget class="QPushButton" name="button_deleteConnection">
      <property name="enabled">
       <bool>false</bool>
@@ -94,14 +291,14 @@
      </property>
     </widget>
    </item>
-   <item row="11" column="0">
+   <item row="9" column="0">
     <widget class="QPushButton" name="button_deleteBack">
      <property name="text">
       <string>Back</string>
      </property>
     </widget>
    </item>
-   <item row="11" column="1">
+   <item row="9" column="1">
     <spacer name="horizontalSpacer">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -114,7 +311,7 @@
      </property>
     </spacer>
    </item>
-   <item row="11" column="2">
+   <item row="9" column="2">
     <widget class="QPushButton" name="button_deleteQuit">
      <property name="styleSheet">
       <string notr="true">background-color: rgb(170, 0, 0);
@@ -127,50 +324,32 @@ color: rgb(0, 0, 0);</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="3">
-    <widget class="QLineEdit" name="input_deletePageSearch">
+   <item row="3" column="0" colspan="2">
+    <widget class="QLineEdit" name="lineEdit_deleteScientistID">
      <property name="placeholderText">
-      <string>Find scientist or computer to delete</string>
+      <string>ID of scientist you want to delete</string>
      </property>
     </widget>
    </item>
-   <item row="7" column="2">
-    <widget class="QPushButton" name="button_deleteComputer">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="text">
-      <string>Delete Computer</string>
+   <item row="5" column="0" colspan="2">
+    <widget class="QLineEdit" name="lineEdit_deleteComputerID">
+     <property name="placeholderText">
+      <string>ID of computer you want to delete</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="3">
-    <widget class="QTableWidget" name="tableWidget_deletePageSearchResult">
-     <column>
-      <property name="text">
-       <string>ID</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Name</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Year Born</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Death Year</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Gender</string>
-      </property>
-     </column>
+   <item row="7" column="0" colspan="2">
+    <widget class="QLineEdit" name="lineEdit_deleteConnectionScientistID">
+     <property name="placeholderText">
+      <string>ID of scientist you want to disconnect</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0" colspan="2">
+    <widget class="QLineEdit" name="lineEdit_deleteConnectionComputerID">
+     <property name="placeholderText">
+      <string>ID of computer you want to disconnect</string>
+     </property>
     </widget>
    </item>
   </layout>
