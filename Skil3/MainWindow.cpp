@@ -87,5 +87,7 @@ void MainWindow::on_input_frontPageSearch_textChanged(const QString &arg1)
 void MainWindow::on_button_frontSeeFullLists_clicked()
 {
     ListWindow listWindow;
+    hide();
     listWindow.exec();
+    show();
 }
