@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>503</width>
-    <height>442</height>
+    <width>525</width>
+    <height>537</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,11 +18,18 @@
     <normaloff>:/icons/Images/computerIcon.png</normaloff>:/icons/Images/computerIcon.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="11" column="0" colspan="2">
-    <widget class="QLineEdit" name="input_addYearOfDeath">
-     <property name="enabled">
-      <bool>false</bool>
+   <item row="2" column="0" colspan="6">
+    <widget class="QListWidget" name="list_addPageSearchResult"/>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Add Scientist:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="3">
+    <widget class="QLineEdit" name="input_addNameScientist">
      <property name="autoFillBackground">
       <bool>false</bool>
      </property>
@@ -30,52 +37,11 @@
       <string/>
      </property>
      <property name="placeholderText">
-      <string>Scientist's year of death</string>
+      <string>Name of scientist you want to add</string>
      </property>
     </widget>
    </item>
-   <item row="10" column="0" colspan="2">
-    <widget class="QComboBox" name="comboBox_addSAlive">
-     <item>
-      <property name="text">
-       <string>Yes</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>No</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="8" column="2" colspan="2">
-    <widget class="QLineEdit" name="input_addType">
-     <property name="autoFillBackground">
-      <bool>false</bool>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="placeholderText">
-      <string>Computer's type</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="4">
-    <widget class="QLabel" name="label_addHeader">
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Add a scientist or computer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="4">
-    <widget class="QLineEdit" name="input_addPageSearch">
-     <property name="placeholderText">
-      <string>Search database</string>
-     </property>
-    </widget>
-   </item>
-   <item row="11" column="2" colspan="2">
+   <item row="8" column="3" colspan="3">
     <widget class="QLineEdit" name="input_addYearOfCompletion">
      <property name="enabled">
       <bool>true</bool>
@@ -91,20 +57,49 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="0" colspan="2">
-    <widget class="QLineEdit" name="input_addNameScientist">
-     <property name="autoFillBackground">
-      <bool>false</bool>
-     </property>
+   <item row="9" column="0" colspan="2">
+    <widget class="QLabel" name="label_addScientist">
      <property name="text">
-      <string/>
-     </property>
-     <property name="placeholderText">
-      <string>Name of scientist you want to add</string>
+      <string>Select scientists gender:</string>
      </property>
     </widget>
    </item>
-   <item row="7" column="2" colspan="2">
+   <item row="6" column="0" colspan="2">
+    <widget class="QLabel" name="label_ScientistAlive">
+     <property name="text">
+      <string>Is Scientist alive?</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" colspan="2">
+    <widget class="QLabel" name="label_addScientistErrorMessage">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="3">
+    <widget class="QLabel" name="label_addComputerBuilt">
+     <property name="text">
+      <string>Was computer built?</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="3">
+    <widget class="QComboBox" name="comboBox_addSAlive">
+     <item>
+      <property name="text">
+       <string>Yes</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>No</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="4" column="3" colspan="3">
     <widget class="QLineEdit" name="input_addNameComputer">
      <property name="autoFillBackground">
       <bool>false</bool>
@@ -117,10 +112,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="4">
-    <widget class="QListWidget" name="list_addPageSearchResult"/>
-   </item>
-   <item row="8" column="0" colspan="2">
+   <item row="5" column="0" colspan="3">
     <widget class="QLineEdit" name="input_addYearBorn">
      <property name="autoFillBackground">
       <bool>false</bool>
@@ -133,51 +125,20 @@
      </property>
     </widget>
    </item>
-   <item row="9" column="2">
-    <widget class="QLabel" name="label_addComputerBuilt">
-     <property name="text">
-      <string>Was computer built?</string>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="0">
-    <widget class="QLabel" name="label_ScientistAlive">
-     <property name="text">
-      <string>Is Scientist alive?</string>
-     </property>
-    </widget>
-   </item>
-   <item row="15" column="2" colspan="2">
-    <widget class="QPushButton" name="button_addQuit">
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(170, 0, 0);
-selection-color: rgb(170, 0, 0);
-color: rgb(170, 0, 0);
-color: rgb(0, 0, 0);</string>
-     </property>
-     <property name="text">
-      <string>Quit</string>
-     </property>
-    </widget>
-   </item>
-   <item row="14" column="0" colspan="2">
-    <widget class="QPushButton" name="button_addScientist">
-     <property name="enabled">
+   <item row="5" column="3" colspan="3">
+    <widget class="QLineEdit" name="input_addType">
+     <property name="autoFillBackground">
       <bool>false</bool>
      </property>
      <property name="text">
-      <string>Add Scientist</string>
+      <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Computer's type</string>
      </property>
     </widget>
    </item>
-   <item row="12" column="0" colspan="2">
-    <widget class="QLabel" name="label_addScientist">
-     <property name="text">
-      <string>Select scientists gender:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="13" column="0" colspan="2">
+   <item row="10" column="0" colspan="3">
     <widget class="QComboBox" name="comboBox_addSGender">
      <item>
       <property name="text">
@@ -191,7 +152,37 @@ color: rgb(0, 0, 0);</string>
      </item>
     </widget>
    </item>
-   <item row="14" column="2" colspan="2">
+   <item row="8" column="0" colspan="3">
+    <widget class="QLineEdit" name="input_addYearOfDeath">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="placeholderText">
+      <string>Scientist's year of death</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="3">
+    <widget class="QLabel" name="label_addComputer">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Add Computer:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="4" colspan="2">
+    <widget class="QLabel" name="label_addComputerErrorMessage">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="3" colspan="3">
     <widget class="QPushButton" name="button_addComputer">
      <property name="enabled">
       <bool>false</bool>
@@ -201,14 +192,7 @@ color: rgb(0, 0, 0);</string>
      </property>
     </widget>
    </item>
-   <item row="15" column="0" colspan="2">
-    <widget class="QPushButton" name="button_addBack">
-     <property name="text">
-      <string>Back</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="2" colspan="2">
+   <item row="7" column="3" colspan="3">
     <widget class="QComboBox" name="comboBox_addCBuilt">
      <item>
       <property name="text">
@@ -222,31 +206,60 @@ color: rgb(0, 0, 0);</string>
      </item>
     </widget>
    </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="label_2">
+   <item row="12" column="5">
+    <widget class="QPushButton" name="button_addQuit">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(170, 0, 0);
+selection-color: rgb(170, 0, 0);
+color: rgb(170, 0, 0);
+color: rgb(0, 0, 0);</string>
+     </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Add Scientist:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>Quit</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
-    <widget class="QLabel" name="label_addScientistErrorMessage">
+   <item row="12" column="0">
+    <widget class="QPushButton" name="button_addBack">
      <property name="text">
-      <string/>
+      <string>Back</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="2">
-    <widget class="QLabel" name="label_addComputer">
+   <item row="12" column="1" colspan="4">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>339</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="11" column="0" colspan="3">
+    <widget class="QPushButton" name="button_addScientist">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Add Computer:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>Add Scientist</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="3">
-    <widget class="QLabel" name="label_addComputerErrorMessage">
+   <item row="1" column="0" colspan="6">
+    <widget class="QLineEdit" name="input_addPageSearch">
+     <property name="placeholderText">
+      <string>Search database</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="6">
+    <widget class="QLabel" name="label_addHeader">
      <property name="text">
-      <string/>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Add a scientist or computer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
