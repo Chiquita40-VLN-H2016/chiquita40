@@ -77,6 +77,22 @@ vector<Scientist> SCService::findScientistByComputer(int id)
     return sc;
 }
 
+vector<Invented> SCService::findConnectionByName(string search)
+{
+    vector<Invented> vi = _data.getListOfComputersAndScientistsAsc(0);
+    vector<Invented> result;
+    for(unsigned int i = 0; i < vi.size(); i++)
+    {
+        Invented in = vi.at(i);
+        if((in.getSName().find(search) != string::npos) || (in.getCName().find(search) != string::npos))
+        {
+            result.push_back(in);
+        }
+    }
+
+    return result;
+}
+
 
 vector<Computer> SCService::findComputerByName(string search)
 {

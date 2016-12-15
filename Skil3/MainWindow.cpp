@@ -78,7 +78,8 @@ void MainWindow::on_button_frontAdd_clicked()
 
 void MainWindow::on_input_frontPageSearch_textChanged(const QString &arg1)
 {
-    string search = ui->input_frontPageSearch->text().toStdString();
+    string search = arg1.toStdString();
+    //string search = ui->input_frontPageSearch->text().toStdString();
     displaySearchResultsFromAll(search);
     //ui->input_frontPageSearch->setText("");
 }
