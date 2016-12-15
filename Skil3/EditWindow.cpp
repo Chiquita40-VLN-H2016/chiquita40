@@ -125,6 +125,7 @@ void EditWindow::on_button_editScientist_clicked()
         else if (yearDeath == "9999")
         {
             ui->comboBox_editScientistAlive->setCurrentText(QString::fromStdString("Yes"));
+            ui->input_editYearOfDeath->setText(QString::fromStdString(yearDeath));
 
         }
 
