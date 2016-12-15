@@ -20,15 +20,26 @@ public:
     ~ListWindow();
 
 private slots:
-    void on_input_listPageSearch_textChanged(const QString &arg1);
+
+    void on_button_listBack_clicked();
+
+    void on_button_listQuit_clicked();
+
+    void on_input_listScientistSearch_textChanged(const QString &arg1);
 
 private:
     Ui::ListWindow *ui;
     vector<Scientist> _currentlyDisplayedScientists;
     vector<Computer> _currentlyDisplayedComputers;
+    vector<Invented> _currentlyDisplayedConnections;
+    vector<Scientist> _allScientists;
+    vector<Computer> _allComputers;
+    vector<Invented> _allConnections;
     SCService _scs;
 
-    void displaySearchResultsFromAll(string search);
+    //void displaySearchResultsFromAll(string search);
+    void displayAllScientist(int type, int ascdesc);
+    void scientistsWhichOrder(int type, int ascdesc);
 };
 
 #endif // LISTWINDOW_H
