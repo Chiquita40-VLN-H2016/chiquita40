@@ -27,5 +27,21 @@ namespace Utilities {
         return db;
     }
 
+    bool validYearCheck(std::string year)
+    {
+        if(year.size() != 4)
+        {
+            return false;
+        }
+        for(unsigned int i = 0; i < year.size(); i++)
+        {
+            if(!isdigit(year.at(i)))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 }
