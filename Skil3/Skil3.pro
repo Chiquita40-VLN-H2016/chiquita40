@@ -22,6 +22,7 @@ SOURCES += main.cpp\
     Utilities.cpp \
         DeleteWindow.cpp \
     EditWindow.cpp \
+    ListWindow.cpp \
     AddWindow.cpp
 
 HEADERS  += MainWindow.h\
@@ -33,12 +34,14 @@ HEADERS  += MainWindow.h\
     Utilities.h\
          DeleteWindow.h \
     EditWindow.h \
+    ListWindow.h \
     AddWindow.h
 
 
 FORMS    += MainWindow.ui \
             DeleteWindow.ui \
     EditWindow.ui \
+    ListWindow.ui \
     AddWindow.ui
 
 RESOURCES += \

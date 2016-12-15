@@ -82,3 +82,9 @@ void MainWindow::on_input_frontPageSearch_textChanged(const QString &arg1)
     displaySearchResultsFromAll(search);
     //ui->input_frontPageSearch->setText("");
 }
+
+void MainWindow::on_button_frontSeeFullLists_clicked()
+{
+    ListWindow listWindow;
+    listWindow.exec();
+}
