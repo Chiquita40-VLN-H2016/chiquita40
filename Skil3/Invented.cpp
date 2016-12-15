@@ -46,9 +46,9 @@ string Invented::toString()
 {
     string i = "";
     i+= _sName + addTab(_sName);
-    i+= _cName + addTab(_cName);
     i+= to_string(_sId);
     i+= '\t';
+    i+= _cName + addTab(_cName);
     i+= to_string(_cId);
 
     return i;

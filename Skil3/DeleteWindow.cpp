@@ -35,7 +35,7 @@ void DeleteWindow::displaySearchResultsFromAll(string search)
 
     _currentlyDisplayedComputers = _scs.findComputerByName(search);
     _currentlyDisplayedScientists = _scs.findScientistByName(search);
-    _currentlyDisplayedConnections = _scs.inventedAscendingOrder(search);
+    _currentlyDisplayedConnections = _scs.findConnectionByName(search);
 
     ui->list_deletePageSearchResult->addItem(QString::fromStdString("Computers that matched search:"));
 
@@ -216,6 +216,8 @@ void DeleteWindow::on_button_deleteConnection_clicked()
         displayDeletePageSearchResultsForConnection();
     }
     ui->button_deleteComputer->setEnabled(false);
+    ui->lineEdit_deleteConnectionScientistID->clear();
+    ui->lineEdit_deleteConnectionComputerID->clear();
 }
 
 /*void DeleteWindow::on_list_deletePageSearchResult_clicked(const QModelIndex &index)
