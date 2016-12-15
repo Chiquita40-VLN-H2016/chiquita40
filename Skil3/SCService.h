@@ -28,6 +28,7 @@ public:
     vector<Scientist> findScientistByYear(int year);
     vector<Scientist> findScientistByName(string search);
     vector<Scientist> findScientistByComputer(int id);
+    vector<Invented> findConnectionByName(string search);
     vector<Computer> findComputerByYear(int year);
     vector<Computer> findComputerByName(string search);
     vector<Computer> findComputerByScientist(int id);

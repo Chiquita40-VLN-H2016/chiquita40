@@ -6,6 +6,7 @@
 #include "EditWindow1.h"
 #include "DeleteWindow.h"
 #include "AddWindow.h"
+#include "Utilities.h"
 #include <string>
 #include <vector>
 
@@ -38,6 +39,12 @@ private slots:
 
     void on_button_addComputer_clicked();
 
+    void on_input_addNameScientist_textChanged(const QString &arg1);
+
+    void on_input_addNameComputer_textChanged(const QString &arg1);
+
+    void on_input_addType_textChanged(const QString &arg1);
+
 private:
     Ui::AddWindow *ui;
     vector<Scientist> _currentlyDisplayedScientists;
@@ -54,3 +61,5 @@ private:
 };
 
 #endif // ADDWINDOW_H
+
+

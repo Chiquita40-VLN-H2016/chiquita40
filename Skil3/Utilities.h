@@ -7,6 +7,7 @@
 namespace Utilities {
     QSqlDatabase getDatabaseConnection();
     std::string stringToLower(std::string original);
+    bool validYearCheck(std::string year);
 }
 
 #endif // UTILITIES_H

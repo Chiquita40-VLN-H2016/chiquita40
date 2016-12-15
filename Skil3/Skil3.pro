@@ -19,11 +19,12 @@ SOURCES += main.cpp\
         Invented.cpp\
         Scientist.cpp\
         SCService.cpp \
-    Utilities.cpp \
+        Utilities.cpp \
         DeleteWindow.cpp \
-    EditWindow.cpp \
-    ListWindow.cpp \
-    AddWindow.cpp
+        EditWindow.cpp \
+        ListWindow.cpp \
+        AddWindow.cpp \
+        ConnectWindow.cpp
 
 HEADERS  += MainWindow.h\
          Computer.h\
@@ -31,15 +32,20 @@ HEADERS  += MainWindow.h\
          Invented.h\
          Scientist.h\
          SCService.h \
-    Utilities.h\
+         Utilities.h\
          DeleteWindow.h \
-    EditWindow.h \
-    ListWindow.h \
-    AddWindow.h
+         EditWindow.h \
+         ListWindow.h \
+         AddWindow.h \
+         ConnectWindow.h
 
 
 FORMS    += MainWindow.ui \
             DeleteWindow.ui \
-    EditWindow.ui \
-    ListWindow.ui \
-    AddWindow.ui
+            EditWindow.ui \
+            ListWindow.ui \
+            AddWindow.ui \
+            ConnectWindow.ui
+
+RESOURCES += \
+    resources.qrc
