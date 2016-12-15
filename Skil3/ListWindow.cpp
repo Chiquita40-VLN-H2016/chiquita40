@@ -6,6 +6,7 @@ ListWindow::ListWindow(QWidget *parent) :
     ui(new Ui::ListWindow)
 {
     ui->setupUi(this);
+    displayAllConnections();
     displayAllScientist(0, 0);
 }
 
@@ -31,7 +32,7 @@ void ListWindow::displayScientistSearchResults(string search)
        {
            Scientist s = _currentlyDisplayedScientists.at(row);
            //QTableWidgetItem *id = new QTableWidgetItem(s.getId());
-           //QString id = QString::number(s.getId());
+           QString id = QString::number(s.getId());
            QString name = QString::fromStdString(s.getName());
            QString birthYear = QString::number(s.getBirthDate());
            QString deathYear;
@@ -45,7 +46,7 @@ void ListWindow::displayScientistSearchResults(string search)
            }
            QString gender = QChar(toupper(s.getGender()));
 
-           ui->table_Scientists->setItem(row, 0, new QTableWidgetItem(s.getId()));
+           ui->table_Scientists->setItem(row, 0, new QTableWidgetItem(id));
            ui->table_Scientists->setItem(row, 1, new QTableWidgetItem(name));
            ui->table_Scientists->setItem(row, 2, new QTableWidgetItem(birthYear));
            ui->table_Scientists->setItem(row, 3, new QTableWidgetItem(deathYear));
@@ -72,6 +73,7 @@ void ListWindow::displayAllScientist(int type, int ascdesc)
     for(unsigned int row = 0; row < _allScientists.size(); row++)
     {
         Scientist s = _allScientists.at(row);
+        //QTableWidgetItem *id = new QTableWidgetItem(s.getId());
         QString id = QString::number(s.getId());
         QString name = QString::fromStdString(s.getName());
         QString birthYear = QString::number(s.getBirthDate());
@@ -91,6 +93,30 @@ void ListWindow::displayAllScientist(int type, int ascdesc)
         ui->table_Scientists->setItem(row, 2, new QTableWidgetItem(birthYear));
         ui->table_Scientists->setItem(row, 3, new QTableWidgetItem(deathYear));
         ui->table_Scientists->setItem(row, 4, new QTableWidgetItem(gender));
+    }
+}
+
+void ListWindow::displayAllConnections()
+{
+    ui->input_searchConnections->setText("");
+    ui->table_connections->clearContents();
+    _allConnections.clear();
+    _allConnections = _scs.inventedAscendingOrder(0);
+
+    ui->table_connections->setRowCount(_allConnections.size());
+
+    for(unsigned int row = 0; row < _allConnections.size(); row++)
+    {
+        Invented in = _allConnections.at(row);
+        QString sId = QString::number(in.getSId());
+        QString sName = QString::fromStdString(in.getSName());
+        QString cId = QString::number(in.getCId());
+        QString cName = QString::fromStdString((in.getCName()));
+
+        ui->table_connections->setItem(row, 0, new QTableWidgetItem(sId));
+        ui->table_connections->setItem(row, 1, new QTableWidgetItem(sName));
+        ui->table_connections->setItem(row, 2, new QTableWidgetItem(cId));
+        ui->table_connections->setItem(row, 3, new QTableWidgetItem(cName));
     }
 }
 
@@ -156,4 +182,10 @@ void ListWindow::on_input_listScientistSearch_textChanged(const QString &arg1)
 {
     string search = arg1.toStdString();
     displayScientistSearchResults(search);
+}
+
+void ListWindow::on_lineEdit_textChanged(const QString &arg1)
+{
+    string search = arg1.toStdString();
+    //displayConnectionSearchResults(search);
 }
