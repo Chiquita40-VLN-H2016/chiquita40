@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>541</width>
-    <height>454</height>
+    <width>608</width>
+    <height>536</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,34 +18,49 @@
     <normaloff>:/icons/Images/computerIcon.png</normaloff>:/icons/Images/computerIcon.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" colspan="4">
+   <item row="0" column="0" colspan="6">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Edit Scientist or Computer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="6">
     <widget class="QLineEdit" name="input_editPageSearch">
      <property name="placeholderText">
       <string>Search database</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="4">
+   <item row="2" column="0" colspan="6">
     <widget class="QListWidget" name="list_editPageSearchResult"/>
    </item>
-   <item row="2" column="0">
+   <item row="3" column="0">
     <widget class="QLabel" name="label_editScientist">
      <property name="text">
-      <string>&lt;b&gt;Edit Scientist:&lt;/b&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Scientist&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="2">
+   <item row="3" column="3">
     <widget class="QLabel" name="label_editComputer">
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Edit Computer:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Computer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
+   <item row="4" column="0" colspan="2">
     <widget class="QLineEdit" name="input_editIdScientist">
+     <property name="font">
+      <font>
+       <pointsize>8</pointsize>
+      </font>
+     </property>
      <property name="autoFillBackground">
       <bool>false</bool>
+     </property>
+     <property name="inputMethodHints">
+      <set>Qt::ImhDigitsOnly</set>
      </property>
      <property name="text">
       <string/>
@@ -55,7 +70,14 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="2" colspan="2">
+   <item row="4" column="2">
+    <widget class="QPushButton" name="button_editScientist">
+     <property name="text">
+      <string>Edit Scientist</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="3" colspan="2">
     <widget class="QLineEdit" name="input_editIdComputer">
      <property name="autoFillBackground">
       <bool>false</bool>
@@ -68,7 +90,14 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="0" colspan="2">
+   <item row="4" column="5">
+    <widget class="QPushButton" name="button_editComputer">
+     <property name="text">
+      <string>Edit Computer</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="2">
     <widget class="QLineEdit" name="input_editNameScientist">
      <property name="autoFillBackground">
       <bool>false</bool>
@@ -81,7 +110,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="2" colspan="2">
+   <item row="5" column="3" colspan="2">
     <widget class="QLineEdit" name="input_editNameComputer">
      <property name="autoFillBackground">
       <bool>false</bool>
@@ -94,7 +123,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="0" colspan="2">
+   <item row="6" column="0" colspan="2">
     <widget class="QLineEdit" name="input_editYearBorn">
      <property name="autoFillBackground">
       <bool>false</bool>
@@ -107,7 +136,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="2" colspan="2">
+   <item row="6" column="3" colspan="2">
     <widget class="QLineEdit" name="input_editType">
      <property name="autoFillBackground">
       <bool>false</bool>
@@ -120,49 +149,70 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="label_ScientistAlive">
-     <property name="text">
-      <string>Is Scientist alive?</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="2">
-    <widget class="QLabel" name="label_computerBuilt">
-     <property name="text">
-      <string>Was computer built?</string>
-     </property>
-    </widget>
-   </item>
    <item row="7" column="0">
-    <widget class="QRadioButton" name="radioButton_scientistAliveYes">
+    <widget class="QLabel" name="label_gender">
      <property name="text">
-      <string>Yes</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Gender:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
    <item row="7" column="1">
-    <widget class="QRadioButton" name="radioButton_scientistAliveNo">
-     <property name="text">
-      <string>No</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="2">
-    <widget class="QRadioButton" name="radioButton_computerBuiltYes">
-     <property name="text">
-      <string>Yes</string>
-     </property>
+    <widget class="QComboBox" name="comboBox_editGender">
+     <item>
+      <property name="text">
+       <string>Female</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Male</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="7" column="3">
-    <widget class="QRadioButton" name="radioButton_computerBuiltNo">
+    <widget class="QLabel" name="label_computerBuilt">
      <property name="text">
-      <string>No</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Was computer built?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
-   <item row="8" column="0" colspan="2">
+   <item row="7" column="4">
+    <widget class="QComboBox" name="comboBox_editComputerBuilt">
+     <item>
+      <property name="text">
+       <string>Yes</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>No</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="8" column="0">
+    <widget class="QLabel" name="label_ScientistAlive">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Is Scientist alive?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1">
+    <widget class="QComboBox" name="comboBox_editScientistAlive">
+     <item>
+      <property name="text">
+       <string>Yes</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>No</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="9" column="0" colspan="2">
     <widget class="QLineEdit" name="input_editYearOfDeath">
      <property name="autoFillBackground">
       <bool>false</bool>
@@ -175,7 +225,7 @@
      </property>
     </widget>
    </item>
-   <item row="8" column="2" colspan="2">
+   <item row="9" column="3" colspan="2">
     <widget class="QLineEdit" name="input_editYearOfCompletion">
      <property name="autoFillBackground">
       <bool>false</bool>
@@ -188,41 +238,28 @@
      </property>
     </widget>
    </item>
-   <item row="9" column="0" colspan="2">
-    <widget class="QLineEdit" name="input_editGender">
-     <property name="autoFillBackground">
-      <bool>false</bool>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="placeholderText">
-      <string>Edit gender</string>
-     </property>
-    </widget>
-   </item>
    <item row="10" column="0" colspan="2">
-    <widget class="QPushButton" name="button_editScientist">
+    <widget class="QPushButton" name="button_saveEditScientist">
      <property name="text">
       <string>Save Scientist</string>
      </property>
     </widget>
    </item>
-   <item row="10" column="2" colspan="2">
-    <widget class="QPushButton" name="button_editComputer">
+   <item row="10" column="3" colspan="2">
+    <widget class="QPushButton" name="button_saveEditComputer">
      <property name="text">
       <string>Save Computer</string>
      </property>
     </widget>
    </item>
-   <item row="11" column="0" colspan="2">
+   <item row="11" column="0" colspan="3">
     <widget class="QPushButton" name="button_editBack">
      <property name="text">
       <string>Back</string>
      </property>
     </widget>
    </item>
-   <item row="11" column="2" colspan="2">
+   <item row="11" column="3" colspan="3">
     <widget class="QPushButton" name="button_editQuit">
      <property name="styleSheet">
       <string notr="true">background-color: rgb(170, 0, 0);
