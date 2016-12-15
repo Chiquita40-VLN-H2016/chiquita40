@@ -118,7 +118,7 @@ color: rgb(0, 0, 0);</string>
     </widget>
    </item>
    <item row="8" column="0" colspan="2">
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="lineEdit_deleteConnectionScientistID">
      <property name="placeholderText">
       <string>ID of scientist you want to disconnect</string>
      </property>
@@ -138,7 +138,7 @@ color: rgb(0, 0, 0);</string>
     </spacer>
    </item>
    <item row="9" column="0" colspan="2">
-    <widget class="QLineEdit" name="lineEdit_2">
+    <widget class="QLineEdit" name="lineEdit_deleteConnectionComputerID">
      <property name="placeholderText">
       <string>ID of computer you want to disconnect</string>
      </property>

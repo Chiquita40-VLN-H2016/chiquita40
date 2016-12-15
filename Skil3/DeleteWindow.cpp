@@ -66,6 +66,16 @@ void DeleteWindow::on_lineEdit_deleteComputerID_textChanged(const QString &arg1)
     ui->button_deleteComputer->setEnabled(true);
 }
 
+void DeleteWindow::on_lineEdit_deleteConnectionScientistID_textChanged(const QString &arg1)
+{
+    ui->button_deleteConnection->setEnabled(true);
+}
+
+void DeleteWindow::on_lineEdit_deleteConnectionComputerID_textChanged(const QString &arg1)
+{
+    ui->button_deleteConnection->setEnabled(true);
+}
+
 int DeleteWindow::deleteWarningMessage()
 {
     QMessageBox deleteMessage;
@@ -78,7 +88,7 @@ int DeleteWindow::deleteWarningMessage()
     return ret;
 }
 
-void DeleteWindow::displayDeletePageSearchResultForScientists()
+void DeleteWindow::displayDeletePageSearchResultsForScientists()
 {
     ui->list_deletePageSearchResult->clear();
     _currentlyDisplayedScientists.clear();
@@ -95,7 +105,7 @@ void DeleteWindow::displayDeletePageSearchResultForScientists()
     }
 }
 
-void DeleteWindow::displayDeletePageSearchResultForComputers()
+void DeleteWindow::displayDeletePageSearchResultsForComputers()
 {
     ui->list_deletePageSearchResult->clear();
     _currentlyDisplayedComputers.clear();
@@ -126,7 +136,7 @@ void DeleteWindow::on_button_deleteScientist_clicked()
 
     if(success != -1)
     {
-        displayDeletePageSearchResultForScientists();
+        displayDeletePageSearchResultsForScientists();
     }
     ui->button_deleteScientist->setEnabled(false);
 }
@@ -145,7 +155,27 @@ void DeleteWindow::on_button_deleteComputer_clicked()
 
     if(success != -1)
     {
-        displayDeletePageSearchResultForComputers();
+        displayDeletePageSearchResultsForComputers();
+    }
+    ui->button_deleteComputer->setEnabled(false);
+}
+
+void DeleteWindow::on_button_deleteConnection_clicked()
+{
+    int success = -1;
+    int ret = deleteWarningMessage();
+
+    int sId = ui->lineEdit_deleteConnectionScientistID->text().toInt();
+    int cId = ui->lineEdit_deleteConnectionComputerID->text().toInt();
+
+    if(ret == 16384) //ATH með töluna
+    {
+        success = _scs.deleteConnection(sId, cId);
+    }
+
+    if(success != -1)
+    {
+        displayDeletePageSearchResultsForConnection();
     }
     ui->button_deleteComputer->setEnabled(false);
 }

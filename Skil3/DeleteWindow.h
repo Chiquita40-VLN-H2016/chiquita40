@@ -36,6 +36,12 @@ private slots:
 
     void on_button_deleteComputer_clicked();
 
+    void on_lineEdit_deleteConnectionScientistID_textChanged(const QString &arg1);
+
+    void on_lineEdit_deleteConnectionComputerID_textChanged(const QString &arg1);
+
+    void on_button_deleteConnection_clicked();
+
 private:
     Ui::DeleteWindow *ui;
     vector<Scientist> _currentlyDisplayedScientists;
@@ -43,8 +49,9 @@ private:
     SCService _scs;
 
     void displaySearchResultsFromAll(string search);
-    void displayDeletePageSearchResultForScientists();
-    void displayDeletePageSearchResultForComputers();
+    void displayDeletePageSearchResultsForScientists();
+    void displayDeletePageSearchResultsForComputers();
+    void displayDeletePageSearchResultsForConnection();
 };
 
 #endif // DELETEWINDOW_H
