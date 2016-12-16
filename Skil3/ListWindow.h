@@ -3,6 +3,7 @@
 #include "Scientist.h"
 #include "Computer.h"
 #include "SCService.h"
+#include "Utilities.h"
 #include <string>
 #include <vector>
 #include <QDialog>

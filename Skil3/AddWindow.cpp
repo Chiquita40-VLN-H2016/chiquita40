@@ -21,20 +21,21 @@ void AddWindow::on_button_addBack_clicked()
 void AddWindow::on_button_addQuit_clicked()
 {
     close();
-    qApp->quit(); //Held að það krassi hér. Þarf að debugga líklega.//Mögulega lagað.
+    qApp->quit();
 }
 
 //
-void AddWindow::on_input_addPageSearch_textChanged(const QString &arg1)
+void AddWindow::on_input_addScientistSearch_textChanged(const QString &arg1)
 {
     string search = arg1.toStdString();
     if(search.size() != 0)
     {
-        displaySearchResultsFromAll(search);
+        displayScientistSearchResults(search);
+        //displaySearchResultsFromAll(search);
     }
     if(search.size()== 0)
     {
-        ui->list_addPageSearchResult->clear();
+        ui->table_addScientist->clearContents();
     }
 }
 
@@ -183,6 +184,21 @@ void AddWindow::on_input_addType_textChanged(const QString &arg1)
     }
 }
 
+void AddWindow::on_input_searchComputer_textChanged(const QString &arg1)
+{
+    string search = arg1.toStdString();
+    if(search.size() != 0)
+    {
+        displayComputerSearchResult(search);
+        //displayScientistSearchResults(search);
+        //displaySearchResultsFromAll(search);
+    }
+    if(search.size()== 0)
+    {
+        ui->table_addComputer->clearContents();
+    }
+}
+/*
 void AddWindow::displaySearchResultsFromAll(string search)
 {
      ui->list_addPageSearchResult->clear();
@@ -221,30 +237,127 @@ void AddWindow::displaySearchResultsFromAll(string search)
         ui->list_addPageSearchResult->addItem("Your search returned no results");
     }
 
+}*/
+
+void AddWindow::displayScientistSearchResults(string search)
+{
+    ui->label_searchScientistsNoResults->setText("");
+    ui->table_addScientist->clearContents();
+   _currentlyDisplayedScientists.clear();
+
+   _currentlyDisplayedScientists = _scs.findScientistByName(search);
+   if(_currentlyDisplayedScientists.size() != 0)
+   {
+
+       ui->table_addScientist->setRowCount(_currentlyDisplayedScientists.size());
+
+       for(unsigned int row = 0; row < _currentlyDisplayedScientists.size(); row++)
+       {
+           Scientist s = _currentlyDisplayedScientists.at(row);
+           QString name = QString::fromStdString(s.getName());
+           QString birthYear = QString::number(s.getBirthDate());
+           QString deathYear;
+           if(s.getDeathDate() == 9999)
+           {
+               deathYear = "Alive";
+           }
+           else
+           {
+               deathYear = QString::number(s.getDeathDate());
+           }
+           QString gender = QChar(toupper(s.getGender()));
+
+           ui->table_addScientist->setItem(row, 0, new Utilities::TableItemSC(s.getId()));
+           ui->table_addScientist->setItem(row, 1, new Utilities::TableItemSC(name));
+           ui->table_addScientist->setItem(row, 2, new Utilities::TableItemSC(birthYear));
+           ui->table_addScientist->setItem(row, 3, new Utilities::TableItemSC(deathYear));
+           ui->table_addScientist->setItem(row, 4, new Utilities::TableItemSC(gender));
+       }
+   }
+   if(search.size() != 0 && _currentlyDisplayedScientists.size() == 0)
+   {
+       ui->table_addScientist->clearContents();
+       ui->label_searchScientistsNoResults->setText("<p style=\"color:#f44242;\">Your search returned no results.</p>");
+   }
+}
+
+void AddWindow::displayComputerSearchResult(string search)
+{
+    ui->label_searchComputerNoResults->setText("");
+    ui->table_addComputer->clearContents();
+   _currentlyDisplayedComputers.clear();
+
+   _currentlyDisplayedComputers = _scs.findComputersByName(search);
+   if(_currentlyDisplayedComputers.size() != 0)
+   {
+
+       ui->table_addComputer->setRowCount(_currentlyDisplayedComputers.size());
+
+       for(unsigned int row = 0; row < _currentlyDisplayedComputers.size(); row++)
+       {
+           Computer c = _currentlyDisplayeComputers.at(row);
+           QString name = QString::fromStdString(c.getName());
+           QString buildYear = QString::number(c.getBuildYear());
+           if(c.getBuildYear() == 0)
+           {
+               buildYear = "";
+           }
+           QString type = QString::fromStdString(c.getName());
+
+           ui->table_addScientist->setItem(row, 0, new Utilities::TableItemSC(s.getId()));
+           ui->table_addScientist->setItem(row, 1, new Utilities::TableItemSC(name));
+           ui->table_addScientist->setItem(row, 2, new Utilities::TableItemSC(birthYear));
+           ui->table_addScientist->setItem(row, 3, new Utilities::TableItemSC(deathYear));
+           ui->table_addScientist->setItem(row, 4, new Utilities::TableItemSC(gender));
+       }
+   }
+   if(search.size() != 0 && _currentlyDisplayedScientists.size() == 0)
+   {
+       ui->table_addScientist->clearContents();
+       ui->label_searchScientistsNoResults->setText("<p style=\"color:#f44242;\">Your search returned no results.</p>");
+   }
 }
 
 void AddWindow::displayAllScientists()
 {
-    ui->input_addPageSearch->setText("");
-    ui->list_addPageSearchResult->clear();
-    _currentlyDisplayedScientists.clear();
+    ui->input_addScientistSearch->setText("");
+    ui->table_addScientist->clearContents();
+    _allScientists.clear();
     _scs.scientistsAscendingOrder(0);
-    _currentlyDisplayedScientists = _scs.getScientists();
+    //scientistsWhichOrder(type, ascdesc);
+    _allScientists = _scs.getScientists();
 
-    ui->list_addPageSearchResult->addItem(QString::fromStdString("Updated list of Scientists:"));
-    ui->list_addPageSearchResult->addItem(QString::fromStdString(scientistListHeader()));
+    ui->table_addScientist->setRowCount(_allScientists.size());
 
-    for(unsigned int i = 0; i < _currentlyDisplayedScientists.size(); i++)
+    for(unsigned int row = 0; row < _allScientists.size(); row++)
     {
-        Scientist s = _currentlyDisplayedScientists.at(i);
-        ui->list_addPageSearchResult->addItem(QString::fromStdString(s.toString()));
+        Scientist s = _allScientists.at(row);
+        QString name = QString::fromStdString(s.getName());
+        QString birthYear = QString::number(s.getBirthDate());
+        QString deathYear;
+        if(s.getDeathDate() == 9999)
+        {
+            deathYear = "Alive";
+        }
+        else
+        {
+            deathYear = QString::number(s.getDeathDate());
+        }
+
+        QString gender = QChar(toupper(s.getGender()));
+
+        ui->table_addScientist->setItem(row, 0, new Utilities::TableItemSC(s.getId()));
+        ui->table_addScientist->setItem(row, 1, new Utilities::TableItemSC(name));
+        ui->table_addScientist->setItem(row, 2, new Utilities::TableItemSC(birthYear));
+        ui->table_addScientist->setItem(row, 3, new Utilities::TableItemSC(deathYear));
+        ui->table_addScientist->setItem(row, 4, new Utilities::TableItemSC(gender));
     }
 
 }
 
 void AddWindow::displayAllComputers()
 {
-     ui->input_addPageSearch->setText("");
+     /*ui->input_addPageSearch->setText("");
      ui->list_addPageSearchResult->clear();
     _currentlyDisplayedComputers.clear();
     _scs.computersAscendingOrder(0);
@@ -257,7 +370,7 @@ void AddWindow::displayAllComputers()
     {
         Computer c = _currentlyDisplayedComputers.at(i);
         ui->list_addPageSearchResult->addItem(QString::fromStdString(c.toString()));
-    }
+    }*/
 }
 
 void AddWindow::clearScientistForm()

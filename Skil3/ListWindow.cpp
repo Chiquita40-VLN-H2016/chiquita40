@@ -31,8 +31,6 @@ void ListWindow::displayScientistSearchResults(string search)
        for(unsigned int row = 0; row < _currentlyDisplayedScientists.size(); row++)
        {
            Scientist s = _currentlyDisplayedScientists.at(row);
-           //QTableWidgetItem *id = new QTableWidgetItem(s.getId());
-           QString id = QString::number(s.getId());
            QString name = QString::fromStdString(s.getName());
            QString birthYear = QString::number(s.getBirthDate());
            QString deathYear;
@@ -46,11 +44,11 @@ void ListWindow::displayScientistSearchResults(string search)
            }
            QString gender = QChar(toupper(s.getGender()));
 
-           ui->table_Scientists->setItem(row, 0, new QTableWidgetItem(id));
-           ui->table_Scientists->setItem(row, 1, new QTableWidgetItem(name));
-           ui->table_Scientists->setItem(row, 2, new QTableWidgetItem(birthYear));
-           ui->table_Scientists->setItem(row, 3, new QTableWidgetItem(deathYear));
-           ui->table_Scientists->setItem(row, 4, new QTableWidgetItem(gender));
+           ui->table_Scientists->setItem(row, 0, new Utilities::TableItemSC(s.getId()));
+           ui->table_Scientists->setItem(row, 1, new Utilities::TableItemSC(name));
+           ui->table_Scientists->setItem(row, 2, new Utilities::TableItemSC(birthYear));
+           ui->table_Scientists->setItem(row, 3, new Utilities::TableItemSC(deathYear));
+           ui->table_Scientists->setItem(row, 4, new Utilities::TableItemSC(gender));
        }
    }
    if(search.size() != 0 && _currentlyDisplayedScientists.size() == 0)
@@ -73,8 +71,6 @@ void ListWindow::displayAllScientist(int type, int ascdesc)
     for(unsigned int row = 0; row < _allScientists.size(); row++)
     {
         Scientist s = _allScientists.at(row);
-        //QTableWidgetItem *id = new QTableWidgetItem(s.getId());
-        QString id = QString::number(s.getId());
         QString name = QString::fromStdString(s.getName());
         QString birthYear = QString::number(s.getBirthDate());
         QString deathYear;
@@ -89,11 +85,11 @@ void ListWindow::displayAllScientist(int type, int ascdesc)
 
         QString gender = QChar(toupper(s.getGender()));
 
-        ui->table_Scientists->setItem(row, 0, new QTableWidgetItem(id));
-        ui->table_Scientists->setItem(row, 1, new QTableWidgetItem(name));
-        ui->table_Scientists->setItem(row, 2, new QTableWidgetItem(birthYear));
-        ui->table_Scientists->setItem(row, 3, new QTableWidgetItem(deathYear));
-        ui->table_Scientists->setItem(row, 4, new QTableWidgetItem(gender));
+        ui->table_Scientists->setItem(row, 0, new Utilities::TableItemSC(s.getId()));
+        ui->table_Scientists->setItem(row, 1, new Utilities::TableItemSC(name));
+        ui->table_Scientists->setItem(row, 2, new Utilities::TableItemSC(birthYear));
+        ui->table_Scientists->setItem(row, 3, new Utilities::TableItemSC(deathYear));
+        ui->table_Scientists->setItem(row, 4, new Utilities::TableItemSC(gender));
     }
 }
 
