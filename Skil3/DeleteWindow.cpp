@@ -115,6 +115,12 @@ void DeleteWindow::displayAllScientists(string search)
         ui->table_Scientists->setItem(row, 3, new QTableWidgetItem(deathYear));
         ui->table_Scientists->setItem(row, 4, new QTableWidgetItem(gender));
     }
+    if(search.size() != 0 && _currentlyDisplayedScientists.size() == 0)
+    {
+        ui->table_Scientists->clearContents();
+        _currentlyDisplayedScientists.clear();
+        ui->label_searchScientistsNoResults->setText("<p style=\"color:#f44242;\">Your search returned no results.</p>");
+    }
 }
 
 void DeleteWindow::displayAllComputers(string search)
@@ -158,7 +164,12 @@ void DeleteWindow::displayAllComputers(string search)
         ui->table_Computers->setItem(row, 3, new QTableWidgetItem(type));
         ui->table_Computers->setItem(row, 4, new QTableWidgetItem(wasBuilt));
     }
-    ui->table_Computers->resizeColumnToContents(1);
+    if(search.size() != 0 && _currentlyDisplayedComputers.size() == 0)
+    {
+        ui->table_Computers->clearContents();
+        _currentlyDisplayedComputers.clear();
+        ui->label_searchComputersNoResults->setText("<p style=\"color:#f44242;\">Your search returned no results.</p>");
+    }
 }
 
 void DeleteWindow::displayAllConnections(string search)
@@ -183,6 +194,12 @@ void DeleteWindow::displayAllConnections(string search)
         ui->table_Connections->setItem(row, 1, new QTableWidgetItem(sName));
         ui->table_Connections->setItem(row, 2, new QTableWidgetItem(cId));
         ui->table_Connections->setItem(row, 3, new QTableWidgetItem(cName));
+    }
+    if(search.size() != 0 && _currentlyDisplayedConnections.size() == 0)
+    {
+        ui->table_Connections->clearContents();
+        _currentlyDisplayedConnections.clear();
+        ui->label_searchConnectionsNoResults->setText("<p style=\"color:#f44242;\">Your search returned no results.</p>");
     }
 }
 

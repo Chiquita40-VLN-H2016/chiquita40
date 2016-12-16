@@ -58,9 +58,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>30</y>
+         <y>50</y>
          <width>581</width>
-         <height>201</height>
+         <height>181</height>
         </rect>
        </property>
        <property name="editTriggers">
@@ -111,13 +111,26 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>20</y>
          <width>581</width>
          <height>20</height>
         </rect>
        </property>
        <property name="placeholderText">
         <string>Find scientist to delete</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_searchScientistsNoResults">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>581</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </widget>
@@ -129,7 +142,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>20</y>
          <width>581</width>
          <height>20</height>
         </rect>
@@ -142,9 +155,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>30</y>
+         <y>50</y>
          <width>581</width>
-         <height>201</height>
+         <height>181</height>
         </rect>
        </property>
        <property name="editTriggers">
@@ -188,6 +201,19 @@
         </property>
        </column>
       </widget>
+      <widget class="QLabel" name="label_searchComputersNoResults">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>581</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tab_Connect">
       <attribute name="title">
@@ -197,7 +223,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>20</y>
          <width>581</width>
          <height>20</height>
         </rect>
@@ -210,9 +236,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>30</y>
+         <y>50</y>
          <width>581</width>
-         <height>201</height>
+         <height>181</height>
         </rect>
        </property>
        <property name="editTriggers">
@@ -250,6 +276,19 @@
          <string>Computer</string>
         </property>
        </column>
+      </widget>
+      <widget class="QLabel" name="label_searchConnectionsNoResults">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>581</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
       </widget>
      </widget>
     </widget>
