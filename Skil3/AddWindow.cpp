@@ -245,6 +245,8 @@ void AddWindow::displayScientistSearchResults(string search)
            ui->table_addScientist->setItem(row, 3, new Utilities::TableItemSC(deathYear));
            ui->table_addScientist->setItem(row, 4, new Utilities::TableItemSC(gender));
        }
+
+       ui->table_addScientist->resizeColumnsToContents();
    }
    //If vector is empty and search is not, a message is sent to user.
    if(search.size() != 0 && _currentlyDisplayedScientists.size() == 0)
@@ -292,6 +294,8 @@ void AddWindow::displayComputerSearchResult(string search)
            ui->table_addComputer->setItem(row, 3, new Utilities::TableItemSC(type));
            ui->table_addComputer->setItem(row, 4, new Utilities::TableItemSC(wasBuilt));
        }
+
+       ui->table_addComputer->resizeColumnsToContents();
    }
    if(search.size() != 0 && _currentlyDisplayedComputers.size() == 0)
    {
@@ -334,6 +338,8 @@ void AddWindow::displayAllScientists()
         ui->table_addScientist->setItem(row, 4, new Utilities::TableItemSC(gender));
     }
 
+    ui->table_addScientist->resizeColumnsToContents();
+
 }
 
 void AddWindow::displayAllComputers()
@@ -373,6 +379,8 @@ void AddWindow::displayAllComputers()
         ui->table_addComputer->setItem(row, 3, new Utilities::TableItemSC(type));
         ui->table_addComputer->setItem(row, 4, new Utilities::TableItemSC(wasBuilt));
     }
+
+    ui->table_addComputer->resizeColumnsToContents();
 }
 
 void AddWindow::clearScientistForm()
