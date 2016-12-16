@@ -1,4 +1,4 @@
-#include "ListWindow.h"
+ #include "ListWindow.h"
 #include "ui_ListWindow.h"
 
 ListWindow::ListWindow(QWidget *parent) :
@@ -8,6 +8,7 @@ ListWindow::ListWindow(QWidget *parent) :
     ui->setupUi(this);
     displayAllConnections();
     displayAllScientist(0, 0);
+    displayAllComputers();
 }
 
 ListWindow::~ListWindow()
@@ -95,6 +96,76 @@ void ListWindow::displayAllScientist(int type, int ascdesc)
         ui->table_Scientists->setItem(row, 4, new QTableWidgetItem(gender));
     }
 }
+
+void ListWindow::displayComputerSearchResults(string search)
+{
+    ui->label_searchComputersNoResults->setText("");
+    ui->table_Computers->clearContents();
+    _currentlyDisplayedComputers.clear();
+
+    _currentlyDisplayedComputers = _scs.findComputerByName(search);
+    if(_currentlyDisplayedComputers.size() !=0)
+    {
+        ui->table_Computers->setRowCount(_currentlyDisplayedComputers.size());
+
+        for(unsigned int row = 0; row < _currentlyDisplayedComputers.size(); row++)
+        {
+            Computer c =_currentlyDisplayedComputers.at(row);
+            QString id = QString::number(c.getId());
+            QString name = QString::fromStdString(c.getName());
+            QString type = QString::fromStdString(c.getType());
+            QString buildyear = QString::number(c.getBuildYear());
+
+            ui->table_Computers->setItem(row, 0, new QTableWidgetItem(id));
+            ui->table_Computers->setItem(row, 1, new QTableWidgetItem(name));
+            ui->table_Computers->setItem(row, 2, new QTableWidgetItem(buildyear));
+            ui->table_Computers->setItem(row, 3, new QTableWidgetItem(type));
+        }
+    }
+    if(search.size() != 0 && _currentlyDisplayedComputers.size() == 0)
+    {
+        ui->table_Computers->clearContents();
+        ui->label_searchComputersNoResults->setText("<p style=\"color:#f44242;\">Your search returned no results.</p>");
+    }
+}
+
+void ListWindow::displayAllComputers()
+{
+    ui->input_listComputerSearch->setText("");
+    ui->table_Computers->clearContents();
+    _allComputers.clear();
+    _allComputers = _scs.getComputers();
+
+
+    ui->table_Computers->setRowCount(_allComputers.size());
+
+    for(unsigned int row = 0; row < _allComputers.size(); row++)
+    {
+        Computer c = _allComputers.at(row);
+        QString id = QString::number(c.getId());
+        QString name = QString::fromStdString(c.getName());
+        QString type = QString::fromStdString(c.getType());
+        QString buildyear = QString::number(c.getBuildYear());
+        QString wasbuilt = QString::number(c.getWasBuilt());
+        if(buildyear == 0)
+        {
+            cout << " " << endl;
+        }
+        else
+        {
+            QString yes = QString::number(c.getWasBuilt());
+        }
+
+
+        ui->table_Computers->setItem(row, 0, new QTableWidgetItem(id));
+        ui->table_Computers->setItem(row, 1, new QTableWidgetItem(name));
+        ui->table_Computers->setItem(row, 2, new QTableWidgetItem(buildyear));
+        ui->table_Computers->setItem(row, 3, new QTableWidgetItem(type));
+        ui->table_Computers->setItem(row, 3, new QTableWidgetItem(wasbuilt));
+
+    }
+}
+
 
 void ListWindow::displayAllConnections()
 {
@@ -188,4 +259,10 @@ void ListWindow::on_lineEdit_textChanged(const QString &arg1)
 {
     string search = arg1.toStdString();
     //displayConnectionSearchResults(search);
+}
+
+void ListWindow::on_input_listComputerSearch_textChanged(const QString &arg1)
+{
+    string search = arg1.toStdString();
+    displayComputerSearchResults(search);
 }

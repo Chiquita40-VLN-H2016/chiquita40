@@ -29,6 +29,8 @@ private slots:
 
     void on_lineEdit_textChanged(const QString &arg1);
 
+    void on_input_listComputerSearch_textChanged(const QString &arg1);
+
 private:
     Ui::ListWindow *ui;
     vector<Scientist> _currentlyDisplayedScientists;
@@ -43,6 +45,8 @@ private:
     void displayAllScientist(int type, int ascdesc);
     void displayAllConnections();
     void scientistsWhichOrder(int type, int ascdesc);
+    void displayAllComputers();
+    void displayComputerSearchResults(string search);
 };
 
 #endif // LISTWINDOW_H
