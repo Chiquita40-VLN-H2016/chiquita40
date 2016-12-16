@@ -69,36 +69,31 @@ You can do these commands as often as you wish. To stop type in 'quit'.
 7. Build and run the program
 
 ## IV. Instructions 
-When you run the program a list of commands appear on the screen.
+When you run the program, a welcome window with quick search and buttons for all program features appears on the screen.
 
-Please do not enter any special characters, only characters from the ASCII table.
+**Add**
 
-**Add/Edit**
+You can add a new Scientist and/or a Computer to the database.
 
-Name of a new Scientist and/ or a Computer cannot be longer than 31 characters (with spaces).
+**Edit**
 
+You can edit a Scientist and/or a Computer.
 
-**List**
+**See full lists**
 
-The different lists represent the same list ordered by different information about the scientists. You can choose if you want the lists sorted in ascending or descending order.
-
-**Find**
-
-Find works whether you put a whole name or any letter in a name of either Scientist or Computer.
+You can choose from a list of Scientists, Computers or Scientists connected to Computers. Each list item can be ordered ascending or descending by clicking on the adequate table header.
 
 **Delete**
 
-Delete works only with the exact first and last name.
+Search for a Scientist or Computer and delete it from the list. You can also disconnect a Computer from a Scientist.
+
+**Connect**
+
+Connect a Scientist with a Computer. The Invented table in the SQLite Manager will be updated.
 
 **Quit**
 
-If you get a compile time error when you have entered "quit", please rebuild (choose "Rebuild All") the program.
-
-**Join**
-
-Connect a Scientist with a Computer. When you join a Computer and a Computer Scientist, their ids will appear in the Invented table in the SQLite Manager.
-
-
+Each window contains a button to quit the programm.
 
 ## V. Coding conventions
 * Member variables start with an _underscore.
