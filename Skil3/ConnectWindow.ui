@@ -6,93 +6,112 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>827</width>
-    <height>436</height>
+    <width>653</width>
+    <height>708</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <pointsize>9</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Connect Scientist and Computer</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>Images/computerIcon.png</normaloff>Images/computerIcon.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0" colspan="2">
-    <widget class="QLineEdit" name="input_connectScientistSearch">
-     <property name="placeholderText">
-      <string>Find scientist to connect</string>
+   <item row="0" column="0" colspan="5">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Connect Scientist and Computer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="2">
-    <widget class="QLineEdit" name="input_connectComputerSearch">
-     <property name="placeholderText">
-      <string>Find computer to connect</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="3">
+   <item row="1" column="0" colspan="5">
     <widget class="QLabel" name="label_currentConnections">
      <property name="text">
       <string>&lt;b&gt;Current connections:&lt;/b&gt;</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2">
-    <widget class="QListWidget" name="list_connectScientistSearchResult"/>
-   </item>
-   <item row="2" column="2">
-    <widget class="QListWidget" name="list_connectComputerSearchResult"/>
-   </item>
-   <item row="2" column="3" colspan="2">
+   <item row="2" column="0" colspan="5">
     <widget class="QListWidget" name="list_connectCurrent"/>
    </item>
-   <item row="3" column="0">
+   <item row="3" column="0" colspan="5">
+    <widget class="QLineEdit" name="input_connectScientistSearch">
+     <property name="placeholderText">
+      <string>Find scientist to connect</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="5">
+    <widget class="QListWidget" name="list_connectScientistSearchResult">
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="5">
+    <widget class="QLineEdit" name="input_connectComputerSearch">
+     <property name="placeholderText">
+      <string>Find computer to connect</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="5">
+    <widget class="QListWidget" name="list_connectComputerSearchResult"/>
+   </item>
+   <item row="7" column="1">
     <widget class="QLabel" name="label_connectScientist">
      <property name="text">
       <string>Scientist to connect:</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="2">
+   <item row="7" column="2">
+    <widget class="QLineEdit" name="input_connectScientistID">
+     <property name="placeholderText">
+      <string>Enter ID of scientist you want to connect</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="3" rowspan="2">
+    <widget class="QPushButton" name="button_connectScientistAndComputer">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string>Connect</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1">
     <widget class="QLabel" name="label_connectComputer">
      <property name="text">
       <string>Computer to connect:</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="0" colspan="2">
-    <widget class="QLineEdit" name="input_connectScientistID">
-     <property name="placeholderText">
-      <string>ID of scientist you want to connect</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="2">
+   <item row="8" column="2">
     <widget class="QLineEdit" name="input_connectComputerID">
      <property name="placeholderText">
-      <string>ID of computer you want to connect</string>
+      <string>Enter ID of computer you want to connect</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="0">
+   <item row="9" column="0">
     <widget class="QPushButton" name="button_connectBack">
      <property name="text">
       <string>Back</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="1" colspan="3">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>544</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="5" column="4">
+   <item row="9" column="4">
     <widget class="QPushButton" name="button_connectQuit">
      <property name="styleSheet">
       <string notr="true">background-color: rgb(170, 0, 0);
@@ -105,20 +124,10 @@ color: rgb(0, 0, 0);</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="3" colspan="2">
-    <widget class="QPushButton" name="button_connectScientistAndComputer">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
+   <item row="9" column="2">
+    <widget class="QLabel" name="label_connectErrorMessage">
      <property name="text">
-      <string>Connect</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="5">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Connect scientist and computer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string/>
      </property>
     </widget>
    </item>

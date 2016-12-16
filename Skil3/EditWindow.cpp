@@ -27,7 +27,7 @@ void EditWindow::on_button_editQuit_clicked()
     qApp->quit();
 }
 
-void EditWindow::on_input_editPageSearch_textChanged(const QString &arg1)
+void EditWindow::on_input_editPageSearch_textChanged()
 {
     string search = ui->input_editPageSearch->text().toStdString();
     displaySearchResultsFromAll(search);
@@ -150,7 +150,7 @@ void EditWindow::on_button_editScientist_clicked()
 
 }
 
-void EditWindow::on_comboBox_editScientistAlive_currentIndexChanged(const QString &arg1)
+void EditWindow::on_comboBox_editScientistAlive_currentIndexChanged()
 {
     string alive = "9999";
 
@@ -313,7 +313,7 @@ void EditWindow::on_button_editComputer_clicked()
     }
 }
 
-void EditWindow::on_comboBox_editComputerBuilt_currentIndexChanged(const QString &arg1)
+void EditWindow::on_comboBox_editComputerBuilt_currentIndexChanged()
 {
     if(ui->comboBox_editComputerBuilt->currentText() == "Yes")
     {
@@ -375,11 +375,11 @@ void EditWindow::displayEditedComputer(int id)
     ui->list_editPageSearchResult->addItem(QString::fromStdString(c.toString()));
 }
 
-void EditWindow::on_list_editPageSearchResult_doubleClicked(const QModelIndex &index)
+/*void EditWindow::on_list_editPageSearchResult_doubleClicked(const QModelIndex &index)
 {
     // Væri kúl að útfæra þetta, ef tvíklikkað, finna hvort sé Scientist eða Computer og skila
     // ID niður í annan hvorn ID reitinn.
-}
+}*/
 
 void EditWindow::on_input_editNameScientist_textChanged(const QString &arg1)
 {
