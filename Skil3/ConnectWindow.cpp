@@ -62,11 +62,11 @@ void ConnectWindow::displayScientistSearchResult(const QString &arg1)
             }
             QString gender = QChar(toupper(s.getGender()));
 
-            ui->table_connectScientistSearchResult->setItem(row, 0, new QTableWidgetItem(id));
-            ui->table_connectScientistSearchResult->setItem(row, 1, new QTableWidgetItem(name));
-            ui->table_connectScientistSearchResult->setItem(row, 2, new QTableWidgetItem(birthYear));
-            ui->table_connectScientistSearchResult->setItem(row, 3, new QTableWidgetItem(deathYear));
-            ui->table_connectScientistSearchResult->setItem(row, 4, new QTableWidgetItem(gender));
+            ui->table_connectScientistSearchResult->setItem(row, 0, new Utilities::TableItemSC(id));
+            ui->table_connectScientistSearchResult->setItem(row, 1, new Utilities::TableItemSC(name));
+            ui->table_connectScientistSearchResult->setItem(row, 2, new Utilities::TableItemSC(birthYear));
+            ui->table_connectScientistSearchResult->setItem(row, 3, new Utilities::TableItemSC(deathYear));
+            ui->table_connectScientistSearchResult->setItem(row, 4, new Utilities::TableItemSC(gender));
 
         }
 
@@ -119,11 +119,11 @@ void ConnectWindow::displayComputerSearchResult(const QString &arg1)
                 wasBuilt = QString::fromStdString("No");
             }
 
-            ui->table_connectComputerSearchResult->setItem(row, 0, new QTableWidgetItem(id));
-            ui->table_connectComputerSearchResult->setItem(row, 1, new QTableWidgetItem(name));
-            ui->table_connectComputerSearchResult->setItem(row, 2, new QTableWidgetItem(type));
-            ui->table_connectComputerSearchResult->setItem(row, 3, new QTableWidgetItem(builtYear));
-            ui->table_connectComputerSearchResult->setItem(row, 4, new QTableWidgetItem(wasBuilt));
+            ui->table_connectComputerSearchResult->setItem(row, 0, new Utilities::TableItemSC(id));
+            ui->table_connectComputerSearchResult->setItem(row, 1, new Utilities::TableItemSC(name));
+            ui->table_connectComputerSearchResult->setItem(row, 2, new Utilities::TableItemSC(type));
+            ui->table_connectComputerSearchResult->setItem(row, 3, new Utilities::TableItemSC(builtYear));
+            ui->table_connectComputerSearchResult->setItem(row, 4, new Utilities::TableItemSC(wasBuilt));
 
         }
 
@@ -154,10 +154,10 @@ void ConnectWindow::displayAllCurrentConnections()
         QString cId = QString::number(i.getCId());
         QString cName = QString::fromStdString(i.getCName());
 
-        ui->table_connectCurrent->setItem(row, 0, new QTableWidgetItem(sId));
-        ui->table_connectCurrent->setItem(row, 1, new QTableWidgetItem(sName));
-        ui->table_connectCurrent->setItem(row, 2, new QTableWidgetItem(cId));
-        ui->table_connectCurrent->setItem(row, 3, new QTableWidgetItem(cName));
+        ui->table_connectCurrent->setItem(row, 0, new Utilities::TableItemConnect(sId));
+        ui->table_connectCurrent->setItem(row, 1, new Utilities::TableItemConnect(sName));
+        ui->table_connectCurrent->setItem(row, 2, new Utilities::TableItemConnect(cId));
+        ui->table_connectCurrent->setItem(row, 3, new Utilities::TableItemConnect(cName));
     }
 
     ui->table_connectCurrent->resizeColumnsToContents();
