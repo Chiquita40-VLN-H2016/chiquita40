@@ -27,64 +27,90 @@ void EditWindow::on_button_editQuit_clicked()
     qApp->quit();
 }
 
-void EditWindow::on_input_editPageSearch_textChanged()
+// Scientists - All functions regarding scientists in EditWindow.
+
+void EditWindow::on_input_editPageScientistsSearch_textChanged()
 {
-    string search = ui->input_editPageSearch->text().toStdString();
-    displaySearchResultsFromAll(search);
+    string search = ui->input_editPageScientistsSearch->text().toStdString();
+    displayScientistSearchResultsFromAll(search);
 }
 
-void EditWindow::displaySearchResultsFromAll(string search)
+void EditWindow::displayScientistSearchResultsFromAll(string search)
 {
-    ui->list_editPageSearchResult->clear();
-    _currentlyDisplayedComputers.clear();
+    ui->table_editPageScientistsSearchResult->clearContents();
     _currentlyDisplayedScientists.clear();
 
-    _currentlyDisplayedComputers = _scs.findComputerByName(search);
     _currentlyDisplayedScientists = _scs.findScientistByName(search);
 
     if(_currentlyDisplayedScientists.size() != 0)
     {
-        ui->list_editPageSearchResult->addItem(QString::fromStdString("Scientists that matched search:"));
-        ui->list_editPageSearchResult->addItem(QString::fromStdString(scientistListHeader()));
+        ui->table_editPageScientistsSearchResult->setRowCount(_currentlyDisplayedScientists.size());
 
-        for(unsigned int i = 0; i < _currentlyDisplayedScientists.size(); i++)
+        for(unsigned int row = 0; row < _currentlyDisplayedScientists.size(); row++)
         {
-            Scientist s = _currentlyDisplayedScientists.at(i);
-            ui->list_editPageSearchResult->addItem(QString::fromStdString(s.toString()));
+            Scientist s = _currentlyDisplayedScientists.at(row);
+            QString id = QString::number(s.getId());
+            QString name = QString::fromStdString(s.getName());
+            QString birthYear = QString::number(s.getBirthDate());
+            QString deathYear;
+            if(s.getDeathDate() == 9999)
+            {
+                deathYear = "Alive";
+            }
+            else
+            {
+                deathYear = QString::number(s.getDeathDate());
+            }
+            QString gender = QChar(toupper(s.getGender()));
+
+            ui->table_editPageScientistsSearchResult->setItem(row, 0, new QTableWidgetItem(id));
+            ui->table_editPageScientistsSearchResult->setItem(row, 1, new QTableWidgetItem(name));
+            ui->table_editPageScientistsSearchResult->setItem(row, 2, new QTableWidgetItem(birthYear));
+            ui->table_editPageScientistsSearchResult->setItem(row, 3, new QTableWidgetItem(deathYear));
+            ui->table_editPageScientistsSearchResult->setItem(row, 4, new QTableWidgetItem(gender));
+
         }
 
-        ui->list_editPageSearchResult->addItem(" ");
     }
-
-    if(_currentlyDisplayedComputers.size() != 0)
+    if(search.size() != 0 && _currentlyDisplayedScientists.size() == 0)
     {
-        ui->list_editPageSearchResult->addItem(QString::fromStdString("Computers that matched search:"));
-        ui->list_editPageSearchResult->addItem(QString::fromStdString(computerListHeader()));
-
-        for(unsigned int i = 0; i < _currentlyDisplayedComputers.size(); i++)
-        {
-            Computer c = _currentlyDisplayedComputers.at(i);
-            ui->list_editPageSearchResult->addItem(QString::fromStdString(c.toString()));
-        }
-
-        ui->list_editPageSearchResult->addItem(" ");
+        ui->table_editPageScientistsSearchResult->clearContents();
+    //    ui->label_searchNoResults->setText("<p style=\"color:#f44242;\">Your search returned no results.</p>");
     }
-    if(_currentlyDisplayedScientists.size() == 0 && _currentlyDisplayedComputers.size() == 0)
-    {
-        ui->list_editPageSearchResult->addItem("Your search returned no results");
-    }
+
 }
 
 void EditWindow::displayEditedScientist(int id)
 {
-    ui->input_editPageSearch->clear();
-    ui->list_editPageSearchResult->clear();
+    ui->input_editPageScientistsSearch->clear();
+    ui->table_editPageScientistsSearchResult->clearContents();
+    int row = 0;
+
     Scientist s = _scs.scientistToEdit(id);
 
-    ui->list_editPageSearchResult->addItem(QString::fromStdString("Updated Scientist:"));
-    ui->list_editPageSearchResult->addItem(QString::fromStdString(scientistListHeader()));
+    ui->table_editPageScientistsSearchResult->setRowCount(row + 1);
 
-    ui->list_editPageSearchResult->addItem(QString::fromStdString(s.toString()));
+    QString sId = QString::number(s.getId());
+    QString name = QString::fromStdString(s.getName());
+    QString birthYear = QString::number(s.getBirthDate());
+    QString deathYear;
+
+    if(s.getDeathDate() == 9999)
+    {
+        deathYear = "Alive";
+    }
+    else
+    {
+        deathYear = QString::number(s.getDeathDate());
+    }
+
+    QString gender = QChar(toupper(s.getGender()));
+
+    ui->table_editPageScientistsSearchResult->setItem(row, 0, new QTableWidgetItem(sId));
+    ui->table_editPageScientistsSearchResult->setItem(row, 1, new QTableWidgetItem(name));
+    ui->table_editPageScientistsSearchResult->setItem(row, 2, new QTableWidgetItem(birthYear));
+    ui->table_editPageScientistsSearchResult->setItem(row, 3, new QTableWidgetItem(deathYear));
+    ui->table_editPageScientistsSearchResult->setItem(row, 4, new QTableWidgetItem(gender));
 }
 
 void EditWindow::on_button_editScientist_clicked()
@@ -223,6 +249,18 @@ void EditWindow::on_button_saveEditScientist_clicked()
 
 }
 
+void EditWindow::on_input_editNameScientist_textChanged(const QString &arg1)
+{
+    if(arg1.isEmpty())
+    {
+        ui->button_saveEditScientist->setEnabled(false);
+    }
+    else
+    {
+        ui->button_saveEditScientist->setEnabled(true);
+    }
+}
+
 void EditWindow::hideScientistFields()
 {
     ui->input_editNameScientist->hide();
@@ -238,33 +276,93 @@ void EditWindow::hideScientistFields()
     ui->label_editNameScientist->hide();
 }
 
-void EditWindow::hideComputerFields()
+// Computers - All functions regarding computers in EditWindow.
+
+void EditWindow::on_input_editPageComputersSearch_textChanged()
 {
-    ui->input_editNameComputer->hide();
-    ui->input_editYearOfCompletion->hide();
-    ui->comboBox_editComputerBuilt->hide();
-    ui->label_computerBuilt->hide();
-    ui->input_editType->hide();
-    ui->button_saveEditComputer->hide();
-    ui->label_editNameComputer->hide();
-    ui->label_editTypeComputer->hide();
-    ui->label_editYearOfCompletionComputer->hide();
+    string search = ui->input_editPageComputersSearch->text().toStdString();
+    displayComputerSearchResultsFromAll(search);
 }
 
-string EditWindow::scientistListHeader()
+void EditWindow::displayComputerSearchResultsFromAll(string search)
 {
-    string s = "Id\t|Name\t\t|Year Born\t|Year of Death\t|Gender\n";
-    s+= "--------------------------------------------------------------------------------------------";
-    return s;
+    ui->table_editPageComputersSearchResult->clearContents();
+    _currentlyDisplayedComputers.clear();
+
+    _currentlyDisplayedComputers = _scs.findComputerByName(search);
+
+    if(_currentlyDisplayedComputers.size() != 0)
+    {
+        ui->table_editPageComputersSearchResult->setRowCount(_currentlyDisplayedComputers.size());
+
+        for(unsigned int row = 0; row < _currentlyDisplayedComputers.size(); row++)
+        {
+            Computer c = _currentlyDisplayedComputers.at(row);
+            QString id = QString::number(c.getId());
+            QString name = QString::fromStdString(c.getName());
+            QString type = QString::fromStdString(c.getType());
+            QString builtYear;
+            QString wasBuilt;
+
+            if(c.getWasBuilt() == 1)
+            {
+                wasBuilt = QString::fromStdString("Yes");
+                builtYear = QString::number(c.getBuildYear());
+            }
+            else
+            {
+                wasBuilt = QString::fromStdString("No");
+            }
+
+            ui->table_editPageComputersSearchResult->setItem(row, 0, new QTableWidgetItem(id));
+            ui->table_editPageComputersSearchResult->setItem(row, 1, new QTableWidgetItem(name));
+            ui->table_editPageComputersSearchResult->setItem(row, 2, new QTableWidgetItem(type));
+            ui->table_editPageComputersSearchResult->setItem(row, 3, new QTableWidgetItem(builtYear));
+            ui->table_editPageComputersSearchResult->setItem(row, 4, new QTableWidgetItem(wasBuilt));
+
+        }
+
+    }
+    if(search.size() != 0 && _currentlyDisplayedComputers.size() == 0)
+    {
+        ui->table_editPageComputersSearchResult->clearContents();
+    //    ui->label_searchNoResults->setText("<p style=\"color:#f44242;\">Your search returned no results.</p>");
+    }
+
 }
 
-string EditWindow::computerListHeader()
+void EditWindow::displayEditedComputer(int id)
 {
-    string c = "Id\t|Name\t\t|Year Built\t|Type\t\t|Was Built\n";
-    c+= "------------------------------------------------------------------------------------------------------------";
-    return c;
-}
+    ui->table_editPageComputersSearchResult->clearContents();
+    _currentlyDisplayedComputers.clear();
+    int row = 0;
 
+    Computer c = _scs.computerToEdit(id);
+
+    ui->table_editPageComputersSearchResult->setRowCount(row + 1);
+
+    QString cId = QString::number(c.getId());
+    QString name = QString::fromStdString(c.getName());
+    QString type = QString::fromStdString(c.getType());
+    QString builtYear;
+    QString wasBuilt;
+
+    if(c.getWasBuilt() == 1)
+    {
+        wasBuilt = QString::fromStdString("Yes");
+        builtYear = QString::number(c.getBuildYear());
+    }
+    else
+    {
+        wasBuilt = QString::fromStdString("No");
+    }
+
+    ui->table_editPageComputersSearchResult->setItem(row, 0, new QTableWidgetItem(cId));
+    ui->table_editPageComputersSearchResult->setItem(row, 1, new QTableWidgetItem(name));
+    ui->table_editPageComputersSearchResult->setItem(row, 2, new QTableWidgetItem(type));
+    ui->table_editPageComputersSearchResult->setItem(row, 3, new QTableWidgetItem(builtYear));
+    ui->table_editPageComputersSearchResult->setItem(row, 4, new QTableWidgetItem(wasBuilt));
+}
 
 void EditWindow::on_button_editComputer_clicked()
 {
@@ -363,36 +461,6 @@ void EditWindow::on_button_saveEditComputer_clicked()
 
 }
 
-void EditWindow::displayEditedComputer(int id)
-{
-    ui->input_editPageSearch->clear();
-    ui->list_editPageSearchResult->clear();
-    Computer c = _scs.computerToEdit(id);
-
-    ui->list_editPageSearchResult->addItem(QString::fromStdString("Updated Computer:"));
-    ui->list_editPageSearchResult->addItem(QString::fromStdString(computerListHeader()));
-
-    ui->list_editPageSearchResult->addItem(QString::fromStdString(c.toString()));
-}
-
-/*void EditWindow::on_list_editPageSearchResult_doubleClicked(const QModelIndex &index)
-{
-    // Væri kúl að útfæra þetta, ef tvíklikkað, finna hvort sé Scientist eða Computer og skila
-    // ID niður í annan hvorn ID reitinn.
-}*/
-
-void EditWindow::on_input_editNameScientist_textChanged(const QString &arg1)
-{
-    if(arg1.isEmpty())
-    {
-        ui->button_saveEditScientist->setEnabled(false);
-    }
-    else
-    {
-        ui->button_saveEditScientist->setEnabled(true);
-    }
-}
-
 void EditWindow::on_input_editNameComputer_textChanged(const QString &arg1)
 {
     if(arg1.isEmpty())
@@ -421,4 +489,17 @@ void EditWindow::on_input_editType_textChanged(const QString &arg1)
             ui->button_saveEditComputer->setEnabled(true);
         }
     }
+}
+
+void EditWindow::hideComputerFields()
+{
+    ui->input_editNameComputer->hide();
+    ui->input_editYearOfCompletion->hide();
+    ui->comboBox_editComputerBuilt->hide();
+    ui->label_computerBuilt->hide();
+    ui->input_editType->hide();
+    ui->button_saveEditComputer->hide();
+    ui->label_editNameComputer->hide();
+    ui->label_editTypeComputer->hide();
+    ui->label_editYearOfCompletionComputer->hide();
 }

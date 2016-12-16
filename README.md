@@ -26,18 +26,35 @@ When working with the list of Computers:
 You can do these commands as often as you wish. To stop type in 'quit'.
 
 ## II. File list
-+ ConsoleUI.cpp
-+ ConsoleUI.h
++ AddWindow.cpp
++ AddWindow.h
++ AddWindow.ui
++ Computer.cpp
++ Computer.h
++ ConnectWindow.cpp
++ ConnectWindow.h
++ ConnectWindow.ui
++ DataAccess.cpp
++ DataAccess.h
++ DeleteWindow.cpp
++ DeleteWindow.h
++ DeleteWindow.ui
++ EditWindow.cpp
++ EditWindow.h
++ EditWindow.ui
++ Invented.cpp
++ Invented.h
++ ListWindow.cpp
++ ListWindow.h
++ ListWindow.ui
++ MainWindow.cpp
++ MainWindow.h
++ MainWindow.ui
++ resources.qrc
 + Scientist.cpp
 + Scientist.h
 + SCService.cpp
 + SCService.h
-+ DataAccess.cpp
-+ DataAccess.h
-+ Computer.cpp
-+ Computer.h
-+ Invented.cpp
-+ Invented.h
 + main.cpp
 + CSHistory.sqlite           - Database that holds lists of Scientists, Computers and a joined list.
 + Insert_queries.txt - SQL queries to fill database.
@@ -47,8 +64,8 @@ You can do these commands as often as you wish. To stop type in 'quit'.
 2. Save the .sqlite file in C:\ drive.
 3. Run SQLite Manager as administrator.
 4. Run Qt as administrator.
-5. Open ComputerScientists.pro from folder Skil2 in Qt
-6. Change working directory to where the chiquita40\Skil2 folder is saved on your computer
+5. Open ComputerScientists.pro from folder Skil3 in Qt
+6. Change working directory to where the chiquita40\Skil3 folder is saved on your computer
 7. Build and run the program
 
 ## IV. Instructions 

@@ -8,6 +8,7 @@
 #include <vector>
 
 #include <QDialog>
+#include <QTableWidget>
 
 namespace Ui {
 class DeleteWindow;
@@ -20,26 +21,29 @@ class DeleteWindow : public QDialog
 public:
     explicit DeleteWindow(QWidget *parent = 0);
     ~DeleteWindow();
-    int deleteWarningMessage();
 
 private slots:
     void on_button_deleteQuit_clicked();
 
     void on_button_deleteBack_clicked();
 
-    void on_input_deletePageSearch_textChanged(const QString &arg1);
+    void on_input_deleteScientistSearch_textChanged();
 
-    void on_lineEdit_deleteScientistID_textChanged(const QString &arg1);
+    void on_input_deleteComputerSearch_textChanged();
+
+    void on_input_deleteConnectSearch_textChanged();
+
+    void on_lineEdit_deleteScientistID_textChanged();
 
     void on_button_deleteScientist_clicked();
 
-    void on_lineEdit_deleteComputerID_textChanged(const QString &arg1);
+    void on_lineEdit_deleteComputerID_textChanged();
 
     void on_button_deleteComputer_clicked();
 
-    void on_lineEdit_deleteConnectionScientistID_textChanged(const QString &arg1);
+    void on_lineEdit_deleteConnectionScientistID_textChanged();
 
-    void on_lineEdit_deleteConnectionComputerID_textChanged(const QString &arg1);
+    void on_lineEdit_deleteConnectionComputerID_textChanged();
 
     void on_button_deleteConnection_clicked();
 
@@ -50,14 +54,14 @@ private:
     vector<Invented> _currentlyDisplayedConnections;
     SCService _scs;
 
-    void displaySearchResultsFromAll(string search);
-    void displayDeletePageSearchResultsForScientists();
-    void displayDeletePageSearchResultsForComputers();
-    void displayDeletePageSearchResultsForConnection();
+    int deleteWarningMessage();
 
-    string scientistListHeader();
-    string computerListHeader();
-    string connectListHeader();
+    void displayAllScientists(string search);
+    void displayAllComputers(string search);
+    void displayAllConnections(string search);
+    void displayScientistsAfterDelete();
+    void displayComputersAfterDelete();
+    void displayConnectionAfterDelete();
 };
 
 #endif // DELETEWINDOW_H
