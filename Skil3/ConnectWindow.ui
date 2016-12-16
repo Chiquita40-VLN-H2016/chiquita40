@@ -167,7 +167,7 @@
    <item row="5" column="0" colspan="5">
     <widget class="QLineEdit" name="input_connectComputerSearch">
      <property name="placeholderText">
-      <string>Find computer to connect</string>
+      <string>Find computer by name to connect</string>
      </property>
     </widget>
    </item>
@@ -257,7 +257,7 @@
    <item row="2" column="0" colspan="5">
     <widget class="QLineEdit" name="input_connectScientistSearch">
      <property name="placeholderText">
-      <string>Find scientist to connect</string>
+      <string>Find scientist by name to connect</string>
      </property>
     </widget>
    </item>

@@ -3,7 +3,7 @@
 #include "Scientist.h"
 #include "Computer.h"
 #include "SCService.h"
-#include "EditWindow1.h"
+#include "EditWindow.h"
 #include "DeleteWindow.h"
 #include "ListWindow.h"
 #include "AddWindow.h"
@@ -42,7 +42,6 @@ private slots:
 
     void on_input_frontPageSearch_textChanged(const QString &arg1);
 
-
     void on_button_frontConnect_clicked();
 
 private:
@@ -52,6 +51,8 @@ private:
     SCService _scs;
 
     void displaySearchResultsFromAll(string search);
+    string scientistListHeader();
+    string computerListHeader();
 };
 
 #endif // MAINWINDOW_H

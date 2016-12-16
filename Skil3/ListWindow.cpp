@@ -7,7 +7,8 @@ ListWindow::ListWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     displayAllConnections();
-    displayAllScientist(0, 0);
+    displayAllScientist();
+    displayAllComputers();
 }
 
 ListWindow::~ListWindow()
@@ -19,20 +20,18 @@ ListWindow::~ListWindow()
 void ListWindow::displayScientistSearchResults(string search)
 {
     ui->label_searchScientistsNoResults->setText("");
-    ui->table_Scientists->clearContents();
+    ui->table_scientists->clearContents();
    _currentlyDisplayedScientists.clear();
 
    _currentlyDisplayedScientists = _scs.findScientistByName(search);
    if(_currentlyDisplayedScientists.size() != 0)
    {
 
-       ui->table_Scientists->setRowCount(_currentlyDisplayedScientists.size());
+       ui->table_scientists->setRowCount(_currentlyDisplayedScientists.size());
 
        for(unsigned int row = 0; row < _currentlyDisplayedScientists.size(); row++)
        {
            Scientist s = _currentlyDisplayedScientists.at(row);
-           //QTableWidgetItem *id = new QTableWidgetItem(s.getId());
-           QString id = QString::number(s.getId());
            QString name = QString::fromStdString(s.getName());
            QString birthYear = QString::number(s.getBirthDate());
            QString deathYear;
@@ -46,35 +45,33 @@ void ListWindow::displayScientistSearchResults(string search)
            }
            QString gender = QChar(toupper(s.getGender()));
 
-           ui->table_Scientists->setItem(row, 0, new QTableWidgetItem(id));
-           ui->table_Scientists->setItem(row, 1, new QTableWidgetItem(name));
-           ui->table_Scientists->setItem(row, 2, new QTableWidgetItem(birthYear));
-           ui->table_Scientists->setItem(row, 3, new QTableWidgetItem(deathYear));
-           ui->table_Scientists->setItem(row, 4, new QTableWidgetItem(gender));
+           ui->table_scientists->setItem(row, 0, new Utilities::TableItemSC(s.getId()));
+           ui->table_scientists->setItem(row, 1, new Utilities::TableItemSC(name));
+           ui->table_scientists->setItem(row, 2, new Utilities::TableItemSC(birthYear));
+           ui->table_scientists->setItem(row, 3, new Utilities::TableItemSC(deathYear));
+           ui->table_scientists->setItem(row, 4, new Utilities::TableItemSC(gender));
        }
    }
    if(search.size() != 0 && _currentlyDisplayedScientists.size() == 0)
    {
-       ui->table_Scientists->clearContents();
+       ui->table_scientists->clearContents();
        ui->label_searchScientistsNoResults->setText("<p style=\"color:#f44242;\">Your search returned no results.</p>");
    }
 }
 
-void ListWindow::displayAllScientist(int type, int ascdesc)
+void ListWindow::displayAllScientist()
 {
     ui->input_listScientistSearch->setText("");
-    ui->table_Scientists->clearContents();
+    ui->table_scientists->clearContents();
     _allScientists.clear();
-    scientistsWhichOrder(type, ascdesc);
+    _scs.scientistsAscendingOrder(0);
     _allScientists = _scs.getScientists();
 
-    ui->table_Scientists->setRowCount(_allScientists.size());
+    ui->table_scientists->setRowCount(_allScientists.size());
 
     for(unsigned int row = 0; row < _allScientists.size(); row++)
     {
         Scientist s = _allScientists.at(row);
-        //QTableWidgetItem *id = new QTableWidgetItem(s.getId());
-        QString id = QString::number(s.getId());
         QString name = QString::fromStdString(s.getName());
         QString birthYear = QString::number(s.getBirthDate());
         QString deathYear;
@@ -89,11 +86,142 @@ void ListWindow::displayAllScientist(int type, int ascdesc)
 
         QString gender = QChar(toupper(s.getGender()));
 
-        ui->table_Scientists->setItem(row, 0, new QTableWidgetItem(id));
-        ui->table_Scientists->setItem(row, 1, new QTableWidgetItem(name));
-        ui->table_Scientists->setItem(row, 2, new QTableWidgetItem(birthYear));
-        ui->table_Scientists->setItem(row, 3, new QTableWidgetItem(deathYear));
-        ui->table_Scientists->setItem(row, 4, new QTableWidgetItem(gender));
+        ui->table_scientists->setItem(row, 0, new Utilities::TableItemSC(s.getId()));
+        ui->table_scientists->setItem(row, 1, new Utilities::TableItemSC(name));
+        ui->table_scientists->setItem(row, 2, new Utilities::TableItemSC(birthYear));
+        ui->table_scientists->setItem(row, 3, new Utilities::TableItemSC(deathYear));
+        ui->table_scientists->setItem(row, 4, new Utilities::TableItemSC(gender));
+    }
+}
+
+void ListWindow::displayConnectionsSearchResults(string search)
+{
+    ui->label_searchConnectionNoResult->setText("");
+    ui->table_connections->clearContents();
+    _currentlyDisplayedConnections.clear();
+
+    _currentlyDisplayedConnections = _scs.findConnectionByName(search);
+
+    //If not empty, display contents of vector.
+    if(_currentlyDisplayedConnections.size() !=0)
+    {
+        ui->table_connections->setRowCount(_currentlyDisplayedConnections.size());
+
+        for(unsigned int row = 0; row < _currentlyDisplayedConnections.size(); row++)
+        {
+            Invented in =_currentlyDisplayedConnections.at(row);
+            QString sId = QString::number(in.getSId());
+            QString sName = QString::fromStdString(in.getSName());
+            QString cId = QString::number(in.getCId());
+            QString cName = QString::fromStdString((in.getCName()));
+
+            ui->table_connections->setItem(row, 0, new Utilities::TableItemConnect(sId));
+            ui->table_connections->setItem(row, 1, new Utilities::TableItemConnect(sName));
+            ui->table_connections->setItem(row, 2, new Utilities::TableItemConnect(cId));
+            ui->table_connections->setItem(row, 3, new Utilities::TableItemConnect(cName));
+        }
+    }
+    if(search.size() != 0 && _currentlyDisplayedConnections.size() == 0)
+    {
+        ui->table_connections->clearContents();
+        ui->label_searchConnectionNoResult->setText("<p style=\"color:#f44242;\">Your search returned no results.</p>");
+    }
+}
+
+void ListWindow::displayComputerSearchResults(string search)
+{
+    ui->label_searchComputersNoResults->setText("");
+    ui->table_Computers->clearContents();
+    _currentlyDisplayedComputers.clear();
+
+    _currentlyDisplayedComputers = _scs.findComputerByName(search);
+    if(_currentlyDisplayedComputers.size() !=0)
+    {
+        ui->table_Computers->setRowCount(_currentlyDisplayedComputers.size());
+
+        for(unsigned int row = 0; row < _currentlyDisplayedComputers.size(); row++)
+        {
+            Computer c =_currentlyDisplayedComputers.at(row);
+            QString id = QString::number(c.getId());
+            QString name = QString::fromStdString(c.getName());
+            QString type = QString::fromStdString(c.getType());
+            QString buildyear = QString::number(c.getBuildYear());
+            if(c.getBuildYear() == 0)
+            {
+                buildyear = " ";
+            }
+            else
+            {
+                QString::number(c.getBuildYear());
+            }
+            QString wasbuilt = QString::number(c.getWasBuilt());
+            if(c.getWasBuilt() == 1)
+            {
+                wasbuilt = "Yes";
+            }
+            else if(c.getWasBuilt() == 0)
+            {
+                wasbuilt = "No";
+            }
+
+            ui->table_Computers->setItem(row, 0, new Utilities::TableItemSC(id));
+            ui->table_Computers->setItem(row, 1, new Utilities::TableItemSC(name));
+            ui->table_Computers->setItem(row, 2, new Utilities::TableItemSC(buildyear));
+            ui->table_Computers->setItem(row, 3, new Utilities::TableItemSC(type));
+            ui->table_Computers->setItem(row, 4, new Utilities::TableItemSC(wasbuilt));
+
+        }
+    }
+    if(search.size() != 0 && _currentlyDisplayedComputers.size() == 0)
+    {
+        ui->table_Computers->clearContents();
+        ui->label_searchComputersNoResults->setText("<p style=\"color:#f44242;\">Your search returned no results.</p>");
+    }
+}
+
+void ListWindow::displayAllComputers()
+{
+    ui->input_listComputerSearch->setText("");
+    ui->table_Computers->clearContents();
+    _allComputers.clear();
+    _allComputers = _scs.getComputers();
+
+
+    ui->table_Computers->setRowCount(_allComputers.size());
+
+    for(unsigned int row = 0; row < _allComputers.size(); row++)
+    {
+        Computer c = _allComputers.at(row);
+        QString id = QString::number(c.getId());
+        QString name = QString::fromStdString(c.getName());
+        QString type = QString::fromStdString(c.getType());
+        QString buildyear = QString::number(c.getBuildYear());
+        if(c.getBuildYear() == 0)
+        {
+            buildyear = " ";
+        }
+        else
+        {
+            QString::number(c.getBuildYear());
+        }
+        QString wasbuilt = QString::number(c.getWasBuilt());
+        if(c.getWasBuilt() == 1)
+        {
+            wasbuilt = "Yes";
+        }
+        else if(c.getWasBuilt() == 0)
+        {
+            wasbuilt = "No";
+        }
+
+
+        ui->table_Computers->setItem(row, 0, new Utilities::TableItemSC(id));
+        ui->table_Computers->setItem(row, 1, new Utilities::TableItemSC(name));
+        ui->table_Computers->setItem(row, 2, new Utilities::TableItemSC(buildyear));
+        ui->table_Computers->setItem(row, 3, new Utilities::TableItemSC(type));
+        ui->table_Computers->setItem(row, 4, new Utilities::TableItemSC(wasbuilt));
+
+
     }
 }
 
@@ -114,57 +242,10 @@ void ListWindow::displayAllConnections()
         QString cId = QString::number(in.getCId());
         QString cName = QString::fromStdString((in.getCName()));
 
-        ui->table_connections->setItem(row, 0, new QTableWidgetItem(sId));
-        ui->table_connections->setItem(row, 1, new QTableWidgetItem(sName));
-        ui->table_connections->setItem(row, 2, new QTableWidgetItem(cId));
-        ui->table_connections->setItem(row, 3, new QTableWidgetItem(cName));
-    }
-}
-
-//Order scientists in desired order.
-void ListWindow::scientistsWhichOrder(int type, int ascdesc)
-{
-    if(ascdesc == 0) //Ascending order.
-    {
-        switch(type)
-        {
-
-            case 0:  //Order by name.
-                    _scs.scientistsAscendingOrder(0);
-                    break;
-            case 1: //Order by Birth year.
-                    _scs.scientistsAscendingOrder(1);
-                    break;
-            case 2: //Order by Year of death.
-                    _scs.scientistsAscendingOrder(2);
-                    break;
-            case 3: //Order by gender.
-                    _scs.scientistsAscendingOrder(3);
-                    break;
-            default: //Order by id.
-                    _scs.scientistsAscendingOrder(4);
-        }
-    }
-    else //Descending order.
-    {
-        switch(type)
-        {
-
-            case 0:  //Order by name.
-                    _scs.scientistsDescendingOrder(0);
-                    break;
-            case 1: //Order by Birth year.
-                    _scs.scientistsDescendingOrder(1);
-                    break;
-            case 2: //Order by Year of death.
-                    _scs.scientistsDescendingOrder(2);
-                    break;
-            case 3: //Order by gender.
-                    _scs.scientistsDescendingOrder(3);
-                    break;
-            default: //Order by id.
-                    _scs.scientistsDescendingOrder(4);
-        }
+        ui->table_connections->setItem(row, 0, new Utilities::TableItemConnect(sId));
+        ui->table_connections->setItem(row, 1, new Utilities::TableItemConnect(sName));
+        ui->table_connections->setItem(row, 2, new Utilities::TableItemConnect(cId));
+        ui->table_connections->setItem(row, 3, new Utilities::TableItemConnect(cName));
     }
 }
 
@@ -185,8 +266,14 @@ void ListWindow::on_input_listScientistSearch_textChanged(const QString &arg1)
     displayScientistSearchResults(search);
 }
 
-void ListWindow::on_lineEdit_textChanged(const QString &arg1)
+void ListWindow::on_input_listComputerSearch_textChanged(const QString &arg1)
 {
     string search = arg1.toStdString();
-    //displayConnectionSearchResults(search);
+    displayComputerSearchResults(search);
+}
+
+void ListWindow::on_input_searchConnections_textChanged(const QString &arg1)
+{
+    string search = arg1.toStdString();
+    displayConnectionsSearchResults(search);
 }

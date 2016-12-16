@@ -9,7 +9,9 @@
 
 #include <QDialog>
 #include <QTableWidgetItem>
+
 namespace Ui {
+
 class EditWindow;
 }
 

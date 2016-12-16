@@ -72,6 +72,7 @@ void DeleteWindow::on_lineEdit_deleteConnectionComputerID_textChanged()
 int DeleteWindow::deleteWarningMessage()
 {
     QMessageBox deleteMessage;
+    deleteMessage.setWindowTitle("Warning");
     deleteMessage.setText("You are about to delete.");
     deleteMessage.setInformativeText("Do you really want to delete?");
     deleteMessage.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
@@ -85,7 +86,7 @@ void DeleteWindow::displayAllScientists(string search)
 {
     ui->table_Scientists->clearContents();
     _currentlyDisplayedScientists.clear();
-
+    _currentlyDisplayedScientists = _scs.getScientists();
     _currentlyDisplayedScientists = _scs.findScientistByName(search);
 
     ui->table_Scientists->setRowCount(_currentlyDisplayedScientists.size());
@@ -157,6 +158,7 @@ void DeleteWindow::displayAllComputers(string search)
         ui->table_Computers->setItem(row, 3, new QTableWidgetItem(type));
         ui->table_Computers->setItem(row, 4, new QTableWidgetItem(wasBuilt));
     }
+    ui->table_Computers->resizeColumnToContents(1);
 }
 
 void DeleteWindow::displayAllConnections(string search)
@@ -267,65 +269,130 @@ void DeleteWindow::displayConnectionAfterDelete()
 
 void DeleteWindow::on_button_deleteScientist_clicked()
 {
+    ui->label_warningScId1->clear();
+
     int success = -1;
-    int ret = deleteWarningMessage();
+    int ret = 0;
 
     int id = ui->lineEdit_deleteScientistID->text().toInt();
+
+    Scientist s = _scs.scientistToEdit(id);
+    if(s.getId() < 0)
+    {
+        ui->label_warningScId1->setText("<p style=\"color:#f44242;\">Invalid ID</p>");
+    }
+    else
+    {
+        ret = deleteWarningMessage();
+    }
 
     if(ret == 16384)
     {
         success = _scs.deleteScientist(id);
     }
+    else
+    {
+        ui->button_deleteScientist->setEnabled(false);
+        ui->input_deleteScientistSearch->clear();
+        ui->lineEdit_deleteScientistID->clear();
+    }
 
     if(success != -1)
     {
         displayScientistsAfterDelete();
+
+        ui->button_deleteScientist->setEnabled(false);
+        ui->input_deleteScientistSearch->clear();
+        ui->lineEdit_deleteScientistID->clear();
     }
-    ui->button_deleteScientist->setEnabled(false);
-    ui->input_deleteScientistSearch->clear();
-    ui->lineEdit_deleteScientistID->clear();
 }
 
 void DeleteWindow::on_button_deleteComputer_clicked()
 {
+    ui->label_warningCId1->clear();
+
     int success = -1;
-    int ret = deleteWarningMessage();
+    int ret = 0;
 
     int id = ui->lineEdit_deleteComputerID->text().toInt();
+
+    Computer c = _scs.computerToEdit(id);
+    if(c.getId() < 0)
+    {
+        ui->label_warningCId1->setText("<p style=\"color:#f44242;\">Invalid ID</p>");
+    }
+    else
+    {
+        ret = deleteWarningMessage();
+    }
 
     if(ret == 16384)
     {
         success = _scs.deleteComputer(id);
     }
+    else
+    {
+        ui->button_deleteComputer->setEnabled(false);
+        ui->input_deleteComputerSearch->clear();
+        ui->lineEdit_deleteComputerID->clear();
+    }
 
     if(success != -1)
     {
         displayComputersAfterDelete();
+
+        ui->button_deleteComputer->setEnabled(false);
+        ui->input_deleteComputerSearch->clear();
+        ui->lineEdit_deleteComputerID->clear();
     }
-    ui->button_deleteComputer->setEnabled(false);
-    ui->input_deleteComputerSearch->clear();
-    ui->lineEdit_deleteComputerID->clear();
 }
 
 void DeleteWindow::on_button_deleteConnection_clicked()
 {
+    ui->label_warningScId2->clear();
+    ui->label_warningCId2->clear();
+
     bool success = false;
-    int ret = deleteWarningMessage();
+    int ret = 0;
 
     int sId = ui->lineEdit_deleteConnectionScientistID->text().toInt();
     int cId = ui->lineEdit_deleteConnectionComputerID->text().toInt();
+
+    Scientist s = _scs.scientistToEdit(sId);
+    Computer c = _scs.computerToEdit(cId);
+
+    if(s.getId() < 0)
+    {
+        ui->label_warningScId2->setText("<p style=\"color:#f44242;\">Invalid Scientist ID</p>");
+    }
+    else if(c.getId() < 0)
+    {
+        ui->label_warningCId2->setText("<p style=\"color:#f44242;\">Invalid Computer ID</p>");
+    }
+    else
+    {
+        ret = deleteWarningMessage();
+    }
 
     if(ret == 16384)
     {
         success = _scs.deleteConnection(sId, cId);
     }
+    else
+    {
+        ui->button_deleteComputer->setEnabled(false);
+        ui->input_deleteConnectSearch->clear();
+        ui->lineEdit_deleteConnectionScientistID->clear();
+        ui->lineEdit_deleteConnectionComputerID->clear();
+    }
 
     if(success == true)
     {
         displayConnectionAfterDelete();
+
+        ui->button_deleteComputer->setEnabled(false);
+        ui->input_deleteConnectSearch->clear();
+        ui->lineEdit_deleteConnectionScientistID->clear();
+        ui->lineEdit_deleteConnectionComputerID->clear();
     }
-    ui->button_deleteComputer->setEnabled(false);
-    ui->input_deleteConnectSearch->clear();
-    ui->lineEdit_deleteConnectionScientistID->clear();
-    ui->lineEdit_deleteConnectionComputerID->clear();
 }

@@ -8,7 +8,8 @@
 #include <QTableWidgetItem>
 #include <QDialog>
 
-namespace Ui {
+namespace Ui
+{
 class ConnectWindow;
 }
 
@@ -46,9 +47,7 @@ private:
     void displayScientistSearchResult(const QString &arg1);
     void displayComputerSearchResult(const QString &arg1);
     void displayAllCurrentConnections();
-    string scientistListHeader();
-    string computerListHeader();
-    string connectListHeader();
+
 };
 
 #endif // CONNECTWINDOW_H

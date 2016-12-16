@@ -26,27 +26,6 @@ void ConnectWindow::on_button_connectQuit_clicked()
     qApp->quit();
 }
 
-string ConnectWindow::scientistListHeader()
-{
-    string s = "Id\t|Name\t\t|Year Born\t|Year of Death\t|Gender\n";
-    s+= "--------------------------------------------------------------------------------------------";
-    return s;
-}
-
-string ConnectWindow::computerListHeader()
-{
-    string c = "Id\t|Name\t\t|Year Built\t|Type\t\t|Was Built\n";
-    c+= "------------------------------------------------------------------------------------------------------------";
-    return c;
-}
-
-string ConnectWindow::connectListHeader()
-{
-    string in = "Id\t|Scientist Name\t|Id\t|Computer Name\n";
-    in+= "------------------------------------------------------------------------------------------------------------";
-    return in;
-}
-
 void ConnectWindow::on_input_connectScientistSearch_textChanged(const QString &arg1)
 {
     displayScientistSearchResult(arg1);

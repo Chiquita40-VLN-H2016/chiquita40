@@ -78,7 +78,7 @@ color: rgb(0, 0, 0);</string>
        <item row="1" column="0" colspan="3">
         <widget class="QLineEdit" name="input_editPageScientistsSearch">
          <property name="placeholderText">
-          <string>Search database</string>
+          <string>Search for Scientist by name to edit</string>
          </property>
         </widget>
        </item>
@@ -341,7 +341,7 @@ color: rgb(0, 0, 0);</string>
        <item row="1" column="0" colspan="3">
         <widget class="QLineEdit" name="input_editPageComputersSearch">
          <property name="placeholderText">
-          <string>Search database</string>
+          <string>Search for Computer by name to edit</string>
          </property>
         </widget>
        </item>
