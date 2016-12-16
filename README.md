@@ -88,7 +88,7 @@ To add a new scientist and a computer to the database click on 'add' button in t
 
 **Edit**
 
-To edit a scientist and/or a computer click on 'edit' button in the main window. When you edit a scientist and/or a computer the Invented table in the SQLite Manager will be updated. Each list item can be ordered ascending or descending by clicking on the adequate table header. 
+To edit a scientist and/or a computer click on 'edit' button in the main window. In appropriate tab, you write the name of the scientist/computer you want to edit in the search line. Then you either write a scientist's/computer's id or you double click on the row of the scientist/computer you want to edit. By double clicking, the id of the scientist/computer appears below the list. When you edit a scientist and/or a computer the Invented table in the SQLite Manager will be updated. Each list item can be ordered ascending or descending by clicking on the adequate table header. 
 
 
 **See full lists**
@@ -101,7 +101,7 @@ To delete a scientist, a computer and/or a connection click on 'Delete' button i
 
 **Connect**
 
-To connect a scientist with a computer click on 'Connect computer and scientist' button. The Invented table in the SQLite Manager will be updated. Each list item can be ordered ascending or descending by clicking on the adequate table header. 
+To connect a scientist with a computer click on 'Connect computer and scientist' button. Write the scientist's/computer's id in appropriate search line or double click the row of the scientist/computer you want to connect. By double clicking, the id of the scientist/computer you want to edit appears below. The Invented table in the SQLite Manager will be updated. Each list item can be ordered ascending or descending by clicking on the adequate table header. 
 
 **Quit**
 
