@@ -44,8 +44,7 @@ void ListWindow::displayScientistSearchResults(string search)
                deathYear = QString::number(s.getDeathDate());
            }
            QString gender = QChar(toupper(s.getGender()));
-           QString l = QString::fromStdString(s.getLink());
-           QString link = "<a href =\"" + l + "\">Link</a>";
+           QString link = QString::fromStdString(s.getLink());
 
            ui->table_scientists->setItem(row, 0, new Utilities::TableItemSC(s.getId()));
            ui->table_scientists->setItem(row, 1, new Utilities::TableItemSC(name));
@@ -89,8 +88,7 @@ void ListWindow::displayAllScientist()
         }
 
         QString gender = QChar(toupper(s.getGender()));
-        QString l = QString::fromStdString(s.getLink());
-        QString link = "<a href =\"" + l + "\">Link</a>";
+        QString link = QString::fromStdString(s.getLink());
 
         ui->table_scientists->setItem(row, 0, new Utilities::TableItemSC(s.getId()));
         ui->table_scientists->setItem(row, 1, new Utilities::TableItemSC(name));
@@ -170,8 +168,7 @@ void ListWindow::displayComputerSearchResults(string search)
             {
                 wasbuilt = "No";
             }
-            QString l = QString::fromStdString(c.getLink());
-            QString link = "<a href =\"" + l + "\">Link</a>";
+            QString link = QString::fromStdString(c.getLink());
 
             ui->table_Computers->setItem(row, 0, new Utilities::TableItemSC(id));
             ui->table_Computers->setItem(row, 1, new Utilities::TableItemSC(name));
@@ -222,8 +219,7 @@ void ListWindow::displayAllComputers()
         {
             wasbuilt = "No";
         }
-        QString l = QString::fromStdString(c.getLink());
-        QString link = "<a href =\"" + l + "\">Link</a>";
+        QString link = QString::fromStdString(c.getLink());
 
         ui->table_Computers->setItem(row, 0, new Utilities::TableItemSC(id));
         ui->table_Computers->setItem(row, 1, new Utilities::TableItemSC(name));
