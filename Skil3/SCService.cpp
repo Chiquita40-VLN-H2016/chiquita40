@@ -16,7 +16,6 @@ vector<Computer> SCService::getComputers()
     return _computers;
 }
 
-
 void SCService::scientistsAscendingOrder(int n)
 {
     _scientists = _data.scientistsAscendingOrder(n);
@@ -92,7 +91,6 @@ vector<Invented> SCService::findConnectionByName(string search)
 
     return result;
 }
-
 
 vector<Computer> SCService::findComputerByName(string search)
 {

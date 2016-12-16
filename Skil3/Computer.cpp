@@ -87,7 +87,6 @@ string Computer::toString()
     }
     c+= '\t';
     c+= _type + addTab(_type);
-    //c+= _wasBuilt;
     if(_wasBuilt)
     {
         c+= "Yes";

@@ -67,13 +67,10 @@ void ConnectWindow::displayScientistSearchResult(const QString &arg1)
             ui->table_connectScientistSearchResult->setItem(row, 2, new Utilities::TableItemSC(birthYear));
             ui->table_connectScientistSearchResult->setItem(row, 3, new Utilities::TableItemSC(deathYear));
             ui->table_connectScientistSearchResult->setItem(row, 4, new Utilities::TableItemSC(gender));
-
         }
-
         ui->table_connectScientistSearchResult->resizeColumnsToContents();
-
     }
-
+    // Display message if no search results
     if(search.size() != 0 && _currentlyDisplayedScientists.size() == 0)
     {
         ui->table_connectScientistSearchResult->clearContents();
@@ -130,6 +127,7 @@ void ConnectWindow::displayComputerSearchResult(const QString &arg1)
         ui->table_connectComputerSearchResult->resizeColumnsToContents();
 
     }
+    // Display message if no search results
     if(search.size() != 0 && _currentlyDisplayedComputers.size() == 0)
     {
         ui->table_connectComputerSearchResult->clearContents();
@@ -174,6 +172,7 @@ void ConnectWindow::on_button_connectScientistAndComputer_clicked()
     Scientist s = _scs.scientistToEdit(sId);
     Computer c = _scs.computerToEdit(cId);
 
+    // Display message if ID is invalid
     if(s.getId() != -1 && c.getId() == -1)
     {
         ui->label_connectErrorMessage->setText("<p style=\"color:#f44242;\">Computer ID is not valid</p>");
@@ -210,9 +209,7 @@ void ConnectWindow::on_button_connectScientistAndComputer_clicked()
             ui->table_connectCurrent->clearContents();
 
             displayAllCurrentConnections();
-
         }
-
     }
 }
 
