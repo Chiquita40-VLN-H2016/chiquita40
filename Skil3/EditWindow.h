@@ -8,9 +8,10 @@
 #include <vector>
 
 #include <QDialog>
+#include <QTableWidgetItem>
 
-namespace Ui
-{
+namespace Ui {
+
 class EditWindow;
 }
 
@@ -49,6 +50,14 @@ private slots:
     void on_input_editPageScientistsSearch_textChanged();
 
     void on_input_editPageComputersSearch_textChanged();
+
+//    void on_table_editPageScientistsSearchResult_doubleClicked(int index);
+
+//    void on_table_editPageScientistsSearchResult_doubleClicked(const QModelIndex &index);
+
+    void on_table_editPageScientistsSearchResult_itemDoubleClicked(QTableWidgetItem *item);
+
+    void on_table_editPageComputersSearchResult_itemDoubleClicked(QTableWidgetItem *item);
 
 private:
     Ui::EditWindow *ui;

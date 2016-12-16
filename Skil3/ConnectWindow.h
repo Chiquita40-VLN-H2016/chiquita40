@@ -5,6 +5,7 @@
 #include "Computer.h"
 #include "Utilities.h"
 #include "Invented.h"
+#include <QTableWidgetItem>
 #include <QDialog>
 
 namespace Ui
@@ -31,6 +32,10 @@ private slots:
 
     void on_button_connectScientistAndComputer_clicked();
 
+    void on_table_connectScientistSearchResult_itemDoubleClicked(QTableWidgetItem *item);
+
+    void on_table_connectComputerSearchResult_itemDoubleClicked(QTableWidgetItem *item);
+
 private:
     Ui::ConnectWindow *ui;
     vector<Scientist> _currentlyDisplayedScientists;
@@ -42,9 +47,7 @@ private:
     void displayScientistSearchResult(const QString &arg1);
     void displayComputerSearchResult(const QString &arg1);
     void displayAllCurrentConnections();
-    string scientistListHeader();
-    string computerListHeader();
-    string connectListHeader();
+
 };
 
 #endif // CONNECTWINDOW_H

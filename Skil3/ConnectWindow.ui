@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>653</width>
-    <height>708</height>
+    <width>531</width>
+    <height>649</height>
    </rect>
   </property>
   <property name="font">
@@ -30,88 +30,266 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="5">
+   <item row="10" column="0">
     <widget class="QLabel" name="label_currentConnections">
      <property name="text">
       <string>&lt;b&gt;Current connections:&lt;/b&gt;</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="5">
-    <widget class="QListWidget" name="list_connectCurrent"/>
-   </item>
-   <item row="3" column="0" colspan="5">
-    <widget class="QLineEdit" name="input_connectScientistSearch">
-     <property name="placeholderText">
-      <string>Find scientist to connect</string>
+   <item row="11" column="0" colspan="5">
+    <widget class="QTableWidget" name="table_connectCurrent">
+     <property name="showGrid">
+      <bool>false</bool>
      </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="5">
-    <widget class="QListWidget" name="list_connectScientistSearchResult">
-     <property name="font">
-      <font>
-       <pointsize>9</pointsize>
-      </font>
+     <property name="sortingEnabled">
+      <bool>true</bool>
      </property>
-    </widget>
-   </item>
-   <item row="5" column="0" colspan="5">
-    <widget class="QLineEdit" name="input_connectComputerSearch">
-     <property name="placeholderText">
-      <string>Find computer to connect</string>
-     </property>
+     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>ID</string>
+      </property>
+      <property name="textAlignment">
+       <set>AlignJustify|AlignVCenter</set>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Scientist</string>
+      </property>
+      <property name="textAlignment">
+       <set>AlignJustify|AlignVCenter</set>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>ID</string>
+      </property>
+      <property name="textAlignment">
+       <set>AlignJustify|AlignVCenter</set>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Computer</string>
+      </property>
+      <property name="textAlignment">
+       <set>AlignJustify|AlignVCenter</set>
+      </property>
+     </column>
     </widget>
    </item>
    <item row="6" column="0" colspan="5">
-    <widget class="QListWidget" name="list_connectComputerSearchResult"/>
+    <widget class="QTableWidget" name="table_connectComputerSearchResult">
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="showGrid">
+      <bool>false</bool>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>ID</string>
+      </property>
+      <property name="textAlignment">
+       <set>AlignJustify|AlignVCenter</set>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Name</string>
+      </property>
+      <property name="textAlignment">
+       <set>AlignJustify|AlignVCenter</set>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Type</string>
+      </property>
+      <property name="textAlignment">
+       <set>AlignJustify|AlignVCenter</set>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Year built</string>
+      </property>
+      <property name="textAlignment">
+       <set>AlignJustify|AlignVCenter</set>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Was built</string>
+      </property>
+      <property name="textAlignment">
+       <set>AlignJustify|AlignVCenter</set>
+      </property>
+     </column>
+    </widget>
    </item>
-   <item row="7" column="1">
+   <item row="4" column="1" colspan="4">
+    <widget class="QLabel" name="label_searchNoResultsComputer">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0" colspan="2">
     <widget class="QLabel" name="label_connectScientist">
      <property name="text">
       <string>Scientist to connect:</string>
      </property>
     </widget>
    </item>
-   <item row="7" column="2">
-    <widget class="QLineEdit" name="input_connectScientistID">
+   <item row="5" column="0" colspan="5">
+    <widget class="QLineEdit" name="input_connectComputerSearch">
      <property name="placeholderText">
-      <string>Enter ID of scientist you want to connect</string>
+      <string>Find computer by name to connect</string>
      </property>
     </widget>
    </item>
-   <item row="7" column="3" rowspan="2">
-    <widget class="QPushButton" name="button_connectScientistAndComputer">
-     <property name="enabled">
+   <item row="3" column="0" colspan="5">
+    <widget class="QTableWidget" name="table_connectScientistSearchResult">
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="showGrid">
+      <bool>false</bool>
+     </property>
+     <property name="sortingEnabled">
       <bool>true</bool>
      </property>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>ID</string>
+      </property>
+      <property name="textAlignment">
+       <set>AlignJustify|AlignVCenter</set>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Name</string>
+      </property>
+      <property name="textAlignment">
+       <set>AlignJustify|AlignVCenter</set>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Birth year</string>
+      </property>
+      <property name="textAlignment">
+       <set>AlignJustify|AlignVCenter</set>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Death year</string>
+      </property>
+      <property name="textAlignment">
+       <set>AlignJustify|AlignVCenter</set>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Gender</string>
+      </property>
+      <property name="textAlignment">
+       <set>AlignJustify|AlignVCenter</set>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="4">
+    <widget class="QLabel" name="label_searchNoResultsScientist">
      <property name="text">
-      <string>Connect</string>
+      <string/>
      </property>
     </widget>
    </item>
-   <item row="8" column="1">
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>&lt;b&gt;Computers:&lt;/b&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0" colspan="2">
     <widget class="QLabel" name="label_connectComputer">
      <property name="text">
       <string>Computer to connect:</string>
      </property>
     </widget>
    </item>
-   <item row="8" column="2">
+   <item row="2" column="0" colspan="5">
+    <widget class="QLineEdit" name="input_connectScientistSearch">
+     <property name="placeholderText">
+      <string>Find scientist by name to connect</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="2">
     <widget class="QLineEdit" name="input_connectComputerID">
      <property name="placeholderText">
       <string>Enter ID of computer you want to connect</string>
      </property>
     </widget>
    </item>
-   <item row="9" column="0">
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>&lt;b&gt;Scientists:&lt;/b&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="2">
+    <widget class="QLineEdit" name="input_connectScientistID">
+     <property name="placeholderText">
+      <string>Enter ID of scientist you want to connect</string>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="0">
     <widget class="QPushButton" name="button_connectBack">
      <property name="text">
       <string>Back</string>
      </property>
     </widget>
    </item>
-   <item row="9" column="4">
+   <item row="13" column="4">
     <widget class="QPushButton" name="button_connectQuit">
      <property name="styleSheet">
       <string notr="true">background-color: rgb(170, 0, 0);
@@ -124,10 +302,26 @@ color: rgb(0, 0, 0);</string>
      </property>
     </widget>
    </item>
-   <item row="9" column="2">
+   <item row="7" column="2">
     <widget class="QLabel" name="label_connectErrorMessage">
      <property name="text">
       <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="4" rowspan="2">
+    <widget class="QPushButton" name="button_connectScientistAndComputer">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Connect</string>
      </property>
     </widget>
    </item>
