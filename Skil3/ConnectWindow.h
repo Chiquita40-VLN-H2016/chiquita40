@@ -7,7 +7,8 @@
 #include "Invented.h"
 #include <QDialog>
 
-namespace Ui {
+namespace Ui
+{
 class ConnectWindow;
 }
 
