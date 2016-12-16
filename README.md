@@ -1,29 +1,36 @@
 # Computer Scientists Readme
 
-Program which lists known computers and characters from Computer Science.
+Program which lists known computers and characters from computer science.
 
 ## I. Description
-We have developed a program that holds a list over Computer Scientists and Computers.
+We have developed a program that holds a list over computer scientists and computers.
 
-When working with the list of Computer Scientists:
+When working with the list of computer scientists:
 
-* You can add a new Computer Scientist to the list. 
-* You can print out a list of Computer Scientists on screen ordered by name, birth year, death year and gender.
-* You can search for a name of a Computer Scientist.
-* You can edit an entry of a Computer Scientist.
-* You can delete an entry of a Computer Scientist.
-* You can join a Computer Scientist and a Computer together.
+* You can add a new computer scientist to the list. 
+* You can view a list of computer scientists on screen ordered by id, name, birth year, death year and gender.
+* You can search for a name of a computer scientist.
+* You can edit an entry of a computer scientist by double clicking the table.
+* You can delete an entry of a computer scientist.
+* You can join a computer scientist and a computer together.
 
-When working with the list of Computers:
+When working with the list of computers:
 
-* You can add a new Computer to the list.
-* You can print out a list of Computers on screen ordered by name, build year, type and if it was built or not.
-* You can search for a name of a Computer.
-* You can edit an entry of a Computer.
-* You can delete an entry of a Computer.
-* You can join a Computer Scientist and a Computer together.
+* You can add a new computer to the list.
+* You can view a list of computers on screen ordered by id, name, build year, type and if it was built or not.
+* You can search for a name of a computer.
+* You can edit an entry of a computer by double clicking the table.
+* You can delete an entry of a computer.
+* You can join a computer scientist and a computer together.
 
-You can do these commands as often as you wish. To stop type in 'quit'.
+When working with the list of connections:
+
+* You can add a new connection between a computer and a computer scientist.
+* You can view a list of connections on screen ordered by scientist's id, scientist's name, computer's id and computer's name.
+* You can search for a connection between a computer and a computer scientist.
+* You can delete a connection between a computer and a computer scientist.
+
+You can do these commands as often as you wish. To quit program, click on 'quick' button. To go to previous window, click on back.
 
 ## II. File list
 + AddWindow.cpp
@@ -50,17 +57,20 @@ You can do these commands as often as you wish. To stop type in 'quit'.
 + MainWindow.cpp
 + MainWindow.h
 + MainWindow.ui
-+ resources.qrc
 + Scientist.cpp
 + Scientist.h
 + SCService.cpp
 + SCService.h
++ Utilities.cpp
++ Utilities.h
 + main.cpp
-+ CSHistory.sqlite           - Database that holds lists of Scientists, Computers and a joined list.
++ resources.qrc
++ ComputerScienceDatabase.sqlite - Database that holds lists of scientists, computers, their id's, a joined list and links to known       scientists and computers.
 + Insert_queries.txt - SQL queries to fill database.
 
+
 ## III. Using Qt and SQLite Manager
-1. Clone the Repository
+1. Clone the repository
 2. Save the .sqlite file in C:\ drive.
 3. Run SQLite Manager as administrator.
 4. Run Qt as administrator.
@@ -73,23 +83,23 @@ When you run the program, a welcome window with quick search and buttons for all
 
 **Add**
 
-You can add a new Scientist and/or a Computer to the database.
+You can add a new scientist and/or a computer to the database.
 
 **Edit**
 
-You can edit a Scientist and/or a Computer.
+You can edit a scientist and/or a computer.
 
 **See full lists**
 
-You can choose from a list of Scientists, Computers or Scientists connected to Computers. Each list item can be ordered ascending or descending by clicking on the adequate table header.
+You can choose from a list of scientists, computers or scientists connected to computers. Each list item can be ordered ascending or descending by clicking on the adequate table header.
 
 **Delete**
 
-Search for a Scientist or Computer and delete it from the list. You can also disconnect a Computer from a Scientist.
+Search for a scientist or computer and delete it from the list. You can also disconnect a computer from a scientist.
 
 **Connect**
 
-Connect a Scientist with a Computer. The Invented table in the SQLite Manager will be updated.
+Connect a scientist with a computer. The Invented table in the SQLite Manager will be updated.
 
 **Quit**
 
