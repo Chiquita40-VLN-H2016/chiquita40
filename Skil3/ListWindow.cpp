@@ -44,12 +44,16 @@ void ListWindow::displayScientistSearchResults(string search)
                deathYear = QString::number(s.getDeathDate());
            }
            QString gender = QChar(toupper(s.getGender()));
+           QString l = QString::fromStdString(s.getLink());
+           QString link = "<a href =\"" + l + "\">Link</a>";
 
            ui->table_scientists->setItem(row, 0, new Utilities::TableItemSC(s.getId()));
            ui->table_scientists->setItem(row, 1, new Utilities::TableItemSC(name));
            ui->table_scientists->setItem(row, 2, new Utilities::TableItemSC(birthYear));
            ui->table_scientists->setItem(row, 3, new Utilities::TableItemSC(deathYear));
            ui->table_scientists->setItem(row, 4, new Utilities::TableItemSC(gender));
+           ui->table_scientists->setItem(row, 5, new Utilities::TableItemSC(link));
+
        }
    }
    if(search.size() != 0 && _currentlyDisplayedScientists.size() == 0)
@@ -85,12 +89,15 @@ void ListWindow::displayAllScientist()
         }
 
         QString gender = QChar(toupper(s.getGender()));
+        QString l = QString::fromStdString(s.getLink());
+        QString link = "<a href =\"" + l + "\">Link</a>";
 
         ui->table_scientists->setItem(row, 0, new Utilities::TableItemSC(s.getId()));
         ui->table_scientists->setItem(row, 1, new Utilities::TableItemSC(name));
         ui->table_scientists->setItem(row, 2, new Utilities::TableItemSC(birthYear));
         ui->table_scientists->setItem(row, 3, new Utilities::TableItemSC(deathYear));
         ui->table_scientists->setItem(row, 4, new Utilities::TableItemSC(gender));
+        ui->table_scientists->setItem(row, 5, new Utilities::TableItemSC(link));
     }
 }
 
@@ -163,13 +170,15 @@ void ListWindow::displayComputerSearchResults(string search)
             {
                 wasbuilt = "No";
             }
+            QString l = QString::fromStdString(c.getLink());
+            QString link = "<a href =\"" + l + "\">Link</a>";
 
             ui->table_Computers->setItem(row, 0, new Utilities::TableItemSC(id));
             ui->table_Computers->setItem(row, 1, new Utilities::TableItemSC(name));
             ui->table_Computers->setItem(row, 2, new Utilities::TableItemSC(buildyear));
             ui->table_Computers->setItem(row, 3, new Utilities::TableItemSC(type));
             ui->table_Computers->setItem(row, 4, new Utilities::TableItemSC(wasbuilt));
-
+            ui->table_Computers->setItem(row, 5, new Utilities::TableItemSC(link));
         }
     }
     if(search.size() != 0 && _currentlyDisplayedComputers.size() == 0)
@@ -213,15 +222,15 @@ void ListWindow::displayAllComputers()
         {
             wasbuilt = "No";
         }
-
+        QString l = QString::fromStdString(c.getLink());
+        QString link = "<a href =\"" + l + "\">Link</a>";
 
         ui->table_Computers->setItem(row, 0, new Utilities::TableItemSC(id));
         ui->table_Computers->setItem(row, 1, new Utilities::TableItemSC(name));
         ui->table_Computers->setItem(row, 2, new Utilities::TableItemSC(buildyear));
         ui->table_Computers->setItem(row, 3, new Utilities::TableItemSC(type));
         ui->table_Computers->setItem(row, 4, new Utilities::TableItemSC(wasbuilt));
-
-
+        ui->table_Computers->setItem(row, 5, new Utilities::TableItemSC(link));
     }
 }
 
