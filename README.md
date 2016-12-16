@@ -64,8 +64,8 @@ You can do these commands as often as you wish. To stop type in 'quit'.
 2. Save the .sqlite file in C:\ drive.
 3. Run SQLite Manager as administrator.
 4. Run Qt as administrator.
-5. Open ComputerScientists.pro from folder Skil2 in Qt
-6. Change working directory to where the chiquita40\Skil2 folder is saved on your computer
+5. Open ComputerScientists.pro from folder Skil3 in Qt
+6. Change working directory to where the chiquita40\Skil3 folder is saved on your computer
 7. Build and run the program
 
 ## IV. Instructions 
