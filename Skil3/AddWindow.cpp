@@ -24,14 +24,13 @@ void AddWindow::on_button_addQuit_clicked()
     qApp->quit();
 }
 
-//
+//Search on text changed.
 void AddWindow::on_input_addScientistSearch_textChanged(const QString &arg1)
 {
     string search = arg1.toStdString();
     if(search.size() != 0)
     {
         displayScientistSearchResults(search);
-        //displaySearchResultsFromAll(search);
     }
     if(search.size()== 0)
     {
@@ -44,6 +43,8 @@ void AddWindow::on_button_addScientist_clicked()
     string name = ui->input_addNameScientist->text().toStdString();
     string bY = ui->input_addYearBorn->text().toStdString();
     int birthYear = ui->input_addYearBorn->text().toInt();
+
+    //Two validity checks for birthYear.
     bool birthYearIsValid = Utilities::validYearCheck(bY);
     birthYearIsValid = _scs.validYearCheck(birthYear);
     bool deathYearIsValid = false;
@@ -57,6 +58,8 @@ void AddWindow::on_button_addScientist_clicked()
     {
         string dY = ui->input_addYearOfDeath->text().toStdString();
         deathYear = ui->input_addYearOfDeath->text().toInt();
+
+        //Two validity checks for deathYear.
         deathYearIsValid = Utilities::validYearCheck(dY);
         deathYearIsValid = _scs.validYearCheck(deathYear);
         if(deathYearIsValid && deathYear < birthYear)
@@ -67,6 +70,8 @@ void AddWindow::on_button_addScientist_clicked()
     string gender = ui->comboBox_addSGender->currentText().toStdString();
     char g = tolower(gender.front());
     string link = ui->input_addLink->text().toStdString();
+
+    //Scientist only added if both years are valid.
     if(!birthYearIsValid && deathYearIsValid)
     {
         ui->label_addScientistErrorMessage->setText("<p style=\"color:#f44242;\">Invalid Birth Year</p>");
@@ -87,6 +92,7 @@ void AddWindow::on_button_addScientist_clicked()
     }
 }
 
+//Enables adding death year if "No" is chosen.
 void AddWindow::on_comboBox_addSAlive_currentIndexChanged(const QString &arg1)
 {
     string alive = arg1.toStdString();
@@ -100,6 +106,7 @@ void AddWindow::on_comboBox_addSAlive_currentIndexChanged(const QString &arg1)
     }
 }
 
+//Enables adding build year if "Yes" is chosen.
 void AddWindow::on_comboBox_addCBuilt_currentIndexChanged(const QString &arg1)
 {
     string wasBuilt = arg1.toStdString();
@@ -115,7 +122,6 @@ void AddWindow::on_comboBox_addCBuilt_currentIndexChanged(const QString &arg1)
 
 void AddWindow::on_button_addComputer_clicked()
 {
-    //villumeldingar ef eitthvað er tómt sem á ekki að vera það.
     string name = ui->input_addNameComputer->text().toStdString();
     string type = ui->input_addType->text().toStdString();
     string wasBuilt = ui->comboBox_addCBuilt->currentText().toStdString();
@@ -126,9 +132,11 @@ void AddWindow::on_button_addComputer_clicked()
     {
         buildYear = ui->input_addYearOfCompletion->text().toInt();
         string buY = ui->input_addYearOfCompletion->text().toStdString();
+        //Two validity checks.
         buildYearIsValid = Utilities::validYearCheck(buY);
         buildYearIsValid = _scs.validYearCheck(buildYear);
     }
+    //Computer only added if build year is valid.
     if(buildYearIsValid)
     {
         _scs.addComputer(name, buildYear, type, wasBuilt, link);
@@ -170,6 +178,7 @@ void AddWindow::on_input_addNameComputer_textChanged(const QString &arg1)
     }
 }
 
+//Computer cannot be added if type field is empty.
 void AddWindow::on_input_addType_textChanged(const QString &arg1)
 {
     if(arg1.isEmpty())
@@ -191,8 +200,6 @@ void AddWindow::on_input_searchComputer_textChanged(const QString &arg1)
     if(search.size() != 0)
     {
         displayComputerSearchResult(search);
-        //displayScientistSearchResults(search);
-        //displaySearchResultsFromAll(search);
     }
     if(search.size()== 0)
     {
@@ -207,6 +214,8 @@ void AddWindow::displayScientistSearchResults(string search)
    _currentlyDisplayedScientists.clear();
 
    _currentlyDisplayedScientists = _scs.findScientistByName(search);
+
+   //If search returned results, the results are shown.
    if(_currentlyDisplayedScientists.size() != 0)
    {
 
@@ -228,6 +237,8 @@ void AddWindow::displayScientistSearchResults(string search)
            }
            QString gender = QChar(toupper(s.getGender()));
 
+           //TableItemSC class inherits from QTableWidgetClass and overloads sorting
+           //to sort the Id's as numbers rather than strings.
            ui->table_addScientist->setItem(row, 0, new Utilities::TableItemSC(s.getId()));
            ui->table_addScientist->setItem(row, 1, new Utilities::TableItemSC(name));
            ui->table_addScientist->setItem(row, 2, new Utilities::TableItemSC(birthYear));
@@ -235,6 +246,7 @@ void AddWindow::displayScientistSearchResults(string search)
            ui->table_addScientist->setItem(row, 4, new Utilities::TableItemSC(gender));
        }
    }
+   //If vector is empty and search is not, a message is sent to user.
    if(search.size() != 0 && _currentlyDisplayedScientists.size() == 0)
    {
        ui->table_addScientist->clearContents();
