@@ -7,6 +7,7 @@
 #include "DeleteWindow.h"
 #include "ListWindow.h"
 #include "AddWindow.h"
+#include "ConnectWindow.h"
 #include <string>
 #include <vector>
 
@@ -41,6 +42,8 @@ private slots:
 
     void on_input_frontPageSearch_textChanged(const QString &arg1);
 
+
+    void on_button_frontConnect_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -91,3 +91,12 @@ void MainWindow::on_button_frontSeeFullLists_clicked()
     listWindow.exec();
     show();
 }
+
+
+void MainWindow::on_button_frontConnect_clicked()
+{
+    ConnectWindow connectWindow;
+    hide();
+    connectWindow.exec();
+    show();
+}
