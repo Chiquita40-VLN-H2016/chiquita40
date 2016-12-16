@@ -71,9 +71,13 @@ You can do these commands as often as you wish. To stop type in 'quit'.
 ## IV. Instructions 
 When you run the program, a welcome window with quick search and buttons for all program features appears on the screen.
 
-**Add/Edit**
+**Add**
 
-Name of a new Scientist and/ or a Computer cannot be longer than 31 characters (with spaces).
+You can add a new Scientist and/or a Computer to the database.
+
+**Edit**
+
+You can edit a Scientist and/or a Computer.
 
 **See full lists**
 
