@@ -21,18 +21,17 @@ class DeleteWindow : public QDialog
 public:
     explicit DeleteWindow(QWidget *parent = 0);
     ~DeleteWindow();
-    int deleteWarningMessage();
 
 private slots:
     void on_button_deleteQuit_clicked();
 
     void on_button_deleteBack_clicked();
 
-    void on_input_deletePageSearchScientist_textChanged(const QString &arg1);
+    void on_input_deleteScientistSearch_textChanged(const QString &arg1);
 
-    void on_input_deletePageSearchComputer_textChanged(const QString &arg1);
+    void on_input_deleteComputerSearch_textChanged(const QString &arg1);
 
-    void on_input_deletePageSearchConnect_textChanged(const QString &arg1);
+    void on_input_deleteConnectSearch_textChanged(const QString &arg1);
 
     void on_lineEdit_deleteScientistID_textChanged(const QString &arg1);
 
@@ -55,16 +54,14 @@ private:
     vector<Invented> _currentlyDisplayedConnections;
     SCService _scs;
 
+    int deleteWarningMessage();
+
     void displayAllScientists(string search);
     void displayAllComputers(string search);
     void displayAllConnections(string search);
     void displayScientistsAfterDelete();
     void displayComputersAfterDelete();
     void displayConnectionAfterDelete();
-
-    //string scientistListHeader();
-    //string computerListHeader();
-    //string connectListHeader();
 };
 
 #endif // DELETEWINDOW_H
