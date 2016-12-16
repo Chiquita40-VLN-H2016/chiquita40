@@ -35,14 +35,18 @@ void MainWindow::displaySearchResultsFromAll(string search)
     _currentlyDisplayedScientists = _scs.findScientistByName(search);
 
     ui->list_frontPageSearchResult->addItem(QString::fromStdString("Scientists that matched search:"));
-
+    ui->list_frontPageSearchResult->addItem(QString::fromStdString(""));
+    ui->list_frontPageSearchResult->addItem(QString::fromStdString(scientistListHeader()));
     for(unsigned int i = 0; i < _currentlyDisplayedScientists.size(); i++)
     {
-        Scientist s = _currentlyDisplayedScientists.at(i);
-        ui->list_frontPageSearchResult->addItem(QString::fromStdString(s.toString()));
-    }
+       Scientist s = _currentlyDisplayedScientists.at(i);
+       ui->list_frontPageSearchResult->addItem(QString::fromStdString(s.toString()));
 
+    }
+    ui->list_frontPageSearchResult->addItem(QString::fromStdString(""));
     ui->list_frontPageSearchResult->addItem(QString::fromStdString("Computers that matched search:"));
+    ui->list_frontPageSearchResult->addItem(QString::fromStdString(""));
+    ui->list_frontPageSearchResult->addItem(QString::fromStdString(computerListHeader()));
 
     for(unsigned int i = 0; i < _currentlyDisplayedComputers.size(); i++)
     {
@@ -99,4 +103,17 @@ void MainWindow::on_button_frontConnect_clicked()
     hide();
     connectWindow.exec();
     show();
+}
+string MainWindow::scientistListHeader()
+{
+    string s = "Id\t|Name\t\t|Year Born\t|Year of Death\t|Gender\n";
+    s+= "--------------------------------------------------------------------------------------------";
+    return s;
+}
+
+string MainWindow::computerListHeader()
+{
+    string c = "Id\t|Name\t\t|Year Built\t|Type\t\t|Was Built\n";
+    c+= "------------------------------------------------------------------------------------------------------------";
+    return c;
 }

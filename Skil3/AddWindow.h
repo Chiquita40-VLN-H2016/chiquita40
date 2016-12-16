@@ -12,7 +12,8 @@
 
 #include <QDialog>
 
-namespace Ui {
+namespace Ui
+{
 class AddWindow;
 }
 
@@ -29,7 +30,7 @@ private slots:
 
     void on_button_addQuit_clicked();
 
-    void on_input_addPageSearch_textChanged(const QString &arg1);
+    void on_input_addScientistSearch_textChanged(const QString &arg1);
 
     void on_button_addScientist_clicked();
 
@@ -45,21 +46,23 @@ private slots:
 
     void on_input_addType_textChanged(const QString &arg1);
 
+    void on_input_searchComputer_textChanged(const QString &arg1);
+
 private:
     Ui::AddWindow *ui;
     vector<Scientist> _currentlyDisplayedScientists;
     vector<Computer> _currentlyDisplayedComputers;
+    vector<Scientist> _allScientists;
+    vector<Computer> _allComputers;
     SCService _scs;
 
-    void displaySearchResultsFromAll(string search);
+    void displayScientistSearchResults(string search);
+    void displayComputerSearchResult(string search);
     void displayAllScientists();
     void displayAllComputers();
     void clearScientistForm();
     void clearComputerForm();
-    string scientistListHeader();
-    string computerListHeader();
 };
 
 #endif // ADDWINDOW_H
-
 
