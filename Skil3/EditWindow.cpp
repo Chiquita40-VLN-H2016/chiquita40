@@ -64,11 +64,11 @@ void EditWindow::displayScientistSearchResultsFromAll(string search)
             }
             QString gender = QChar(toupper(s.getGender()));
 
-            ui->table_editPageScientistsSearchResult->setItem(row, 0, new QTableWidgetItem(id));
-            ui->table_editPageScientistsSearchResult->setItem(row, 1, new QTableWidgetItem(name));
-            ui->table_editPageScientistsSearchResult->setItem(row, 2, new QTableWidgetItem(birthYear));
-            ui->table_editPageScientistsSearchResult->setItem(row, 3, new QTableWidgetItem(deathYear));
-            ui->table_editPageScientistsSearchResult->setItem(row, 4, new QTableWidgetItem(gender));
+            ui->table_editPageScientistsSearchResult->setItem(row, 0, new Utilities::TableItemSC(id));
+            ui->table_editPageScientistsSearchResult->setItem(row, 1, new Utilities::TableItemSC(name));
+            ui->table_editPageScientistsSearchResult->setItem(row, 2, new Utilities::TableItemSC(birthYear));
+            ui->table_editPageScientistsSearchResult->setItem(row, 3, new Utilities::TableItemSC(deathYear));
+            ui->table_editPageScientistsSearchResult->setItem(row, 4, new Utilities::TableItemSC(gender));
 
         }
 
@@ -109,11 +109,11 @@ void EditWindow::displayEditedScientist(int id)
 
     QString gender = QChar(toupper(s.getGender()));
 
-    ui->table_editPageScientistsSearchResult->setItem(row, 0, new QTableWidgetItem(sId));
-    ui->table_editPageScientistsSearchResult->setItem(row, 1, new QTableWidgetItem(name));
-    ui->table_editPageScientistsSearchResult->setItem(row, 2, new QTableWidgetItem(birthYear));
-    ui->table_editPageScientistsSearchResult->setItem(row, 3, new QTableWidgetItem(deathYear));
-    ui->table_editPageScientistsSearchResult->setItem(row, 4, new QTableWidgetItem(gender));
+    ui->table_editPageScientistsSearchResult->setItem(row, 0, new Utilities::TableItemSC(sId));
+    ui->table_editPageScientistsSearchResult->setItem(row, 1, new Utilities::TableItemSC(name));
+    ui->table_editPageScientistsSearchResult->setItem(row, 2, new Utilities::TableItemSC(birthYear));
+    ui->table_editPageScientistsSearchResult->setItem(row, 3, new Utilities::TableItemSC(deathYear));
+    ui->table_editPageScientistsSearchResult->setItem(row, 4, new Utilities::TableItemSC(gender));
 }
 
 void EditWindow::on_button_editScientist_clicked()
@@ -122,6 +122,7 @@ void EditWindow::on_button_editScientist_clicked()
     ui->input_editYearBorn->clear();
     ui->input_editYearOfDeath->clear();
     ui->label_editScientistErrorMessage->clear();
+    ui->input_computerLink->clear();
 
     int sId = ui->input_editIdScientist->text().toInt();
 
@@ -134,6 +135,7 @@ void EditWindow::on_button_editScientist_clicked()
         string yearBorn = to_string(s.getBirthDate());
         string yearDeath = to_string(s.getDeathDate());
         char gender = s.getGender();
+        string link = s.getLink();
 
         ui->input_editNameScientist->show();    // Show all fields when button is clicked
         ui->input_editYearBorn->show();         // and ID has been validated.
@@ -144,9 +146,12 @@ void EditWindow::on_button_editScientist_clicked()
         ui->label_gender->show();
         ui->label_editBirthYearScientist->show();
         ui->label_editNameScientist->show();
+        ui->label_editWikiLinkScientist->show();
+        ui->input_ScientistLink->show();
 
         ui->input_editNameScientist->setText(QString::fromStdString(name));
         ui->input_editYearBorn->setText(QString::fromStdString(yearBorn));
+        ui->input_ScientistLink->setText(QString::fromStdString(link));
 
         if(yearDeath != "9999")
         {
@@ -209,6 +214,7 @@ void EditWindow::on_button_saveEditScientist_clicked()
     int deathYear = 9999;
     string gender = ui->comboBox_editGender->currentText().toStdString();
     char g = tolower(gender.front());
+    string link = ui->input_ScientistLink->text().toStdString();
 
     if(alive == "Yes")
     {
@@ -241,7 +247,7 @@ void EditWindow::on_button_saveEditScientist_clicked()
     }
     else
     {
-        _scs.editScientist(id, name, birthYear, deathYear, g);
+        _scs.editScientist(id, name, birthYear, deathYear, g, link);
 
         ui->input_editIdScientist->setEnabled(true);
         ui->input_editIdScientist->clear();
@@ -277,6 +283,8 @@ void EditWindow::hideScientistFields()
     ui->label_editBirthYearScientist->hide();
     ui->label_editDeathYearScientist->hide();
     ui->label_editNameScientist->hide();
+    ui->label_editWikiLinkScientist->hide();
+    ui->input_ScientistLink->hide();
 }
 
 // Computers - All functions regarding computers in EditWindow.
@@ -318,11 +326,11 @@ void EditWindow::displayComputerSearchResultsFromAll(string search)
                 wasBuilt = QString::fromStdString("No");
             }
 
-            ui->table_editPageComputersSearchResult->setItem(row, 0, new QTableWidgetItem(id));
-            ui->table_editPageComputersSearchResult->setItem(row, 1, new QTableWidgetItem(name));
-            ui->table_editPageComputersSearchResult->setItem(row, 2, new QTableWidgetItem(type));
-            ui->table_editPageComputersSearchResult->setItem(row, 3, new QTableWidgetItem(builtYear));
-            ui->table_editPageComputersSearchResult->setItem(row, 4, new QTableWidgetItem(wasBuilt));
+            ui->table_editPageComputersSearchResult->setItem(row, 0, new Utilities::TableItemSC(id));
+            ui->table_editPageComputersSearchResult->setItem(row, 1, new Utilities::TableItemSC(name));
+            ui->table_editPageComputersSearchResult->setItem(row, 2, new Utilities::TableItemSC(type));
+            ui->table_editPageComputersSearchResult->setItem(row, 3, new Utilities::TableItemSC(builtYear));
+            ui->table_editPageComputersSearchResult->setItem(row, 4, new Utilities::TableItemSC(wasBuilt));
 
         }
 
@@ -363,11 +371,11 @@ void EditWindow::displayEditedComputer(int id)
         wasBuilt = QString::fromStdString("No");
     }
 
-    ui->table_editPageComputersSearchResult->setItem(row, 0, new QTableWidgetItem(cId));
-    ui->table_editPageComputersSearchResult->setItem(row, 1, new QTableWidgetItem(name));
-    ui->table_editPageComputersSearchResult->setItem(row, 2, new QTableWidgetItem(type));
-    ui->table_editPageComputersSearchResult->setItem(row, 3, new QTableWidgetItem(builtYear));
-    ui->table_editPageComputersSearchResult->setItem(row, 4, new QTableWidgetItem(wasBuilt));
+    ui->table_editPageComputersSearchResult->setItem(row, 0, new Utilities::TableItemSC(cId));
+    ui->table_editPageComputersSearchResult->setItem(row, 1, new Utilities::TableItemSC(name));
+    ui->table_editPageComputersSearchResult->setItem(row, 2, new Utilities::TableItemSC(type));
+    ui->table_editPageComputersSearchResult->setItem(row, 3, new Utilities::TableItemSC(builtYear));
+    ui->table_editPageComputersSearchResult->setItem(row, 4, new Utilities::TableItemSC(wasBuilt));
 }
 
 void EditWindow::on_button_editComputer_clicked()
@@ -376,6 +384,7 @@ void EditWindow::on_button_editComputer_clicked()
     ui->input_editYearOfCompletion->clear();
     ui->input_editType->clear();
     ui->label_editComputerErrorMessage->clear();
+    ui->input_computerLink->clear();
 
     int cId = ui->input_editIdComputer->text().toInt();
 
@@ -388,6 +397,7 @@ void EditWindow::on_button_editComputer_clicked()
         string yearBuilt = to_string(c.getBuildYear());
         string type = c.getType();
         bool wasBuilt = c.getWasBuilt();
+        string link = c.getLink();
 
         ui->input_editNameComputer->show();
         ui->input_editType->show();
@@ -396,9 +406,12 @@ void EditWindow::on_button_editComputer_clicked()
         ui->button_saveEditComputer->show();
         ui->label_editNameComputer->show();
         ui->label_editTypeComputer->show();
+        ui->label_ComputerWiki->show();
+        ui->input_computerLink->show();
 
         ui->input_editNameComputer->setText(QString::fromStdString(name));
         ui->input_editType->setText(QString::fromStdString(type));
+        ui->input_computerLink->setText(QString::fromStdString(link));
 
         if(wasBuilt)
         {
@@ -443,6 +456,7 @@ void EditWindow::on_button_saveEditComputer_clicked()
     string wasBuilt = ui->comboBox_editComputerBuilt->currentText().toStdString();
     bool buildYearIsValid = true;
     int yearBuilt = 0;
+    string link = ui->input_computerLink->text().toStdString();
 
     if(wasBuilt == "Yes")
     {
@@ -453,7 +467,7 @@ void EditWindow::on_button_saveEditComputer_clicked()
     }
     if(buildYearIsValid)
     {
-        _scs.editComputer(id,name,yearBuilt, type, wasBuilt);
+        _scs.editComputer(id,name,yearBuilt, type, wasBuilt, link);
 
         ui->input_editIdComputer->setEnabled(true);
         ui->input_editIdComputer->clear();
@@ -509,6 +523,8 @@ void EditWindow::hideComputerFields()
     ui->label_editNameComputer->hide();
     ui->label_editTypeComputer->hide();
     ui->label_editYearOfCompletionComputer->hide();
+    ui->label_ComputerWiki->hide();
+    ui->input_computerLink->hide();
 }
 
 void EditWindow::on_table_editPageScientistsSearchResult_itemDoubleClicked(QTableWidgetItem *item)

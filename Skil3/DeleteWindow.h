@@ -4,6 +4,7 @@
 #include "Computer.h"
 #include "Invented.h"
 #include "SCService.h"
+#include "Utilities.h"
 #include <string>
 #include <vector>
 

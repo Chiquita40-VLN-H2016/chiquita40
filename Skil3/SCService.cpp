@@ -110,15 +110,15 @@ vector<Computer> SCService::findComputerByScientist(int id)
     return c;
 }
 
-void SCService::addScientist(string n, int bd, int dd, char g)
+void SCService::addScientist(string n, int bd, int dd, char g, string l)
 {
-    Scientist sc(-1, n, bd, dd, g);
+    Scientist sc(-1, n, bd, dd, g, l);
     int i = _data.addScientist(sc);
     sc.setId(i); //sc.id now has the right value from the database.
     _scientists.push_back(sc);
 }
 
-void SCService::addComputer(string n, int b, string t, string wb)
+void SCService::addComputer(string n, int b, string t, string wb, string l)
 {
     bool wasBuilt = false;
 
@@ -127,7 +127,7 @@ void SCService::addComputer(string n, int b, string t, string wb)
         wasBuilt = true;
     }
 
-    Computer c(-1, n, b, t, wasBuilt);
+    Computer c(-1, n, b, t, wasBuilt, l);
     int i = _data.addComputer(c);
     c.setId(i);
 
@@ -192,7 +192,7 @@ int SCService::deleteConnection(int sId, int cId)
     return -3;
 }
 
-void SCService::editScientist(int id, string name, int dob, int dod, char g)
+void SCService::editScientist(int id, string name, int dob, int dod, char g, string l)
 {
     int n = findScientistId(id);
     if(n != -1)
@@ -201,6 +201,7 @@ void SCService::editScientist(int id, string name, int dob, int dod, char g)
         _scientists.at(n).setBirthDate(dob);
         _scientists.at(n).setDeathDate(dod);
         _scientists.at(n).setGender(g);
+        _scientists.at(n).setLink(l);
         _data.editScientist(_scientists.at(n));
     }
 }
@@ -212,11 +213,11 @@ Scientist SCService::scientistToEdit(int id)
     {
         return _scientists.at(n);
     }
-    Scientist s(-1, "", -1, -1, ' ');
+    Scientist s(-1, "", -1, -1, ' ', "");
     return s;
 }
 
-void SCService::editComputer(int id, string name, int by, string type, string wasb)
+void SCService::editComputer(int id, string name, int by, string type, string wasb, string l)
 {
     bool wasBuilt = false;
 
@@ -232,6 +233,7 @@ void SCService::editComputer(int id, string name, int by, string type, string wa
         _computers.at(n).setBuildYear(by);
         _computers.at(n).setType(type);
         _computers.at(n).setWasBuilt(wasBuilt);
+        _computers.at(n).setLink(l);
 
         _data.editComputer(_computers.at(n));
     }
@@ -244,7 +246,7 @@ Computer SCService::computerToEdit(int id)
     {
         return _computers.at(n);
     }
-    Computer c(-1, "", -1, "", false);
+    Computer c(-1, "", -1, "", false, "");
     return c;
 }
 

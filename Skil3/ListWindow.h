@@ -7,6 +7,8 @@
 #include <string>
 #include <vector>
 #include <QDialog>
+#include <QWidget>
+#include <QTextBrowser>
 
 namespace Ui
 {

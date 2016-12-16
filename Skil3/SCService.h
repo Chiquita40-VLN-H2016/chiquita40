@@ -30,16 +30,16 @@ public:
     vector<Computer> findComputerByYear(int year);
     vector<Computer> findComputerByName(string search);
     vector<Computer> findComputerByScientist(int id);
-    void addScientist(string n, int bd, int dd, char g);
-    void addComputer(string n, int b, string t, string wb);
+    void addScientist(string n, int bd, int dd, char g, string link);
+    void addComputer(string n, int b, string t, string wb, string l);
     bool validYearCheck(int year);
     bool checkIfContainsNumber(string s);
     int deleteScientist(int id);
     int deleteComputer(int id);
     int deleteConnection(int sId, int cId);
-    void editScientist(int id, string name, int dob, int dod, char g);
+    void editScientist(int id, string name, int dob, int dod, char g, string l);
     Scientist scientistToEdit(int id);
-    void editComputer(int id, string name, int by, string type, string wasb);
+    void editComputer(int id, string name, int by, string type, string wasb, string l);
     Computer computerToEdit(int id);
     void joinSC(int sid, int cid); // Joins scientist and computer.
 

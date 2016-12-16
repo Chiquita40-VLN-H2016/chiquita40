@@ -9,17 +9,19 @@ class Scientist
 {
 public:
     Scientist();
-    Scientist(int id, string n, int bd, int dd, char g);
+    Scientist(int id, string n, int bd, int dd, char g, string l);
     int getId() const;
     string getName() const;
     int getBirthDate() const;
     int getDeathDate() const;
     char getGender() const;
+    string getLink() const;
     void setId(int id);
     void setName(string name);
     void setBirthDate(int bd);
     void setDeathDate(int dd);
     void setGender(char gender);
+    void setLink(string link);
     string toString();
     string addTab();
     friend ostream& operator << (ostream& out, Scientist s); //Overload of outstream operator to print out scientist.
@@ -31,6 +33,7 @@ private:
     int _birthDate;
     int _deathDate;
     char _gender;
+    string _link;
 };
 
 #endif // SCIENTIST_H

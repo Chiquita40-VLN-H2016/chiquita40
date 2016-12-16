@@ -38,8 +38,9 @@ vector<Scientist> DataAccess::getScientists()
         int deathYear = query.value("Death_Year").toUInt();
         string g = query.value("Gender").toString().toStdString();
         char gender = g.front();
+        string link = query.value("Link").toString().toStdString();
 
-        scientists.push_back(Scientist(id, name, birthYear, deathYear, gender));
+        scientists.push_back(Scientist(id, name, birthYear, deathYear, gender, link));
     }
 
     return scientists;
@@ -49,12 +50,13 @@ int DataAccess::addScientist(Scientist sc)
 {
     QSqlQuery query(_db);
 
-    query.prepare("INSERT INTO Scientists(Name, Birth_Year, Death_Year, Gender) "
-                  "VALUES (:name, :birthYear, :deathYear, :gender)");
+    query.prepare("INSERT INTO Scientists(Name, Birth_Year, Death_Year, Gender, Link) "
+                  "VALUES (:name, :birthYear, :deathYear, :gender, :link)");
     query.bindValue(":name", QString::fromStdString(sc.getName()));
     query.bindValue(":birthYear", sc.getBirthDate());
     query.bindValue(":deathYear", sc.getDeathDate());
     query.bindValue(":gender", QString::fromStdString(string(1,sc.getGender())));
+    query.bindValue(":link", QString::fromStdString(sc.getLink()));
     query.exec();
     //Get id from database to insert into vector in service class.
     int n = query.lastInsertId().toUInt();
@@ -94,7 +96,8 @@ vector<Scientist> DataAccess::findScientistByName(string search)
         int death_year = query.value("Death_Year").toUInt();
         string g = query.value("Gender").toString().toStdString();
         char gender = g.front();
-        scientists.push_back(Scientist(id, name, birth_year, death_year, gender));
+        string link = query.value("Link").toString().toStdString();
+        scientists.push_back(Scientist(id, name, birth_year, death_year, gender, link));
     }
 
     return scientists;
@@ -119,7 +122,8 @@ vector<Scientist> DataAccess::findScientistByYear(int search)
         int death_year = query.value("Death_Year").toUInt();
         string g = query.value("Gender").toString().toStdString();
         char gender = g.front();
-        scientists.push_back(Scientist(id, name, birth_year, death_year, gender));
+        string link = query.value("Link").toString().toStdString();
+        scientists.push_back(Scientist(id, name, birth_year, death_year, gender, link));
     }
 
     return scientists;
@@ -155,7 +159,8 @@ vector<Scientist> DataAccess::scientistsAscendingOrder(int n)
         int death_year = query.value("Death_Year").toUInt();
         string g = query.value("Gender").toString().toStdString();
         char gender = g.front();
-        scientists.push_back(Scientist(id, name, birth_year, death_year, gender));
+        string link = query.value("Link").toString().toStdString();
+        scientists.push_back(Scientist(id, name, birth_year, death_year, gender, link));
     }
 
     return scientists;
@@ -191,7 +196,8 @@ vector<Scientist> DataAccess::scientistsDescendingOrder(int n)
         int death_year = query.value("Death_Year").toUInt();
         string g = query.value("Gender").toString().toStdString();
         char gender = g.front();
-        scientists.push_back(Scientist(id, name, birth_year, death_year, gender));
+        string link = query.value("Link").toString().toStdString();
+        scientists.push_back(Scientist(id, name, birth_year, death_year, gender, link));
     }
 
     return scientists;
@@ -201,12 +207,13 @@ void DataAccess::editScientist(Scientist scNew)
 {
     QSqlQuery query(_db);
     query.prepare("UPDATE Scientists SET Name = (:name), Birth_Year = (:birthYear), "
-                  "Death_Year = (:deathYear), Gender = (:gender) WHERE ID = (:id)");
+                  "Death_Year = (:deathYear), Gender = (:gender), Link = (:link) WHERE ID = (:id)");
     query.bindValue(":id", scNew.getId());
     query.bindValue(":name", QString::fromStdString(scNew.getName()));
     query.bindValue(":birthYear", scNew.getBirthDate());
     query.bindValue(":deathYear", scNew.getDeathDate());
     query.bindValue(":gender", QString::fromStdString(string(1,scNew.getGender())));
+    query.bindValue(":link", QString::fromStdString(scNew.getLink()));
     query.exec();
 }
 
@@ -227,8 +234,9 @@ vector<Computer> DataAccess::getComputers()
         int buildYear = query.value("Build_Year").toUInt();
         string type = query.value("Type").toString().toStdString();
         bool wasBuilt = query.value("Was_Built").toBool();
+        string link = query.value("Link").toString().toStdString();
 
-        computers.push_back(Computer(id, name, buildYear, type, wasBuilt));
+        computers.push_back(Computer(id, name, buildYear, type, wasBuilt, link));
     }
 
     return computers;
@@ -238,12 +246,13 @@ int DataAccess::addComputer(Computer c)
 {
     QSqlQuery query(_db);
 
-    query.prepare("INSERT INTO Computers(Name, Build_Year, Type, Was_Built) VALUES "
-                  "(:name, :buildYear, :type, :wasBuilt)");
+    query.prepare("INSERT INTO Computers(Name, Build_Year, Type, Was_Built, Link) VALUES "
+                  "(:name, :buildYear, :type, :wasBuilt, :link)");
     query.bindValue(":name", QString::fromStdString(c.getName()));
     query.bindValue(":buildYear", c.getBuildYear());
     query.bindValue(":type", QString::fromStdString(c.getType()));
     query.bindValue(":wasBuilt", c.getWasBuilt());
+    query.bindValue(":link", QString::fromStdString(c.getLink()));
     query.exec();
     int n = query.lastInsertId().toUInt();
     return n;
@@ -279,8 +288,9 @@ vector<Computer> DataAccess::findComputerByName(string search)
         int buildYear = query.value("Build_Year").toUInt();
         string type = query.value("Type").toString().toStdString();
         bool wasBuilt = query.value("Was_Built").toBool();
+        string link = query.value("Link").toString().toStdString();
 
-        computers.push_back(Computer(id, name, buildYear, type, wasBuilt));
+        computers.push_back(Computer(id, name, buildYear, type, wasBuilt, link));
     }
 
     return computers;
@@ -303,8 +313,9 @@ vector<Computer> DataAccess::findComputerByYear(int search)
         int buildYear = query.value("Build_Year").toUInt();
         string type = query.value("Type").toString().toStdString();
         bool wasBuilt = query.value("Was_Built").toBool();
+        string link = query.value("Link").toString().toStdString();
 
-        computers.push_back(Computer(id, name, buildYear, type, wasBuilt));
+        computers.push_back(Computer(id, name, buildYear, type, wasBuilt, link));
     }
 
     return computers;
@@ -339,8 +350,9 @@ vector<Computer> DataAccess::computersAscendingOrder(int n)
         int buildYear = query.value("Build_Year").toUInt();
         string type = query.value("Type").toString().toStdString();
         bool wasBuilt = query.value("Was_Built").toBool();
+        string link = query.value("Link").toString().toStdString();
 
-        computers.push_back(Computer(id, name, buildYear, type, wasBuilt));
+        computers.push_back(Computer(id, name, buildYear, type, wasBuilt, link));
     }
 
     return computers;
@@ -375,8 +387,9 @@ vector<Computer> DataAccess::computersDescendingOrder(int n)
         int buildYear = query.value("Build_Year").toUInt();
         string type = query.value("Type").toString().toStdString();
         bool wasBuilt = query.value("Was_Built").toBool();
+        string link = query.value("Link").toString().toStdString();
 
-        computers.push_back(Computer(id, name, buildYear, type, wasBuilt));
+        computers.push_back(Computer(id, name, buildYear, type, wasBuilt, link));
     }
 
     return computers;
@@ -386,12 +399,13 @@ void DataAccess::editComputer(Computer cNew)
 {
     QSqlQuery query(_db);
     query.prepare("UPDATE Computers SET Name = (:name), Build_Year = (:buildYear), "
-               "Type = (:type), Was_Built = (:wasBuilt) WHERE ID = (:id)");
+               "Type = (:type), Was_Built = (:wasBuilt), Link = (:link) WHERE ID = (:id)");
     query.bindValue(":name", QString::fromStdString(cNew.getName()));
     query.bindValue(":buildYear", cNew.getBuildYear());
     query.bindValue(":type", QString::fromStdString(cNew.getType()));
     query.bindValue(":wasBuilt", cNew.getWasBuilt());
     query.bindValue(":id", cNew.getId());
+    query.bindValue(":link", QString::fromStdString(cNew.getLink()));
     query.exec();
 }
 
@@ -439,7 +453,8 @@ vector<Scientist> DataAccess::getScientistsByComputer(int id)
         int death_year = query.value("Death_Year").toUInt();
         string g = query.value("Gender").toString().toStdString();
         char gender = g.front();
-        scientists.push_back(Scientist(id, name, birth_year, death_year, gender));
+        string link = query.value("Link").toString().toStdString();
+        scientists.push_back(Scientist(id, name, birth_year, death_year, gender, link));
     }
 
     return scientists;
@@ -464,8 +479,9 @@ vector<Computer> DataAccess::getComputersByScientist(int id)
         int buildYear = query.value("Build_Year").toUInt();
         string type = query.value("Type").toString().toStdString();
         bool wasBuilt = query.value("Was_Built").toBool();
+        string link = query.value("Link").toString().toStdString();
 
-        computers.push_back(Computer(id, name, buildYear, type, wasBuilt));
+        computers.push_back(Computer(id, name, buildYear, type, wasBuilt, link));
     }
 
     return computers;
