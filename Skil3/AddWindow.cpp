@@ -198,46 +198,6 @@ void AddWindow::on_input_searchComputer_textChanged(const QString &arg1)
         ui->table_addComputer->clearContents();
     }
 }
-/*
-void AddWindow::displaySearchResultsFromAll(string search)
-{
-     ui->list_addPageSearchResult->clear();
-    _currentlyDisplayedComputers.clear();
-    _currentlyDisplayedScientists.clear();
-
-    _currentlyDisplayedComputers = _scs.findComputerByName(search);
-    _currentlyDisplayedScientists = _scs.findScientistByName(search);
-    if(_currentlyDisplayedScientists.size() != 0)
-    {
-        ui->list_addPageSearchResult->addItem(QString::fromStdString("Scientists that matched search:"));
-        ui->list_addPageSearchResult->addItem(QString::fromStdString(scientistListHeader()));
-
-        for(unsigned int i = 0; i < _currentlyDisplayedScientists.size(); i++)
-        {
-            Scientist s = _currentlyDisplayedScientists.at(i);
-            ui->list_addPageSearchResult->addItem(QString::fromStdString(s.toString()));
-        }
-
-        ui->list_addPageSearchResult->addItem(" ");
-    }
-
-    if(_currentlyDisplayedComputers.size() != 0)
-    {
-        ui->list_addPageSearchResult->addItem(QString::fromStdString("Computers that matched search:"));
-        ui->list_addPageSearchResult->addItem(QString::fromStdString(computerListHeader()));
-
-        for(unsigned int i = 0; i < _currentlyDisplayedComputers.size(); i++)
-        {
-            Computer c = _currentlyDisplayedComputers.at(i);
-            ui->list_addPageSearchResult->addItem(QString::fromStdString(c.toString()));
-        }
-    }
-    if(_currentlyDisplayedComputers.size() == 0 && _currentlyDisplayedScientists.size() == 0)
-    {
-        ui->list_addPageSearchResult->addItem("Your search returned no results");
-    }
-
-}*/
 
 void AddWindow::displayScientistSearchResults(string search)
 {
@@ -287,7 +247,7 @@ void AddWindow::displayComputerSearchResult(string search)
     ui->table_addComputer->clearContents();
    _currentlyDisplayedComputers.clear();
 
-   _currentlyDisplayedComputers = _scs.findComputersByName(search);
+   _currentlyDisplayedComputers = _scs.findComputerByName(search);
    if(_currentlyDisplayedComputers.size() != 0)
    {
 
@@ -295,26 +255,35 @@ void AddWindow::displayComputerSearchResult(string search)
 
        for(unsigned int row = 0; row < _currentlyDisplayedComputers.size(); row++)
        {
-           Computer c = _currentlyDisplayeComputers.at(row);
+           Computer c = _currentlyDisplayedComputers.at(row);
            QString name = QString::fromStdString(c.getName());
            QString buildYear = QString::number(c.getBuildYear());
            if(c.getBuildYear() == 0)
            {
                buildYear = "";
            }
-           QString type = QString::fromStdString(c.getName());
+           QString type = QString::fromStdString(c.getType());
+           QString wasBuilt;
+           if(c.getWasBuilt())
+           {
+               wasBuilt = "Yes";
+           }
+           else
+           {
+               wasBuilt = "No";
+           }
 
-           ui->table_addScientist->setItem(row, 0, new Utilities::TableItemSC(s.getId()));
-           ui->table_addScientist->setItem(row, 1, new Utilities::TableItemSC(name));
-           ui->table_addScientist->setItem(row, 2, new Utilities::TableItemSC(birthYear));
-           ui->table_addScientist->setItem(row, 3, new Utilities::TableItemSC(deathYear));
-           ui->table_addScientist->setItem(row, 4, new Utilities::TableItemSC(gender));
+           ui->table_addComputer->setItem(row, 0, new Utilities::TableItemSC(c.getId()));
+           ui->table_addComputer->setItem(row, 1, new Utilities::TableItemSC(name));
+           ui->table_addComputer->setItem(row, 2, new Utilities::TableItemSC(buildYear));
+           ui->table_addComputer->setItem(row, 3, new Utilities::TableItemSC(type));
+           ui->table_addComputer->setItem(row, 4, new Utilities::TableItemSC(wasBuilt));
        }
    }
-   if(search.size() != 0 && _currentlyDisplayedScientists.size() == 0)
+   if(search.size() != 0 && _currentlyDisplayedComputers.size() == 0)
    {
-       ui->table_addScientist->clearContents();
-       ui->label_searchScientistsNoResults->setText("<p style=\"color:#f44242;\">Your search returned no results.</p>");
+       ui->table_addComputer->clearContents();
+       ui->label_searchComputerNoResults->setText("<p style=\"color:#f44242;\">Your search returned no results.</p>");
    }
 }
 
@@ -324,7 +293,6 @@ void AddWindow::displayAllScientists()
     ui->table_addScientist->clearContents();
     _allScientists.clear();
     _scs.scientistsAscendingOrder(0);
-    //scientistsWhichOrder(type, ascdesc);
     _allScientists = _scs.getScientists();
 
     ui->table_addScientist->setRowCount(_allScientists.size());
@@ -357,20 +325,41 @@ void AddWindow::displayAllScientists()
 
 void AddWindow::displayAllComputers()
 {
-     /*ui->input_addPageSearch->setText("");
-     ui->list_addPageSearchResult->clear();
-    _currentlyDisplayedComputers.clear();
+    ui->input_searchComputer->setText("");
+    ui->table_addComputer->clearContents();
+    _allComputers.clear();
+
     _scs.computersAscendingOrder(0);
-    _currentlyDisplayedComputers = _scs.getComputers();
+    _allComputers = _scs.getComputers();
 
-    ui->list_addPageSearchResult->addItem(QString::fromStdString("Updated list of Computers:"));
-    ui->list_addPageSearchResult->addItem(QString::fromStdString(computerListHeader()));
+    ui->table_addComputer->setRowCount(_allComputers.size());
 
-    for(unsigned int i = 0; i < _currentlyDisplayedComputers.size(); i++)
+    for(unsigned int row = 0; row < _allComputers.size(); row++)
     {
-        Computer c = _currentlyDisplayedComputers.at(i);
-        ui->list_addPageSearchResult->addItem(QString::fromStdString(c.toString()));
-    }*/
+        Computer c = _allComputers.at(row);
+        QString name = QString::fromStdString(c.getName());
+        QString buildYear = QString::number(c.getBuildYear());
+        if(c.getBuildYear() == 0)
+        {
+            buildYear = "";
+        }
+        QString type = QString::fromStdString(c.getType());
+        QString wasBuilt;
+        if(c.getWasBuilt())
+        {
+            wasBuilt = "Yes";
+        }
+        else
+        {
+            wasBuilt = "No";
+        }
+
+        ui->table_addComputer->setItem(row, 0, new Utilities::TableItemSC(c.getId()));
+        ui->table_addComputer->setItem(row, 1, new Utilities::TableItemSC(name));
+        ui->table_addComputer->setItem(row, 2, new Utilities::TableItemSC(buildYear));
+        ui->table_addComputer->setItem(row, 3, new Utilities::TableItemSC(type));
+        ui->table_addComputer->setItem(row, 4, new Utilities::TableItemSC(wasBuilt));
+    }
 }
 
 void AddWindow::clearScientistForm()
@@ -394,20 +383,6 @@ void AddWindow::clearComputerForm()
     ui->input_addYearOfCompletion->setEnabled(true);
     ui->button_addComputer->setEnabled(false);
     ui->label_addComputerErrorMessage->setText("");
-}
-
-string AddWindow::scientistListHeader()
-{
-    string s = "Id\t|Name\t\t|Year Born\t|Year of Death\t|Gender\n";
-    s+= "--------------------------------------------------------------------------------------------";
-    return s;
-}
-
-string AddWindow::computerListHeader()
-{
-    string c = "Id\t|Name\t\t|Year Built\t|Type\t\t|Was Built\n";
-    c+= "------------------------------------------------------------------------------------------------------------";
-    return c;
 }
 
 

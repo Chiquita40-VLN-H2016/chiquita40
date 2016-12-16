@@ -8,7 +8,8 @@
 #include <vector>
 #include <QDialog>
 
-namespace Ui {
+namespace Ui
+{
 class ListWindow;
 }
 

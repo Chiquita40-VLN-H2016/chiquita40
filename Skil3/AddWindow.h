@@ -12,7 +12,8 @@
 
 #include <QDialog>
 
-namespace Ui {
+namespace Ui
+{
 class AddWindow;
 }
 
@@ -55,15 +56,12 @@ private:
     vector<Computer> _allComputers;
     SCService _scs;
 
-    void displaySearchResultsFromAll(string search);
     void displayScientistSearchResults(string search);
     void displayComputerSearchResult(string search);
     void displayAllScientists();
     void displayAllComputers();
     void clearScientistForm();
     void clearComputerForm();
-    string scientistListHeader();
-    string computerListHeader();
 };
 
 #endif // ADDWINDOW_H

@@ -10,7 +10,8 @@
 #include <QDialog>
 #include <QTableWidget>
 
-namespace Ui {
+namespace Ui
+{
 class DeleteWindow;
 }
 
