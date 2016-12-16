@@ -29,9 +29,9 @@ private slots:
 
     void on_input_listScientistSearch_textChanged(const QString &arg1);
 
-    void on_lineEdit_textChanged(const QString &arg1);
-
     void on_input_listComputerSearch_textChanged(const QString &arg1);
+
+    void on_input_searchConnections_textChanged(const QString &arg1);
 
 private:
     Ui::ListWindow *ui;
@@ -44,7 +44,8 @@ private:
     SCService _scs;
 
     void displayScientistSearchResults(string search);
-    void displayAllScientist(int type, int ascdesc);
+    void displayAllScientist();
+    void displayConnectionsSearchResults(string search);
     void displayAllConnections();
     void scientistsWhichOrder(int type, int ascdesc);
     void displayAllComputers();
