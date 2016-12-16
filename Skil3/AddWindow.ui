@@ -260,6 +260,12 @@ color: rgb(0, 0, 0);</string>
        <property name="editTriggers">
         <set>QAbstractItemView::NoEditTriggers</set>
        </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::SingleSelection</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
        <property name="showGrid">
         <bool>false</bool>
        </property>
@@ -276,25 +282,40 @@ color: rgb(0, 0, 0);</string>
         <property name="text">
          <string>ID</string>
         </property>
+        <property name="textAlignment">
+         <set>AlignJustify|AlignVCenter</set>
+        </property>
        </column>
        <column>
         <property name="text">
          <string>Name</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignJustify|AlignVCenter</set>
         </property>
        </column>
        <column>
         <property name="text">
          <string>Year Born</string>
         </property>
+        <property name="textAlignment">
+         <set>AlignJustify|AlignVCenter</set>
+        </property>
        </column>
        <column>
         <property name="text">
          <string>Year of Death</string>
         </property>
+        <property name="textAlignment">
+         <set>AlignJustify|AlignVCenter</set>
+        </property>
        </column>
        <column>
         <property name="text">
          <string>Gender</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignJustify|AlignVCenter</set>
         </property>
        </column>
       </widget>
@@ -505,6 +526,9 @@ color: rgb(0, 0, 0);</string>
        <property name="editTriggers">
         <set>QAbstractItemView::NoEditTriggers</set>
        </property>
+       <property name="showGrid">
+        <bool>false</bool>
+       </property>
        <property name="sortingEnabled">
         <bool>true</bool>
        </property>
@@ -518,25 +542,40 @@ color: rgb(0, 0, 0);</string>
         <property name="text">
          <string>ID</string>
         </property>
+        <property name="textAlignment">
+         <set>AlignJustify|AlignVCenter</set>
+        </property>
        </column>
        <column>
         <property name="text">
          <string>Name</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignJustify|AlignVCenter</set>
         </property>
        </column>
        <column>
         <property name="text">
          <string>Build Year</string>
         </property>
+        <property name="textAlignment">
+         <set>AlignJustify|AlignVCenter</set>
+        </property>
        </column>
        <column>
         <property name="text">
          <string>Type</string>
         </property>
+        <property name="textAlignment">
+         <set>AlignJustify|AlignVCenter</set>
+        </property>
        </column>
        <column>
         <property name="text">
          <string>Was Built</string>
+        </property>
+        <property name="textAlignment">
+         <set>AlignJustify|AlignVCenter</set>
         </property>
        </column>
       </widget>

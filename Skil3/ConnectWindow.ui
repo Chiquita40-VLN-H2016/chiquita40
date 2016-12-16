@@ -39,6 +39,9 @@
    </item>
    <item row="11" column="0" colspan="5">
     <widget class="QTableWidget" name="table_connectCurrent">
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
      <property name="showGrid">
       <bool>false</bool>
      </property>
@@ -90,6 +93,9 @@
    </item>
    <item row="6" column="0" colspan="5">
     <widget class="QTableWidget" name="table_connectComputerSearchResult">
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
      <property name="selectionMode">
       <enum>QAbstractItemView::SingleSelection</enum>
      </property>
@@ -173,6 +179,9 @@
    </item>
    <item row="3" column="0" colspan="5">
     <widget class="QTableWidget" name="table_connectScientistSearchResult">
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
      <property name="selectionMode">
       <enum>QAbstractItemView::SingleSelection</enum>
      </property>

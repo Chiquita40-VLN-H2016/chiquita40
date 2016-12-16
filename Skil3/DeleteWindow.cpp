@@ -115,6 +115,9 @@ void DeleteWindow::displayAllScientists(string search)
         ui->table_Scientists->setItem(row, 3, new Utilities::TableItemSC(deathYear));
         ui->table_Scientists->setItem(row, 4, new Utilities::TableItemSC(gender));
     }
+
+    ui->table_Scientists->resizeColumnsToContents();
+
     if(search.size() != 0 && _currentlyDisplayedScientists.size() == 0)
     {
         ui->table_Scientists->clearContents();
@@ -164,6 +167,9 @@ void DeleteWindow::displayAllComputers(string search)
         ui->table_Computers->setItem(row, 3, new Utilities::TableItemSC(type));
         ui->table_Computers->setItem(row, 4, new Utilities::TableItemSC(wasBuilt));
     }
+
+    ui->table_Computers->resizeColumnsToContents();
+
     if(search.size() != 0 && _currentlyDisplayedComputers.size() == 0)
     {
         ui->table_Computers->clearContents();
@@ -195,6 +201,9 @@ void DeleteWindow::displayAllConnections(string search)
         ui->table_Connections->setItem(row, 2, new Utilities::TableItemConnect(cId));
         ui->table_Connections->setItem(row, 3, new Utilities::TableItemConnect(cName));
     }
+
+    ui->table_Connections->resizeColumnsToContents();
+
     if(search.size() != 0 && _currentlyDisplayedConnections.size() == 0)
     {
         ui->table_Connections->clearContents();
@@ -229,6 +238,8 @@ void DeleteWindow::displayScientistsAfterDelete()
         ui->table_Scientists->setItem(row, 3, new Utilities::TableItemSC(deathDate));
         ui->table_Scientists->setItem(row, 4, new Utilities::TableItemSC(gender));
     }
+
+    ui->table_Scientists->resizeColumnsToContents();
 }
 
 void DeleteWindow::displayComputersAfterDelete()
@@ -257,6 +268,8 @@ void DeleteWindow::displayComputersAfterDelete()
         ui->table_Computers->setItem(row, 3, new Utilities::TableItemSC(type));
         ui->table_Computers->setItem(row, 4, new Utilities::TableItemSC(wasBuilt));
     }
+
+    ui->table_Computers->resizeColumnsToContents();
 }
 
 void DeleteWindow::displayConnectionAfterDelete()
@@ -282,6 +295,8 @@ void DeleteWindow::displayConnectionAfterDelete()
         ui->table_Connections->setItem(row, 2, new Utilities::TableItemConnect(cId));
         ui->table_Connections->setItem(row, 3, new Utilities::TableItemConnect(cName));
     }
+
+    ui->table_Connections->resizeColumnsToContents();
 }
 
 void DeleteWindow::on_button_deleteScientist_clicked()
@@ -429,3 +444,4 @@ void DeleteWindow::on_button_deleteConnection_clicked()
         ui->lineEdit_deleteConnectionComputerID->clear();
     }
 }
+

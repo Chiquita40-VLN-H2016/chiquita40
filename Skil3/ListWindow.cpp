@@ -54,6 +54,8 @@ void ListWindow::displayScientistSearchResults(string search)
            ui->table_scientists->setItem(row, 5, new Utilities::TableItemSC(link));
 
        }
+
+       ui->table_scientists->resizeColumnsToContents();
    }
    if(search.size() != 0 && _currentlyDisplayedScientists.size() == 0)
    {
@@ -97,6 +99,8 @@ void ListWindow::displayAllScientist()
         ui->table_scientists->setItem(row, 4, new Utilities::TableItemSC(gender));
         ui->table_scientists->setItem(row, 5, new Utilities::TableItemSC(link));
     }
+
+    ui->table_scientists->resizeColumnsToContents();
 }
 
 void ListWindow::displayConnectionsSearchResults(string search)
@@ -125,6 +129,8 @@ void ListWindow::displayConnectionsSearchResults(string search)
             ui->table_connections->setItem(row, 2, new Utilities::TableItemConnect(cId));
             ui->table_connections->setItem(row, 3, new Utilities::TableItemConnect(cName));
         }
+
+        ui->table_connections->resizeColumnsToContents();
     }
     if(search.size() != 0 && _currentlyDisplayedConnections.size() == 0)
     {
@@ -177,6 +183,8 @@ void ListWindow::displayComputerSearchResults(string search)
             ui->table_Computers->setItem(row, 4, new Utilities::TableItemSC(wasbuilt));
             ui->table_Computers->setItem(row, 5, new Utilities::TableItemSC(link));
         }
+
+        ui->table_Computers->resizeColumnsToContents();
     }
     if(search.size() != 0 && _currentlyDisplayedComputers.size() == 0)
     {
@@ -228,6 +236,8 @@ void ListWindow::displayAllComputers()
         ui->table_Computers->setItem(row, 4, new Utilities::TableItemSC(wasbuilt));
         ui->table_Computers->setItem(row, 5, new Utilities::TableItemSC(link));
     }
+
+    ui->table_Computers->resizeColumnsToContents();
 }
 
 void ListWindow::displayAllConnections()
@@ -252,6 +262,8 @@ void ListWindow::displayAllConnections()
         ui->table_connections->setItem(row, 2, new Utilities::TableItemConnect(cId));
         ui->table_connections->setItem(row, 3, new Utilities::TableItemConnect(cName));
     }
+
+    ui->table_connections->resizeColumnsToContents();
 }
 
 void ListWindow::on_button_listBack_clicked()

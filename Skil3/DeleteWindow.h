@@ -49,6 +49,7 @@ private slots:
 
     void on_button_deleteConnection_clicked();
 
+
 private:
     Ui::DeleteWindow *ui;
     vector<Scientist> _currentlyDisplayedScientists;
