@@ -67,6 +67,7 @@ You can do these commands as often as you wish. To quit program, click on 'quick
 + resources.qrc
 + ComputerScienceDatabase.sqlite - Database that holds lists of scientists, computers, their id's, a joined list and links to known       scientists and computers.
 + Insert_queries.txt - SQL queries to fill database.
++ Images
 
 
 ## III. Using Qt and SQLite Manager
@@ -74,7 +75,7 @@ You can do these commands as often as you wish. To quit program, click on 'quick
 2. Save the .sqlite file in C:\ drive.
 3. Run SQLite Manager as administrator.
 4. Run Qt as administrator.
-5. Open ComputerScientists.pro from folder Skil3 in Qt
+5. Open skil3.pro from folder Skil3 in Qt
 6. Change working directory to where the chiquita40\Skil3 folder is saved on your computer
 7. Build and run the program
 
@@ -83,27 +84,30 @@ When you run the program, a welcome window with quick search and buttons for all
 
 **Add**
 
-You can add a new scientist and/or a computer to the database.
+To add a new scientist, a computer and/or a connection to the database click on 'add' button in the main window.
 
 **Edit**
 
-You can edit a scientist and/or a computer.
+To edit a scientist and/or a computer click on 'edit' button in the main window.
 
 **See full lists**
 
-You can choose from a list of scientists, computers or scientists connected to computers. Each list item can be ordered ascending or descending by clicking on the adequate table header.
+To explore lists of scientists, computers and connections click on 'See full lists'. Each list item can be ordered ascending or descending by clicking on the adequate table header.
 
 **Delete**
 
-Search for a scientist or computer and delete it from the list. You can also disconnect a computer from a scientist.
+To delete a scientist, a computer and/or a connection click on 'Delete' button in the Main window. Search for a scientist, computer and/or a connection and delete it from the list.
 
 **Connect**
 
-Connect a scientist with a computer. The Invented table in the SQLite Manager will be updated.
+To connect a scientist with a computer click on 'Connect computer and scientist' button. The Invented table in the SQLite Manager will be updated.
 
 **Quit**
 
 Each window contains a button to quit the programm.
+
+**Back**
+All windows except main window contain a 'Back' button which leads to a previous window.
 
 ## V. Coding conventions
 * Member variables start with an _underscore.
