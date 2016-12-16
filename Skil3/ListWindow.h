@@ -49,7 +49,6 @@ private:
     void displayAllScientist();
     void displayConnectionsSearchResults(string search);
     void displayAllConnections();
-    void scientistsWhichOrder(int type, int ascdesc);
     void displayAllComputers();
     void displayComputerSearchResults(string search);
 };

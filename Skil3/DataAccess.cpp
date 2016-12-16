@@ -7,7 +7,7 @@ DataAccess::DataAccess()
 {
 
     /*_db = QSqlDatabase::addDatabase("QSQLITE");
-    _db.setDatabaseName("C:/CSHistory.sqlite");
+    _db.setDatabaseName("C:/ComputerScienceDatabase.sqlite");
     _db.open();*/
 
     _db = Utilities::getDatabaseConnection();
