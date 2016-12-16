@@ -5,6 +5,7 @@
 #include "Computer.h"
 #include "Utilities.h"
 #include "Invented.h"
+#include <QTableWidgetItem>
 #include <QDialog>
 
 namespace Ui {
@@ -29,6 +30,10 @@ private slots:
     void on_input_connectComputerSearch_textChanged(const QString &arg1);
 
     void on_button_connectScientistAndComputer_clicked();
+
+    void on_table_connectScientistSearchResult_itemDoubleClicked(QTableWidgetItem *item);
+
+    void on_table_connectComputerSearchResult_itemDoubleClicked(QTableWidgetItem *item);
 
 private:
     Ui::ConnectWindow *ui;

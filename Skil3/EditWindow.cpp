@@ -31,6 +31,7 @@ void EditWindow::on_button_editQuit_clicked()
 
 void EditWindow::on_input_editPageScientistsSearch_textChanged()
 {
+    ui->label_searchNoResultsScientist->clear();
     string search = ui->input_editPageScientistsSearch->text().toStdString();
     displayScientistSearchResultsFromAll(search);
 }
@@ -71,11 +72,13 @@ void EditWindow::displayScientistSearchResultsFromAll(string search)
 
         }
 
+        ui->table_editPageScientistsSearchResult->resizeColumnsToContents();
+
     }
     if(search.size() != 0 && _currentlyDisplayedScientists.size() == 0)
     {
         ui->table_editPageScientistsSearchResult->clearContents();
-    //    ui->label_searchNoResults->setText("<p style=\"color:#f44242;\">Your search returned no results.</p>");
+        ui->label_searchNoResultsScientist->setText("<p style=\"color:#f44242;\">Your search returned no results.</p>");
     }
 
 }
@@ -280,6 +283,7 @@ void EditWindow::hideScientistFields()
 
 void EditWindow::on_input_editPageComputersSearch_textChanged()
 {
+    ui->label_searchNoResultsComputer->clear();
     string search = ui->input_editPageComputersSearch->text().toStdString();
     displayComputerSearchResultsFromAll(search);
 }
@@ -322,11 +326,13 @@ void EditWindow::displayComputerSearchResultsFromAll(string search)
 
         }
 
+        ui->table_editPageComputersSearchResult->resizeColumnsToContents();
+
     }
     if(search.size() != 0 && _currentlyDisplayedComputers.size() == 0)
     {
         ui->table_editPageComputersSearchResult->clearContents();
-    //    ui->label_searchNoResults->setText("<p style=\"color:#f44242;\">Your search returned no results.</p>");
+        ui->label_searchNoResultsComputer->setText("<p style=\"color:#f44242;\">Your search returned no results.</p>");
     }
 
 }
@@ -369,6 +375,7 @@ void EditWindow::on_button_editComputer_clicked()
     ui->input_editNameComputer->clear();        // Clear all input fields.
     ui->input_editYearOfCompletion->clear();
     ui->input_editType->clear();
+    ui->label_editComputerErrorMessage->clear();
 
     int cId = ui->input_editIdComputer->text().toInt();
 
@@ -502,4 +509,20 @@ void EditWindow::hideComputerFields()
     ui->label_editNameComputer->hide();
     ui->label_editTypeComputer->hide();
     ui->label_editYearOfCompletionComputer->hide();
+}
+
+void EditWindow::on_table_editPageScientistsSearchResult_itemDoubleClicked(QTableWidgetItem *item)
+{
+    int rowID = item->row();
+    QString scientistID = ui->table_editPageScientistsSearchResult->item(rowID, 0)->text();
+
+    ui->input_editIdScientist->setText(scientistID);
+}
+
+void EditWindow::on_table_editPageComputersSearchResult_itemDoubleClicked(QTableWidgetItem *item)
+{
+    int rowID = item->row();
+    QString computersID = ui->table_editPageComputersSearchResult->item(rowID, 0)->text();
+
+    ui->input_editIdComputer->setText(computersID);
 }
