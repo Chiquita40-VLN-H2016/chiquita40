@@ -109,11 +109,11 @@ void DeleteWindow::displayAllScientists(string search)
         }
         QString gender = QChar(toupper(s.getGender()));
 
-        ui->table_Scientists->setItem(row, 0, new QTableWidgetItem(id));
-        ui->table_Scientists->setItem(row, 1, new QTableWidgetItem(name));
-        ui->table_Scientists->setItem(row, 2, new QTableWidgetItem(birthDate));
-        ui->table_Scientists->setItem(row, 3, new QTableWidgetItem(deathYear));
-        ui->table_Scientists->setItem(row, 4, new QTableWidgetItem(gender));
+        ui->table_Scientists->setItem(row, 0, new Utilities::TableItemSC(id));
+        ui->table_Scientists->setItem(row, 1, new Utilities::TableItemSC(name));
+        ui->table_Scientists->setItem(row, 2, new Utilities::TableItemSC(birthDate));
+        ui->table_Scientists->setItem(row, 3, new Utilities::TableItemSC(deathYear));
+        ui->table_Scientists->setItem(row, 4, new Utilities::TableItemSC(gender));
     }
     if(search.size() != 0 && _currentlyDisplayedScientists.size() == 0)
     {
@@ -158,11 +158,11 @@ void DeleteWindow::displayAllComputers(string search)
             wasBuilt = "No";
         }
 
-        ui->table_Computers->setItem(row, 0, new QTableWidgetItem(id));
-        ui->table_Computers->setItem(row, 1, new QTableWidgetItem(name));
-        ui->table_Computers->setItem(row, 2, new QTableWidgetItem(buildYear));
-        ui->table_Computers->setItem(row, 3, new QTableWidgetItem(type));
-        ui->table_Computers->setItem(row, 4, new QTableWidgetItem(wasBuilt));
+        ui->table_Computers->setItem(row, 0, new Utilities::TableItemSC(id));
+        ui->table_Computers->setItem(row, 1, new Utilities::TableItemSC(name));
+        ui->table_Computers->setItem(row, 2, new Utilities::TableItemSC(buildYear));
+        ui->table_Computers->setItem(row, 3, new Utilities::TableItemSC(type));
+        ui->table_Computers->setItem(row, 4, new Utilities::TableItemSC(wasBuilt));
     }
     if(search.size() != 0 && _currentlyDisplayedComputers.size() == 0)
     {
@@ -190,10 +190,10 @@ void DeleteWindow::displayAllConnections(string search)
         QString cId = QString::number(in.getCId());
         QString cName = QString::fromStdString(in.getCName());
 
-        ui->table_Connections->setItem(row, 0, new QTableWidgetItem(sId));
-        ui->table_Connections->setItem(row, 1, new QTableWidgetItem(sName));
-        ui->table_Connections->setItem(row, 2, new QTableWidgetItem(cId));
-        ui->table_Connections->setItem(row, 3, new QTableWidgetItem(cName));
+        ui->table_Connections->setItem(row, 0, new Utilities::TableItemConnect(sId));
+        ui->table_Connections->setItem(row, 1, new Utilities::TableItemConnect(sName));
+        ui->table_Connections->setItem(row, 2, new Utilities::TableItemConnect(cId));
+        ui->table_Connections->setItem(row, 3, new Utilities::TableItemConnect(cName));
     }
     if(search.size() != 0 && _currentlyDisplayedConnections.size() == 0)
     {
@@ -223,11 +223,11 @@ void DeleteWindow::displayScientistsAfterDelete()
         QString deathDate = QString::number(s.getDeathDate());
         QString gender = QChar(toupper(s.getGender()));
 
-        ui->table_Scientists->setItem(row, 0, new QTableWidgetItem(id));
-        ui->table_Scientists->setItem(row, 1, new QTableWidgetItem(name));
-        ui->table_Scientists->setItem(row, 2, new QTableWidgetItem(birthDate));
-        ui->table_Scientists->setItem(row, 3, new QTableWidgetItem(deathDate));
-        ui->table_Scientists->setItem(row, 4, new QTableWidgetItem(gender));
+        ui->table_Scientists->setItem(row, 0, new Utilities::TableItemSC(id));
+        ui->table_Scientists->setItem(row, 1, new Utilities::TableItemSC(name));
+        ui->table_Scientists->setItem(row, 2, new Utilities::TableItemSC(birthDate));
+        ui->table_Scientists->setItem(row, 3, new Utilities::TableItemSC(deathDate));
+        ui->table_Scientists->setItem(row, 4, new Utilities::TableItemSC(gender));
     }
 }
 
@@ -251,11 +251,11 @@ void DeleteWindow::displayComputersAfterDelete()
         QString type = QString::fromStdString(c.getType());
         QString wasBuilt = QString::number(c.getWasBuilt());
 
-        ui->table_Computers->setItem(row, 0, new QTableWidgetItem(id));
-        ui->table_Computers->setItem(row, 1, new QTableWidgetItem(name));
-        ui->table_Computers->setItem(row, 2, new QTableWidgetItem(buildYear));
-        ui->table_Computers->setItem(row, 3, new QTableWidgetItem(type));
-        ui->table_Computers->setItem(row, 4, new QTableWidgetItem(wasBuilt));
+        ui->table_Computers->setItem(row, 0, new Utilities::TableItemSC(id));
+        ui->table_Computers->setItem(row, 1, new Utilities::TableItemSC(name));
+        ui->table_Computers->setItem(row, 2, new Utilities::TableItemSC(buildYear));
+        ui->table_Computers->setItem(row, 3, new Utilities::TableItemSC(type));
+        ui->table_Computers->setItem(row, 4, new Utilities::TableItemSC(wasBuilt));
     }
 }
 
@@ -277,10 +277,10 @@ void DeleteWindow::displayConnectionAfterDelete()
         QString cId = QString::number(in.getCId());
         QString cName = QString::fromStdString(in.getCName());
 
-        ui->table_Connections->setItem(row, 0, new QTableWidgetItem(sId));
-        ui->table_Connections->setItem(row, 1, new QTableWidgetItem(sName));
-        ui->table_Connections->setItem(row, 2, new QTableWidgetItem(cId));
-        ui->table_Connections->setItem(row, 3, new QTableWidgetItem(cName));
+        ui->table_Connections->setItem(row, 0, new Utilities::TableItemConnect(sId));
+        ui->table_Connections->setItem(row, 1, new Utilities::TableItemConnect(sName));
+        ui->table_Connections->setItem(row, 2, new Utilities::TableItemConnect(cId));
+        ui->table_Connections->setItem(row, 3, new Utilities::TableItemConnect(cName));
     }
 }
 
