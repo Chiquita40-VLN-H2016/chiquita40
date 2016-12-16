@@ -18,13 +18,6 @@ void MainWindow::on_button_frontQuit_clicked()
     qApp->quit();
 }
 
-/*void MainWindow::on_button_frontPageSearch_clicked()
-{
-    string search = ui->input_frontPageSearch->text().toStdString();
-    displaySearchResultsFromAll(search);
-    ui->input_frontPageSearch->setText("");
-}*/
-
 void MainWindow::displaySearchResultsFromAll(string search)
 {
     ui->list_frontPageSearchResult->clear();
@@ -83,9 +76,7 @@ void MainWindow::on_button_frontAdd_clicked()
 void MainWindow::on_input_frontPageSearch_textChanged(const QString &arg1)
 {
     string search = arg1.toStdString();
-    //string search = ui->input_frontPageSearch->text().toStdString();
     displaySearchResultsFromAll(search);
-    //ui->input_frontPageSearch->setText("");
 }
 
 void MainWindow::on_button_frontSeeFullLists_clicked()

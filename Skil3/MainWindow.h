@@ -30,8 +30,6 @@ public:
 private slots:
     void on_button_frontQuit_clicked();
 
-    //void on_button_frontPageSearch_clicked();
-
     void on_button_frontEdit_clicked();
 
     void on_button_frontDelete_clicked();
