@@ -1,4 +1,4 @@
- #include "ListWindow.h"
+#include "ListWindow.h"
 #include "ui_ListWindow.h"
 
 ListWindow::ListWindow(QWidget *parent) :
@@ -115,11 +115,30 @@ void ListWindow::displayComputerSearchResults(string search)
             QString name = QString::fromStdString(c.getName());
             QString type = QString::fromStdString(c.getType());
             QString buildyear = QString::number(c.getBuildYear());
+            if(c.getBuildYear() == 0)
+            {
+                buildyear = " ";
+            }
+            else
+            {
+                QString::number(c.getBuildYear());
+            }
+            QString wasbuilt = QString::number(c.getWasBuilt());
+            if(c.getWasBuilt() == 1)
+            {
+                wasbuilt = "Yes";
+            }
+            else if(c.getWasBuilt() == 0)
+            {
+                wasbuilt = "No";
+            }
 
             ui->table_Computers->setItem(row, 0, new QTableWidgetItem(id));
             ui->table_Computers->setItem(row, 1, new QTableWidgetItem(name));
             ui->table_Computers->setItem(row, 2, new QTableWidgetItem(buildyear));
             ui->table_Computers->setItem(row, 3, new QTableWidgetItem(type));
+            ui->table_Computers->setItem(row, 4, new QTableWidgetItem(wasbuilt));
+
         }
     }
     if(search.size() != 0 && _currentlyDisplayedComputers.size() == 0)
@@ -146,14 +165,22 @@ void ListWindow::displayAllComputers()
         QString name = QString::fromStdString(c.getName());
         QString type = QString::fromStdString(c.getType());
         QString buildyear = QString::number(c.getBuildYear());
-        QString wasbuilt = QString::number(c.getWasBuilt());
-        if(buildyear == 0)
+        if(c.getBuildYear() == 0)
         {
-            cout << " " << endl;
+            buildyear = " ";
         }
         else
         {
-            QString yes = QString::number(c.getWasBuilt());
+            QString::number(c.getBuildYear());
+        }
+        QString wasbuilt = QString::number(c.getWasBuilt());
+        if(c.getWasBuilt() == 1)
+        {
+            wasbuilt = "Yes";
+        }
+        else if(c.getWasBuilt() == 0)
+        {
+            wasbuilt = "No";
         }
 
 
@@ -161,7 +188,8 @@ void ListWindow::displayAllComputers()
         ui->table_Computers->setItem(row, 1, new QTableWidgetItem(name));
         ui->table_Computers->setItem(row, 2, new QTableWidgetItem(buildyear));
         ui->table_Computers->setItem(row, 3, new QTableWidgetItem(type));
-        ui->table_Computers->setItem(row, 3, new QTableWidgetItem(wasbuilt));
+        ui->table_Computers->setItem(row, 4, new QTableWidgetItem(wasbuilt));
+
 
     }
 }
