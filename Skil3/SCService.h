@@ -21,8 +21,6 @@ public:
     void scientistsDescendingOrder(int n); //Variable n orders by name, build year, type or was built.
     void computersAscendingOrder(int n); //Variable n orders by name, birth year, death year or gender.
     void computersDescendingOrder(int n); //Variable n orders by name, build year, type or was built.
-    void getListOfComputersAndScientistsAsc(int n);
-    void getListOfComputersAndScientistsDesc(int n);
     vector<Invented> inventedAscendingOrder(int n);
     vector<Invented> inventedDescendingOrder(int n);
     vector<Scientist> findScientistByYear(int year);

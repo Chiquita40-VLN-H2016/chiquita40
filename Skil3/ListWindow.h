@@ -27,6 +27,8 @@ private slots:
 
     void on_input_listScientistSearch_textChanged(const QString &arg1);
 
+    void on_lineEdit_textChanged(const QString &arg1);
+
 private:
     Ui::ListWindow *ui;
     vector<Scientist> _currentlyDisplayedScientists;
@@ -37,8 +39,9 @@ private:
     vector<Invented> _allConnections;
     SCService _scs;
 
-    //void displaySearchResultsFromAll(string search);
+    void displayScientistSearchResults(string search);
     void displayAllScientist(int type, int ascdesc);
+    void displayAllConnections();
     void scientistsWhichOrder(int type, int ascdesc);
 };
 
