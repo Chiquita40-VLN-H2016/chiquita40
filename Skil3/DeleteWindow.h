@@ -27,23 +27,23 @@ private slots:
 
     void on_button_deleteBack_clicked();
 
-    void on_input_deleteScientistSearch_textChanged(const QString &arg1);
+    void on_input_deleteScientistSearch_textChanged();
 
-    void on_input_deleteComputerSearch_textChanged(const QString &arg1);
+    void on_input_deleteComputerSearch_textChanged();
 
-    void on_input_deleteConnectSearch_textChanged(const QString &arg1);
+    void on_input_deleteConnectSearch_textChanged();
 
-    void on_lineEdit_deleteScientistID_textChanged(const QString &arg1);
+    void on_lineEdit_deleteScientistID_textChanged();
 
     void on_button_deleteScientist_clicked();
 
-    void on_lineEdit_deleteComputerID_textChanged(const QString &arg1);
+    void on_lineEdit_deleteComputerID_textChanged();
 
     void on_button_deleteComputer_clicked();
 
-    void on_lineEdit_deleteConnectionScientistID_textChanged(const QString &arg1);
+    void on_lineEdit_deleteConnectionScientistID_textChanged();
 
-    void on_lineEdit_deleteConnectionComputerID_textChanged(const QString &arg1);
+    void on_lineEdit_deleteConnectionComputerID_textChanged();
 
     void on_button_deleteConnection_clicked();
 

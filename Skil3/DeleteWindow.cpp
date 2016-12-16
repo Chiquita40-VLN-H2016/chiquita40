@@ -20,19 +20,19 @@ void DeleteWindow::on_button_deleteQuit_clicked()
     qApp->quit();
 }
 
-void DeleteWindow::on_input_deleteScientistSearch_textChanged(const QString &arg1)
+void DeleteWindow::on_input_deleteScientistSearch_textChanged()
 {
     string search = ui->input_deleteScientistSearch->text().toStdString();
     displayAllScientists(search);
 }
 
-void DeleteWindow::on_input_deleteComputerSearch_textChanged(const QString &arg1)
+void DeleteWindow::on_input_deleteComputerSearch_textChanged()
 {
     string search = ui->input_deleteComputerSearch->text().toStdString();
     displayAllComputers(search);
 }
 
-void DeleteWindow::on_input_deleteConnectSearch_textChanged(const QString &arg1)
+void DeleteWindow::on_input_deleteConnectSearch_textChanged()
 {
     string search = ui->input_deleteConnectSearch->text().toStdString();
     displayAllConnections(search);
@@ -43,17 +43,17 @@ void DeleteWindow::on_button_deleteBack_clicked()
     close();
 }
 
-void DeleteWindow::on_lineEdit_deleteScientistID_textChanged(const QString &arg1)
+void DeleteWindow::on_lineEdit_deleteScientistID_textChanged()
 {
     ui->button_deleteScientist->setEnabled(true);
 }
 
-void DeleteWindow::on_lineEdit_deleteComputerID_textChanged(const QString &arg1)
+void DeleteWindow::on_lineEdit_deleteComputerID_textChanged()
 {
     ui->button_deleteComputer->setEnabled(true);
 }
 
-void DeleteWindow::on_lineEdit_deleteConnectionScientistID_textChanged(const QString &arg1)
+void DeleteWindow::on_lineEdit_deleteConnectionScientistID_textChanged()
 {
     if(!ui->lineEdit_deleteConnectionComputerID->text().isEmpty())
     {
@@ -61,7 +61,7 @@ void DeleteWindow::on_lineEdit_deleteConnectionScientistID_textChanged(const QSt
     }
 }
 
-void DeleteWindow::on_lineEdit_deleteConnectionComputerID_textChanged(const QString &arg1)
+void DeleteWindow::on_lineEdit_deleteConnectionComputerID_textChanged()
 {
     if(!ui->lineEdit_deleteConnectionScientistID->text().isEmpty())
     {
@@ -131,9 +131,25 @@ void DeleteWindow::displayAllComputers(string search)
 
         QString id = QString::number(c.getId());
         QString name = QString::fromStdString(c.getName());
-        QString buildYear = QString::number(c.getBuildYear());
+        QString buildYear;
+        if(c.getBuildYear() == 0)
+        {
+            buildYear = "";
+        }
+        else
+        {
+            buildYear = QString::number(c.getBuildYear());
+        }
         QString type = QString::fromStdString(c.getType());
-        QString wasBuilt = QString::number(c.getWasBuilt());
+        QString wasBuilt;
+        if(c.getWasBuilt() == 1)
+        {
+            wasBuilt = "Yes";
+        }
+        else
+        {
+            wasBuilt = "No";
+        }
 
         ui->table_Computers->setItem(row, 0, new QTableWidgetItem(id));
         ui->table_Computers->setItem(row, 1, new QTableWidgetItem(name));
