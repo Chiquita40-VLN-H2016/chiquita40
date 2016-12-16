@@ -26,18 +26,35 @@ When working with the list of Computers:
 You can do these commands as often as you wish. To stop type in 'quit'.
 
 ## II. File list
-+ ConsoleUI.cpp
-+ ConsoleUI.h
++ AddWindow.cpp
++ AddWindow.h
++ AddWindow.ui
++ Computer.cpp
++ Computer.h
++ ConnectWindow.cpp
++ ConnectWindow.h
++ ConnectWindow.ui
++ DataAccess.cpp
++ DataAccess.h
++ DeleteWindow.cpp
++ DeleteWindow.h
++ DeleteWindow.ui
++ EditWindow.cpp
++ EditWindow.h
++ EditWindow.ui
++ Invented.cpp
++ Invented.h
++ ListWindow.cpp
++ ListWindow.h
++ ListWindow.ui
++ MainWindow.cpp
++ MainWindow.h
++ MainWindow.ui
++ resources.qrc
 + Scientist.cpp
 + Scientist.h
 + SCService.cpp
 + SCService.h
-+ DataAccess.cpp
-+ DataAccess.h
-+ Computer.cpp
-+ Computer.h
-+ Invented.cpp
-+ Invented.h
 + main.cpp
 + CSHistory.sqlite           - Database that holds lists of Scientists, Computers and a joined list.
 + Insert_queries.txt - SQL queries to fill database.
