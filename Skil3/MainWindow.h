@@ -3,7 +3,7 @@
 #include "Scientist.h"
 #include "Computer.h"
 #include "SCService.h"
-#include "EditWindow1.h"
+#include "EditWindow.h"
 #include "DeleteWindow.h"
 #include "ListWindow.h"
 #include "AddWindow.h"

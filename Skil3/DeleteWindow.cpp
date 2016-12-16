@@ -85,7 +85,7 @@ void DeleteWindow::displayAllScientists(string search)
 {
     ui->table_Scientists->clearContents();
     _currentlyDisplayedScientists.clear();
-
+    _currentlyDisplayedScientists = _scs.getScientists();
     _currentlyDisplayedScientists = _scs.findScientistByName(search);
 
     ui->table_Scientists->setRowCount(_currentlyDisplayedScientists.size());
@@ -157,6 +157,7 @@ void DeleteWindow::displayAllComputers(string search)
         ui->table_Computers->setItem(row, 3, new QTableWidgetItem(type));
         ui->table_Computers->setItem(row, 4, new QTableWidgetItem(wasBuilt));
     }
+    ui->table_Computers->resizeColumnToContents(1);
 }
 
 void DeleteWindow::displayAllConnections(string search)
