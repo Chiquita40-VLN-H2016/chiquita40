@@ -41,7 +41,6 @@ void AddWindow::on_input_addScientistSearch_textChanged(const QString &arg1)
 
 void AddWindow::on_button_addScientist_clicked()
 {
-    //TODO: villumeldingar ef eitthvað er tómt.
     string name = ui->input_addNameScientist->text().toStdString();
     string bY = ui->input_addYearBorn->text().toStdString();
     int birthYear = ui->input_addYearBorn->text().toInt();
@@ -67,6 +66,7 @@ void AddWindow::on_button_addScientist_clicked()
     }
     string gender = ui->comboBox_addSGender->currentText().toStdString();
     char g = tolower(gender.front());
+    string link = ui->input_addLink->text().toStdString();
     if(!birthYearIsValid && deathYearIsValid)
     {
         ui->label_addScientistErrorMessage->setText("<p style=\"color:#f44242;\">Invalid Birth Year</p>");
@@ -81,7 +81,7 @@ void AddWindow::on_button_addScientist_clicked()
     }
     else
     {
-        _scs.addScientist(name, birthYear, deathYear, g);
+        _scs.addScientist(name, birthYear, deathYear, g, link);
         displayAllScientists();
         clearScientistForm();
     }
@@ -120,6 +120,7 @@ void AddWindow::on_button_addComputer_clicked()
     string type = ui->input_addType->text().toStdString();
     string wasBuilt = ui->comboBox_addCBuilt->currentText().toStdString();
     bool buildYearIsValid = true;
+    string link = ui->input_ComputerLink->text().toStdString();
     int buildYear = 0;
     if (wasBuilt == "Yes")
     {
@@ -130,7 +131,7 @@ void AddWindow::on_button_addComputer_clicked()
     }
     if(buildYearIsValid)
     {
-        _scs.addComputer(name, buildYear, type, wasBuilt);
+        _scs.addComputer(name, buildYear, type, wasBuilt, link);
         displayAllComputers();
         clearComputerForm();
     }
@@ -369,6 +370,7 @@ void AddWindow::clearScientistForm()
     ui->comboBox_addSAlive->setCurrentIndex(0);
     ui->input_addYearOfDeath->setText("");
     ui->comboBox_addSGender->setCurrentIndex(0);
+    ui->input_addLink->setText("");
     ui->input_addYearOfDeath->setEnabled(false);
     ui->button_addScientist->setEnabled(false);
     ui->label_addScientistErrorMessage->setText("");
@@ -380,6 +382,7 @@ void AddWindow::clearComputerForm()
     ui->input_addType->setText("");
     ui->comboBox_addCBuilt->setCurrentIndex(0);
     ui->input_addYearOfCompletion->setText("");
+    ui->input_ComputerLink->setText("");
     ui->input_addYearOfCompletion->setEnabled(true);
     ui->button_addComputer->setEnabled(false);
     ui->label_addComputerErrorMessage->setText("");

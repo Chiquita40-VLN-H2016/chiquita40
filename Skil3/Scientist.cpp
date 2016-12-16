@@ -4,13 +4,14 @@ Scientist::Scientist()
 {
 
 }
-Scientist::Scientist(int id, string n, int bd, int dd, char g)
+Scientist::Scientist(int id, string n, int bd, int dd, char g, string l)
 {
     _id = id;
     _name = n;
     _birthDate = bd;
     _deathDate = dd;
     _gender = g;
+    _link = l;
 }
 
 int Scientist::getId() const
@@ -38,6 +39,11 @@ char Scientist::getGender() const
     return _gender;
 }
 
+string Scientist::getLink() const
+{
+    return _link;
+}
+
 void Scientist::setId(int id)
 {
     _id = id;
@@ -61,6 +67,11 @@ void Scientist::setDeathDate(int dd)
 void Scientist::setGender(char g)
 {
     _gender = g;
+}
+
+void Scientist::setLink(string link)
+{
+    _link = link;
 }
 
 string Scientist::toString()

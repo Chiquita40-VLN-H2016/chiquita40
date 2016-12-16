@@ -4,7 +4,7 @@ namespace Utilities {
     //Using code from Bæring's lecture (Cars-Template).
     QSqlDatabase getDatabaseConnection()
     {
-        QString connectionName = "SCConnection";
+        QString connectionName = "CSDConnection";
 
         QSqlDatabase db;
 
@@ -15,7 +15,7 @@ namespace Utilities {
         else
         {
             db = QSqlDatabase::addDatabase("QSQLITE", connectionName);
-            db.setDatabaseName("C:/CSHistory.sqlite");
+            db.setDatabaseName("C:/ComputerScienceDatabase.sqlite");
 
             db.open();
 

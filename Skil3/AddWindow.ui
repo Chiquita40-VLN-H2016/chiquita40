@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>574</width>
-    <height>500</height>
+    <height>522</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -61,7 +61,7 @@ color: rgb(0, 0, 0);</string>
    <item row="1" column="0" colspan="3">
     <widget class="QTabWidget" name="tabWidget_add">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab_addScientist">
       <attribute name="title">
@@ -239,9 +239,9 @@ color: rgb(0, 0, 0);</string>
        <property name="geometry">
         <rect>
          <x>270</x>
-         <y>360</y>
+         <y>395</y>
          <width>241</width>
-         <height>31</height>
+         <height>21</height>
         </rect>
        </property>
        <property name="text">
@@ -309,6 +309,19 @@ color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
         <string/>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="input_addLink">
+       <property name="geometry">
+        <rect>
+         <x>270</x>
+         <y>369</y>
+         <width>241</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="placeholderText">
+        <string>Link to Wikipedia article</string>
        </property>
       </widget>
      </widget>
@@ -526,6 +539,19 @@ color: rgb(0, 0, 0);</string>
          <string>Was Built</string>
         </property>
        </column>
+      </widget>
+      <widget class="QLineEdit" name="input_ComputerLink">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>372</y>
+         <width>231</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="placeholderText">
+        <string>Link to Wikipedia article</string>
+       </property>
       </widget>
      </widget>
     </widget>
