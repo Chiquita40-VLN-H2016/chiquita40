@@ -386,9 +386,25 @@ void DeleteWindow::on_button_deleteConnection_clicked()
     {
         ui->label_warningCId2->setText("<p style=\"color:#f44242;\">Invalid Computer ID</p>");
     }
-    else
+    else if(s.getId() != -1 && c.getId() != -1)
     {
-        ret = deleteWarningMessage();
+        bool notConnected = true;
+
+        vector<Computer> computersConnected = _scs.findComputerByScientist(s.getId());
+
+        for(unsigned int i = 0; i < computersConnected.size(); i++)
+        {
+            if(c.getId() == computersConnected.at(i).getId())
+            {
+                notConnected = false;
+                ui->label_connectErrorMessage->setText("<p style=\"color:#f44242;\">Connection already exists</p>");
+                break;
+            }
+        }
+        if(notConnected)
+        {
+            ret = deleteWarningMessage();
+        }
     }
 
     if(ret == 16384)
